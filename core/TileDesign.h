@@ -102,7 +102,7 @@ namespace openriichi
 		*
 		* @return 関連のある列挙型間で一意の値。
 		*/
-		virtual int getId() const;
+		virtual int getId() const override;
 
 		/**
 		* 数牌であるかを調べる。
@@ -110,7 +110,7 @@ namespace openriichi
 		* @retval true 数牌であった。
 		* @retval false 数牌ではなかった。
 		*/
-		virtual bool isSuit() const;
+		virtual bool isSuit() const override;
 
 		/**
 		* 字牌であるかを調べる。
@@ -118,7 +118,7 @@ namespace openriichi
 		* @retval true 字牌であった。
 		* @retval false 字牌ではなかった。
 		*/
-		virtual bool isHonour() const;
+		virtual bool isHonour() const override;
 
 		/**
 		* 風牌であるかを調べる。
@@ -126,7 +126,7 @@ namespace openriichi
 		* @retval true 風牌であった。
 		* @retval false 風牌ではなかった。
 		*/
-		virtual bool isWind() const;
+		virtual bool isWind() const override;
 
 		/**
 		* 三元牌であるかを調べる。
@@ -134,7 +134,7 @@ namespace openriichi
 		* @retval true 三元牌であった。
 		* @retval false 三元牌ではなかった。
 		*/
-		virtual bool isDragon() const;
+		virtual bool isDragon() const override;
 	};
 
 
