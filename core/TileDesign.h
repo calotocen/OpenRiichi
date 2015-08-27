@@ -182,60 +182,90 @@ namespace openriichi
 
 	/**
 	 * 筒子の牌図柄である。
+	 *
+	 * @note 本クラスを個別にインスタンス化してはならない。
+	 *       代わりに TileDesigns::CIRCLES を使用すること。
 	 */
 	using CirclesTileDesign = TileDesignTemplate<1, true, false, false, false>;
 
 
 	/**
 	 * 索子の牌図柄である。
+	 *
+	 * @note 本クラスを個別にインスタンス化してはならない。
+	 *       代わりに TileDesigns::BAMBOO を使用すること。
 	 */
 	using BambooTileDesign = TileDesignTemplate<2, true, false, false, false>;
 
 
 	/**
 	 * 萬子の牌図柄である。
+	 *
+	 * @note 本クラスを個別にインスタンス化してはならない。
+	 *       代わりに TileDesigns::CHARACTERS を使用すること。
 	 */
 	using CharactersTileDesign = TileDesignTemplate<3, true, false, false, false>;
 
 
 	/**
 	 * 東の牌図柄である。
+	 *
+	 * @note 本クラスを個別にインスタンス化してはならない。
+	 *       代わりに TileDesigns::EAST を使用すること。
 	 */
 	using EastTileDesign = TileDesignTemplate<4, false, true, true, false>;
 
 
 	/**
 	 * 南の牌図柄である。
+	 *
+	 * @note 本クラスを個別にインスタンス化してはならない。
+	 *       代わりに TileDesigns::SOUTH を使用すること。
 	 */
 	using SouthTileDesign = TileDesignTemplate<5, false, true, true, false>;
 
 
 	/**
 	 * 西の牌図柄である。
+	 *
+	 * @note 本クラスを個別にインスタンス化してはならない。
+	 *       代わりに TileDesigns::WEST を使用すること。
 	 */
 	using WestTileDesign = TileDesignTemplate<6, false, true, true, false>;
 
 
 	/**
 	 * 北の牌図柄である。
+	 *
+	 * @note 本クラスを個別にインスタンス化してはならない。
+	 *       代わりに TileDesigns::NORTH を使用すること。
 	 */
 	using NorthTileDesign = TileDesignTemplate<7, false, true, true, false>;
 
 
 	/**
 	 * 中の牌図柄である。
+	 *
+	 * @note 本クラスを個別にインスタンス化してはならない。
+	 *       代わりに TileDesigns::RED を使用すること。
 	 */
 	using RedTileDesign = TileDesignTemplate<8, false, true, false, true>;
 
 
 	/**
 	 * 白の牌図柄である。
+	 *
+	 * @note 本クラスを個別にインスタンス化してはならない。
+	 *       代わりに TileDesigns::WHITE を使用すること。
 	 */
 	using WhiteTileDesign = TileDesignTemplate<9, false, true, false, true>;
 
 
 	/**
 	 * 發の牌図柄である。
+	 *
+	 * @note 本クラスを個別にインスタンス化してはならない。
+	 *       代わりに TileDesigns::GREEN を使用すること。
 	 */
 	using GreenTileDesign = TileDesignTemplate<10, false, true, false, true>;
 }

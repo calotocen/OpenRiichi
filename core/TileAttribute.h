@@ -88,6 +88,9 @@ namespace openriichi
 
 	/**
 	 * 赤牌の牌属性である。
+	 *
+	 * @note 本クラスを個別にインスタンス化してはならない。
+	 *       代わりに TileAttributes::RED を使用すること。
 	 */
 	using RedTileAttribute = TileAttributeTemplate<1>;
 }
