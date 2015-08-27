@@ -27,10 +27,10 @@ namespace openriichi
 	class TileAttributes
 	{
 	public:
-		/// 属性がないことを表す牌属性。
+		/// 属性なしを表す牌属性。
 		static const NoneTileAttribute NONE;
 
-		/// 赤牌の牌属性。
+		/// 赤の牌属性。
 		static const RedTileAttribute RED;
 	};
 }

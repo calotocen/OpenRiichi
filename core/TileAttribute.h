@@ -87,7 +87,7 @@ namespace openriichi
 
 
 	/**
-	 * 属性がないことを表す牌属性である。
+	 * 属性なしを表す牌属性である。
 	 *
 	 * @note 本クラスを個別にインスタンス化してはならない。
 	 *       代わりに TileAttributes::RED を使用すること。
@@ -96,7 +96,7 @@ namespace openriichi
 
 
 	/**
-	 * 赤牌の牌属性である。
+	 * 赤の牌属性である。
 	 *
 	 * @note 本クラスを個別にインスタンス化してはならない。
 	 *       代わりに TileAttributes::RED を使用すること。
