@@ -20,4 +20,5 @@
 using namespace openriichi;
 
 
+const NoneTileAttribute TileAttributes::NONE = NoneTileAttribute();
 const RedTileAttribute TileAttributes::RED = RedTileAttribute();
