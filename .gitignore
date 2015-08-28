@@ -26,3 +26,9 @@
 *.exe
 *.out
 *.app
+
+# Visual Studio files
+*.sdf
+*.opensdf
+Win32/
+x64/
