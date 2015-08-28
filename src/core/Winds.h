@@ -52,22 +52,22 @@ namespace openriichi
 
 	public:
 		/**
-		* 風を生成する。
-		*/
+		 * 風を生成する。
+		 */
 		WindTemplate() = default;
 
 		/**
-		* 風を破棄する。
-		*/
+		 * 風を破棄する。
+		 */
 		virtual ~WindTemplate();
 
 
 	public:
 		/**
-		* 関連のある列挙型間で一意の値を返す。
-		*
-		* @return 関連のある列挙型間で一意の値。
-		*/
+		 * 関連のある列挙型間で一意の値を返す。
+		 *
+		 * @return 関連のある列挙型間で一意の値。
+		 */
 		virtual int getId() const;
 	};
 

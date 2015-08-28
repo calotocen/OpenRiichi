@@ -52,22 +52,22 @@ namespace openriichi
 
 	public:
 		/**
-		* 牌属性を生成する。
-		*/
+		 * 牌属性を生成する。
+		 */
 		TileAttributeTemplate() = default;
 
 		/**
-		* 牌属性を破棄する。
-		*/
+		 * 牌属性を破棄する。
+		 */
 		virtual ~TileAttributeTemplate();
 
 
 	public:
 		/**
-		* 関連のある列挙型間で一意の値を返す。
-		*
-		* @return 関連のある列挙型間で一意の値。
-		*/
+		 * 関連のある列挙型間で一意の値を返す。
+		 *
+		 * @return 関連のある列挙型間で一意の値。
+		 */
 		virtual int getId() const override;
 	};
 
