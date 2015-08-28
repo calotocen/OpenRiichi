@@ -123,7 +123,7 @@ namespace openriichi
 
 
 	/**
-	 * 牌図柄の集合である。
+	 * 風の集合である。
 	 */
 	class Winds
 	{

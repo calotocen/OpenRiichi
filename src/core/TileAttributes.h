@@ -105,7 +105,7 @@ namespace openriichi
 
 
 	/**
-	 * 牌図柄の集合である。
+	 * 牌属性の集合である。
 	 */
 	class TileAttributes
 	{
