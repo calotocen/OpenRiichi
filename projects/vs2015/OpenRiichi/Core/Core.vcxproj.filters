@@ -1,0 +1,55 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="リソース ファイル">
+      <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
+      <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
+    </Filter>
+    <Filter Include="OpenRiichi">
+      <UniqueIdentifier>{b92df1ce-c22b-4d15-b73c-48fef6dbb778}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="..\..\..\..\src\core\Enumeration.h">
+      <Filter>OpenRiichi</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\src\core\TileAttribute.h">
+      <Filter>OpenRiichi</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\src\core\TileAttributes.h">
+      <Filter>OpenRiichi</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\src\core\TileDesign.h">
+      <Filter>OpenRiichi</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\src\core\TileDesigns.h">
+      <Filter>OpenRiichi</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\src\core\Wind.h">
+      <Filter>OpenRiichi</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\src\core\Winds.h">
+      <Filter>OpenRiichi</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="..\..\..\..\src\core\TileAttribute.cpp">
+      <Filter>OpenRiichi</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\src\core\TileAttributes.cpp">
+      <Filter>OpenRiichi</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\src\core\TileDesign.cpp">
+      <Filter>OpenRiichi</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\src\core\TileDesigns.cpp">
+      <Filter>OpenRiichi</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\src\core\Wind.cpp">
+      <Filter>OpenRiichi</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\src\core\Winds.cpp">
+      <Filter>OpenRiichi</Filter>
+    </ClCompile>
+  </ItemGroup>
+</Project>
