@@ -29,6 +29,9 @@ namespace openriichi
 
 		ASSERT_TRUE(NoneTileAttribute() == tileAttribute);
 		ASSERT_FALSE(RedTileAttribute() == tileAttribute);
+
+		ASSERT_FALSE(NoneTileAttribute() != tileAttribute);
+		ASSERT_TRUE(RedTileAttribute() != tileAttribute);
 	}
 
 	/// 赤の牌属性をテストする。
@@ -39,5 +42,8 @@ namespace openriichi
 
 		ASSERT_FALSE(NoneTileAttribute() == tileAttribute);
 		ASSERT_TRUE(RedTileAttribute() == tileAttribute);
+
+		ASSERT_TRUE(NoneTileAttribute() != tileAttribute);
+		ASSERT_FALSE(RedTileAttribute() != tileAttribute);
 	}
 }

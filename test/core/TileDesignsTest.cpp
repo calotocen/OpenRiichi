@@ -41,6 +41,17 @@ namespace openriichi
 		ASSERT_FALSE(RedTileDesign() == tileDesign);
 		ASSERT_FALSE(WhiteTileDesign() == tileDesign);
 		ASSERT_FALSE(GreenTileDesign() == tileDesign);
+
+		ASSERT_FALSE(CirclesTileDesign() != tileDesign);
+		ASSERT_TRUE(BambooTileDesign() != tileDesign);
+		ASSERT_TRUE(CharactersTileDesign() != tileDesign);
+		ASSERT_TRUE(EastTileDesign() != tileDesign);
+		ASSERT_TRUE(SouthTileDesign() != tileDesign);
+		ASSERT_TRUE(WestTileDesign() != tileDesign);
+		ASSERT_TRUE(NorthTileDesign() != tileDesign);
+		ASSERT_TRUE(RedTileDesign() != tileDesign);
+		ASSERT_TRUE(WhiteTileDesign() != tileDesign);
+		ASSERT_TRUE(GreenTileDesign() != tileDesign);
 	}
 
 	/// 索子の牌図柄をテストする。
@@ -63,6 +74,17 @@ namespace openriichi
 		ASSERT_FALSE(RedTileDesign() == tileDesign);
 		ASSERT_FALSE(WhiteTileDesign() == tileDesign);
 		ASSERT_FALSE(GreenTileDesign() == tileDesign);
+
+		ASSERT_TRUE(CirclesTileDesign() != tileDesign);
+		ASSERT_FALSE(BambooTileDesign() != tileDesign);
+		ASSERT_TRUE(CharactersTileDesign() != tileDesign);
+		ASSERT_TRUE(EastTileDesign() != tileDesign);
+		ASSERT_TRUE(SouthTileDesign() != tileDesign);
+		ASSERT_TRUE(WestTileDesign() != tileDesign);
+		ASSERT_TRUE(NorthTileDesign() != tileDesign);
+		ASSERT_TRUE(RedTileDesign() != tileDesign);
+		ASSERT_TRUE(WhiteTileDesign() != tileDesign);
+		ASSERT_TRUE(GreenTileDesign() != tileDesign);
 	}
 
 	/// 萬子の牌図柄をテストする。
@@ -85,6 +107,17 @@ namespace openriichi
 		ASSERT_FALSE(RedTileDesign() == tileDesign);
 		ASSERT_FALSE(WhiteTileDesign() == tileDesign);
 		ASSERT_FALSE(GreenTileDesign() == tileDesign);
+
+		ASSERT_TRUE(CirclesTileDesign() != tileDesign);
+		ASSERT_TRUE(BambooTileDesign() != tileDesign);
+		ASSERT_FALSE(CharactersTileDesign() != tileDesign);
+		ASSERT_TRUE(EastTileDesign() != tileDesign);
+		ASSERT_TRUE(SouthTileDesign() != tileDesign);
+		ASSERT_TRUE(WestTileDesign() != tileDesign);
+		ASSERT_TRUE(NorthTileDesign() != tileDesign);
+		ASSERT_TRUE(RedTileDesign() != tileDesign);
+		ASSERT_TRUE(WhiteTileDesign() != tileDesign);
+		ASSERT_TRUE(GreenTileDesign() != tileDesign);
 	}
 
 	/// 東の牌図柄をテストする。
@@ -107,6 +140,17 @@ namespace openriichi
 		ASSERT_FALSE(RedTileDesign() == tileDesign);
 		ASSERT_FALSE(WhiteTileDesign() == tileDesign);
 		ASSERT_FALSE(GreenTileDesign() == tileDesign);
+
+		ASSERT_TRUE(CirclesTileDesign() != tileDesign);
+		ASSERT_TRUE(BambooTileDesign() != tileDesign);
+		ASSERT_TRUE(CharactersTileDesign() != tileDesign);
+		ASSERT_FALSE(EastTileDesign() != tileDesign);
+		ASSERT_TRUE(SouthTileDesign() != tileDesign);
+		ASSERT_TRUE(WestTileDesign() != tileDesign);
+		ASSERT_TRUE(NorthTileDesign() != tileDesign);
+		ASSERT_TRUE(RedTileDesign() != tileDesign);
+		ASSERT_TRUE(WhiteTileDesign() != tileDesign);
+		ASSERT_TRUE(GreenTileDesign() != tileDesign);
 	}
 
 	/// 南の牌図柄をテストする。
@@ -129,6 +173,17 @@ namespace openriichi
 		ASSERT_FALSE(RedTileDesign() == tileDesign);
 		ASSERT_FALSE(WhiteTileDesign() == tileDesign);
 		ASSERT_FALSE(GreenTileDesign() == tileDesign);
+
+		ASSERT_TRUE(CirclesTileDesign() != tileDesign);
+		ASSERT_TRUE(BambooTileDesign() != tileDesign);
+		ASSERT_TRUE(CharactersTileDesign() != tileDesign);
+		ASSERT_TRUE(EastTileDesign() != tileDesign);
+		ASSERT_FALSE(SouthTileDesign() != tileDesign);
+		ASSERT_TRUE(WestTileDesign() != tileDesign);
+		ASSERT_TRUE(NorthTileDesign() != tileDesign);
+		ASSERT_TRUE(RedTileDesign() != tileDesign);
+		ASSERT_TRUE(WhiteTileDesign() != tileDesign);
+		ASSERT_TRUE(GreenTileDesign() != tileDesign);
 	}
 
 	/// 西の牌図柄をテストする。
@@ -151,6 +206,17 @@ namespace openriichi
 		ASSERT_FALSE(RedTileDesign() == tileDesign);
 		ASSERT_FALSE(WhiteTileDesign() == tileDesign);
 		ASSERT_FALSE(GreenTileDesign() == tileDesign);
+
+		ASSERT_TRUE(CirclesTileDesign() != tileDesign);
+		ASSERT_TRUE(BambooTileDesign() != tileDesign);
+		ASSERT_TRUE(CharactersTileDesign() != tileDesign);
+		ASSERT_TRUE(EastTileDesign() != tileDesign);
+		ASSERT_TRUE(SouthTileDesign() != tileDesign);
+		ASSERT_FALSE(WestTileDesign() != tileDesign);
+		ASSERT_TRUE(NorthTileDesign() != tileDesign);
+		ASSERT_TRUE(RedTileDesign() != tileDesign);
+		ASSERT_TRUE(WhiteTileDesign() != tileDesign);
+		ASSERT_TRUE(GreenTileDesign() != tileDesign);
 	}
 
 	/// 北の牌図柄をテストする。
@@ -173,6 +239,17 @@ namespace openriichi
 		ASSERT_FALSE(RedTileDesign() == tileDesign);
 		ASSERT_FALSE(WhiteTileDesign() == tileDesign);
 		ASSERT_FALSE(GreenTileDesign() == tileDesign);
+
+		ASSERT_TRUE(CirclesTileDesign() != tileDesign);
+		ASSERT_TRUE(BambooTileDesign() != tileDesign);
+		ASSERT_TRUE(CharactersTileDesign() != tileDesign);
+		ASSERT_TRUE(EastTileDesign() != tileDesign);
+		ASSERT_TRUE(SouthTileDesign() != tileDesign);
+		ASSERT_TRUE(WestTileDesign() != tileDesign);
+		ASSERT_FALSE(NorthTileDesign() != tileDesign);
+		ASSERT_TRUE(RedTileDesign() != tileDesign);
+		ASSERT_TRUE(WhiteTileDesign() != tileDesign);
+		ASSERT_TRUE(GreenTileDesign() != tileDesign);
 	}
 
 	/// 中の牌図柄をテストする。
@@ -195,6 +272,17 @@ namespace openriichi
 		ASSERT_TRUE(RedTileDesign() == tileDesign);
 		ASSERT_FALSE(WhiteTileDesign() == tileDesign);
 		ASSERT_FALSE(GreenTileDesign() == tileDesign);
+
+		ASSERT_TRUE(CirclesTileDesign() != tileDesign);
+		ASSERT_TRUE(BambooTileDesign() != tileDesign);
+		ASSERT_TRUE(CharactersTileDesign() != tileDesign);
+		ASSERT_TRUE(EastTileDesign() != tileDesign);
+		ASSERT_TRUE(SouthTileDesign() != tileDesign);
+		ASSERT_TRUE(WestTileDesign() != tileDesign);
+		ASSERT_TRUE(NorthTileDesign() != tileDesign);
+		ASSERT_FALSE(RedTileDesign() != tileDesign);
+		ASSERT_TRUE(WhiteTileDesign() != tileDesign);
+		ASSERT_TRUE(GreenTileDesign() != tileDesign);
 	}
 
 	/// 白の牌図柄をテストする。
@@ -217,6 +305,17 @@ namespace openriichi
 		ASSERT_FALSE(RedTileDesign() == tileDesign);
 		ASSERT_TRUE(WhiteTileDesign() == tileDesign);
 		ASSERT_FALSE(GreenTileDesign() == tileDesign);
+
+		ASSERT_TRUE(CirclesTileDesign() != tileDesign);
+		ASSERT_TRUE(BambooTileDesign() != tileDesign);
+		ASSERT_TRUE(CharactersTileDesign() != tileDesign);
+		ASSERT_TRUE(EastTileDesign() != tileDesign);
+		ASSERT_TRUE(SouthTileDesign() != tileDesign);
+		ASSERT_TRUE(WestTileDesign() != tileDesign);
+		ASSERT_TRUE(NorthTileDesign() != tileDesign);
+		ASSERT_TRUE(RedTileDesign() != tileDesign);
+		ASSERT_FALSE(WhiteTileDesign() != tileDesign);
+		ASSERT_TRUE(GreenTileDesign() != tileDesign);
 	}
 
 	/// 發の牌図柄をテストする。
@@ -239,5 +338,16 @@ namespace openriichi
 		ASSERT_FALSE(RedTileDesign() == tileDesign);
 		ASSERT_FALSE(WhiteTileDesign() == tileDesign);
 		ASSERT_TRUE(GreenTileDesign() == tileDesign);
+
+		ASSERT_TRUE(CirclesTileDesign() != tileDesign);
+		ASSERT_TRUE(BambooTileDesign() != tileDesign);
+		ASSERT_TRUE(CharactersTileDesign() != tileDesign);
+		ASSERT_TRUE(EastTileDesign() != tileDesign);
+		ASSERT_TRUE(SouthTileDesign() != tileDesign);
+		ASSERT_TRUE(WestTileDesign() != tileDesign);
+		ASSERT_TRUE(NorthTileDesign() != tileDesign);
+		ASSERT_TRUE(RedTileDesign() != tileDesign);
+		ASSERT_TRUE(WhiteTileDesign() != tileDesign);
+		ASSERT_FALSE(GreenTileDesign() != tileDesign);
 	}
 }

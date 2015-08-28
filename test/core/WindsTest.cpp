@@ -31,6 +31,11 @@ namespace openriichi
 		ASSERT_FALSE(SouthWind() == wind);
 		ASSERT_FALSE(WestWind() == wind);
 		ASSERT_FALSE(NorthWind() == wind);
+
+		ASSERT_FALSE(EastWind() != wind);
+		ASSERT_TRUE(SouthWind() != wind);
+		ASSERT_TRUE(WestWind() != wind);
+		ASSERT_TRUE(NorthWind() != wind);
 	}
 
 	/// 南の風をテストする。
@@ -43,6 +48,11 @@ namespace openriichi
 		ASSERT_TRUE(SouthWind() == wind);
 		ASSERT_FALSE(WestWind() == wind);
 		ASSERT_FALSE(NorthWind() == wind);
+
+		ASSERT_TRUE(EastWind() != wind);
+		ASSERT_FALSE(SouthWind() != wind);
+		ASSERT_TRUE(WestWind() != wind);
+		ASSERT_TRUE(NorthWind() != wind);
 	}
 
 	/// 西の風をテストする。
@@ -55,6 +65,11 @@ namespace openriichi
 		ASSERT_FALSE(SouthWind() == wind);
 		ASSERT_TRUE(WestWind() == wind);
 		ASSERT_FALSE(NorthWind() == wind);
+
+		ASSERT_TRUE(EastWind() != wind);
+		ASSERT_TRUE(SouthWind() != wind);
+		ASSERT_FALSE(WestWind() != wind);
+		ASSERT_TRUE(NorthWind() != wind);
 	}
 
 	/// 南の風をテストする。
@@ -67,5 +82,10 @@ namespace openriichi
 		ASSERT_FALSE(SouthWind() == wind);
 		ASSERT_FALSE(WestWind() == wind);
 		ASSERT_TRUE(NorthWind() == wind);
+
+		ASSERT_TRUE(EastWind() != wind);
+		ASSERT_TRUE(SouthWind() != wind);
+		ASSERT_TRUE(WestWind() != wind);
+		ASSERT_FALSE(NorthWind() != wind);
 	}
 }

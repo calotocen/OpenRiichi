@@ -40,9 +40,16 @@ namespace openriichi
 		/**
 		 * 他の列挙型と等しいか調べる。
 		 *
-		 * @param[in] other 他の列挙型
+		 * @param[in] other 他の列挙型。
 		 */
 		bool operator==(const Enumeration<T> &other) const;
+
+		/**
+		 * 他の列挙型と等しくないか調べる。
+		 *
+		 * @param[in] other 他の列挙型。
+		 */
+		bool operator!=(const Enumeration<T> &other) const;
 
 
 	public:
@@ -66,5 +73,12 @@ namespace openriichi
 	bool Enumeration<T>::operator==(const Enumeration<T> &other) const
 	{
 		return getId() == other.getId();
+	}
+
+
+	template<class T>
+	bool Enumeration<T>::operator!=(const Enumeration<T> &other) const
+	{
+		return getId() != other.getId();
 	}
 }
