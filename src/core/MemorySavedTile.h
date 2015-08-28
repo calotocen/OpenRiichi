@@ -37,7 +37,7 @@ namespace openriichi {
 		/**
 		 * 図柄値である。
 		 */
-		enum class DesignValue : unsigned char
+		enum DesignValue : unsigned char
 		{
 			/// 筒子。
 			CIRCLES = 0x10,
@@ -61,7 +61,7 @@ namespace openriichi {
 			NORTH = 0x44,
 
 			/// 中。
-			RED = 0x51,
+			DV_RED = 0x51,
 
 			/// 發。
 			GREEN = 0x52,
@@ -73,13 +73,13 @@ namespace openriichi {
 		/**
 		 * 属性値である。
 		 */
-		enum class AttributeValue : unsigned char
+		enum AttributeValue : unsigned char
 		{
 			/// 属性なし。
 			NONE = 0x00,
 
 			/// 赤。
-			RED = 0x80,
+			AV_RED = 0x80,
 		};
 
 		/**

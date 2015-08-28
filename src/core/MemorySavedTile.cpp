@@ -38,31 +38,31 @@ MemorySavedTile::MemorySavedTile(const TileDesign &design, const TileAttribute &
 	// 図柄に応じた値を設定する。
 	switch (design.getId()) {
 		case TileDesigns::EAST.ID:
-			m_value = static_cast<unsigned char>(DesignValue::EAST);
+			m_value = DesignValue::EAST;
 			break;
 
 		case TileDesigns::SOUTH.ID:
-			m_value = static_cast<unsigned char>(DesignValue::SOUTH);
+			m_value = DesignValue::SOUTH;
 			break;
 
 		case TileDesigns::WEST.ID:
-			m_value = static_cast<unsigned char>(DesignValue::WEST);
+			m_value = DesignValue::WEST;
 			break;
 
 		case TileDesigns::NORTH.ID:
-			m_value = static_cast<unsigned char>(DesignValue::NORTH);
+			m_value = DesignValue::NORTH;
 			break;
 
 		case TileDesigns::RED.ID:
-			m_value = static_cast<unsigned char>(DesignValue::RED);
+			m_value = DesignValue::DV_RED;
 			break;
 
 		case TileDesigns::GREEN.ID:
-			m_value = static_cast<unsigned char>(DesignValue::GREEN);
+			m_value = DesignValue::GREEN;
 			break;
 
 		case TileDesigns::WHITE.ID:
-			m_value = static_cast<unsigned char>(DesignValue::WHITE);
+			m_value = DesignValue::WHITE;
 			break;
 	}
 }
@@ -82,22 +82,22 @@ MemorySavedTile::MemorySavedTile(const TileDesign &design, int number, const Til
 	// 属性に応じた値を設定する。
 	switch (attribute.getId()) {
 	case TileAttributes::RED.ID:
-		m_value = static_cast<unsigned char>(AttributeValue::RED);
+		m_value = AttributeValue::AV_RED;
 		break;
 	}
 
 	// 図柄に応じた値を設定する。
 	switch (design.getId()) {
 	case TileDesigns::CIRCLES.ID:
-		m_value |= static_cast<unsigned char>(DesignValue::CIRCLES);
+		m_value |= DesignValue::CIRCLES;
 		break;
 
 	case TileDesigns::BAMBOO.ID:
-		m_value |= static_cast<unsigned char>(DesignValue::BAMBOO);
+		m_value |= DesignValue::BAMBOO;
 		break;
 
 	case TileDesigns::CHARACTERS.ID:
-		m_value |= static_cast<unsigned char>(DesignValue::CHARACTERS);
+		m_value |= DesignValue::CHARACTERS;
 		break;
 	}
 
@@ -118,7 +118,7 @@ const TileDesign *MemorySavedTile::getDesign() const
 	}
 
 	// 図柄値に対応する図柄を返す。
-	switch (static_cast<DesignValue>(designValue)) {
+	switch (designValue) {
 	case DesignValue::CIRCLES:
 		returnValue = &TileDesigns::CIRCLES;
 		break;
@@ -147,7 +147,7 @@ const TileDesign *MemorySavedTile::getDesign() const
 		returnValue = &TileDesigns::NORTH;
 		break;
 
-	case DesignValue::RED:
+	case DesignValue::DV_RED:
 		returnValue = &TileDesigns::RED;
 		break;
 
@@ -169,6 +169,7 @@ int MemorySavedTile::getNumber() const
 	unsigned char designType;		// 図柄種別。
 	int returnValue;				// 戻り値。
 
+	// 図柄に応じて返す値を決める。
 	designType = m_value & Mask::DESIGN_TYPE;
 	if (Range::MINIMUM_DESIGN_TYPE_SUIT <= designType && designType <= Range::MAXIMUM_DESIGN_TYPE_SUIT) {
 		returnValue = (m_value & Mask::NUMBER);
@@ -183,17 +184,17 @@ int MemorySavedTile::getNumber() const
 
 const TileAttribute *MemorySavedTile::getAttribute() const
 {
-	AttributeValue attributeValue;					// 属性値。
+	unsigned char attributeValue;					// 属性値。
 	const TileAttribute *returnValue = nullptr;		// 戻り値。
 
 	// 値に応じた属性を返す。
-	attributeValue = static_cast<AttributeValue>(m_value & Mask::ATTRIBUTE);
+	attributeValue = m_value & Mask::ATTRIBUTE;
 	switch (attributeValue) {
 	case AttributeValue::NONE:
 		returnValue = &TileAttributes::NONE;
 		break;
 
-	case AttributeValue::RED:
+	case AttributeValue::AV_RED:
 		returnValue = &TileAttributes::RED;
 		break;
 	}
