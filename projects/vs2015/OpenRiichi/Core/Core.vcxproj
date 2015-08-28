@@ -22,20 +22,14 @@
     <ClInclude Include="..\..\..\..\src\core\Enumeration.h" />
     <ClInclude Include="..\..\..\..\src\core\MemorySavedTile.h" />
     <ClInclude Include="..\..\..\..\src\core\Tile.h" />
-    <ClInclude Include="..\..\..\..\src\core\TileAttribute.h" />
     <ClInclude Include="..\..\..\..\src\core\TileAttributes.h" />
-    <ClInclude Include="..\..\..\..\src\core\TileDesign.h" />
     <ClInclude Include="..\..\..\..\src\core\TileDesigns.h" />
-    <ClInclude Include="..\..\..\..\src\core\Wind.h" />
     <ClInclude Include="..\..\..\..\src\core\Winds.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\..\..\..\src\core\MemorySavedTile.cpp" />
-    <ClCompile Include="..\..\..\..\src\core\TileAttribute.cpp" />
     <ClCompile Include="..\..\..\..\src\core\TileAttributes.cpp" />
-    <ClCompile Include="..\..\..\..\src\core\TileDesign.cpp" />
     <ClCompile Include="..\..\..\..\src\core\TileDesigns.cpp" />
-    <ClCompile Include="..\..\..\..\src\core\Wind.cpp" />
     <ClCompile Include="..\..\..\..\src\core\Winds.cpp" />
   </ItemGroup>
   <PropertyGroup Label="Globals">

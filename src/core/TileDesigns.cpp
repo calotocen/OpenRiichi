@@ -29,3 +29,9 @@ const NorthTileDesign TileDesigns::NORTH = NorthTileDesign();
 const RedTileDesign TileDesigns::RED = RedTileDesign();
 const WhiteTileDesign TileDesigns::WHITE = WhiteTileDesign();
 const GreenTileDesign TileDesigns::GREEN = GreenTileDesign();
+
+
+TileDesign::~TileDesign()
+{
+	// 何もしない。
+}

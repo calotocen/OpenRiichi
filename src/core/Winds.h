@@ -16,11 +16,112 @@
 #pragma once
 
 
-#include "Wind.h"
+#include "Enumeration.h"
 
 
 namespace openriichi
 {
+	/**
+	 * 風である。
+	 */
+	class Wind : public Enumeration<Wind>
+	{
+	public:
+		/**
+		 * 風を生成する。
+		 */
+		Wind() = default;
+
+		/**
+		 * 風を破棄する。
+		 */
+		virtual ~Wind();
+	};
+
+
+	/**
+	 * 風のテンプレートである。
+	 */
+	template<int id>
+	class WindTemplate : public Wind
+	{
+	public:
+		/// 関連のある列挙型間で一意の値。
+		static const int ID = id;
+
+
+	public:
+		/**
+		* 風を生成する。
+		*/
+		WindTemplate() = default;
+
+		/**
+		* 風を破棄する。
+		*/
+		virtual ~WindTemplate();
+
+
+	public:
+		/**
+		* 関連のある列挙型間で一意の値を返す。
+		*
+		* @return 関連のある列挙型間で一意の値。
+		*/
+		virtual int getId() const;
+	};
+
+
+	template<int id>
+	WindTemplate<id>::~WindTemplate()
+	{
+		// 何もしない。
+	}
+
+
+	template<int id>
+	int WindTemplate<id>::getId() const
+	{
+		return id;
+	}
+
+
+	/**
+	 * 東の風である。
+	 *
+	 * @note 本クラスを個別にインスタンス化してはならない。
+	 *       代わりに Winds::EAST を使用すること。
+	 */
+	using EastWind = WindTemplate<1>;
+
+
+	/**
+	 * 南の風である。
+	 *
+	 * @note 本クラスを個別にインスタンス化してはならない。
+	 *       代わりに Winds::SOUTH を使用すること。
+	 */
+	using SouthWind = WindTemplate<2>;
+
+
+	/**
+	 * 西の風である。
+	 *
+	 * @note 本クラスを個別にインスタンス化してはならない。
+	 *       代わりに Winds::WEST を使用すること。
+	 */
+	using WestWind = WindTemplate<3>;
+
+
+	/**
+	 * 北の風である。
+	 *
+	 * @note 本クラスを個別にインスタンス化してはならない。
+	 *       代わりに Winds::NORTH を使用すること。
+	 */
+	using NorthWind = WindTemplate<4>;
+
+
 	/**
 	 * 牌図柄の集合である。
 	 */

@@ -13,19 +13,10 @@
     <ClInclude Include="..\..\..\..\src\core\Enumeration.h">
       <Filter>OpenRiichi</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\..\..\src\core\TileAttribute.h">
-      <Filter>OpenRiichi</Filter>
-    </ClInclude>
     <ClInclude Include="..\..\..\..\src\core\TileAttributes.h">
       <Filter>OpenRiichi</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\..\..\src\core\TileDesign.h">
-      <Filter>OpenRiichi</Filter>
-    </ClInclude>
     <ClInclude Include="..\..\..\..\src\core\TileDesigns.h">
-      <Filter>OpenRiichi</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\..\..\src\core\Wind.h">
       <Filter>OpenRiichi</Filter>
     </ClInclude>
     <ClInclude Include="..\..\..\..\src\core\Winds.h">
@@ -39,19 +30,10 @@
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="..\..\..\..\src\core\TileAttribute.cpp">
-      <Filter>OpenRiichi</Filter>
-    </ClCompile>
     <ClCompile Include="..\..\..\..\src\core\TileAttributes.cpp">
       <Filter>OpenRiichi</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\..\..\src\core\TileDesign.cpp">
-      <Filter>OpenRiichi</Filter>
-    </ClCompile>
     <ClCompile Include="..\..\..\..\src\core\TileDesigns.cpp">
-      <Filter>OpenRiichi</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\..\..\src\core\Wind.cpp">
       <Filter>OpenRiichi</Filter>
     </ClCompile>
     <ClCompile Include="..\..\..\..\src\core\Winds.cpp">

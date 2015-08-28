@@ -23,3 +23,9 @@ const EastWind Winds::EAST = EastWind();
 const SouthWind Winds::SOUTH = SouthWind();
 const WestWind Winds::WEST = WestWind();
 const NorthWind Winds::NORTH = NorthWind();
+
+
+Wind::~Wind()
+{
+	// 何もしない。
+}
