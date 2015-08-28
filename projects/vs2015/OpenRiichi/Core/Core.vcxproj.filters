@@ -31,6 +31,12 @@
     <ClInclude Include="..\..\..\..\src\core\Winds.h">
       <Filter>OpenRiichi</Filter>
     </ClInclude>
+    <ClInclude Include="..\..\..\..\src\core\MemorySavedTile.h">
+      <Filter>OpenRiichi</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\src\core\Tile.h">
+      <Filter>OpenRiichi</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\..\..\..\src\core\TileAttribute.cpp">
@@ -49,6 +55,9 @@
       <Filter>OpenRiichi</Filter>
     </ClCompile>
     <ClCompile Include="..\..\..\..\src\core\Winds.cpp">
+      <Filter>OpenRiichi</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\src\core\MemorySavedTile.cpp">
       <Filter>OpenRiichi</Filter>
     </ClCompile>
   </ItemGroup>

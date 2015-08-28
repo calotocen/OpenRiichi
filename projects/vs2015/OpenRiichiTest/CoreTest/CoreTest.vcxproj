@@ -20,6 +20,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\..\..\..\test\core\Main.cpp" />
+    <ClCompile Include="..\..\..\..\test\core\MemorySavedTileTest.cpp" />
     <ClCompile Include="..\..\..\..\test\core\TileAttributesTest.cpp" />
     <ClCompile Include="..\..\..\..\test\core\TileDesignsTest.cpp" />
     <ClCompile Include="..\..\..\..\test\core\WindsTest.cpp" />
