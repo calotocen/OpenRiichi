@@ -107,34 +107,34 @@ namespace openriichi {
 		enum Range : uint8_t
 		{
 			/// 数字の最小値。
-			MINIMUM_NUMBER = 1,
+			MIN_NUMBER = 1,
 
 			/// 数字の最大値。
-			MAXIMUM_NUMBER = 9,
+			MAX_NUMBER = 9,
 			
 			/// 数牌の最小値。
-			MINIMUM_DESIGN_TYPE_SUIT = 0x10,
+			MIN_DESIGN_TYPE_SUIT = 0x10,
 
 			/// 数牌の最大値。
-			MAXIMUM_DESIGN_TYPE_SUIT = 0x3f,
+			MAX_DESIGN_TYPE_SUIT = 0x3f,
 
 			/// 字牌の最小値。
-			MINIMUM_DESIGN_TYPE_HONOUR = 0x40,
+			MIN_DESIGN_TYPE_HONOUR = 0x40,
 
 			/// 字牌の最大値。
-			MAXIMUM_DESIGN_TYPE_HONOUR = 0x5f,
+			MAX_DESIGN_TYPE_HONOUR = 0x5f,
 
 			/// 風牌の最小値。
-			MINIMUM_DESIGN_TYPE_WIND = 0x40,
+			MIN_DESIGN_TYPE_WIND = 0x40,
 
 			/// 風牌の最大値。
-			MAXIMUM_DESIGN_TYPE_WIND = 0x4f,
+			MAX_DESIGN_TYPE_WIND = 0x4f,
 			
 			/// 三元牌の最小値。
-			MINIMUM_DESIGN_TYPE_DRAGON = 0x50,
+			MIN_DESIGN_TYPE_DRAGON = 0x50,
 
 			/// 三元牌の最大値。
-			MAXIMUM_DESIGN_TYPE_DRAGON = 0x5f,
+			MAX_DESIGN_TYPE_DRAGON = 0x5f,
 		};
 
 
