@@ -17,6 +17,8 @@
 
 
 #include "MemorySavedTile.h"
+#include "TileDesigns.h"
+#include "TileAttributes.h"
 
 
 namespace openriichi {
