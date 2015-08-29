@@ -44,6 +44,18 @@ namespace openriichi
 		ASSERT_FALSE(circles1.isSimple());
 		ASSERT_TRUE(circles1.isTerminal());
 		ASSERT_TRUE(circles1.isTerminalOrHonour());
+		ASSERT_TRUE(circles1 == MemorySavedTile(TileDesigns::CIRCLES, 1));
+		ASSERT_FALSE(circles1 == MemorySavedTile(TileDesigns::CIRCLES, 2));
+		ASSERT_FALSE(circles1 == MemorySavedTile(TileDesigns::BAMBOO, 1));
+		ASSERT_FALSE(circles1 == MemorySavedTile(TileDesigns::CHARACTERS, 1));
+		ASSERT_FALSE(circles1 == MemorySavedTile(TileDesigns::EAST));
+		ASSERT_FALSE(circles1 == MemorySavedTile(TileDesigns::RED));
+		ASSERT_FALSE(circles1 != MemorySavedTile(TileDesigns::CIRCLES, 1));
+		ASSERT_TRUE(circles1 != MemorySavedTile(TileDesigns::CIRCLES, 2));
+		ASSERT_TRUE(circles1 != MemorySavedTile(TileDesigns::BAMBOO, 1));
+		ASSERT_TRUE(circles1 != MemorySavedTile(TileDesigns::CHARACTERS, 1));
+		ASSERT_TRUE(circles1 != MemorySavedTile(TileDesigns::EAST));
+		ASSERT_TRUE(circles1 != MemorySavedTile(TileDesigns::RED));
 
 		const MemorySavedTile circles2(TileDesigns::CIRCLES, 2);
 		ASSERT_EQ(2, circles2.getNumber());
@@ -108,6 +120,18 @@ namespace openriichi
 		ASSERT_FALSE(bamboo1.isSimple());
 		ASSERT_TRUE(bamboo1.isTerminal());
 		ASSERT_TRUE(bamboo1.isTerminalOrHonour());
+		ASSERT_FALSE(bamboo1 == MemorySavedTile(TileDesigns::CIRCLES, 1));
+		ASSERT_TRUE(bamboo1 == MemorySavedTile(TileDesigns::BAMBOO, 1));
+		ASSERT_FALSE(bamboo1 == MemorySavedTile(TileDesigns::BAMBOO, 2));
+		ASSERT_FALSE(bamboo1 == MemorySavedTile(TileDesigns::CHARACTERS, 1));
+		ASSERT_FALSE(bamboo1 == MemorySavedTile(TileDesigns::EAST));
+		ASSERT_FALSE(bamboo1 == MemorySavedTile(TileDesigns::RED));
+		ASSERT_TRUE(bamboo1 != MemorySavedTile(TileDesigns::CIRCLES, 1));
+		ASSERT_FALSE(bamboo1 != MemorySavedTile(TileDesigns::BAMBOO, 1));
+		ASSERT_TRUE(bamboo1 != MemorySavedTile(TileDesigns::BAMBOO, 2));
+		ASSERT_TRUE(bamboo1 != MemorySavedTile(TileDesigns::CHARACTERS, 1));
+		ASSERT_TRUE(bamboo1 != MemorySavedTile(TileDesigns::EAST));
+		ASSERT_TRUE(bamboo1 != MemorySavedTile(TileDesigns::RED));
 
 		const MemorySavedTile bamboo2(TileDesigns::BAMBOO, 2);
 		ASSERT_EQ(2, bamboo2.getNumber());
@@ -172,6 +196,18 @@ namespace openriichi
 		ASSERT_FALSE(characters1.isSimple());
 		ASSERT_TRUE(characters1.isTerminal());
 		ASSERT_TRUE(characters1.isTerminalOrHonour());
+		ASSERT_FALSE(characters1 == MemorySavedTile(TileDesigns::CIRCLES, 1));
+		ASSERT_FALSE(characters1 == MemorySavedTile(TileDesigns::BAMBOO, 1));
+		ASSERT_TRUE(characters1 == MemorySavedTile(TileDesigns::CHARACTERS, 1));
+		ASSERT_FALSE(characters1 == MemorySavedTile(TileDesigns::CHARACTERS, 2));
+		ASSERT_FALSE(characters1 == MemorySavedTile(TileDesigns::EAST));
+		ASSERT_FALSE(characters1 == MemorySavedTile(TileDesigns::RED));
+		ASSERT_TRUE(characters1 != MemorySavedTile(TileDesigns::CIRCLES, 1));
+		ASSERT_TRUE(characters1 != MemorySavedTile(TileDesigns::BAMBOO, 1));
+		ASSERT_FALSE(characters1 != MemorySavedTile(TileDesigns::CHARACTERS, 1));
+		ASSERT_TRUE(characters1 != MemorySavedTile(TileDesigns::CHARACTERS, 2));
+		ASSERT_TRUE(characters1 != MemorySavedTile(TileDesigns::EAST));
+		ASSERT_TRUE(characters1 != MemorySavedTile(TileDesigns::RED));
 
 		const MemorySavedTile characters2(TileDesigns::CHARACTERS, 2);
 		ASSERT_EQ(2, characters2.getNumber());
@@ -236,6 +272,18 @@ namespace openriichi
 		ASSERT_FALSE(east.isSimple());
 		ASSERT_FALSE(east.isTerminal());
 		ASSERT_TRUE(east.isTerminalOrHonour());
+		ASSERT_FALSE(east == MemorySavedTile(TileDesigns::CIRCLES, 1));
+		ASSERT_FALSE(east == MemorySavedTile(TileDesigns::BAMBOO, 1));
+		ASSERT_FALSE(east == MemorySavedTile(TileDesigns::CHARACTERS, 1));
+		ASSERT_TRUE(east == MemorySavedTile(TileDesigns::EAST));
+		ASSERT_FALSE(east == MemorySavedTile(TileDesigns::SOUTH));
+		ASSERT_FALSE(east == MemorySavedTile(TileDesigns::RED));
+		ASSERT_TRUE(east != MemorySavedTile(TileDesigns::CIRCLES, 1));
+		ASSERT_TRUE(east != MemorySavedTile(TileDesigns::BAMBOO, 1));
+		ASSERT_TRUE(east != MemorySavedTile(TileDesigns::CHARACTERS, 1));
+		ASSERT_FALSE(east != MemorySavedTile(TileDesigns::EAST));
+		ASSERT_TRUE(east != MemorySavedTile(TileDesigns::SOUTH));
+		ASSERT_TRUE(east != MemorySavedTile(TileDesigns::RED));
 
 		const MemorySavedTile south(TileDesigns::SOUTH);
 		ASSERT_EQ(0, south.getNumber());
@@ -288,6 +336,18 @@ namespace openriichi
 		ASSERT_FALSE(red.isSimple());
 		ASSERT_FALSE(red.isTerminal());
 		ASSERT_TRUE(red.isTerminalOrHonour());
+		ASSERT_FALSE(red == MemorySavedTile(TileDesigns::CIRCLES, 1));
+		ASSERT_FALSE(red == MemorySavedTile(TileDesigns::BAMBOO, 1));
+		ASSERT_FALSE(red == MemorySavedTile(TileDesigns::CHARACTERS, 1));
+		ASSERT_FALSE(red == MemorySavedTile(TileDesigns::EAST));
+		ASSERT_TRUE(red == MemorySavedTile(TileDesigns::RED));
+		ASSERT_FALSE(red == MemorySavedTile(TileDesigns::WHITE));
+		ASSERT_TRUE(red != MemorySavedTile(TileDesigns::CIRCLES, 1));
+		ASSERT_TRUE(red != MemorySavedTile(TileDesigns::BAMBOO, 1));
+		ASSERT_TRUE(red != MemorySavedTile(TileDesigns::CHARACTERS, 1));
+		ASSERT_TRUE(red != MemorySavedTile(TileDesigns::EAST));
+		ASSERT_FALSE(red != MemorySavedTile(TileDesigns::RED));
+		ASSERT_TRUE(red != MemorySavedTile(TileDesigns::WHITE));
 
 		const MemorySavedTile white(TileDesigns::WHITE);
 		ASSERT_EQ(0, white.getNumber());

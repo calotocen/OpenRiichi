@@ -106,6 +106,22 @@ MemorySavedTile::MemorySavedTile(const TileDesign &design, int number, const Til
 }
 
 
+bool MemorySavedTile::operator==(const MemorySavedTile &other) const
+{
+	bool returnValue = m_value == other.m_value;		// 戻り値。
+
+	return returnValue;
+}
+
+
+bool MemorySavedTile::operator!=(const MemorySavedTile &other) const
+{
+	bool returnValue = m_value != other.m_value;		// 戻り値。
+
+	return returnValue;
+}
+
+
 const TileDesign *MemorySavedTile::getDesign() const
 {
 	unsigned char designValue;						// 図柄値。

@@ -170,6 +170,24 @@ namespace openriichi {
 		 */
 		MemorySavedTile(const TileDesign &design, int number, const TileAttribute &attribute = TileAttributes::NONE);
 
+
+	public:
+		/**
+		 * 他の牌と等しいか調べる。
+		 *
+		 * @param[in] other 他の牌。
+		 */
+		bool operator==(const MemorySavedTile &other) const;
+
+		/**
+		 * 他の牌と等しくないか調べる。
+		 *
+		 * @param[in] other 他の牌。
+		 */
+		bool operator!=(const MemorySavedTile &other) const;
+
+
+	public:
 		/**
 		 * 図柄を返す。
 		 *
