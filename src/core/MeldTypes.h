@@ -58,7 +58,7 @@ namespace openriichi
 		 *
 		 * @return 関連のある列挙型間で一意の値。
 		 */
-		virtual int getId() const;
+		virtual int getId() const override;
 	};
 
 
