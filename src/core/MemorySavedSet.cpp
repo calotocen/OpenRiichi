@@ -198,7 +198,9 @@ const MeldedKongType *MemorySavedSet::getMeldedKongType() const
 
 const Tile *MemorySavedSet::getKeyTile() const
 {
-	return &m_keyTile;
+	const Tile *returnValue = &m_keyTile;		// 戻り値。
+
+	return returnValue;
 }
 
 
