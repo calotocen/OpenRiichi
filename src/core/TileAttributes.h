@@ -28,11 +28,6 @@ namespace openriichi
 	{
 	public:
 		/**
-		 * 牌属性を生成する。
-		 */
-		TileAttribute() = default;
-
-		/**
 		 * 牌属性を破棄する。
 		 */
 		virtual ~TileAttribute();
@@ -51,11 +46,6 @@ namespace openriichi
 
 
 	public:
-		/**
-		 * 牌属性を生成する。
-		 */
-		TileAttributeTemplate() = default;
-
 		/**
 		 * 牌属性を破棄する。
 		 */

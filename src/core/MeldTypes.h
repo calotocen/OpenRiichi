@@ -28,11 +28,6 @@ namespace openriichi
 	{
 	public:
 		/**
-		 * 鳴き種別を生成する。
-		 */
-		MeldType() = default;
-
-		/**
 		 * 鳴き種別を破棄する。
 		 */
 		virtual ~MeldType();
@@ -51,11 +46,6 @@ namespace openriichi
 
 
 	public:
-		/**
-		 * 鳴き種別を生成する。
-		 */
-		MeldTypeTemplate() = default;
-
 		/**
 		 * 鳴き種別を破棄する。
 		 */

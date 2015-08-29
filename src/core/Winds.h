@@ -28,11 +28,6 @@ namespace openriichi
 	{
 	public:
 		/**
-		 * 風を生成する。
-		 */
-		Wind() = default;
-
-		/**
 		 * 風を破棄する。
 		 */
 		virtual ~Wind();
@@ -51,11 +46,6 @@ namespace openriichi
 
 
 	public:
-		/**
-		 * 風を生成する。
-		 */
-		WindTemplate() = default;
-
 		/**
 		 * 風を破棄する。
 		 */

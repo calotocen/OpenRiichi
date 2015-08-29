@@ -28,11 +28,6 @@ namespace openriichi
 	{
 	public:
 		/**
-		 * 面子種別を生成する。
-		 */
-		SetArrangement() = default;
-
-		/**
 		 * 面子種別を破棄する。
 		 */
 		virtual ~SetArrangement();
@@ -51,11 +46,6 @@ namespace openriichi
 
 
 	public:
-		/**
-		 * 面子種別を生成する。
-		 */
-		SetArrangementTemplate() = default;
-
 		/**
 		 * 面子種別を破棄する。
 		 */

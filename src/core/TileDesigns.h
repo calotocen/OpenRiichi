@@ -28,11 +28,6 @@ namespace openriichi
 	{
 	public:
 		/**
-		 * 牌図柄を生成する。
-		 */
-		TileDesign() = default;
-
-		/**
 		 * 牌図柄を破棄する。
 		 */
 		virtual ~TileDesign();
@@ -85,11 +80,6 @@ namespace openriichi
 
 
 	public:
-		/**
-		 * 牌図柄を生成する。
-		 */
-		TileDesignTemplate() = default;
-
 		/**
 		 * 牌図柄を破棄する。
 		 */

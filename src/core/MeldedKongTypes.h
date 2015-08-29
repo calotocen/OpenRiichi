@@ -28,11 +28,6 @@ namespace openriichi
 	{
 	public:
 		/**
-		 * 鳴き槓子種別を生成する。
-		 */
-		MeldedKongType() = default;
-
-		/**
 		 * 鳴き槓子種別を破棄する。
 		 */
 		virtual ~MeldedKongType();
@@ -51,11 +46,6 @@ namespace openriichi
 
 
 	public:
-		/**
-		 * 鳴き槓子種別を生成する。
-		 */
-		MeldedKongTypeTemplate() = default;
-
 		/**
 		 * 鳴き槓子種別を破棄する。
 		 */

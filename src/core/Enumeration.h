@@ -26,11 +26,6 @@ namespace openriichi
 	{
 	public:
 		/**
-		 * 列挙型を生成する。
-		 */
-		Enumeration() = default;
-
-		/**
 		 * 列挙型を破棄する。
 		 */
 		virtual ~Enumeration();
