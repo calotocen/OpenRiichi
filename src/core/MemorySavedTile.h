@@ -155,6 +155,11 @@ namespace openriichi {
 
 	public:
 		/**
+		 * 一筒を生成する。
+		 */
+		MemorySavedTile();
+
+		/**
 		 * 字牌を生成する。
 		 * 
 		 * @param[in] design 図柄。字牌の図柄を指定する。

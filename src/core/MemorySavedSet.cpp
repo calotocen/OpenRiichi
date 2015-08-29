@@ -24,6 +24,13 @@
 using namespace openriichi;
 
 
+MemorySavedSet::MemorySavedSet()
+	: MemorySavedSet(SetArrangements::CHOW, Tile(TileDesigns::CIRCLES, 1))
+{
+	// 何もしない。
+}
+
+
 MemorySavedSet::MemorySavedSet(const SetArrangement & setArrangement, const Tile & keyTile)
 	: MemorySavedSet(setArrangement, MeldTypes::NONE, keyTile)
 {

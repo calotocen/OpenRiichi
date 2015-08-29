@@ -69,6 +69,13 @@ MemorySavedTile::MemorySavedTile(const TileDesign &design, const TileAttribute &
 }
 
 
+MemorySavedTile::MemorySavedTile()
+	: m_value(DesignValue::CIRCLES | 1)
+{
+	// 何もしない。
+}
+
+
 MemorySavedTile::MemorySavedTile(const TileDesign &design, int number, const TileAttribute &attribute)
 	: m_value(0)
 {

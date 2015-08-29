@@ -118,6 +118,11 @@ namespace openriichi {
 
 	public:
 		/**
+		 * 筒子の 1 から始まる暗順を作成する。
+		 */
+		MemorySavedSet();
+
+		/**
 		 * 暗順，対子，暗刻，または暗槓を生成する。
 		 * 
 		 * @param[in] setArrangement 面子種別。
