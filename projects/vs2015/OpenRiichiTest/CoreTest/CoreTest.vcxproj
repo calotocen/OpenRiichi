@@ -20,7 +20,11 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\..\..\..\test\core\Main.cpp" />
+    <ClCompile Include="..\..\..\..\test\core\MeldedKongTypesTest.cpp" />
+    <ClCompile Include="..\..\..\..\test\core\MeldTypesTest.cpp" />
+    <ClCompile Include="..\..\..\..\test\core\MemorySavedSetTest.cpp" />
     <ClCompile Include="..\..\..\..\test\core\MemorySavedTileTest.cpp" />
+    <ClCompile Include="..\..\..\..\test\core\SetArrangementsTest.cpp" />
     <ClCompile Include="..\..\..\..\test\core\TileAttributesTest.cpp" />
     <ClCompile Include="..\..\..\..\test\core\TileDesignsTest.cpp" />
     <ClCompile Include="..\..\..\..\test\core\WindsTest.cpp" />

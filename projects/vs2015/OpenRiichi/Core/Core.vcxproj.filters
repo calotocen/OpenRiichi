@@ -28,6 +28,21 @@
     <ClInclude Include="..\..\..\..\src\core\Tile.h">
       <Filter>OpenRiichi</Filter>
     </ClInclude>
+    <ClInclude Include="..\..\..\..\src\core\SetArrangements.h">
+      <Filter>OpenRiichi</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\src\core\MeldTypes.h">
+      <Filter>OpenRiichi</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\src\core\MeldedKongTypes.h">
+      <Filter>OpenRiichi</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\src\core\MemorySavedSet.h">
+      <Filter>OpenRiichi</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\src\core\Set.h">
+      <Filter>OpenRiichi</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\..\..\..\src\core\TileAttributes.cpp">
@@ -40,6 +55,18 @@
       <Filter>OpenRiichi</Filter>
     </ClCompile>
     <ClCompile Include="..\..\..\..\src\core\MemorySavedTile.cpp">
+      <Filter>OpenRiichi</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\src\core\SetArrangements.cpp">
+      <Filter>OpenRiichi</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\src\core\MeldTypes.cpp">
+      <Filter>OpenRiichi</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\src\core\MeldedKongTypes.cpp">
+      <Filter>OpenRiichi</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\src\core\MemorySavedSet.cpp">
       <Filter>OpenRiichi</Filter>
     </ClCompile>
   </ItemGroup>

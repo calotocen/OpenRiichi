@@ -20,14 +20,23 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\..\..\..\src\core\Enumeration.h" />
+    <ClInclude Include="..\..\..\..\src\core\MeldedKongTypes.h" />
+    <ClInclude Include="..\..\..\..\src\core\MeldTypes.h" />
+    <ClInclude Include="..\..\..\..\src\core\MemorySavedSet.h" />
     <ClInclude Include="..\..\..\..\src\core\MemorySavedTile.h" />
+    <ClInclude Include="..\..\..\..\src\core\Set.h" />
+    <ClInclude Include="..\..\..\..\src\core\SetArrangements.h" />
     <ClInclude Include="..\..\..\..\src\core\Tile.h" />
     <ClInclude Include="..\..\..\..\src\core\TileAttributes.h" />
     <ClInclude Include="..\..\..\..\src\core\TileDesigns.h" />
     <ClInclude Include="..\..\..\..\src\core\Winds.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="..\..\..\..\src\core\MeldedKongTypes.cpp" />
+    <ClCompile Include="..\..\..\..\src\core\MeldTypes.cpp" />
+    <ClCompile Include="..\..\..\..\src\core\MemorySavedSet.cpp" />
     <ClCompile Include="..\..\..\..\src\core\MemorySavedTile.cpp" />
+    <ClCompile Include="..\..\..\..\src\core\SetArrangements.cpp" />
     <ClCompile Include="..\..\..\..\src\core\TileAttributes.cpp" />
     <ClCompile Include="..\..\..\..\src\core\TileDesigns.cpp" />
     <ClCompile Include="..\..\..\..\src\core\Winds.cpp" />
