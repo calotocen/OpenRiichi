@@ -37,12 +37,12 @@ namespace openriichi
 	/**
 	 * 鳴き槓子種別のテンプレートである。
 	 */
-	template<int id>
+	template<int _ID>
 	class MeldedKongTypeTemplate : public MeldedKongType
 	{
 	public:
 		/// 関連のある列挙型間で一意の値。
-		static const int ID = id;
+		static const int ID = _ID;
 
 
 	public:
@@ -62,17 +62,17 @@ namespace openriichi
 	};
 
 
-	template<int id>
-	MeldedKongTypeTemplate<id>::~MeldedKongTypeTemplate()
+	template<int _ID>
+	MeldedKongTypeTemplate<_ID>::~MeldedKongTypeTemplate()
 	{
 		// 何もしない。
 	}
 
 
-	template<int id>
-	int MeldedKongTypeTemplate<id>::getId() const
+	template<int _ID>
+	int MeldedKongTypeTemplate<_ID>::getId() const
 	{
-		return id;
+		return _ID;
 	}
 
 

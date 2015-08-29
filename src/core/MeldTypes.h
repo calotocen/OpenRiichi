@@ -37,12 +37,12 @@ namespace openriichi
 	/**
 	 * 鳴き種別のテンプレートである。
 	 */
-	template<int id>
+	template<int _ID>
 	class MeldTypeTemplate : public MeldType
 	{
 	public:
 		/// 関連のある列挙型間で一意の値。
-		static const int ID = id;
+		static const int ID = _ID;
 
 
 	public:
@@ -62,17 +62,17 @@ namespace openriichi
 	};
 
 
-	template<int id>
-	MeldTypeTemplate<id>::~MeldTypeTemplate()
+	template<int _ID>
+	MeldTypeTemplate<_ID>::~MeldTypeTemplate()
 	{
 		// 何もしない。
 	}
 
 
-	template<int id>
-	int MeldTypeTemplate<id>::getId() const
+	template<int _ID>
+	int MeldTypeTemplate<_ID>::getId() const
 	{
-		return id;
+		return _ID;
 	}
 
 

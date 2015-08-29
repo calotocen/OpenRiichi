@@ -37,12 +37,12 @@ namespace openriichi
 	/**
 	 * 牌属性のテンプレートである。
 	 */
-	template<int id>
+	template<int _ID>
 	class TileAttributeTemplate : public TileAttribute
 	{
 	public:
 		/// 関連のある列挙型間で一意の値。
-		static const int ID = id;
+		static const int ID = _ID;
 
 
 	public:
@@ -62,17 +62,17 @@ namespace openriichi
 	};
 
 
-	template<int id>
-	TileAttributeTemplate<id>::~TileAttributeTemplate()
+	template<int _ID>
+	TileAttributeTemplate<_ID>::~TileAttributeTemplate()
 	{
 		// 何もしない。
 	}
 
 
-	template<int id>
-	int TileAttributeTemplate<id>::getId() const
+	template<int _ID>
+	int TileAttributeTemplate<_ID>::getId() const
 	{
-		return id;
+		return _ID;
 	}
 
 

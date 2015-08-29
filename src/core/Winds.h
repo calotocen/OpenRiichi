@@ -37,12 +37,12 @@ namespace openriichi
 	/**
 	 * 風のテンプレートである。
 	 */
-	template<int id>
+	template<int _ID>
 	class WindTemplate : public Wind
 	{
 	public:
 		/// 関連のある列挙型間で一意の値。
-		static const int ID = id;
+		static const int ID = _ID;
 
 
 	public:
@@ -62,17 +62,17 @@ namespace openriichi
 	};
 
 
-	template<int id>
-	WindTemplate<id>::~WindTemplate()
+	template<int _ID>
+	WindTemplate<_ID>::~WindTemplate()
 	{
 		// 何もしない。
 	}
 
 
-	template<int id>
-	int WindTemplate<id>::getId() const
+	template<int _ID>
+	int WindTemplate<_ID>::getId() const
 	{
-		return id;
+		return _ID;
 	}
 
 

@@ -71,12 +71,12 @@ namespace openriichi
 	/**
 	 * 牌図柄のテンプレートである。
 	 */
-	template<int id, bool suit, bool honour, bool wind, bool dragon>
+	template<int _ID, bool _SUIT, bool _HONOUR, bool _WIND, bool _DRAGON>
 	class TileDesignTemplate : public TileDesign
 	{
 	public:
 		/// 関連のある列挙型間で一意の値。
-		static const int ID = id;
+		static const int ID = _ID;
 
 
 	public:
@@ -128,45 +128,45 @@ namespace openriichi
 	};
 
 
-	template<int id, bool suit, bool honour, bool wind, bool dragon>
-	TileDesignTemplate<id, suit, honour, wind, dragon>::~TileDesignTemplate()
+	template<int _ID, bool _SUIT, bool _HONOUR, bool _WIND, bool _DRAGON>
+	TileDesignTemplate<_ID, _SUIT, _HONOUR, _WIND, _DRAGON>::~TileDesignTemplate()
 	{
 		// 何もしない。
 	}
 
 
-	template<int id, bool suit, bool honour, bool wind, bool dragon>
-	int TileDesignTemplate<id, suit, honour, wind, dragon>::getId() const
+	template<int _ID, bool _SUIT, bool _HONOUR, bool _WIND, bool _DRAGON>
+	int TileDesignTemplate<_ID, _SUIT, _HONOUR, _WIND, _DRAGON>::getId() const
 	{
-		return id;
+		return _ID;
 	}
 
 
-	template<int id, bool suit, bool honour, bool wind, bool dragon>
-	bool TileDesignTemplate<id, suit, honour, wind, dragon>::isSuit() const
+	template<int _ID, bool _SUIT, bool _HONOUR, bool _WIND, bool _DRAGON>
+	bool TileDesignTemplate<_ID, _SUIT, _HONOUR, _WIND, _DRAGON>::isSuit() const
 	{
-		return suit;
+		return _SUIT;
 	}
 
 
-	template<int id, bool suit, bool honour, bool wind, bool dragon>
-	bool TileDesignTemplate<id, suit, honour, wind, dragon>::isHonour() const
+	template<int _ID, bool _SUIT, bool _HONOUR, bool _WIND, bool _DRAGON>
+	bool TileDesignTemplate<_ID, _SUIT, _HONOUR, _WIND, _DRAGON>::isHonour() const
 	{
-		return honour;
+		return _HONOUR;
 	}
 
 
-	template<int id, bool suit, bool honour, bool wind, bool dragon>
-	bool TileDesignTemplate<id, suit, honour, wind, dragon>::isWind() const
+	template<int _ID, bool _SUIT, bool _HONOUR, bool _WIND, bool _DRAGON>
+	bool TileDesignTemplate<_ID, _SUIT, _HONOUR, _WIND, _DRAGON>::isWind() const
 	{
-		return wind;
+		return _WIND;
 	}
 
 
-	template<int id, bool suit, bool honour, bool wind, bool dragon>
-	bool TileDesignTemplate<id, suit, honour, wind, dragon>::isDragon() const
+	template<int _ID, bool _SUIT, bool _HONOUR, bool _WIND, bool _DRAGON>
+	bool TileDesignTemplate<_ID, _SUIT, _HONOUR, _WIND, _DRAGON>::isDragon() const
 	{
-		return dragon;
+		return _DRAGON;
 	}
 
 
