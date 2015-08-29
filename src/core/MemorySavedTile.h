@@ -16,6 +16,7 @@
 #pragma once
 
 
+#include <cstdint>
 #include "TileAttributes.h"
 
 
@@ -36,7 +37,7 @@ namespace openriichi {
 		/**
 		 * 図柄値である。
 		 */
-		enum DesignValue : unsigned char
+		enum DesignValue : uint8_t
 		{
 			/// 筒子。
 			CIRCLES = 0x10,
@@ -72,7 +73,7 @@ namespace openriichi {
 		/**
 		 * 属性値である。
 		 */
-		enum AttributeValue : unsigned char
+		enum AttributeValue : uint8_t
 		{
 			/// 属性なし。
 			NONE = 0x00,
@@ -84,7 +85,7 @@ namespace openriichi {
 		/**
 		 * マスクである。
 		 */
-		enum Mask : unsigned char
+		enum Mask : uint8_t
 		{
 			/**
 			 * 図柄種別のマスク。
@@ -103,7 +104,7 @@ namespace openriichi {
 		/**
 		 * 値の範囲である。
 		 */
-		enum Range : unsigned char
+		enum Range : uint8_t
 		{
 			/// 数字の最小値。
 			MINIMUM_NUMBER = 1,
@@ -149,7 +150,7 @@ namespace openriichi {
 		 *         - 1 ビット目      ... 属性。
 		 *         - 2 ～ 7 ビット目 ... 図柄。
 		 */
-		unsigned char m_value;
+		uint8_t m_value;
 
 
 	public:

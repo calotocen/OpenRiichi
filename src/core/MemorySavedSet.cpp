@@ -14,6 +14,7 @@
  * limitations under the License.
  */
 #include <cassert>
+#include <cstdint>
 #include "MeldedKongTypes.h"
 #include "MeldTypes.h"
 #include "SetArrangements.h"
@@ -114,7 +115,7 @@ bool MemorySavedSet::operator!=(const MemorySavedSet &other) const
 
 const SetArrangement *MemorySavedSet::getSetArrangement() const
 {
-	unsigned char arrangementValue;					// 面子種別値。
+	uint8_t arrangementValue;							// 面子種別値。
 	const SetArrangement *returnValue = nullptr;		// 戻り値。
 
 	// 値に応じた面子種別を返す。
@@ -143,7 +144,7 @@ const SetArrangement *MemorySavedSet::getSetArrangement() const
 
 const MeldType *MemorySavedSet::getMeldType() const
 {
-	unsigned char meldTypeValue;				// 鳴き種別値。
+	uint8_t meldTypeValue;						// 鳴き種別値。
 	const MeldType *returnValue = nullptr;		// 戻り値。
 
 	// 値に応じた鳴き種別を返す。
@@ -172,7 +173,7 @@ const MeldType *MemorySavedSet::getMeldType() const
 
 const MeldedKongType *MemorySavedSet::getMeldedKongType() const
 {
-	unsigned char meldedKongValue;						// 鳴き槓子種別値。
+	uint8_t meldedKongValue;							// 鳴き槓子種別値。
 	const MeldedKongType *returnValue = nullptr;		// 戻り値。
 
 	// 値に応じた鳴き槓子種別を返す。
@@ -203,8 +204,8 @@ const Tile *MemorySavedSet::getKeyTile() const
 
 bool MemorySavedSet::isChow() const
 {
-	unsigned char arrangementValue;		// 面子種別値。
-	bool returnValue;					// 戻り値。
+	uint8_t arrangementValue;		// 面子種別値。
+	bool returnValue;				// 戻り値。
 
 	// 面子種別が順子であるかを調べる。
 	arrangementValue = m_value & Mask::SET_ARRANGEMENT;
@@ -216,8 +217,8 @@ bool MemorySavedSet::isChow() const
 
 bool MemorySavedSet::isPair() const
 {
-	unsigned char arrangementValue;		// 面子種別値。
-	bool returnValue;					// 戻り値。
+	uint8_t arrangementValue;		// 面子種別値。
+	bool returnValue;				// 戻り値。
 
 	// 面子種別が対子であるかを調べる。
 	arrangementValue = m_value & Mask::SET_ARRANGEMENT;
@@ -228,8 +229,8 @@ bool MemorySavedSet::isPair() const
 
 bool MemorySavedSet::isPung() const
 {
-	unsigned char arrangementValue;		// 面子種別値。
-	bool returnValue;					// 戻り値。
+	uint8_t arrangementValue;		// 面子種別値。
+	bool returnValue;				// 戻り値。
 
 	// 面子種別が刻子であるかを調べる。
 	arrangementValue = m_value & Mask::SET_ARRANGEMENT;
@@ -241,8 +242,8 @@ bool MemorySavedSet::isPung() const
 
 bool MemorySavedSet::isKong() const
 {
-	unsigned char arrangementValue;		// 面子種別値。
-	bool returnValue;					// 戻り値。
+	uint8_t arrangementValue;		// 面子種別値。
+	bool returnValue;				// 戻り値。
 
 	// 面子種別が槓子であるかを調べる。
 	arrangementValue = m_value & Mask::SET_ARRANGEMENT;
@@ -254,8 +255,8 @@ bool MemorySavedSet::isKong() const
 
 bool MemorySavedSet::isConcealed() const
 {
-	unsigned char meldTypeValue;		// 鳴き種別値。
-	bool returnValue;					// 戻り値。
+	uint8_t meldTypeValue;		// 鳴き種別値。
+	bool returnValue;			// 戻り値。
 
 	// 面前面子であるかを調べる。
 	meldTypeValue = m_value & Mask::MELD_TYPE;
@@ -267,8 +268,8 @@ bool MemorySavedSet::isConcealed() const
 
 bool MemorySavedSet::isMelded() const
 {
-	unsigned char meldTypeValue;		// 鳴き種別値。
-	bool returnValue;					// 戻り値。
+	uint8_t meldTypeValue;		// 鳴き種別値。
+	bool returnValue;			// 戻り値。
 
 	// 鳴き面子であるかを調べる。
 	meldTypeValue = m_value & Mask::MELD_TYPE;

@@ -14,6 +14,7 @@
  * limitations under the License.
  */
 #include <cassert>
+#include <cstdint>
 #include "TileAttributes.h"
 #include "TileDesigns.h"
 #include "MemorySavedTile.h"
@@ -124,7 +125,7 @@ bool MemorySavedTile::operator!=(const MemorySavedTile &other) const
 
 const TileDesign *MemorySavedTile::getDesign() const
 {
-	unsigned char designValue;						// 図柄値。
+	uint8_t designValue;							// 図柄値。
 	const TileDesign *returnValue = nullptr;		// 戻り値。
 
 	// 図柄値を取得する。
@@ -182,8 +183,8 @@ const TileDesign *MemorySavedTile::getDesign() const
 
 int MemorySavedTile::getNumber() const
 {
-	unsigned char designType;		// 図柄種別。
-	int returnValue;				// 戻り値。
+	uint8_t designType;		// 図柄種別。
+	int returnValue;		// 戻り値。
 
 	// 図柄に応じて返す値を決める。
 	designType = m_value & Mask::DESIGN_TYPE;
@@ -200,7 +201,7 @@ int MemorySavedTile::getNumber() const
 
 const TileAttribute *MemorySavedTile::getAttribute() const
 {
-	unsigned char attributeValue;					// 属性値。
+	uint8_t attributeValue;							// 属性値。
 	const TileAttribute *returnValue = nullptr;		// 戻り値。
 
 	// 値に応じた属性を返す。
@@ -221,8 +222,8 @@ const TileAttribute *MemorySavedTile::getAttribute() const
 
 bool MemorySavedTile::isSuit() const
 {
-	unsigned char designType;		// 図柄種別値。
-	bool returnValue;				// 戻り値。
+	uint8_t designType;		// 図柄種別値。
+	bool returnValue;		// 戻り値。
 
 	// 図柄が数牌であるかを調べる。
 	designType = m_value & Mask::DESIGN_TYPE;
@@ -234,8 +235,8 @@ bool MemorySavedTile::isSuit() const
 
 bool MemorySavedTile::isHonour() const
 {
-	unsigned char designType;		// 図柄種別値。
-	bool returnValue;				// 戻り値。
+	uint8_t designType;		// 図柄種別値。
+	bool returnValue;		// 戻り値。
 
 	// 図柄が字牌であるかを調べる。
 	designType = m_value & Mask::DESIGN_TYPE;
@@ -247,8 +248,8 @@ bool MemorySavedTile::isHonour() const
 
 bool MemorySavedTile::isWind() const
 {
-	unsigned char designType;		// 図柄種別値。
-	bool returnValue;				// 戻り値。
+	uint8_t designType;		// 図柄種別値。
+	bool returnValue;		// 戻り値。
 
 	// 図柄が風牌であるかを調べる。
 	designType = m_value & Mask::DESIGN_TYPE;
@@ -260,8 +261,8 @@ bool MemorySavedTile::isWind() const
 
 bool MemorySavedTile::isDragon() const
 {
-	unsigned char designType;		// 図柄種別値。
-	bool returnValue;				// 戻り値。
+	uint8_t designType;		// 図柄種別値。
+	bool returnValue;		// 戻り値。
 
 	// 図柄が三元牌であるかを調べる。
 	designType = m_value & Mask::DESIGN_TYPE;
@@ -273,9 +274,9 @@ bool MemorySavedTile::isDragon() const
 
 bool MemorySavedTile::isSimple() const
 {
-	unsigned char designType;		// 図柄種別値。
-	unsigned char number;			// 数字。
-	bool returnValue;				// 戻り値。
+	uint8_t designType;		// 図柄種別値。
+	uint8_t number;			// 数字。
+	bool returnValue;		// 戻り値。
 
 	// 中張牌であるかを調べる。
 	designType = m_value & Mask::DESIGN_TYPE;
@@ -289,9 +290,9 @@ bool MemorySavedTile::isSimple() const
 
 bool MemorySavedTile::isTerminal() const
 {
-	unsigned char designType;		// 図柄種別値。
-	unsigned char number;			// 数字。
-	bool returnValue;				// 戻り値。
+	uint8_t designType;		// 図柄種別値。
+	uint8_t number;			// 数字。
+	bool returnValue;		// 戻り値。
 
 	// 老頭牌であるかを調べる。
 	designType = m_value & Mask::DESIGN_TYPE;
@@ -305,9 +306,9 @@ bool MemorySavedTile::isTerminal() const
 
 bool MemorySavedTile::isTerminalOrHonour() const
 {
-	unsigned char designType;		// 図柄種別値。
-	unsigned char number;			// 数字。
-	bool returnValue;				// 戻り値。
+	uint8_t designType;		// 図柄種別値。
+	uint8_t number;			// 数字。
+	bool returnValue;		// 戻り値。
 
 	// 幺九牌であるかを調べる。
 	designType = m_value & Mask::DESIGN_TYPE;

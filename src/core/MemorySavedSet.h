@@ -16,6 +16,7 @@
 #pragma once
 
 
+#include <cstdint>
 #include "Tile.h"
 
 
@@ -33,7 +34,7 @@ namespace openriichi {
 		/**
 		 * 面子種別値である。
 		 */
-		enum ArrangementValue : unsigned char
+		enum ArrangementValue : uint8_t
 		{
 			/// 順子。
 			CHOW = 0x01,
@@ -51,7 +52,7 @@ namespace openriichi {
 		/**
 		 * 鳴き種別値である。
 		 */
-		enum MeldTypeValue : unsigned char
+		enum MeldTypeValue : uint8_t
 		{
 			/// 面前であることを表す。
 			NONE = 0x00,
@@ -69,7 +70,7 @@ namespace openriichi {
 		/**
 		 * 鳴き槓子種別値である。
 		 */
-		enum MeldedKongTypeValue : unsigned char
+		enum MeldedKongTypeValue : uint8_t
 		{
 			/// 鳴き槓子でないことを表す。
 			NO = 0x00,
@@ -84,7 +85,7 @@ namespace openriichi {
 		/**
 		 * マスクである。
 		 */
-		enum Mask : unsigned char
+		enum Mask : uint8_t
 		{
 			/// 面子種別のマスク。
 			SET_ARRANGEMENT = 0x0f,
@@ -105,7 +106,7 @@ namespace openriichi {
 		 *     - 3 ～ 4 ビット目 ... 鳴き種別。
 		 *     - 5 ～ 8 ビット目 ... 面子種別。
 		 */
-		unsigned char m_value;
+		uint8_t m_value;
 
 		/**
 		 * キー牌である。
