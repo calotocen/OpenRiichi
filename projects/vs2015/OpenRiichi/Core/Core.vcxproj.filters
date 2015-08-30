@@ -43,6 +43,12 @@
     <ClInclude Include="..\..\..\..\src\core\Set.h">
       <Filter>OpenRiichi</Filter>
     </ClInclude>
+    <ClInclude Include="..\..\..\..\src\core\SimpleHand.h">
+      <Filter>OpenRiichi</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\src\core\Hand.h">
+      <Filter>OpenRiichi</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\..\..\..\src\core\TileAttributes.cpp">
@@ -67,6 +73,9 @@
       <Filter>OpenRiichi</Filter>
     </ClCompile>
     <ClCompile Include="..\..\..\..\src\core\MemorySavedSet.cpp">
+      <Filter>OpenRiichi</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\src\core\SimpleHand.cpp">
       <Filter>OpenRiichi</Filter>
     </ClCompile>
   </ItemGroup>

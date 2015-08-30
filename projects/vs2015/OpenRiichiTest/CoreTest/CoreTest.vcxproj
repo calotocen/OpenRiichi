@@ -22,6 +22,7 @@
     <ClCompile Include="..\..\..\..\test\core\Main.cpp" />
     <ClCompile Include="..\..\..\..\test\core\MeldedKongTypesTest.cpp" />
     <ClCompile Include="..\..\..\..\test\core\MeldTypesTest.cpp" />
+    <ClCompile Include="..\..\..\..\test\core\SimpleHandTest.cpp" />
     <ClCompile Include="..\..\..\..\test\core\MemorySavedSetTest.cpp" />
     <ClCompile Include="..\..\..\..\test\core\MemorySavedTileTest.cpp" />
     <ClCompile Include="..\..\..\..\test\core\SetArrangementsTest.cpp" />
