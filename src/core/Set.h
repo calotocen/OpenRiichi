@@ -24,6 +24,6 @@
 
 
 namespace openriichi {
-	/// 牌である。
+	/// 面子である。
 	using Set = class MemorySavedSet;
 }
