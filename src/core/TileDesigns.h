@@ -40,7 +40,7 @@ namespace openriichi
 		 * @retval true 数牌であった。
 		 * @retval false 数牌ではなかった。
 		 */
-		virtual bool isSuit() const = 0;
+		virtual bool isSuits() const = 0;
 
 		/**
 		 * 字牌であるかを調べる。
@@ -48,7 +48,7 @@ namespace openriichi
 		 * @retval true 字牌であった。
 		 * @retval false 字牌ではなかった。
 		 */
-		virtual bool isHonour() const = 0;
+		virtual bool isHonours() const = 0;
 
 		/**
 		 * 風牌であるかを調べる。
@@ -56,7 +56,7 @@ namespace openriichi
 		 * @retval true 風牌であった。
 		 * @retval false 風牌ではなかった。
 		 */
-		virtual bool isWind() const = 0;
+		virtual bool isWinds() const = 0;
 
 		/**
 		 * 三元牌であるかを調べる。
@@ -64,14 +64,14 @@ namespace openriichi
 		 * @retval true 三元牌であった。
 		 * @retval false 三元牌ではなかった。
 		 */
-		virtual bool isDragon() const = 0;
+		virtual bool isDragons() const = 0;
 	};
 
 
 	/**
 	 * 牌図柄のテンプレートである。
 	 */
-	template<int _ID, bool _SUIT, bool _HONOUR, bool _WIND, bool _DRAGON>
+	template<int _ID, bool _SUITS, bool _HONOURS, bool _WINDS, bool _DRAGONS>
 	class TileDesignTemplate : public TileDesign
 	{
 	public:
@@ -100,7 +100,7 @@ namespace openriichi
 		 * @retval true 数牌であった。
 		 * @retval false 数牌ではなかった。
 		 */
-		virtual bool isSuit() const override;
+		virtual bool isSuits() const override;
 
 		/**
 		 * 字牌であるかを調べる。
@@ -108,7 +108,7 @@ namespace openriichi
 		 * @retval true 字牌であった。
 		 * @retval false 字牌ではなかった。
 		 */
-		virtual bool isHonour() const override;
+		virtual bool isHonours() const override;
 
 		/**
 		 * 風牌であるかを調べる。
@@ -116,7 +116,7 @@ namespace openriichi
 		 * @retval true 風牌であった。
 		 * @retval false 風牌ではなかった。
 		 */
-		virtual bool isWind() const override;
+		virtual bool isWinds() const override;
 
 		/**
 		 * 三元牌であるかを調べる。
@@ -124,49 +124,49 @@ namespace openriichi
 		 * @retval true 三元牌であった。
 		 * @retval false 三元牌ではなかった。
 		 */
-		virtual bool isDragon() const override;
+		virtual bool isDragons() const override;
 	};
 
 
-	template<int _ID, bool _SUIT, bool _HONOUR, bool _WIND, bool _DRAGON>
-	TileDesignTemplate<_ID, _SUIT, _HONOUR, _WIND, _DRAGON>::~TileDesignTemplate()
+	template<int _ID, bool _SUITS, bool _HONOURS, bool _WINDS, bool _DRAGONS>
+	TileDesignTemplate<_ID, _SUITS, _HONOURS, _WINDS, _DRAGONS>::~TileDesignTemplate()
 	{
 		// 何もしない。
 	}
 
 
-	template<int _ID, bool _SUIT, bool _HONOUR, bool _WIND, bool _DRAGON>
-	int TileDesignTemplate<_ID, _SUIT, _HONOUR, _WIND, _DRAGON>::getId() const
+	template<int _ID, bool _SUITS, bool _HONOURS, bool _WINDS, bool _DRAGONS>
+	int TileDesignTemplate<_ID, _SUITS, _HONOURS, _WINDS, _DRAGONS>::getId() const
 	{
 		return _ID;
 	}
 
 
-	template<int _ID, bool _SUIT, bool _HONOUR, bool _WIND, bool _DRAGON>
-	bool TileDesignTemplate<_ID, _SUIT, _HONOUR, _WIND, _DRAGON>::isSuit() const
+	template<int _ID, bool _SUITS, bool _HONOURS, bool _WINDS, bool _DRAGONS>
+	bool TileDesignTemplate<_ID, _SUITS, _HONOURS, _WINDS, _DRAGONS>::isSuits() const
 	{
-		return _SUIT;
+		return _SUITS;
 	}
 
 
-	template<int _ID, bool _SUIT, bool _HONOUR, bool _WIND, bool _DRAGON>
-	bool TileDesignTemplate<_ID, _SUIT, _HONOUR, _WIND, _DRAGON>::isHonour() const
+	template<int _ID, bool _SUITS, bool _HONOURS, bool _WINDS, bool _DRAGONS>
+	bool TileDesignTemplate<_ID, _SUITS, _HONOURS, _WINDS, _DRAGONS>::isHonours() const
 	{
-		return _HONOUR;
+		return _HONOURS;
 	}
 
 
-	template<int _ID, bool _SUIT, bool _HONOUR, bool _WIND, bool _DRAGON>
-	bool TileDesignTemplate<_ID, _SUIT, _HONOUR, _WIND, _DRAGON>::isWind() const
+	template<int _ID, bool _SUITS, bool _HONOURS, bool _WINDS, bool _DRAGONS>
+	bool TileDesignTemplate<_ID, _SUITS, _HONOURS, _WINDS, _DRAGONS>::isWinds() const
 	{
-		return _WIND;
+		return _WINDS;
 	}
 
 
-	template<int _ID, bool _SUIT, bool _HONOUR, bool _WIND, bool _DRAGON>
-	bool TileDesignTemplate<_ID, _SUIT, _HONOUR, _WIND, _DRAGON>::isDragon() const
+	template<int _ID, bool _SUITS, bool _HONOURS, bool _WINDS, bool _DRAGONS>
+	bool TileDesignTemplate<_ID, _SUITS, _HONOURS, _WINDS, _DRAGONS>::isDragons() const
 	{
-		return _DRAGON;
+		return _DRAGONS;
 	}
 
 

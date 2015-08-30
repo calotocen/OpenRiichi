@@ -113,28 +113,28 @@ namespace openriichi {
 			MAX_NUMBER = 9,
 			
 			/// 数牌の最小値。
-			MIN_DESIGN_TYPE_SUIT = 0x10,
+			MIN_DESIGN_TYPE_SUITS = 0x10,
 
 			/// 数牌の最大値。
-			MAX_DESIGN_TYPE_SUIT = 0x3f,
+			MAX_DESIGN_TYPE_SUITS = 0x3f,
 
 			/// 字牌の最小値。
-			MIN_DESIGN_TYPE_HONOUR = 0x40,
+			MIN_DESIGN_TYPE_HONOURS = 0x40,
 
 			/// 字牌の最大値。
-			MAX_DESIGN_TYPE_HONOUR = 0x5f,
+			MAX_DESIGN_TYPE_HONOURS = 0x5f,
 
 			/// 風牌の最小値。
-			MIN_DESIGN_TYPE_WIND = 0x40,
+			MIN_DESIGN_TYPE_WINDS = 0x40,
 
 			/// 風牌の最大値。
-			MAX_DESIGN_TYPE_WIND = 0x4f,
+			MAX_DESIGN_TYPE_WINDS = 0x4f,
 			
 			/// 三元牌の最小値。
-			MIN_DESIGN_TYPE_DRAGON = 0x50,
+			MIN_DESIGN_TYPE_DRAGONS = 0x50,
 
 			/// 三元牌の最大値。
-			MAX_DESIGN_TYPE_DRAGON = 0x5f,
+			MAX_DESIGN_TYPE_DRAGONS = 0x5f,
 		};
 
 
@@ -225,7 +225,7 @@ namespace openriichi {
 		 * @retval true 数牌であった。
 		 * @retval false 数牌ではなかった。
 		 */
-		bool isSuit() const;
+		bool isSuits() const;
 
 		/**
 		 * 字牌であるかを調べる。
@@ -233,7 +233,7 @@ namespace openriichi {
 		 * @retval true 字牌であった。
 		 * @retval false 字牌ではなかった。
 		 */
-		bool isHonour() const;
+		bool isHonours() const;
 
 		/**
 		 * 風牌であるかを調べる。
@@ -241,7 +241,7 @@ namespace openriichi {
 		 * @retval true 風牌であった。
 		 * @retval false 風牌ではなかった。
 		 */
-		bool isWind() const;
+		bool isWinds() const;
 
 		/**
 		 * 三元牌であるかを調べる。
@@ -249,7 +249,7 @@ namespace openriichi {
 		 * @retval true 三元牌であった。
 		 * @retval false 三元牌ではなかった。
 		 */
-		bool isDragon() const;
+		bool isDragons() const;
 
 		/**
 		 * 中張牌であるかを調べる。
@@ -257,7 +257,7 @@ namespace openriichi {
 		 * @retval true 中張牌であった。
 		 * @retval false 中張牌ではなかった。
 		 */
-		bool isSimple() const;
+		bool isSimples() const;
 
 		/**
 		 * 老頭牌であるかを調べる。
@@ -265,7 +265,7 @@ namespace openriichi {
 		 * @retval true 老頭牌であった。
 		 * @retval false 老頭牌ではなかった。
 		 */
-		bool isTerminal() const;
+		bool isTerminals() const;
 
 		/**
 		 * 幺九牌であるかを調べる。
@@ -273,6 +273,6 @@ namespace openriichi {
 		 * @retval true 幺九牌であった。
 		 * @retval false 幺九牌ではなかった。
 		 */
-		bool isTerminalOrHonour() const;
+		bool isTerminalsOrHonours() const;
 	};
 }

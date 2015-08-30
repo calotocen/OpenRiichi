@@ -137,7 +137,7 @@ const TileDesign *MemorySavedTile::getDesign() const
 
 	// 図柄値を取得する。
 	designValue = m_value & Mask::DESIGN_TYPE;
-	if (Range::MIN_DESIGN_TYPE_HONOUR <= designValue && designValue <= Range::MAX_DESIGN_TYPE_HONOUR) {
+	if (Range::MIN_DESIGN_TYPE_HONOURS <= designValue && designValue <= Range::MAX_DESIGN_TYPE_HONOURS) {
 		designValue = m_value & (Mask::DESIGN_TYPE | Mask::NUMBER);
 	}
 
@@ -195,7 +195,7 @@ int MemorySavedTile::getNumber() const
 
 	// 図柄に応じて返す値を決める。
 	designType = m_value & Mask::DESIGN_TYPE;
-	if (Range::MIN_DESIGN_TYPE_SUIT <= designType && designType <= Range::MAX_DESIGN_TYPE_SUIT) {
+	if (Range::MIN_DESIGN_TYPE_SUITS <= designType && designType <= Range::MAX_DESIGN_TYPE_SUITS) {
 		returnValue = (m_value & Mask::NUMBER);
 	}
 	else {
@@ -227,59 +227,59 @@ const TileAttribute *MemorySavedTile::getAttribute() const
 }
 
 
-bool MemorySavedTile::isSuit() const
+bool MemorySavedTile::isSuits() const
 {
 	uint8_t designType;		// 図柄種別値。
 	bool returnValue;		// 戻り値。
 
 	// 図柄が数牌であるかを調べる。
 	designType = m_value & Mask::DESIGN_TYPE;
-	returnValue = (Range::MIN_DESIGN_TYPE_SUIT <= designType && designType <= Range::MAX_DESIGN_TYPE_SUIT);
+	returnValue = (Range::MIN_DESIGN_TYPE_SUITS <= designType && designType <= Range::MAX_DESIGN_TYPE_SUITS);
 
 	return returnValue;
 }
 
 
-bool MemorySavedTile::isHonour() const
+bool MemorySavedTile::isHonours() const
 {
 	uint8_t designType;		// 図柄種別値。
 	bool returnValue;		// 戻り値。
 
 	// 図柄が字牌であるかを調べる。
 	designType = m_value & Mask::DESIGN_TYPE;
-	returnValue = (Range::MIN_DESIGN_TYPE_HONOUR <= designType && designType <= Range::MAX_DESIGN_TYPE_HONOUR);
+	returnValue = (Range::MIN_DESIGN_TYPE_HONOURS <= designType && designType <= Range::MAX_DESIGN_TYPE_HONOURS);
 
 	return returnValue;
 }
 
 
-bool MemorySavedTile::isWind() const
+bool MemorySavedTile::isWinds() const
 {
 	uint8_t designType;		// 図柄種別値。
 	bool returnValue;		// 戻り値。
 
 	// 図柄が風牌であるかを調べる。
 	designType = m_value & Mask::DESIGN_TYPE;
-	returnValue = (Range::MIN_DESIGN_TYPE_WIND <= designType && designType <= Range::MAX_DESIGN_TYPE_WIND);
+	returnValue = (Range::MIN_DESIGN_TYPE_WINDS <= designType && designType <= Range::MAX_DESIGN_TYPE_WINDS);
 
 	return returnValue;
 }
 
 
-bool MemorySavedTile::isDragon() const
+bool MemorySavedTile::isDragons() const
 {
 	uint8_t designType;		// 図柄種別値。
 	bool returnValue;		// 戻り値。
 
 	// 図柄が三元牌であるかを調べる。
 	designType = m_value & Mask::DESIGN_TYPE;
-	returnValue = (Range::MIN_DESIGN_TYPE_DRAGON <= designType && designType <= Range::MAX_DESIGN_TYPE_DRAGON);
+	returnValue = (Range::MIN_DESIGN_TYPE_DRAGONS <= designType && designType <= Range::MAX_DESIGN_TYPE_DRAGONS);
 
 	return returnValue;
 }
 
 
-bool MemorySavedTile::isSimple() const
+bool MemorySavedTile::isSimples() const
 {
 	uint8_t designType;		// 図柄種別値。
 	uint8_t number;			// 数字。
@@ -288,14 +288,14 @@ bool MemorySavedTile::isSimple() const
 	// 中張牌であるかを調べる。
 	designType = m_value & Mask::DESIGN_TYPE;
 	number = m_value & Mask::NUMBER;
-	returnValue = ((Range::MIN_DESIGN_TYPE_SUIT <= designType && designType <= Range::MAX_DESIGN_TYPE_SUIT)
+	returnValue = ((Range::MIN_DESIGN_TYPE_SUITS <= designType && designType <= Range::MAX_DESIGN_TYPE_SUITS)
 		&& (number != Range::MIN_NUMBER && number != Range::MAX_NUMBER));
 
 	return returnValue;
 }
 
 
-bool MemorySavedTile::isTerminal() const
+bool MemorySavedTile::isTerminals() const
 {
 	uint8_t designType;		// 図柄種別値。
 	uint8_t number;			// 数字。
@@ -304,14 +304,14 @@ bool MemorySavedTile::isTerminal() const
 	// 老頭牌であるかを調べる。
 	designType = m_value & Mask::DESIGN_TYPE;
 	number = m_value & Mask::NUMBER;
-	returnValue = ((Range::MIN_DESIGN_TYPE_SUIT <= designType && designType <= Range::MAX_DESIGN_TYPE_SUIT)
+	returnValue = ((Range::MIN_DESIGN_TYPE_SUITS <= designType && designType <= Range::MAX_DESIGN_TYPE_SUITS)
 		&& (number == Range::MIN_NUMBER || number == Range::MAX_NUMBER));
 
 	return returnValue;
 }
 
 
-bool MemorySavedTile::isTerminalOrHonour() const
+bool MemorySavedTile::isTerminalsOrHonours() const
 {
 	uint8_t designType;		// 図柄種別値。
 	uint8_t number;			// 数字。
@@ -320,7 +320,7 @@ bool MemorySavedTile::isTerminalOrHonour() const
 	// 幺九牌であるかを調べる。
 	designType = m_value & Mask::DESIGN_TYPE;
 	number = m_value & Mask::NUMBER;
-	returnValue = ((Range::MIN_DESIGN_TYPE_HONOUR <= designType && designType <= Range::MAX_DESIGN_TYPE_HONOUR)
+	returnValue = ((Range::MIN_DESIGN_TYPE_HONOURS <= designType && designType <= Range::MAX_DESIGN_TYPE_HONOURS)
 		|| (number == Range::MIN_NUMBER || number == Range::MAX_NUMBER));
 
 	return returnValue;

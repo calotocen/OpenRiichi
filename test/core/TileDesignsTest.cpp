@@ -26,10 +26,10 @@ namespace openriichi
 	{
 		const TileDesign &tileDesign = TileDesigns::CIRCLES;
 		ASSERT_EQ(1, tileDesign.getId());
-		ASSERT_TRUE(tileDesign.isSuit());
-		ASSERT_FALSE(tileDesign.isHonour());
-		ASSERT_FALSE(tileDesign.isWind());
-		ASSERT_FALSE(tileDesign.isDragon());
+		ASSERT_TRUE(tileDesign.isSuits());
+		ASSERT_FALSE(tileDesign.isHonours());
+		ASSERT_FALSE(tileDesign.isWinds());
+		ASSERT_FALSE(tileDesign.isDragons());
 
 		ASSERT_TRUE(CirclesTileDesign() == tileDesign);
 		ASSERT_FALSE(BambooTileDesign() == tileDesign);
@@ -59,10 +59,10 @@ namespace openriichi
 	{
 		const TileDesign &tileDesign = TileDesigns::BAMBOO;
 		ASSERT_EQ(2, tileDesign.getId());
-		ASSERT_TRUE(tileDesign.isSuit());
-		ASSERT_FALSE(tileDesign.isHonour());
-		ASSERT_FALSE(tileDesign.isWind());
-		ASSERT_FALSE(tileDesign.isDragon());
+		ASSERT_TRUE(tileDesign.isSuits());
+		ASSERT_FALSE(tileDesign.isHonours());
+		ASSERT_FALSE(tileDesign.isWinds());
+		ASSERT_FALSE(tileDesign.isDragons());
 
 		ASSERT_FALSE(CirclesTileDesign() == tileDesign);
 		ASSERT_TRUE(BambooTileDesign() == tileDesign);
@@ -92,10 +92,10 @@ namespace openriichi
 	{
 		const TileDesign &tileDesign = TileDesigns::CHARACTERS;
 		ASSERT_EQ(3, tileDesign.getId());
-		ASSERT_TRUE(tileDesign.isSuit());
-		ASSERT_FALSE(tileDesign.isHonour());
-		ASSERT_FALSE(tileDesign.isWind());
-		ASSERT_FALSE(tileDesign.isDragon());
+		ASSERT_TRUE(tileDesign.isSuits());
+		ASSERT_FALSE(tileDesign.isHonours());
+		ASSERT_FALSE(tileDesign.isWinds());
+		ASSERT_FALSE(tileDesign.isDragons());
 
 		ASSERT_FALSE(CirclesTileDesign() == tileDesign);
 		ASSERT_FALSE(BambooTileDesign() == tileDesign);
@@ -125,10 +125,10 @@ namespace openriichi
 	{
 		const TileDesign &tileDesign = TileDesigns::EAST;
 		ASSERT_EQ(4, tileDesign.getId());
-		ASSERT_FALSE(tileDesign.isSuit());
-		ASSERT_TRUE(tileDesign.isHonour());
-		ASSERT_TRUE(tileDesign.isWind());
-		ASSERT_FALSE(tileDesign.isDragon());
+		ASSERT_FALSE(tileDesign.isSuits());
+		ASSERT_TRUE(tileDesign.isHonours());
+		ASSERT_TRUE(tileDesign.isWinds());
+		ASSERT_FALSE(tileDesign.isDragons());
 
 		ASSERT_FALSE(CirclesTileDesign() == tileDesign);
 		ASSERT_FALSE(BambooTileDesign() == tileDesign);
@@ -158,10 +158,10 @@ namespace openriichi
 	{
 		const TileDesign &tileDesign = TileDesigns::SOUTH;
 		ASSERT_EQ(5, tileDesign.getId());
-		ASSERT_FALSE(tileDesign.isSuit());
-		ASSERT_TRUE(tileDesign.isHonour());
-		ASSERT_TRUE(tileDesign.isWind());
-		ASSERT_FALSE(tileDesign.isDragon());
+		ASSERT_FALSE(tileDesign.isSuits());
+		ASSERT_TRUE(tileDesign.isHonours());
+		ASSERT_TRUE(tileDesign.isWinds());
+		ASSERT_FALSE(tileDesign.isDragons());
 
 		ASSERT_FALSE(CirclesTileDesign() == tileDesign);
 		ASSERT_FALSE(BambooTileDesign() == tileDesign);
@@ -191,10 +191,10 @@ namespace openriichi
 	{
 		const TileDesign &tileDesign = TileDesigns::WEST;
 		ASSERT_EQ(6, tileDesign.getId());
-		ASSERT_FALSE(tileDesign.isSuit());
-		ASSERT_TRUE(tileDesign.isHonour());
-		ASSERT_TRUE(tileDesign.isWind());
-		ASSERT_FALSE(tileDesign.isDragon());
+		ASSERT_FALSE(tileDesign.isSuits());
+		ASSERT_TRUE(tileDesign.isHonours());
+		ASSERT_TRUE(tileDesign.isWinds());
+		ASSERT_FALSE(tileDesign.isDragons());
 
 		ASSERT_FALSE(CirclesTileDesign() == tileDesign);
 		ASSERT_FALSE(BambooTileDesign() == tileDesign);
@@ -224,10 +224,10 @@ namespace openriichi
 	{
 		const TileDesign &tileDesign = TileDesigns::NORTH;
 		ASSERT_EQ(7, tileDesign.getId());
-		ASSERT_FALSE(tileDesign.isSuit());
-		ASSERT_TRUE(tileDesign.isHonour());
-		ASSERT_TRUE(tileDesign.isWind());
-		ASSERT_FALSE(tileDesign.isDragon());
+		ASSERT_FALSE(tileDesign.isSuits());
+		ASSERT_TRUE(tileDesign.isHonours());
+		ASSERT_TRUE(tileDesign.isWinds());
+		ASSERT_FALSE(tileDesign.isDragons());
 
 		ASSERT_FALSE(CirclesTileDesign() == tileDesign);
 		ASSERT_FALSE(BambooTileDesign() == tileDesign);
@@ -257,10 +257,10 @@ namespace openriichi
 	{
 		const TileDesign &tileDesign = TileDesigns::RED;
 		ASSERT_EQ(8, tileDesign.getId());
-		ASSERT_FALSE(tileDesign.isSuit());
-		ASSERT_TRUE(tileDesign.isHonour());
-		ASSERT_FALSE(tileDesign.isWind());
-		ASSERT_TRUE(tileDesign.isDragon());
+		ASSERT_FALSE(tileDesign.isSuits());
+		ASSERT_TRUE(tileDesign.isHonours());
+		ASSERT_FALSE(tileDesign.isWinds());
+		ASSERT_TRUE(tileDesign.isDragons());
 
 		ASSERT_FALSE(CirclesTileDesign() == tileDesign);
 		ASSERT_FALSE(BambooTileDesign() == tileDesign);
@@ -290,10 +290,10 @@ namespace openriichi
 	{
 		const TileDesign &tileDesign = TileDesigns::WHITE;
 		ASSERT_EQ(9, tileDesign.getId());
-		ASSERT_FALSE(tileDesign.isSuit());
-		ASSERT_TRUE(tileDesign.isHonour());
-		ASSERT_FALSE(tileDesign.isWind());
-		ASSERT_TRUE(tileDesign.isDragon());
+		ASSERT_FALSE(tileDesign.isSuits());
+		ASSERT_TRUE(tileDesign.isHonours());
+		ASSERT_FALSE(tileDesign.isWinds());
+		ASSERT_TRUE(tileDesign.isDragons());
 
 		ASSERT_FALSE(CirclesTileDesign() == tileDesign);
 		ASSERT_FALSE(BambooTileDesign() == tileDesign);
@@ -323,10 +323,10 @@ namespace openriichi
 	{
 		const TileDesign &tileDesign = TileDesigns::GREEN;
 		ASSERT_EQ(10, tileDesign.getId());
-		ASSERT_FALSE(tileDesign.isSuit());
-		ASSERT_TRUE(tileDesign.isHonour());
-		ASSERT_FALSE(tileDesign.isWind());
-		ASSERT_TRUE(tileDesign.isDragon());
+		ASSERT_FALSE(tileDesign.isSuits());
+		ASSERT_TRUE(tileDesign.isHonours());
+		ASSERT_FALSE(tileDesign.isWinds());
+		ASSERT_TRUE(tileDesign.isDragons());
 
 		ASSERT_FALSE(CirclesTileDesign() == tileDesign);
 		ASSERT_FALSE(BambooTileDesign() == tileDesign);

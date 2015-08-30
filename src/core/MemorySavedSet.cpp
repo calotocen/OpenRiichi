@@ -50,7 +50,7 @@ MemorySavedSet::MemorySavedSet(const SetArrangement & setArrangement, const Meld
 	, m_keyTile(keyTile)
 {
 	// デバッグ版の場合のみ，引数をチェックする。
-	assert((setArrangement == SetArrangements::CHOW && (keyTile.isSuit() || keyTile.getNumber() <= 7))
+	assert((setArrangement == SetArrangements::CHOW && (keyTile.isSuits() || keyTile.getNumber() <= 7))
 		|| (setArrangement == SetArrangements::PAIR && meldType == MeldTypes::NONE)
 		|| (setArrangement != SetArrangements::KONG && meldedKongType == MeldedKongTypes::NO)
 		|| (setArrangement == SetArrangements::KONG
