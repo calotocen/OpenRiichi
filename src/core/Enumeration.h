@@ -21,7 +21,7 @@ namespace openriichi
 	/**
 	 * 列挙型である。
 	 */
-	template<class T>
+	template<class _T>
 	class Enumeration
 	{
 	public:
@@ -37,14 +37,14 @@ namespace openriichi
 		 *
 		 * @param[in] other 他の列挙型。
 		 */
-		bool operator==(const Enumeration<T> &other) const;
+		bool operator==(const Enumeration<_T> &other) const;
 
 		/**
 		 * 他の列挙型と等しくないか調べる。
 		 *
 		 * @param[in] other 他の列挙型。
 		 */
-		bool operator!=(const Enumeration<T> &other) const;
+		bool operator!=(const Enumeration<_T> &other) const;
 
 
 	public:
@@ -57,22 +57,22 @@ namespace openriichi
 	};
 
 
-	template<class T>
-	Enumeration<T>::~Enumeration()
+	template<class _T>
+	Enumeration<_T>::~Enumeration()
 	{
 		// 何もしない。
 	}
 
 
-	template<class T>
-	bool Enumeration<T>::operator==(const Enumeration<T> &other) const
+	template<class _T>
+	bool Enumeration<_T>::operator==(const Enumeration<_T> &other) const
 	{
 		return getId() == other.getId();
 	}
 
 
-	template<class T>
-	bool Enumeration<T>::operator!=(const Enumeration<T> &other) const
+	template<class _T>
+	bool Enumeration<_T>::operator!=(const Enumeration<_T> &other) const
 	{
 		return getId() != other.getId();
 	}
