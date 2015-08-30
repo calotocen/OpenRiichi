@@ -129,6 +129,8 @@ namespace openriichi {
 		 * @param[in] keyTile キー牌。
 		 *                    順子の場合は，面子の中で一番数字の小さい牌を指定する。
 		 *                    対子，刻子，槓子の場合は，面子を構成する牌を指定する。
+		 * @note 暗順生成時に数牌以外の牌を指定した場合の動作は，未定義である。
+		 * @note 暗順生成時に数字が 7 以上のキー牌を指定した場合の動作は，未定義である。
 		 */
 		MemorySavedSet(const SetArrangement &setArrangement, const Tile &keyTile);
 
@@ -140,6 +142,8 @@ namespace openriichi {
 		 * @param[in] keyTile キー牌。
 		 *                    順子の場合は，一番数字の小さい牌を指定する。
 		 *                    刻子の場合は，単に牌を指定する。
+		 * @note 明順生成時に数牌以外の牌を指定した場合の動作は，未定義である。
+		 * @note 明順生成時に数字が 7 以上のキー牌を指定した場合の動作は，未定義である。
 		 */
 		MemorySavedSet(const SetArrangement &setArrangement, const MeldType &meldType, const Tile &keyTile);
 
@@ -168,6 +172,8 @@ namespace openriichi {
 		 * @param[in] meldedKongType 鳴き槓子種別。
 		 * @param[in] keyTile キー牌。
 		 *                    槓子の牌を単に指定する。
+		 * @note 明槓生成時に『面前』を鳴き種別として指定した場合の動作は，未定義である。
+		 * @note 明槓生成時に『鳴き槓子ではない』を鳴き槓子種別として指定した場合の動作は，未定義である。
 		 */
 		MemorySavedSet(const SetArrangement &setArrangement, const MeldType &meldType, const MeldedKongType &meldedKongType, const Tile &keyTile);
 
