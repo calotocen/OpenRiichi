@@ -147,6 +147,19 @@ namespace openriichi {
 		 */
 		MemorySavedSet(const SetArrangement &setArrangement, const MeldType &meldType, const Tile &keyTile);
 
+		/**
+		 * 明槓を生成する。
+		 *
+		 * @param[in] setArrangement 面子種別。
+		 * @param[in] meldType 鳴き種別。
+		 * @param[in] meldedKongType 鳴き槓子種別。
+		 * @param[in] keyTile キー牌。
+		 *                    槓子の牌を単に指定する。
+		 * @note 明槓生成時に『面前』を鳴き種別として指定した場合の動作は，未定義である。
+		 * @note 明槓生成時に『鳴き槓子ではない』を鳴き槓子種別として指定した場合の動作は，未定義である。
+		 */
+		MemorySavedSet(const SetArrangement &setArrangement, const MeldType &meldType, const MeldedKongType &meldedKongType, const Tile &keyTile);
+
 
 	public:
 		/**
@@ -163,20 +176,8 @@ namespace openriichi {
 		 */
 		bool operator!=(const MemorySavedSet &other) const;
 
-	public:
-		/**
-		 * 明槓を生成する。
-		 *
-		 * @param[in] setArrangement 面子種別。
-		 * @param[in] meldType 鳴き種別。
-		 * @param[in] meldedKongType 鳴き槓子種別。
-		 * @param[in] keyTile キー牌。
-		 *                    槓子の牌を単に指定する。
-		 * @note 明槓生成時に『面前』を鳴き種別として指定した場合の動作は，未定義である。
-		 * @note 明槓生成時に『鳴き槓子ではない』を鳴き槓子種別として指定した場合の動作は，未定義である。
-		 */
-		MemorySavedSet(const SetArrangement &setArrangement, const MeldType &meldType, const MeldedKongType &meldedKongType, const Tile &keyTile);
 
+	public:
 		/**
 		 * 面子種別を返す。
 		 *
