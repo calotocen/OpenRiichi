@@ -36,7 +36,7 @@ namespace openriichi
 	TEST_F(MemorySavedSetTest, testChow)
 	{
 		MemorySavedSet concealedChow(SetArrangements::CHOW, Tile(TileDesigns::CIRCLES, 1));
-		ASSERT_EQ(SetArrangements::CHOW, *concealedChow.getSetArrangement());
+		ASSERT_EQ(SetArrangements::CHOW, *concealedChow.getArrangement());
 		ASSERT_EQ(MeldTypes::NONE, *concealedChow.getMeldType());
 		ASSERT_EQ(MeldedKongTypes::NO, *concealedChow.getMeldedKongType());
 		ASSERT_EQ(Tile(TileDesigns::CIRCLES, 1), *concealedChow.getKeyTile());
@@ -56,7 +56,7 @@ namespace openriichi
 		ASSERT_TRUE(concealedChow != MemorySavedSet(SetArrangements::CHOW, Tile(TileDesigns::BAMBOO, 1)));
 
 		MemorySavedSet meldedChow(SetArrangements::CHOW, MeldTypes::LEFT, Tile(TileDesigns::BAMBOO, 7));
-		ASSERT_EQ(SetArrangements::CHOW, *meldedChow.getSetArrangement());
+		ASSERT_EQ(SetArrangements::CHOW, *meldedChow.getArrangement());
 		ASSERT_EQ(MeldTypes::LEFT, *meldedChow.getMeldType());
 		ASSERT_EQ(MeldedKongTypes::NO, *meldedChow.getMeldedKongType());
 		ASSERT_EQ(Tile(TileDesigns::BAMBOO, 7), *meldedChow.getKeyTile());
@@ -72,7 +72,7 @@ namespace openriichi
 	TEST_F(MemorySavedSetTest, testPair)
 	{
 		MemorySavedSet concealedPair(SetArrangements::PAIR, Tile(TileDesigns::CIRCLES, 1));
-		ASSERT_EQ(SetArrangements::PAIR, *concealedPair.getSetArrangement());
+		ASSERT_EQ(SetArrangements::PAIR, *concealedPair.getArrangement());
 		ASSERT_EQ(MeldTypes::NONE, *concealedPair.getMeldType());
 		ASSERT_EQ(MeldedKongTypes::NO, *concealedPair.getMeldedKongType());
 		ASSERT_EQ(Tile(TileDesigns::CIRCLES, 1), *concealedPair.getKeyTile());
@@ -96,7 +96,7 @@ namespace openriichi
 	TEST_F(MemorySavedSetTest, testPung)
 	{
 		MemorySavedSet concealedPung(SetArrangements::PUNG, Tile(TileDesigns::CIRCLES, 1));
-		ASSERT_EQ(SetArrangements::PUNG, *concealedPung.getSetArrangement());
+		ASSERT_EQ(SetArrangements::PUNG, *concealedPung.getArrangement());
 		ASSERT_EQ(MeldTypes::NONE, *concealedPung.getMeldType());
 		ASSERT_EQ(MeldedKongTypes::NO, *concealedPung.getMeldedKongType());
 		ASSERT_EQ(Tile(TileDesigns::CIRCLES, 1), *concealedPung.getKeyTile());
@@ -116,7 +116,7 @@ namespace openriichi
 		ASSERT_TRUE(concealedPung != MemorySavedSet(SetArrangements::PUNG, Tile(TileDesigns::BAMBOO, 1)));
 
 		MemorySavedSet meldedPung(SetArrangements::PUNG, MeldTypes::LEFT, Tile(TileDesigns::BAMBOO, 9							));
-		ASSERT_EQ(SetArrangements::PUNG, *meldedPung.getSetArrangement());
+		ASSERT_EQ(SetArrangements::PUNG, *meldedPung.getArrangement());
 		ASSERT_EQ(MeldTypes::LEFT, *meldedPung.getMeldType());
 		ASSERT_EQ(MeldedKongTypes::NO, *meldedPung.getMeldedKongType());
 		ASSERT_EQ(Tile(TileDesigns::BAMBOO, 9), *meldedPung.getKeyTile());
@@ -132,7 +132,7 @@ namespace openriichi
 	TEST_F(MemorySavedSetTest, testKong)
 	{
 		MemorySavedSet concealedKong(SetArrangements::KONG, Tile(TileDesigns::CIRCLES, 1));
-		ASSERT_EQ(SetArrangements::KONG, *concealedKong.getSetArrangement());
+		ASSERT_EQ(SetArrangements::KONG, *concealedKong.getArrangement());
 		ASSERT_EQ(MeldTypes::NONE, *concealedKong.getMeldType());
 		ASSERT_EQ(MeldedKongTypes::NO, *concealedKong.getMeldedKongType());
 		ASSERT_EQ(Tile(TileDesigns::CIRCLES, 1), *concealedKong.getKeyTile());
@@ -152,7 +152,7 @@ namespace openriichi
 		ASSERT_TRUE(concealedKong != MemorySavedSet(SetArrangements::KONG, Tile(TileDesigns::BAMBOO, 1)));
 
 		MemorySavedSet littleMeldedKong(SetArrangements::KONG, MeldTypes::CENTER, MeldedKongTypes::LITTLE, Tile(TileDesigns::BAMBOO, 5));
-		ASSERT_EQ(SetArrangements::KONG, *littleMeldedKong.getSetArrangement());
+		ASSERT_EQ(SetArrangements::KONG, *littleMeldedKong.getArrangement());
 		ASSERT_EQ(MeldTypes::CENTER, *littleMeldedKong.getMeldType());
 		ASSERT_EQ(MeldedKongTypes::LITTLE, *littleMeldedKong.getMeldedKongType());
 		ASSERT_EQ(Tile(TileDesigns::BAMBOO, 5), *littleMeldedKong.getKeyTile());
@@ -164,7 +164,7 @@ namespace openriichi
 		ASSERT_TRUE(littleMeldedKong.isMelded());
 
 		MemorySavedSet bigMeldedKong(SetArrangements::KONG, MeldTypes::RIGHT, MeldedKongTypes::BIG, Tile(TileDesigns::CHARACTERS, 9));
-		ASSERT_EQ(SetArrangements::KONG, *bigMeldedKong.getSetArrangement());
+		ASSERT_EQ(SetArrangements::KONG, *bigMeldedKong.getArrangement());
 		ASSERT_EQ(MeldTypes::RIGHT, *bigMeldedKong.getMeldType());
 		ASSERT_EQ(MeldedKongTypes::BIG, *bigMeldedKong.getMeldedKongType());
 		ASSERT_EQ(Tile(TileDesigns::CHARACTERS, 9), *bigMeldedKong.getKeyTile());

@@ -124,7 +124,7 @@ bool MemorySavedSet::operator!=(const MemorySavedSet &other) const
 }
 
 
-const SetArrangement *MemorySavedSet::getSetArrangement() const
+const SetArrangement *MemorySavedSet::getArrangement() const
 {
 	uint8_t arrangementValue;							// 面子種別値。
 	const SetArrangement *returnValue = nullptr;		// 戻り値。

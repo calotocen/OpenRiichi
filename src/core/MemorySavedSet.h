@@ -185,7 +185,7 @@ namespace openriichi {
 		 * @note 本関数の戻り値は，少なくとも本インスタンスが生存している間，有効である。
 		 * @note 本関数の戻り値が使用するリソースを本関数の呼び出し側で管理する必要はない。
 		 */
-		const SetArrangement *getSetArrangement() const;
+		const SetArrangement *getArrangement() const;
 
 		/**
 		 * 鳴き種別を返す。
