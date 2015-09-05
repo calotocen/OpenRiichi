@@ -21,7 +21,8 @@
 #include "Tile.h"
 
 
-namespace openriichi {
+namespace openriichi
+{
 	/// 捨て牌である。
 	using Discard = class MemorySavedDiscard;
 }

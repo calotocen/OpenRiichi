@@ -21,7 +21,8 @@
 #include "Tile.h"
 
 
-namespace openriichi {
+namespace openriichi
+{
 	/// 手牌である。
 	using Hand = class SimpleHand;
 }

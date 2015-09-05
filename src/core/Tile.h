@@ -21,7 +21,8 @@
 #include "TileAttributes.h"
 
 
-namespace openriichi {
+namespace openriichi
+{
 	/// 牌である。
 	using Tile = class MemorySavedTile;
 }

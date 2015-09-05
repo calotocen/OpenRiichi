@@ -20,7 +20,8 @@
 #include "Tile.h"
 
 
-namespace openriichi {
+namespace openriichi
+{
 	class MeldedKongType;
 	class MeldType;
 	class SetArrangement;
@@ -29,7 +30,8 @@ namespace openriichi {
 	/**
 	 * 省メモリの面子である。
 	 */
-	class MemorySavedSet {
+	class MemorySavedSet
+	{
 	private:
 		/**
 		 * 面子種別値である。

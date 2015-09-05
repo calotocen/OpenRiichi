@@ -20,14 +20,16 @@
 #include "Tile.h"
 
 
-namespace openriichi {
+namespace openriichi
+{
 	class DiscardSource;
 
 
 	/**
 	 * 省メモリの捨て牌である。
 	 */
-	class MemorySavedDiscard {
+	class MemorySavedDiscard
+	{
 	private:
 		/**
 		 * 鳴かれたか牌であるかを表す値である。

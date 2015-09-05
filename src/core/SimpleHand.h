@@ -22,11 +22,13 @@
 #include "Tile.h"
 
 
-namespace openriichi {
+namespace openriichi
+{
 	/**
 	 * 手牌である。
 	 */
-	class SimpleHand {
+	class SimpleHand
+	{
 	public:
 		/// 牌の最大個数。
 		static const size_t MAX_TILES_SIZE = 14;

@@ -20,7 +20,8 @@
 #include "TileAttributes.h"
 
 
-namespace openriichi {
+namespace openriichi
+{
 	class TileDesign;
 
 
@@ -32,7 +33,8 @@ namespace openriichi {
 	 *     - 数字 ... 1 以上 9 以下。
 	 *     - 属性 ... 属性なし，および赤。赤は数牌にのみ指定可。
 	 */
-	class MemorySavedTile {
+	class MemorySavedTile
+	{
 	private:
 		/**
 		 * 図柄値である。

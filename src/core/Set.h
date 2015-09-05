@@ -23,7 +23,8 @@
 #include "Tile.h"
 
 
-namespace openriichi {
+namespace openriichi
+{
 	/// 面子である。
 	using Set = class MemorySavedSet;
 }
