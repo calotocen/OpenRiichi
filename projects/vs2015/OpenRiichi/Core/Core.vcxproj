@@ -19,10 +19,12 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="..\..\..\..\src\core\DiscardSources.h" />
     <ClInclude Include="..\..\..\..\src\core\Enumeration.h" />
     <ClInclude Include="..\..\..\..\src\core\Hand.h" />
     <ClInclude Include="..\..\..\..\src\core\MeldedKongTypes.h" />
     <ClInclude Include="..\..\..\..\src\core\MeldTypes.h" />
+    <ClInclude Include="..\..\..\..\src\core\MemorySavedDiscard.h" />
     <ClInclude Include="..\..\..\..\src\core\MemorySavedSet.h" />
     <ClInclude Include="..\..\..\..\src\core\MemorySavedTile.h" />
     <ClInclude Include="..\..\..\..\src\core\Set.h" />
@@ -34,8 +36,10 @@
     <ClInclude Include="..\..\..\..\src\core\Winds.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="..\..\..\..\src\core\DiscardSources.cpp" />
     <ClCompile Include="..\..\..\..\src\core\MeldedKongTypes.cpp" />
     <ClCompile Include="..\..\..\..\src\core\MeldTypes.cpp" />
+    <ClCompile Include="..\..\..\..\src\core\MemorySavedDiscard.cpp" />
     <ClCompile Include="..\..\..\..\src\core\MemorySavedSet.cpp" />
     <ClCompile Include="..\..\..\..\src\core\MemorySavedTile.cpp" />
     <ClCompile Include="..\..\..\..\src\core\SetArrangements.cpp" />

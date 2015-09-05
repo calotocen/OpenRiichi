@@ -49,6 +49,12 @@
     <ClInclude Include="..\..\..\..\src\core\Hand.h">
       <Filter>OpenRiichi</Filter>
     </ClInclude>
+    <ClInclude Include="..\..\..\..\src\core\DiscardSources.h">
+      <Filter>OpenRiichi</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\src\core\MemorySavedDiscard.h">
+      <Filter>OpenRiichi</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\..\..\..\src\core\TileAttributes.cpp">
@@ -76,6 +82,12 @@
       <Filter>OpenRiichi</Filter>
     </ClCompile>
     <ClCompile Include="..\..\..\..\src\core\SimpleHand.cpp">
+      <Filter>OpenRiichi</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\src\core\DiscardSources.cpp">
+      <Filter>OpenRiichi</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\src\core\MemorySavedDiscard.cpp">
       <Filter>OpenRiichi</Filter>
     </ClCompile>
   </ItemGroup>

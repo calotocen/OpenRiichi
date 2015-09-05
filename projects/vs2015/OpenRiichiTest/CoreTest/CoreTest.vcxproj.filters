@@ -40,5 +40,8 @@
     <ClCompile Include="..\..\..\..\test\core\SimpleHandTest.cpp">
       <Filter>OpenRiichiTest</Filter>
     </ClCompile>
+    <ClCompile Include="..\..\..\..\test\core\MemorySavedDiscardTest.cpp">
+      <Filter>OpenRiichiTest</Filter>
+    </ClCompile>
   </ItemGroup>
 </Project>
