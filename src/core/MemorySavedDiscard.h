@@ -103,6 +103,11 @@ namespace openriichi
 
 	public:
 		/**
+		 * ツモ切りした一筒の捨て牌を生成する。
+		 */
+		MemorySavedDiscard();
+
+		/**
 		 * 捨て牌を生成する。
 		 *
 		 * @param[in] tile 牌。
@@ -112,7 +117,7 @@ namespace openriichi
 		 * @param[in] taken 鳴かれた牌か。
 		 *                  鳴かれた牌である場合は true，それ以外は false を指定する。
 		 */
-		MemorySavedDiscard(Tile tile, const DiscardSource &source, bool riichiDeclared = false, bool taken = false);
+		MemorySavedDiscard(const Tile &tile, const DiscardSource &source, bool riichiDeclared = false, bool taken = false);
 
 		/**
 		 * 牌を返す。

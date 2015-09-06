@@ -22,7 +22,14 @@
 using namespace openriichi;
 
 
-MemorySavedDiscard::MemorySavedDiscard(Tile tile, const DiscardSource & source, bool riichiDeclared, bool taken)
+MemorySavedDiscard::MemorySavedDiscard()
+	: MemorySavedDiscard(Tile(), DiscardSources::DRAWED)
+{
+	// 何もしない。
+}
+
+
+MemorySavedDiscard::MemorySavedDiscard(const Tile &tile, const DiscardSource & source, bool riichiDeclared, bool taken)
 	: m_value(0)
 	, m_tile(tile)
 {

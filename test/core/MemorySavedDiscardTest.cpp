@@ -33,7 +33,7 @@ namespace openriichi
 	/// 捨て牌をテストする。
 	TEST_F(MemorySavedDiscardTest, testDiscard)
 	{
-		MemorySavedDiscard discard1(Tile(), DiscardSources::DRAWED);
+		MemorySavedDiscard discard1;
 		ASSERT_EQ(Tile(), discard1.getTile());
 		ASSERT_EQ(DiscardSources::DRAWED, discard1.getSource());
 		ASSERT_EQ(false, discard1.isRiichiDeclared());
