@@ -58,6 +58,9 @@
     <ClInclude Include="..\..\..\..\src\core\Discard.h">
       <Filter>OpenRiichi</Filter>
     </ClInclude>
+    <ClInclude Include="..\..\..\..\src\core\LimitedVector.h">
+      <Filter>OpenRiichi</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\..\..\..\src\core\TileAttributes.cpp">
@@ -91,6 +94,9 @@
       <Filter>OpenRiichi</Filter>
     </ClCompile>
     <ClCompile Include="..\..\..\..\src\core\MemorySavedDiscard.cpp">
+      <Filter>OpenRiichi</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\src\core\LimitedVector.cpp">
       <Filter>OpenRiichi</Filter>
     </ClCompile>
   </ItemGroup>
