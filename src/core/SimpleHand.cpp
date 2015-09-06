@@ -22,9 +22,7 @@ using namespace openriichi;
 
 SimpleHand::SimpleHand()
 	: m_tiles()
-	, m_tilesSize(0)
 	, m_sets()
-	, m_setsSize(0)
 {
 	// 何もしない。
 }
@@ -32,7 +30,7 @@ SimpleHand::SimpleHand()
 
 bool SimpleHand::isEmpty() const
 {
-	bool returnValue = m_tilesSize == 0 && m_setsSize == 0;		// 戻り値。
+	bool returnValue = m_tiles.isEmpty() && m_sets.isEmpty();		// 戻り値。
 
 	return returnValue;
 }
@@ -40,186 +38,18 @@ bool SimpleHand::isEmpty() const
 
 void SimpleHand::clear()
 {
-	m_tilesSize = 0;
-	m_setsSize = 0;
+	m_tiles.clear();
+	m_sets.clear();
 }
 
 
-SimpleHand::TilesIterator SimpleHand::getHeadTilesIterator()
+LimitedVector<Tile, SimpleHand::MAX_TILES_SIZE> &SimpleHand::getTiles()
 {
-	return getHeadElementsIterator(m_tiles, m_tilesSize);
+	return m_tiles;
 }
 
 
-SimpleHand::TilesConstIterator SimpleHand::getHeadTilesConstIterator() const
+LimitedVector<Set, SimpleHand::MAX_SETS_SIZE> &SimpleHand::getSets()
 {
-	return getHeadElementsConstIterator(m_tiles, m_tilesSize);
-}
-
-
-SimpleHand::TilesIterator SimpleHand::getTailTilesIterator()
-{
-	return getTailElementsIterator(m_tiles, m_tilesSize);
-}
-
-
-SimpleHand::TilesConstIterator SimpleHand::getTailTilesConstIterator() const
-{
-	return getTailElementsConstIterator(m_tiles, m_tilesSize);
-}
-
-
-const Tile * SimpleHand::getTile(size_t index) const
-{
-	return getElement<Tile>(m_tiles, m_tilesSize, index);
-}
-
-
-const Tile * SimpleHand::getFirstTile() const
-{
-	return getFirstElement<Tile>(m_tiles, m_tilesSize);
-}
-
-
-const Tile * SimpleHand::getLastTile() const
-{
-	return getLastElement<Tile>(m_tiles, m_tilesSize);
-}
-
-
-size_t SimpleHand::countTiles() const
-{
-	return countElements(m_tiles, m_tilesSize);
-}
-
-
-void SimpleHand::setTile(size_t index, const Tile & tile)
-{
-	setElement(m_tiles, m_tilesSize, index, tile);
-}
-
-
-void SimpleHand::addTile(const Tile & tile)
-{
-	addElement(m_tiles, m_tilesSize, tile);
-}
-
-
-SimpleHand::TilesIterator SimpleHand::insertTile(TilesIterator iterator, const Tile & tile)
-{
-	return insertElement(m_tiles, m_tilesSize, iterator, tile);
-}
-
-
-void SimpleHand::insertTile(size_t index, const Tile & tile)
-{
-	insertElement(m_tiles, m_tilesSize, index, tile);
-}
-
-
-SimpleHand::TilesIterator SimpleHand::removeTile(TilesIterator iterator)
-{
-	return removeElement(m_tiles, m_tilesSize, iterator);
-}
-
-
-void SimpleHand::removeTile(size_t index)
-{
-	return removeElement(m_tiles, m_tilesSize, index);
-}
-
-
-void SimpleHand::clearTiles()
-{
-	return clearElements(m_tiles, m_tilesSize);
-}
-
-
-SimpleHand::SetsIterator SimpleHand::getHeadSetsIterator()
-{
-	return getHeadElementsIterator(m_sets, m_setsSize);
-}
-
-
-SimpleHand::SetsConstIterator SimpleHand::getHeadSetsConstIterator() const
-{
-	return getHeadElementsConstIterator(m_sets, m_setsSize);
-}
-
-
-SimpleHand::SetsIterator SimpleHand::getTailSetsIterator()
-{
-	return getTailElementsIterator(m_sets, m_setsSize);
-}
-
-
-SimpleHand::SetsConstIterator SimpleHand::getTailSetsConstIterator() const
-{
-	return getTailElementsConstIterator(m_sets, m_setsSize);
-}
-
-
-const Set * SimpleHand::getSet(size_t index) const
-{
-	return getElement<Set>(m_sets, m_setsSize, index);
-}
-
-
-const Set * SimpleHand::getFirstSet() const
-{
-	return getFirstElement<Set>(m_sets, m_setsSize);
-}
-
-
-const Set * SimpleHand::getLastSet() const
-{
-	return getLastElement<Set>(m_sets, m_setsSize);
-}
-
-
-size_t SimpleHand::countSets() const
-{
-	return countElements(m_sets, m_setsSize);
-}
-
-
-void SimpleHand::setSet(size_t index, const Set & set)
-{
-	setElement(m_sets, m_setsSize, index, set);
-}
-
-
-void SimpleHand::addSet(const Set & set)
-{
-	addElement(m_sets, m_setsSize, set);
-}
-
-
-SimpleHand::SetsIterator SimpleHand::insertSet(SetsIterator iterator, const Set & set)
-{
-	return insertElement(m_sets, m_setsSize, iterator, set);
-}
-
-
-void SimpleHand::insertSet(size_t index, const Set & set)
-{
-	insertElement(m_sets, m_setsSize, index, set);
-}
-
-
-SimpleHand::SetsIterator SimpleHand::removeSet(SetsIterator iterator)
-{
-	return removeElement(m_sets, m_setsSize, iterator);
-}
-
-
-void SimpleHand::removeSet(size_t index)
-{
-	return removeElement(m_sets, m_setsSize, index);
-}
-
-
-void SimpleHand::clearSets()
-{
-	return clearElements(m_sets, m_setsSize);
+	return m_sets;
 }
