@@ -55,6 +55,9 @@
     <ClInclude Include="..\..\..\..\src\core\MemorySavedDiscard.h">
       <Filter>OpenRiichi</Filter>
     </ClInclude>
+    <ClInclude Include="..\..\..\..\src\core\Discard.h">
+      <Filter>OpenRiichi</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\..\..\..\src\core\TileAttributes.cpp">
