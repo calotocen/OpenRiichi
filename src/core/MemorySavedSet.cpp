@@ -124,7 +124,7 @@ bool MemorySavedSet::operator!=(const MemorySavedSet &other) const
 }
 
 
-const SetArrangement *MemorySavedSet::getArrangement() const
+const SetArrangement &MemorySavedSet::getArrangement() const
 {
 	uint8_t arrangementValue;							// 面子種別値。
 	const SetArrangement *returnValue = nullptr;		// 戻り値。
@@ -149,11 +149,11 @@ const SetArrangement *MemorySavedSet::getArrangement() const
 		break;
 	}
 
-	return returnValue;
+	return *returnValue;
 }
 
 
-const MeldType *MemorySavedSet::getMeldType() const
+const MeldType &MemorySavedSet::getMeldType() const
 {
 	uint8_t meldTypeValue;						// 鳴き種別値。
 	const MeldType *returnValue = nullptr;		// 戻り値。
@@ -178,11 +178,11 @@ const MeldType *MemorySavedSet::getMeldType() const
 		break;
 	}
 
-	return returnValue;
+	return *returnValue;
 }
 
 
-const MeldedKongType *MemorySavedSet::getMeldedKongType() const
+const MeldedKongType &MemorySavedSet::getMeldedKongType() const
 {
 	uint8_t meldedKongValue;							// 鳴き槓子種別値。
 	const MeldedKongType *returnValue = nullptr;		// 戻り値。
@@ -203,15 +203,13 @@ const MeldedKongType *MemorySavedSet::getMeldedKongType() const
 		break;
 	}
 
-	return returnValue;
+	return *returnValue;
 }
 
 
-const Tile *MemorySavedSet::getKeyTile() const
+const Tile &MemorySavedSet::getKeyTile() const
 {
-	const Tile *returnValue = &m_keyTile;		// 戻り値。
-
-	return returnValue;
+	return m_keyTile;
 }
 
 

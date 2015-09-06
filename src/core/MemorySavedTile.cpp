@@ -130,7 +130,7 @@ bool MemorySavedTile::operator!=(const MemorySavedTile &other) const
 }
 
 
-const TileDesign *MemorySavedTile::getDesign() const
+const TileDesign &MemorySavedTile::getDesign() const
 {
 	uint8_t designValue;							// 図柄値。
 	const TileDesign *returnValue = nullptr;		// 戻り値。
@@ -184,7 +184,7 @@ const TileDesign *MemorySavedTile::getDesign() const
 		break;
 	}
 
-	return returnValue;
+	return *returnValue;
 }
 
 
@@ -206,7 +206,7 @@ int MemorySavedTile::getNumber() const
 }
 
 
-const TileAttribute *MemorySavedTile::getAttribute() const
+const TileAttribute &MemorySavedTile::getAttribute() const
 {
 	uint8_t attributeValue;							// 属性値。
 	const TileAttribute *returnValue = nullptr;		// 戻り値。
@@ -223,7 +223,7 @@ const TileAttribute *MemorySavedTile::getAttribute() const
 		break;
 	}
 
-	return returnValue;
+	return *returnValue;
 }
 
 

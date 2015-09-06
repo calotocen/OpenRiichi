@@ -197,7 +197,7 @@ namespace openriichi
 		 * @note 本関数の戻り値は，少なくとも本インスタンスが生存している間，有効である。
 		 * @note 本関数の戻り値が使用するリソースを本関数の呼び出し側で管理する必要はない。
 		 */
-		const SetArrangement *getArrangement() const;
+		const SetArrangement &getArrangement() const;
 
 		/**
 		 * 鳴き種別を返す。
@@ -206,7 +206,7 @@ namespace openriichi
 		 * @note 本関数の戻り値は，少なくとも本インスタンスが生存している間，有効である。
 		 * @note 本関数の戻り値が使用するリソースを本関数の呼び出し側で管理する必要はない。
 		 */
-		const MeldType *getMeldType() const;
+		const MeldType &getMeldType() const;
 
 		/**
 		 * 鳴き槓子種別を返す。
@@ -215,7 +215,7 @@ namespace openriichi
 		 * @note 本関数の戻り値は，少なくとも本インスタンスが生存している間，有効である。
 		 * @note 本関数の戻り値が使用するリソースを本関数の呼び出し側で管理する必要はない。
 		 */
-		const MeldedKongType *getMeldedKongType() const;
+		const MeldedKongType &getMeldedKongType() const;
 
 		/**
 		 * キー牌を返す。
@@ -224,7 +224,7 @@ namespace openriichi
 		 * @note 本関数の戻り値は，少なくとも本インスタンスが生存している間，有効である。
 		 * @note 本関数の戻り値が使用するリソースを本関数の呼び出し側で管理する必要はない。
 		 */
-		const Tile *getKeyTile() const;
+		const Tile &getKeyTile() const;
 
 		/**
 		 * 順子であるかを調べる。

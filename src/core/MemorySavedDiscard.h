@@ -119,14 +119,14 @@ namespace openriichi
 		 *
 		 * @return 牌。
 		 */
-		const Tile *getTile() const;
+		const Tile &getTile() const;
 
 		/**
 		 * 捨て元を返す。
 		 *
 		 * @return 捨て元。
 		 */
-		const DiscardSource *getSource() const;
+		const DiscardSource &getSource() const;
 
 		/**
 		 * 立直宣言牌であるかを返す。

@@ -203,7 +203,7 @@ namespace openriichi
 		 * @note 本関数の戻り値は，少なくとも本インスタンスが生存している間，有効である。
 		 * @note 本関数の戻り値が使用するリソースを本関数の呼び出し側で管理する必要はない。
 		 */
-		const TileDesign *getDesign() const;
+		const TileDesign &getDesign() const;
 
 		/**
 		 * 数字を返す。
@@ -219,7 +219,7 @@ namespace openriichi
 		 * @note 本関数の戻り値は，少なくとも本インスタンスが生存している間，有効である。
 		 * @note 本関数の戻り値が使用するリソースを本関数の呼び出し側で管理する必要はない。
 		 */
-		const TileAttribute *getAttribute() const;
+		const TileAttribute &getAttribute() const;
 
 		/**
 		 * 数牌であるかを調べる。

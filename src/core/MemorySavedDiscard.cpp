@@ -22,7 +22,7 @@
 using namespace openriichi;
 
 
-openriichi::MemorySavedDiscard::MemorySavedDiscard(Tile tile, const DiscardSource & source, bool riichiDeclared, bool taken)
+MemorySavedDiscard::MemorySavedDiscard(Tile tile, const DiscardSource & source, bool riichiDeclared, bool taken)
 	: m_value(0)
 	, m_tile(tile)
 {
@@ -52,13 +52,13 @@ openriichi::MemorySavedDiscard::MemorySavedDiscard(Tile tile, const DiscardSourc
 }
 
 
-const Tile * openriichi::MemorySavedDiscard::getTile() const
+const Tile &MemorySavedDiscard::getTile() const
 {
-	return &m_tile;
+	return m_tile;
 }
 
 
-const DiscardSource * openriichi::MemorySavedDiscard::getSource() const
+const DiscardSource &MemorySavedDiscard::getSource() const
 {
 	uint8_t sourceValue;							// 捨て元を表す値。
 	const DiscardSource *returnValue = nullptr;		// 戻り値。
@@ -75,11 +75,11 @@ const DiscardSource * openriichi::MemorySavedDiscard::getSource() const
 		break;
 	}
 
-	return returnValue;
+	return *returnValue;
 }
 
 
-bool openriichi::MemorySavedDiscard::isRiichiDeclared() const
+bool MemorySavedDiscard::isRiichiDeclared() const
 {
 	uint8_t riichiDeclaredValue;		// 立直宣言牌であるかを表す値。
 	bool returnValue;					// 戻り値。
@@ -92,7 +92,7 @@ bool openriichi::MemorySavedDiscard::isRiichiDeclared() const
 }
 
 
-bool openriichi::MemorySavedDiscard::isTaken() const
+bool MemorySavedDiscard::isTaken() const
 {
 	uint8_t takenValue;		// 鳴かれた牌であるかを表す値。
 	bool returnValue;		// 戻り値。

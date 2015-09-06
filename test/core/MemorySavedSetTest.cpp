@@ -36,10 +36,10 @@ namespace openriichi
 	TEST_F(MemorySavedSetTest, testChow)
 	{
 		MemorySavedSet concealedChow(SetArrangements::CHOW, Tile(TileDesigns::CIRCLES, 1));
-		ASSERT_EQ(SetArrangements::CHOW, *concealedChow.getArrangement());
-		ASSERT_EQ(MeldTypes::NONE, *concealedChow.getMeldType());
-		ASSERT_EQ(MeldedKongTypes::NO, *concealedChow.getMeldedKongType());
-		ASSERT_EQ(Tile(TileDesigns::CIRCLES, 1), *concealedChow.getKeyTile());
+		ASSERT_EQ(SetArrangements::CHOW, concealedChow.getArrangement());
+		ASSERT_EQ(MeldTypes::NONE, concealedChow.getMeldType());
+		ASSERT_EQ(MeldedKongTypes::NO, concealedChow.getMeldedKongType());
+		ASSERT_EQ(Tile(TileDesigns::CIRCLES, 1), concealedChow.getKeyTile());
 		ASSERT_TRUE(concealedChow.isChow());
 		ASSERT_FALSE(concealedChow.isPair());
 		ASSERT_FALSE(concealedChow.isPung());
@@ -56,10 +56,10 @@ namespace openriichi
 		ASSERT_TRUE(concealedChow != MemorySavedSet(SetArrangements::CHOW, Tile(TileDesigns::BAMBOO, 1)));
 
 		MemorySavedSet meldedChow(SetArrangements::CHOW, MeldTypes::LEFT, Tile(TileDesigns::BAMBOO, 7));
-		ASSERT_EQ(SetArrangements::CHOW, *meldedChow.getArrangement());
-		ASSERT_EQ(MeldTypes::LEFT, *meldedChow.getMeldType());
-		ASSERT_EQ(MeldedKongTypes::NO, *meldedChow.getMeldedKongType());
-		ASSERT_EQ(Tile(TileDesigns::BAMBOO, 7), *meldedChow.getKeyTile());
+		ASSERT_EQ(SetArrangements::CHOW, meldedChow.getArrangement());
+		ASSERT_EQ(MeldTypes::LEFT, meldedChow.getMeldType());
+		ASSERT_EQ(MeldedKongTypes::NO, meldedChow.getMeldedKongType());
+		ASSERT_EQ(Tile(TileDesigns::BAMBOO, 7), meldedChow.getKeyTile());
 		ASSERT_TRUE(meldedChow.isChow());
 		ASSERT_FALSE(meldedChow.isPair());
 		ASSERT_FALSE(meldedChow.isPung());
@@ -72,10 +72,10 @@ namespace openriichi
 	TEST_F(MemorySavedSetTest, testPair)
 	{
 		MemorySavedSet concealedPair(SetArrangements::PAIR, Tile(TileDesigns::CIRCLES, 1));
-		ASSERT_EQ(SetArrangements::PAIR, *concealedPair.getArrangement());
-		ASSERT_EQ(MeldTypes::NONE, *concealedPair.getMeldType());
-		ASSERT_EQ(MeldedKongTypes::NO, *concealedPair.getMeldedKongType());
-		ASSERT_EQ(Tile(TileDesigns::CIRCLES, 1), *concealedPair.getKeyTile());
+		ASSERT_EQ(SetArrangements::PAIR, concealedPair.getArrangement());
+		ASSERT_EQ(MeldTypes::NONE, concealedPair.getMeldType());
+		ASSERT_EQ(MeldedKongTypes::NO, concealedPair.getMeldedKongType());
+		ASSERT_EQ(Tile(TileDesigns::CIRCLES, 1), concealedPair.getKeyTile());
 		ASSERT_FALSE(concealedPair.isChow());
 		ASSERT_TRUE(concealedPair.isPair());
 		ASSERT_FALSE(concealedPair.isPung());
@@ -96,10 +96,10 @@ namespace openriichi
 	TEST_F(MemorySavedSetTest, testPung)
 	{
 		MemorySavedSet concealedPung(SetArrangements::PUNG, Tile(TileDesigns::CIRCLES, 1));
-		ASSERT_EQ(SetArrangements::PUNG, *concealedPung.getArrangement());
-		ASSERT_EQ(MeldTypes::NONE, *concealedPung.getMeldType());
-		ASSERT_EQ(MeldedKongTypes::NO, *concealedPung.getMeldedKongType());
-		ASSERT_EQ(Tile(TileDesigns::CIRCLES, 1), *concealedPung.getKeyTile());
+		ASSERT_EQ(SetArrangements::PUNG, concealedPung.getArrangement());
+		ASSERT_EQ(MeldTypes::NONE, concealedPung.getMeldType());
+		ASSERT_EQ(MeldedKongTypes::NO, concealedPung.getMeldedKongType());
+		ASSERT_EQ(Tile(TileDesigns::CIRCLES, 1), concealedPung.getKeyTile());
 		ASSERT_FALSE(concealedPung.isChow());
 		ASSERT_FALSE(concealedPung.isPair());
 		ASSERT_TRUE(concealedPung.isPung());
@@ -116,10 +116,10 @@ namespace openriichi
 		ASSERT_TRUE(concealedPung != MemorySavedSet(SetArrangements::PUNG, Tile(TileDesigns::BAMBOO, 1)));
 
 		MemorySavedSet meldedPung(SetArrangements::PUNG, MeldTypes::LEFT, Tile(TileDesigns::BAMBOO, 9							));
-		ASSERT_EQ(SetArrangements::PUNG, *meldedPung.getArrangement());
-		ASSERT_EQ(MeldTypes::LEFT, *meldedPung.getMeldType());
-		ASSERT_EQ(MeldedKongTypes::NO, *meldedPung.getMeldedKongType());
-		ASSERT_EQ(Tile(TileDesigns::BAMBOO, 9), *meldedPung.getKeyTile());
+		ASSERT_EQ(SetArrangements::PUNG, meldedPung.getArrangement());
+		ASSERT_EQ(MeldTypes::LEFT, meldedPung.getMeldType());
+		ASSERT_EQ(MeldedKongTypes::NO, meldedPung.getMeldedKongType());
+		ASSERT_EQ(Tile(TileDesigns::BAMBOO, 9), meldedPung.getKeyTile());
 		ASSERT_FALSE(meldedPung.isChow());
 		ASSERT_FALSE(meldedPung.isPair());
 		ASSERT_TRUE(meldedPung.isPung());
@@ -132,10 +132,10 @@ namespace openriichi
 	TEST_F(MemorySavedSetTest, testKong)
 	{
 		MemorySavedSet concealedKong(SetArrangements::KONG, Tile(TileDesigns::CIRCLES, 1));
-		ASSERT_EQ(SetArrangements::KONG, *concealedKong.getArrangement());
-		ASSERT_EQ(MeldTypes::NONE, *concealedKong.getMeldType());
-		ASSERT_EQ(MeldedKongTypes::NO, *concealedKong.getMeldedKongType());
-		ASSERT_EQ(Tile(TileDesigns::CIRCLES, 1), *concealedKong.getKeyTile());
+		ASSERT_EQ(SetArrangements::KONG, concealedKong.getArrangement());
+		ASSERT_EQ(MeldTypes::NONE, concealedKong.getMeldType());
+		ASSERT_EQ(MeldedKongTypes::NO, concealedKong.getMeldedKongType());
+		ASSERT_EQ(Tile(TileDesigns::CIRCLES, 1), concealedKong.getKeyTile());
 		ASSERT_FALSE(concealedKong.isChow());
 		ASSERT_FALSE(concealedKong.isPair());
 		ASSERT_FALSE(concealedKong.isPung());
@@ -152,10 +152,10 @@ namespace openriichi
 		ASSERT_TRUE(concealedKong != MemorySavedSet(SetArrangements::KONG, Tile(TileDesigns::BAMBOO, 1)));
 
 		MemorySavedSet littleMeldedKong(SetArrangements::KONG, MeldTypes::CENTER, MeldedKongTypes::LITTLE, Tile(TileDesigns::BAMBOO, 5));
-		ASSERT_EQ(SetArrangements::KONG, *littleMeldedKong.getArrangement());
-		ASSERT_EQ(MeldTypes::CENTER, *littleMeldedKong.getMeldType());
-		ASSERT_EQ(MeldedKongTypes::LITTLE, *littleMeldedKong.getMeldedKongType());
-		ASSERT_EQ(Tile(TileDesigns::BAMBOO, 5), *littleMeldedKong.getKeyTile());
+		ASSERT_EQ(SetArrangements::KONG, littleMeldedKong.getArrangement());
+		ASSERT_EQ(MeldTypes::CENTER, littleMeldedKong.getMeldType());
+		ASSERT_EQ(MeldedKongTypes::LITTLE, littleMeldedKong.getMeldedKongType());
+		ASSERT_EQ(Tile(TileDesigns::BAMBOO, 5), littleMeldedKong.getKeyTile());
 		ASSERT_FALSE(littleMeldedKong.isChow());
 		ASSERT_FALSE(littleMeldedKong.isPair());
 		ASSERT_FALSE(littleMeldedKong.isPung());
@@ -164,10 +164,10 @@ namespace openriichi
 		ASSERT_TRUE(littleMeldedKong.isMelded());
 
 		MemorySavedSet bigMeldedKong(SetArrangements::KONG, MeldTypes::RIGHT, MeldedKongTypes::BIG, Tile(TileDesigns::CHARACTERS, 9));
-		ASSERT_EQ(SetArrangements::KONG, *bigMeldedKong.getArrangement());
-		ASSERT_EQ(MeldTypes::RIGHT, *bigMeldedKong.getMeldType());
-		ASSERT_EQ(MeldedKongTypes::BIG, *bigMeldedKong.getMeldedKongType());
-		ASSERT_EQ(Tile(TileDesigns::CHARACTERS, 9), *bigMeldedKong.getKeyTile());
+		ASSERT_EQ(SetArrangements::KONG, bigMeldedKong.getArrangement());
+		ASSERT_EQ(MeldTypes::RIGHT, bigMeldedKong.getMeldType());
+		ASSERT_EQ(MeldedKongTypes::BIG, bigMeldedKong.getMeldedKongType());
+		ASSERT_EQ(Tile(TileDesigns::CHARACTERS, 9), bigMeldedKong.getKeyTile());
 		ASSERT_FALSE(bigMeldedKong.isChow());
 		ASSERT_FALSE(bigMeldedKong.isPair());
 		ASSERT_FALSE(bigMeldedKong.isPung());
