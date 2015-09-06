@@ -96,8 +96,5 @@
     <ClCompile Include="..\..\..\..\src\core\MemorySavedDiscard.cpp">
       <Filter>OpenRiichi</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\..\..\src\core\LimitedVector.cpp">
-      <Filter>OpenRiichi</Filter>
-    </ClCompile>
   </ItemGroup>
 </Project>
