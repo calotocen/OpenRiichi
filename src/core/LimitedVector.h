@@ -111,7 +111,7 @@ namespace openriichi
 		/**
 		 * 配列が空であるかを返す。
 		 *
-		 * @return 配列が空である場合は true を，それ以外の場合は false を返す。
+		 * @return 配列が空である場合は true を，それ以外は false を返す。
 		 */
 		bool isEmpty() const;
 
