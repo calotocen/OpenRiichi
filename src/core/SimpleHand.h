@@ -71,15 +71,19 @@ namespace openriichi
 		 *
 		 * @return 牌配列。
 		 * @note 本関数の戻り値は，少なくとも本インスタンスが生存している間，有効である。
+		 * @note 本関数が返す参照の内容は，変更してもよい。
+		 *       その場合，変更内容は取得元のインスタンスに反映される。
 		 */
-		LimitedVector<Tile, MAX_TILES_SIZE> &getTiles();
+		LimitedVector<Tile, MAX_TILES_SIZE> &tiles();
 
 		/**
 		 * 面子配列を返す。
 		 *
 		 * @return 面子配列。
 		 * @note 本関数の戻り値は，少なくとも本インスタンスが生存している間，有効である。
+		 * @note 本関数が返す参照の内容は，変更してもよい。
+		 *       その場合，変更内容は取得元のインスタンスに反映される。
 		 */
-		LimitedVector<Set, MAX_SETS_SIZE> &getSets();
+		LimitedVector<Set, MAX_SETS_SIZE> &sets();
 	};
 }

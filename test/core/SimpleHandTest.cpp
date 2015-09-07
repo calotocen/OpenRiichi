@@ -33,10 +33,10 @@ namespace openriichi
 	{
 		SimpleHand hand;
 
-		LimitedVector<Tile, SimpleHand::MAX_TILES_SIZE> &tiles = hand.getTiles();
+		LimitedVector<Tile, SimpleHand::MAX_TILES_SIZE> &tiles = hand.tiles();
 		ASSERT_EQ(true, tiles.isEmpty());
 
-		LimitedVector<Set, SimpleHand::MAX_SETS_SIZE> &sets = hand.getSets();
+		LimitedVector<Set, SimpleHand::MAX_SETS_SIZE> &sets = hand.sets();
 		ASSERT_EQ(true, sets.isEmpty());
 	}
 }

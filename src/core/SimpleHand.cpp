@@ -43,13 +43,13 @@ void SimpleHand::clear()
 }
 
 
-LimitedVector<Tile, SimpleHand::MAX_TILES_SIZE> &SimpleHand::getTiles()
+LimitedVector<Tile, SimpleHand::MAX_TILES_SIZE> &SimpleHand::tiles()
 {
 	return m_tiles;
 }
 
 
-LimitedVector<Set, SimpleHand::MAX_SETS_SIZE> &SimpleHand::getSets()
+LimitedVector<Set, SimpleHand::MAX_SETS_SIZE> &SimpleHand::sets()
 {
 	return m_sets;
 }
