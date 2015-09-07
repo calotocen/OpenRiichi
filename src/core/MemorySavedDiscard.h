@@ -55,7 +55,6 @@ namespace openriichi
 			RDV_TRUE = 0x02,
 		};
 
-
 		/**
 		 * 捨て元を表す値である。
 		 */
