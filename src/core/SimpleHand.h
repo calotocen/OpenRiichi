@@ -37,12 +37,20 @@ namespace openriichi
 		static const size_t MAX_SETS_SIZE = 5;
 
 
+	public:
+		/// 牌配列型。
+		using Tiles = LimitedVector<Tile, MAX_TILES_SIZE>;
+
+		/// 面子配列型。
+		using Sets = LimitedVector<Set, MAX_SETS_SIZE>;
+
+
 	private:
 		/// 牌配列。
-		LimitedVector<Tile, MAX_TILES_SIZE> m_tiles;
+		Tiles m_tiles;
 
 		/// 面子配列。
-		LimitedVector<Set, MAX_SETS_SIZE> m_sets;
+		Sets m_sets;
 
 
 	public:
@@ -74,7 +82,7 @@ namespace openriichi
 		 * @note 本関数が返す参照の内容は，変更してもよい。
 		 *       その場合，変更内容は取得元のインスタンスに反映される。
 		 */
-		LimitedVector<Tile, MAX_TILES_SIZE> &tiles();
+		Tiles &tiles();
 
 		/**
 		 * 面子配列を返す。
@@ -84,6 +92,6 @@ namespace openriichi
 		 * @note 本関数が返す参照の内容は，変更してもよい。
 		 *       その場合，変更内容は取得元のインスタンスに反映される。
 		 */
-		LimitedVector<Set, MAX_SETS_SIZE> &sets();
+		Sets &sets();
 	};
 }

@@ -25,10 +25,4 @@ namespace openriichi
 {
 	/// 手牌である。
 	using Hand = class SimpleHand;
-
-	/// 手牌の牌配列である。
-	using Tiles = LimitedVector<Tile, Hand::MAX_TILES_SIZE>;
-
-	/// 手牌の面子配列である。
-	using Sets = LimitedVector<Set, Hand::MAX_SETS_SIZE>;
 }
