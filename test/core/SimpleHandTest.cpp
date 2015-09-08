@@ -29,14 +29,14 @@ namespace openriichi
 	}
 
 	// 手牌をテストする。
-	TEST_F(SimpleHandTest, testCountTilesGetTileAndSetTileAndAddTileAndTilesIteratorAndTilesConstIterator)
+	TEST_F(SimpleHandTest, testHand)
 	{
 		SimpleHand hand;
 
 		SimpleHand::Tiles &tiles = hand.tiles();
-		ASSERT_EQ(true, tiles.isEmpty());
+		ASSERT_EQ(SimpleHand::Tiles(), tiles);
 
 		SimpleHand::Sets &sets = hand.sets();
-		ASSERT_EQ(true, sets.isEmpty());
+		ASSERT_EQ(SimpleHand::Sets(), sets);
 	}
 }

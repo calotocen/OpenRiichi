@@ -404,4 +404,45 @@ namespace openriichi
 		ASSERT_EQ(14, limitedVector.get(7));
 		ASSERT_EQ(15, limitedVector.get(8));
 	}
+
+	// 配列の比較をテストする。
+	TEST_F(LimitedVectorTest, testEqualsAndNotEquals)
+	{
+		LimitedVector<int, 10> limitedVector1;
+		LimitedVector<int, 10> limitedVector2;
+
+		ASSERT_TRUE(limitedVector1 == limitedVector1);
+		ASSERT_FALSE(limitedVector1 != limitedVector1);
+		ASSERT_TRUE(limitedVector1 == limitedVector2);
+		ASSERT_FALSE(limitedVector1 != limitedVector2);
+
+		limitedVector1.add(1);
+		ASSERT_FALSE(limitedVector1 == limitedVector2);
+		ASSERT_TRUE(limitedVector1 != limitedVector2);
+
+		limitedVector2.add(2);
+		ASSERT_FALSE(limitedVector1 == limitedVector2);
+		ASSERT_TRUE(limitedVector1 != limitedVector2);
+
+		limitedVector1.add(3);
+		limitedVector1.add(4);
+		limitedVector1.add(5);
+		limitedVector1.add(6);
+		limitedVector1.add(7);
+		limitedVector1.add(8);
+		limitedVector1.add(9);
+		limitedVector2.add(3);
+		limitedVector2.add(4);
+		limitedVector2.add(5);
+		limitedVector2.add(6);
+		limitedVector2.add(7);
+		limitedVector2.add(8);
+		limitedVector2.add(9);
+		ASSERT_FALSE(limitedVector1 == limitedVector2);
+		ASSERT_TRUE(limitedVector1 != limitedVector2);
+
+		limitedVector2.set(0, 1);
+		ASSERT_TRUE(limitedVector1 == limitedVector2);
+		ASSERT_FALSE(limitedVector1 != limitedVector2);
+	}
 }

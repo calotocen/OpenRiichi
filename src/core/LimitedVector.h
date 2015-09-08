@@ -16,9 +16,10 @@
 #pragma once
 
 
+#include <algorithm>
+#include <array>
 #include <cassert>
 #include <cstdint>
-#include <array>
 
 
 namespace openriichi
@@ -55,6 +56,22 @@ namespace openriichi
 		 * 有限可変長配列を生成する。
 		 */
 		LimitedVector();
+
+
+	public:
+		/**
+		 * 他の有限可変長配列と等しいか調べる。
+		 *
+		 * @param[in] other 他の有限可変長配列。
+		 */
+		bool operator==(const LimitedVector<T, size, SizeType> &other) const;
+
+		/**
+		 * 他の有限可変長配列と等しくないか調べる。
+		 *
+		 * @param[in] other 他の有限可変長配列。
+		 */
+		bool operator!=(const LimitedVector<T, size, SizeType> &other) const;
 
 
 	public:
@@ -197,6 +214,33 @@ namespace openriichi
 
 
 	template<class T, size_t size, typename SizeType>
+	bool LimitedVector<T, size, SizeType>::operator==(const LimitedVector<T, size, SizeType> &other) const
+	{
+		// 自分自身との比較であれば，true を返す。
+		if (this == &other)
+		{
+			return true;
+		}
+
+		// 要素数が異なる場合は，false を返す。
+		if (m_elementsSize != other.m_elementsSize)
+		{
+			return false;
+		}
+
+		// 要素を比較して，その結果を返す。
+		return std::equal(m_elements.begin(), m_elements.begin() + m_elementsSize, other.m_elements.begin());
+	}
+
+
+	template<class T, size_t size, typename SizeType>
+	bool LimitedVector<T, size, SizeType>::operator!=(const LimitedVector<T, size, SizeType>& other) const
+	{
+		return !(*this == other);
+	}
+
+
+	template<class T, size_t size, typename SizeType>
 	typename LimitedVector<T, size, SizeType>::Iterator LimitedVector<T, size, SizeType>::getHeadIterator()
 	{
 		Iterator returnValue = m_elements.begin();		// 戻り値。
@@ -266,7 +310,7 @@ namespace openriichi
 
 
 	template<class T, size_t size, typename SizeType>
-	inline bool LimitedVector<T, size, SizeType>::isEmpty() const
+	bool LimitedVector<T, size, SizeType>::isEmpty() const
 	{
 		bool returnValue = m_elementsSize == 0;		// 戻り値。
 
