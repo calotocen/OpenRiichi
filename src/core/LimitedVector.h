@@ -24,7 +24,7 @@
 namespace openriichi
 {
 	/**
-	 * 固定長配列である。
+	 * 有限可変長配列である。
 	 */
 	template<class T, size_t size, typename SizeType = uint8_t>
 	class LimitedVector
@@ -43,7 +43,7 @@ namespace openriichi
 
 
 	private:
-		/// 要素配列。
+		/// 固定長配列。
 		Elements m_elements;
 
 		/// 要素の個数。
@@ -51,35 +51,38 @@ namespace openriichi
 
 
 	public:
+		/**
+		 * 有限可変長配列を生成する。
+		 */
 		LimitedVector();
 
 
 	public:
 		/**
-		 * 要素配列の先頭を指すイテレータを返す。
+		 * 配列の先頭を指すイテレータを返す。
 		 *
-		 * @return 要素配列の先頭を指すイテレータ。
+		 * @return 配列の先頭を指すイテレータ。
 		 */
 		Iterator getHeadIterator();
 
 		/**
-		 * 要素配列の先頭を指すイテレータを返す。
+		 * 配列の先頭を指すイテレータを返す。
 		 *
-		 * @return 要素配列の先頭を指すイテレータ。
+		 * @return 配列の先頭を指すイテレータ。
 		 */
 		ConstIterator getHeadConstIterator() const;
 
 		/**
-		 * 要素配列の末尾を指すイテレータを返す。
+		 * 配列の末尾を指すイテレータを返す。
 		 *
-		 * @return 要素配列の末尾を指すイテレータ。
+		 * @return 配列の末尾を指すイテレータ。
 		 */
 		Iterator getTailIterator();
 
 		/**
-		 * 要素配列の末尾を指すイテレータを返す。
+		 * 配列の末尾を指すイテレータを返す。
 		 *
-		 * @return 要素配列の末尾を指すイテレータ。
+		 * @return 配列の末尾を指すイテレータ。
 		 */
 		ConstIterator getTailConstIterator() const;
 
@@ -88,7 +91,7 @@ namespace openriichi
 		 *
 		 * @param[in] index 位置。
 		 * @return 要素。
-		 * @note 要素配列の範囲外を位置に指定した場合の動作は，未定義である。
+		 * @note 配列の範囲外を位置に指定した場合の動作は，未定義である。
 		 */
 		const T &get(size_t index) const;
 
@@ -96,7 +99,7 @@ namespace openriichi
 		 * 先頭にある要素を返す。
 		 *
 		 * @return 要素。
-		 * @note 要素配列が空であった場合の動作は，未定義である。
+		 * @note 配列が空であった場合の動作は，未定義である。
 		 */
 		const T &getFirst() const;
 
@@ -104,7 +107,7 @@ namespace openriichi
 		 * 末尾にある要素を返す。
 		 *
 		 * @return 要素。
-		 * @note 要素配列が空であった場合の動作は，未定義である。
+		 * @note 配列が空であった場合の動作は，未定義である。
 		 */
 		const T &getLast() const;
 
@@ -127,7 +130,7 @@ namespace openriichi
 		 *
 		 * @param[in] index 位置。
 		 * @param[in] element 要素。
-		 * @note 要素配列の範囲外を位置に指定した場合の動作は，未定義である。
+		 * @note 配列の範囲外を位置に指定した場合の動作は，未定義である。
 		 */
 		void set(size_t index, const T &element);
 
@@ -135,7 +138,7 @@ namespace openriichi
 		 * 末尾に要素を追加する。
 		 *
 		 * @param[in] element 要素。
-		 * @note 手要素の要素個数が既に最大個数であった場合の動作は，未定義である。
+		 * @note 配列の要素個数が既に最大個数であった場合の動作は，未定義である。
 		 */
 		void add(const T &element);
 
@@ -145,8 +148,8 @@ namespace openriichi
 		 * @param[in] iterator 位置。
 		 * @param[in] element 要素。
 		 * @return 挿入した要素を指すイテレータ。
-		 * @note 要素配列の範囲外を位置に指定した場合の動作は，未定義である。
-		 * @note 手要素の要素個数が既に最大個数であった場合の動作は，未定義である。
+		 * @note 配列の範囲外を位置に指定した場合の動作は，未定義である。
+		 * @note 配列の要素個数が既に最大個数であった場合の動作は，未定義である。
 		 */
 		Iterator insert(Iterator iterator, const T &element);
 
@@ -155,8 +158,8 @@ namespace openriichi
 		 *
 		 * @param[in] index 位置。
 		 * @param[in] element 要素。
-		 * @note 要素配列の範囲外を位置に指定した場合の動作は，未定義である。
-		 * @note 手要素の要素個数が既に最大個数であった場合の動作は，未定義である。
+		 * @note 配列の範囲外を位置に指定した場合の動作は，未定義である。
+		 * @note 配列の要素個数が既に最大個数であった場合の動作は，未定義である。
 		 */
 		void insert(size_t index, const T &element);
 
@@ -165,8 +168,8 @@ namespace openriichi
 		 *
 		 * @param[in] iterator 位置。
 		 * @return 削除した要素の次の要素を指すイテレータ。
-		 * @note 要素配列の範囲外を位置に指定した場合の動作は，未定義である。
-		 * @note 手要素の要素個数が既に最大個数であった場合の動作は，未定義である。
+		 * @note 配列の範囲外を位置に指定した場合の動作は，未定義である。
+		 * @note 配列の要素個数が既に最大個数であった場合の動作は，未定義である。
 		 */
 		Iterator remove(Iterator iterator);
 
@@ -174,8 +177,8 @@ namespace openriichi
 		 * 指定された位置にある要素を削除する。
 		 *
 		 * @param[in] index 位置。
-		 * @note 要素配列の範囲外を位置に指定した場合の動作は，未定義である。
-		 * @note 手要素の要素個数が既に最大個数であった場合の動作は，未定義である。
+		 * @note 配列の範囲外を位置に指定した場合の動作は，未定義である。
+		 * @note 配列の要素個数が既に最大個数であった場合の動作は，未定義である。
 		 */
 		void remove(size_t index);
 
@@ -311,7 +314,7 @@ namespace openriichi
 
 		// 挿入位置以降にある要素を一つ後ろにずらす。
 		if (iterator < m_elements.begin() + m_elementsSize) {
-			auto headIt = m_elements.begin();		// 要素配列の先頭を指すイテレータ。
+			auto headIt = m_elements.begin();		// 配列の先頭を指すイテレータ。
 
 			for (auto it = headIt + m_elementsSize; it >= iterator && it > headIt; --it) {
 				*it = *(it - 1);
