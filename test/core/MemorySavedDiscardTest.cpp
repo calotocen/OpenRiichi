@@ -63,4 +63,28 @@ namespace openriichi
 		ASSERT_EQ(true, discard5.isRiichiDeclared());
 		ASSERT_EQ(true, discard5.isTaken());
 	}
+
+	// 捨て牌の比較をテストする。
+	TEST_F(MemorySavedDiscardTest, testEqualsAndNotEquals)
+	{
+		MemorySavedDiscard discard1;
+		MemorySavedDiscard discard2;
+		MemorySavedDiscard discard3(Tile(TileDesigns::BAMBOO, 1), DiscardSources::DRAWED);
+		MemorySavedDiscard discard4(Tile(), DiscardSources::HELD);
+		MemorySavedDiscard discard5(Tile(), DiscardSources::DRAWED, true, false);
+		MemorySavedDiscard discard6(Tile(), DiscardSources::DRAWED, false, true);
+
+		ASSERT_TRUE(discard1 == discard1);
+		ASSERT_FALSE(discard1 != discard1);
+		ASSERT_TRUE(discard1 == discard2);
+		ASSERT_FALSE(discard1 != discard2);
+		ASSERT_FALSE(discard1 == discard3);
+		ASSERT_TRUE(discard1 != discard3);
+		ASSERT_FALSE(discard1 == discard4);
+		ASSERT_TRUE(discard1 != discard4);
+		ASSERT_FALSE(discard1 == discard5);
+		ASSERT_TRUE(discard1 != discard5);
+		ASSERT_FALSE(discard1 == discard6);
+		ASSERT_TRUE(discard1 != discard6);
+	}
 }

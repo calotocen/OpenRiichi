@@ -85,7 +85,7 @@ namespace openriichi
 
 	private:
 		/**
-		 * 捨て牌の属性を表す値。
+		 * 捨て牌属性値。
 		 * 値の構成は次の通りである (ビットの番号は最上位を 1 番目，最下位を 8 番目とする)。
 		 *     - 1 ～ 4 ビット目 ... 予約 (常に 0)。
 		 *     - 5 ～ 6 ビット目 ... 捨て元。
@@ -118,6 +118,24 @@ namespace openriichi
 		 */
 		MemorySavedDiscard(const Tile &tile, const DiscardSource &source, bool riichiDeclared = false, bool taken = false);
 
+
+	public:
+		/**
+		 * 他の捨て牌と等しいか調べる。
+		 *
+		 * @param[in] other 他の捨て牌。
+		 */
+		bool operator==(const MemorySavedDiscard &other) const;
+
+		/**
+		 * 他の捨て牌と等しくないか調べる。
+		 *
+		 * @param[in] other 他の捨て牌。
+		 */
+		bool operator!=(const MemorySavedDiscard &other) const;
+
+
+	public:
 		/**
 		 * 牌を返す。
 		 *

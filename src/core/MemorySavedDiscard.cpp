@@ -59,6 +59,25 @@ MemorySavedDiscard::MemorySavedDiscard(const Tile &tile, const DiscardSource & s
 }
 
 
+bool MemorySavedDiscard::operator==(const MemorySavedDiscard & other) const
+{
+	// 自分自身との比較であれば，true を返す。
+	if (this == &other)
+	{
+		return true;
+	}
+
+	// 捨て牌属性値と捨て牌を比較して，その結果を返す。
+	return m_value == other.m_value && m_tile == other.m_tile;
+}
+
+
+bool MemorySavedDiscard::operator!=(const MemorySavedDiscard & other) const
+{
+	return !(*this == other);
+}
+
+
 const Tile &MemorySavedDiscard::getTile() const
 {
 	return m_tile;
