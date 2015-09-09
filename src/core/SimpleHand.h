@@ -62,6 +62,22 @@ namespace openriichi
 
 	public:
 		/**
+		 * 他の手牌と等しいか調べる。
+		 *
+		 * @param[in] other 他の手牌。
+		 */
+		bool operator==(const SimpleHand &other) const;
+
+		/**
+		 * 他の手牌と等しくないか調べる。
+		 *
+		 * @param[in] other 他の手牌。
+		 */
+		bool operator!=(const SimpleHand &other) const;
+
+
+	public:
+		/**
 		 * 手牌が空であるか調べる。
 		 *
 		 * @retval true 手牌は空であった。

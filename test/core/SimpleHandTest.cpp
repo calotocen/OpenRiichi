@@ -39,4 +39,32 @@ namespace openriichi
 		SimpleHand::Sets &sets = hand.sets();
 		ASSERT_EQ(SimpleHand::Sets(), sets);
 	}
+
+	// 手牌の比較をテストする。
+	TEST_F(SimpleHandTest, testEqualsAndNotEquals)
+	{
+		SimpleHand hand1;
+		SimpleHand hand2;
+
+		ASSERT_TRUE(hand1 == hand1);
+		ASSERT_FALSE(hand1 != hand1);
+		ASSERT_TRUE(hand1 == hand2);
+		ASSERT_FALSE(hand1 != hand2);
+
+		hand1.tiles().add(Tile());
+		ASSERT_FALSE(hand1 == hand2);
+		ASSERT_TRUE(hand1 != hand2);
+
+		hand2.tiles().add(Tile());
+		ASSERT_TRUE(hand1 == hand2);
+		ASSERT_FALSE(hand1 != hand2);
+
+		hand1.sets().add(Set());
+		ASSERT_FALSE(hand1 == hand2);
+		ASSERT_TRUE(hand1 != hand2);
+
+		hand2.sets().add(Set());
+		ASSERT_TRUE(hand1 == hand2);
+		ASSERT_FALSE(hand1 != hand2);
+	}
 }

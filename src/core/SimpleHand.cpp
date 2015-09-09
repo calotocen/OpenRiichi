@@ -28,6 +28,25 @@ SimpleHand::SimpleHand()
 }
 
 
+bool SimpleHand::operator==(const SimpleHand & other) const
+{
+	// 自分自身との比較であれば，true を返す。
+	if (this == &other)
+	{
+		return true;
+	}
+
+	// 牌配列と面子配列を比較して，その結果を返す。
+	return m_tiles == other.m_tiles && m_sets == other.m_sets;
+}
+
+
+bool SimpleHand::operator!=(const SimpleHand & other) const
+{
+	return !(*this == other);
+}
+
+
 bool SimpleHand::isEmpty() const
 {
 	bool returnValue = m_tiles.isEmpty() && m_sets.isEmpty();		// 戻り値。
