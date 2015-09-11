@@ -27,8 +27,8 @@
     <ClCompile Include="..\..\..\..\test\core\MeldTypesTest.cpp" />
     <ClCompile Include="..\..\..\..\test\core\MemorySavedDiscardTest.cpp" />
     <ClCompile Include="..\..\..\..\test\core\MemorySavedRiichiStatusTest.cpp" />
+    <ClCompile Include="..\..\..\..\test\core\SetTest.cpp" />
     <ClCompile Include="..\..\..\..\test\core\SimpleHandTest.cpp" />
-    <ClCompile Include="..\..\..\..\test\core\MemorySavedSetTest.cpp" />
     <ClCompile Include="..\..\..\..\test\core\SetArrangementsTest.cpp" />
     <ClCompile Include="..\..\..\..\test\core\SimplePlayerInfoTest.cpp" />
     <ClCompile Include="..\..\..\..\test\core\TileAttributesTest.cpp" />

@@ -13,165 +13,381 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
+#include <vector>
 #include <gtest/gtest.h>
-#include <MeldedKongTypes.h>
-#include <MeldTypes.h>
-#include <MemorySavedSet.h>
-#include <SetArrangements.h>
-#include <Tile.h>
+#include <Set.h>
 #include <Tiles.h>
+
+
+using namespace std;
 
 
 namespace openriichi
 {
-	class MemorySavedSetTest : public ::testing::Test {};
-
-	/// インスタンスのサイズをテストする。
-	TEST_F(MemorySavedSetTest, testSizeOfInstance)
+	class SetTest : public ::testing::Test
 	{
-		MemorySavedSet chow;
-		ASSERT_EQ(6, sizeof(chow));
+	public:
+		Set P1P2P3;
+		Set P1P2P3R;
+		Set P1P2P3_L;
+		Set S1S2S3;
+		Set S7S8S9;
+		Set S7S8S9_L;
+		Set M7M8M9;
+		Set P1P1;
+		Set S1S1;
+		Set P1P1P1;
+		Set P1P1P1_L;
+		Set M1M1M1;
+		Set TNTNTN_A;
+		Set TNTNTN_R;
+		Set P1P1P1P1;
+		Set P1P1P1P1_LL;
+		Set P1P1P1P1_BL;
+
+	public:
+		SetTest()
+			: P1P2P3(P1, P2, P3)
+			, P1P2P3R(P1, P2, Tile(TileDesigns::CIRCLES, 3, TileAttributes::RED))
+			, P1P2P3_L(P1, P2, P3, MeldTypes::LEFT)
+			, S1S2S3(S1, S2, S3)
+			, S7S8S9(S7, S8, S9)
+			, S7S8S9_L(S7, S8, S9, MeldTypes::LEFT)
+			, M7M8M9(M7, M8, M9)
+			, P1P1(P1, P1)
+			, S1S1(S1, S1)
+			, P1P1P1(P1, P1, P1)
+			, P1P1P1_L(P1, P1, P1, MeldTypes::LEFT)
+			, M1M1M1(M1, M1, M1)
+			, TNTNTN_A(TN, TN, TN, MeldTypes::ACROSS)
+			, TNTNTN_R(TN, TN, TN, MeldTypes::RIGHT)
+			, P1P1P1P1(P1, P1, P1, P1)
+			, P1P1P1P1_LL(P1, P1, P1, P1, MeldedKongTypes::LITTLE, MeldTypes::LEFT)
+			, P1P1P1P1_BL(P1, P1, P1, P1, MeldedKongTypes::BIG, MeldTypes::LEFT)
+		{}
+	};
+
+	/// getArrangement 関数をテストする。
+	TEST_F(SetTest, testGetArrangement)
+	{
+		ASSERT_EQ(SetArrangements::CHOW, P1P2P3.getArrangement());
+		ASSERT_EQ(SetArrangements::CHOW, P1P2P3R.getArrangement());
+		ASSERT_EQ(SetArrangements::CHOW, P1P2P3_L.getArrangement());
+		ASSERT_EQ(SetArrangements::CHOW, S1S2S3.getArrangement());
+		ASSERT_EQ(SetArrangements::CHOW, S7S8S9.getArrangement());
+		ASSERT_EQ(SetArrangements::CHOW, S7S8S9_L.getArrangement());
+		ASSERT_EQ(SetArrangements::CHOW, M7M8M9.getArrangement());
+		ASSERT_EQ(SetArrangements::PAIR, P1P1.getArrangement());
+		ASSERT_EQ(SetArrangements::PAIR, S1S1.getArrangement());
+		ASSERT_EQ(SetArrangements::PUNG, P1P1P1.getArrangement());
+		ASSERT_EQ(SetArrangements::PUNG, P1P1P1_L.getArrangement());
+		ASSERT_EQ(SetArrangements::PUNG, M1M1M1.getArrangement());
+		ASSERT_EQ(SetArrangements::PUNG, TNTNTN_A.getArrangement());
+		ASSERT_EQ(SetArrangements::PUNG, TNTNTN_R.getArrangement());
+		ASSERT_EQ(SetArrangements::KONG, P1P1P1P1.getArrangement());
+		ASSERT_EQ(SetArrangements::KONG, P1P1P1P1_LL.getArrangement());
+		ASSERT_EQ(SetArrangements::KONG, P1P1P1P1_BL.getArrangement());
 	}
 
-	/// 順子をテストする。
-	TEST_F(MemorySavedSetTest, testChow)
+	/// getMeldType 関数をテストする。
+	TEST_F(SetTest, testGetMeldType)
 	{
-		MemorySavedSet concealedChow(P1, P2, P3);
-		ASSERT_EQ(SetArrangements::CHOW, concealedChow.getArrangement());
-		ASSERT_EQ(MeldTypes::NONE, concealedChow.getMeldType());
-		ASSERT_EQ(MeldedKongTypes::NO, concealedChow.getMeldedKongType());
-		ASSERT_EQ((MemorySavedSet::Tiles{ P1, P2, P3 }), concealedChow.getTiles());
-		ASSERT_TRUE(concealedChow.isChow());
-		ASSERT_FALSE(concealedChow.isPair());
-		ASSERT_FALSE(concealedChow.isPung());
-		ASSERT_FALSE(concealedChow.isKong());
-		ASSERT_TRUE(concealedChow.isConcealed());
-		ASSERT_FALSE(concealedChow.isMelded());
-		ASSERT_TRUE(concealedChow == MemorySavedSet(P1, P2, P3));
-		ASSERT_FALSE(concealedChow == MemorySavedSet(P1, P1));
-		ASSERT_FALSE(concealedChow == MemorySavedSet(P1, P2, P3, MeldTypes::LEFT));
-		ASSERT_FALSE(concealedChow == MemorySavedSet(S1, S2, S3));
-		ASSERT_FALSE(concealedChow != MemorySavedSet(P1, P2, P3));
-		ASSERT_TRUE(concealedChow != MemorySavedSet(P1, P1));
-		ASSERT_TRUE(concealedChow != MemorySavedSet(P1, P2, P3, MeldTypes::LEFT));
-		ASSERT_TRUE(concealedChow != MemorySavedSet(S1, S2, S3));
-
-		MemorySavedSet meldedChow(S7, S8, S9, MeldTypes::LEFT);
-		ASSERT_EQ(SetArrangements::CHOW, meldedChow.getArrangement());
-		ASSERT_EQ(MeldTypes::LEFT, meldedChow.getMeldType());
-		ASSERT_EQ(MeldedKongTypes::NO, meldedChow.getMeldedKongType());
-		ASSERT_EQ((MemorySavedSet::Tiles{ S7, S8, S9 }), meldedChow.getTiles());
-		ASSERT_TRUE(meldedChow.isChow());
-		ASSERT_FALSE(meldedChow.isPair());
-		ASSERT_FALSE(meldedChow.isPung());
-		ASSERT_FALSE(meldedChow.isKong());
-		ASSERT_FALSE(meldedChow.isConcealed());
-		ASSERT_TRUE(meldedChow.isMelded());
+		ASSERT_EQ(MeldTypes::NONE, P1P2P3.getMeldType());
+		ASSERT_EQ(MeldTypes::NONE, P1P2P3R.getMeldType());
+		ASSERT_EQ(MeldTypes::LEFT, P1P2P3_L.getMeldType());
+		ASSERT_EQ(MeldTypes::NONE, S1S2S3.getMeldType());
+		ASSERT_EQ(MeldTypes::NONE, S7S8S9.getMeldType());
+		ASSERT_EQ(MeldTypes::LEFT, S7S8S9_L.getMeldType());
+		ASSERT_EQ(MeldTypes::NONE, M7M8M9.getMeldType());
+		ASSERT_EQ(MeldTypes::NONE, P1P1.getMeldType());
+		ASSERT_EQ(MeldTypes::NONE, S1S1.getMeldType());
+		ASSERT_EQ(MeldTypes::NONE, P1P1P1.getMeldType());
+		ASSERT_EQ(MeldTypes::LEFT, P1P1P1_L.getMeldType());
+		ASSERT_EQ(MeldTypes::NONE, M1M1M1.getMeldType());
+		ASSERT_EQ(MeldTypes::ACROSS, TNTNTN_A.getMeldType());
+		ASSERT_EQ(MeldTypes::RIGHT, TNTNTN_R.getMeldType());
+		ASSERT_EQ(MeldTypes::NONE, P1P1P1P1.getMeldType());
+		ASSERT_EQ(MeldTypes::LEFT, P1P1P1P1_LL.getMeldType());
+		ASSERT_EQ(MeldTypes::LEFT, P1P1P1P1_BL.getMeldType());
 	}
 
-	/// 対子をテストする。
-	TEST_F(MemorySavedSetTest, testPair)
+	/// getMeldedKongType 関数をテストする。
+	TEST_F(SetTest, testGetMeldedKongType)
 	{
-		MemorySavedSet concealedPair(P1, P1);
-		ASSERT_EQ(SetArrangements::PAIR, concealedPair.getArrangement());
-		ASSERT_EQ(MeldTypes::NONE, concealedPair.getMeldType());
-		ASSERT_EQ(MeldedKongTypes::NO, concealedPair.getMeldedKongType());
-		ASSERT_EQ((MemorySavedSet::Tiles{ P1, P1 }), concealedPair.getTiles());
-		ASSERT_FALSE(concealedPair.isChow());
-		ASSERT_TRUE(concealedPair.isPair());
-		ASSERT_FALSE(concealedPair.isPung());
-		ASSERT_FALSE(concealedPair.isKong());
-		ASSERT_TRUE(concealedPair.isConcealed());
-		ASSERT_FALSE(concealedPair.isMelded());
-		ASSERT_TRUE(concealedPair == MemorySavedSet(P1, P1));
-		ASSERT_FALSE(concealedPair == MemorySavedSet(P1, P1, P1));
-		ASSERT_FALSE(concealedPair == MemorySavedSet(S1, S1));
-		ASSERT_FALSE(concealedPair != MemorySavedSet(P1, P1));
-		ASSERT_TRUE(concealedPair != MemorySavedSet(P1, P1, P1));
-		ASSERT_TRUE(concealedPair != MemorySavedSet(S1, S1));
+		ASSERT_EQ(MeldedKongTypes::NO, P1P2P3.getMeldedKongType());
+		ASSERT_EQ(MeldedKongTypes::NO, P1P2P3R.getMeldedKongType());
+		ASSERT_EQ(MeldedKongTypes::NO, P1P2P3_L.getMeldedKongType());
+		ASSERT_EQ(MeldedKongTypes::NO, S1S2S3.getMeldedKongType());
+		ASSERT_EQ(MeldedKongTypes::NO, S7S8S9.getMeldedKongType());
+		ASSERT_EQ(MeldedKongTypes::NO, S7S8S9_L.getMeldedKongType());
+		ASSERT_EQ(MeldedKongTypes::NO, M7M8M9.getMeldedKongType());
+		ASSERT_EQ(MeldedKongTypes::NO, P1P1.getMeldedKongType());
+		ASSERT_EQ(MeldedKongTypes::NO, S1S1.getMeldedKongType());
+		ASSERT_EQ(MeldedKongTypes::NO, P1P1P1.getMeldedKongType());
+		ASSERT_EQ(MeldedKongTypes::NO, P1P1P1_L.getMeldedKongType());
+		ASSERT_EQ(MeldedKongTypes::NO, M1M1M1.getMeldedKongType());
+		ASSERT_EQ(MeldedKongTypes::NO, TNTNTN_A.getMeldedKongType());
+		ASSERT_EQ(MeldedKongTypes::NO, TNTNTN_R.getMeldedKongType());
+		ASSERT_EQ(MeldedKongTypes::NO, P1P1P1P1.getMeldedKongType());
+		ASSERT_EQ(MeldedKongTypes::LITTLE, P1P1P1P1_LL.getMeldedKongType());
+		ASSERT_EQ(MeldedKongTypes::BIG, P1P1P1P1_BL.getMeldedKongType());
 	}
 
-	/// 刻子をテストする。
-	TEST_F(MemorySavedSetTest, testPung)
+	/// get(Tiles()) 関数をテストする。
+	TEST_F(SetTest, testGetTiles)
 	{
-		MemorySavedSet concealedPung(P1, P1, P1);
-		ASSERT_EQ(SetArrangements::PUNG, concealedPung.getArrangement());
-		ASSERT_EQ(MeldTypes::NONE, concealedPung.getMeldType());
-		ASSERT_EQ(MeldedKongTypes::NO, concealedPung.getMeldedKongType());
-		ASSERT_EQ((MemorySavedSet::Tiles{ P1, P1, P1 }), concealedPung.getTiles());
-		ASSERT_FALSE(concealedPung.isChow());
-		ASSERT_FALSE(concealedPung.isPair());
-		ASSERT_TRUE(concealedPung.isPung());
-		ASSERT_FALSE(concealedPung.isKong());
-		ASSERT_TRUE(concealedPung.isConcealed());
-		ASSERT_FALSE(concealedPung.isMelded());
-		ASSERT_TRUE(concealedPung == MemorySavedSet(P1, P1, P1));
-		ASSERT_FALSE(concealedPung == MemorySavedSet(P1, P1, P1, P1));
-		ASSERT_FALSE(concealedPung == MemorySavedSet(P1, P1, P1, MeldTypes::LEFT));
-		ASSERT_FALSE(concealedPung == MemorySavedSet(S1, S1, S1));
-		ASSERT_FALSE(concealedPung != MemorySavedSet(P1, P1, P1));
-		ASSERT_TRUE(concealedPung != MemorySavedSet(P1, P1, P1, P1));
-		ASSERT_TRUE(concealedPung != MemorySavedSet(P1, P1, P1, MeldTypes::LEFT));
-		ASSERT_TRUE(concealedPung != MemorySavedSet(S1, S1, S1));
-
-		MemorySavedSet meldedPung(S9, S9, S9, MeldTypes::LEFT);
-		ASSERT_EQ(SetArrangements::PUNG, meldedPung.getArrangement());
-		ASSERT_EQ(MeldTypes::LEFT, meldedPung.getMeldType());
-		ASSERT_EQ(MeldedKongTypes::NO, meldedPung.getMeldedKongType());
-		ASSERT_EQ((MemorySavedSet::Tiles{ S9, S9, S9 }), meldedPung.getTiles());
-		ASSERT_FALSE(meldedPung.isChow());
-		ASSERT_FALSE(meldedPung.isPair());
-		ASSERT_TRUE(meldedPung.isPung());
-		ASSERT_FALSE(meldedPung.isKong());
-		ASSERT_FALSE(meldedPung.isConcealed());
-		ASSERT_TRUE(meldedPung.isMelded());
+		ASSERT_EQ((Set::Tiles{ P1, P2, P3 }), P1P2P3.getTiles());
+		ASSERT_EQ((Set::Tiles{ P1, P2, Tile(TileDesigns::CIRCLES, 3, TileAttributes::RED) }), P1P2P3R.getTiles());
+		ASSERT_EQ((Set::Tiles{ P1, P2, P3 }), P1P2P3_L.getTiles());
+		ASSERT_EQ((Set::Tiles{ S1, S2, S3 }), S1S2S3.getTiles());
+		ASSERT_EQ((Set::Tiles{ S7, S8, S9 }), S7S8S9.getTiles());
+		ASSERT_EQ((Set::Tiles{ S7, S8, S9 }), S7S8S9_L.getTiles());
+		ASSERT_EQ((Set::Tiles{ M7, M8, M9 }), M7M8M9.getTiles());
+		ASSERT_EQ((Set::Tiles{ P1, P1 }), P1P1.getTiles());
+		ASSERT_EQ((Set::Tiles{ S1, S1 }), S1S1.getTiles());
+		ASSERT_EQ((Set::Tiles{ P1, P1, P1 }), P1P1P1.getTiles());
+		ASSERT_EQ((Set::Tiles{ P1, P1, P1 }), P1P1P1_L.getTiles());
+		ASSERT_EQ((Set::Tiles{ M1, M1, M1 }), M1M1M1.getTiles());
+		ASSERT_EQ((Set::Tiles{ TN, TN, TN }), TNTNTN_A.getTiles());
+		ASSERT_EQ((Set::Tiles{ TN, TN, TN }), TNTNTN_R.getTiles());
+		ASSERT_EQ((Set::Tiles{ P1, P1, P1, P1 }), P1P1P1P1.getTiles());
+		ASSERT_EQ((Set::Tiles{ P1, P1, P1, P1 }), P1P1P1P1_LL.getTiles());
+		ASSERT_EQ((Set::Tiles{ P1, P1, P1, P1 }), P1P1P1P1_BL.getTiles());
 	}
 
-	/// 槓子をテストする。
-	TEST_F(MemorySavedSetTest, testKong)
+	/// isChow 関数をテストする。
+	TEST_F(SetTest, testIsChow)
 	{
-		MemorySavedSet concealedKong(P1, P1, P1, P1);
-		ASSERT_EQ(SetArrangements::KONG, concealedKong.getArrangement());
-		ASSERT_EQ(MeldTypes::NONE, concealedKong.getMeldType());
-		ASSERT_EQ(MeldedKongTypes::NO, concealedKong.getMeldedKongType());
-		ASSERT_EQ((MemorySavedSet::Tiles{ P1, P1, P1, P1 }), concealedKong.getTiles());
-		ASSERT_FALSE(concealedKong.isChow());
-		ASSERT_FALSE(concealedKong.isPair());
-		ASSERT_FALSE(concealedKong.isPung());
-		ASSERT_TRUE(concealedKong.isKong());
-		ASSERT_TRUE(concealedKong.isConcealed());
-		ASSERT_FALSE(concealedKong.isMelded());
-		ASSERT_TRUE(concealedKong == MemorySavedSet(P1, P1, P1, P1));
-		ASSERT_FALSE(concealedKong == MemorySavedSet(P1, P2, P3));
-		ASSERT_FALSE(concealedKong == MemorySavedSet(P1, P1, P1, P1, MeldedKongTypes::LITTLE, MeldTypes::LEFT));
-		ASSERT_FALSE(concealedKong == MemorySavedSet(S1, S1, S1, S1));
-		ASSERT_FALSE(concealedKong != MemorySavedSet(P1, P1, P1, P1));
-		ASSERT_TRUE(concealedKong != MemorySavedSet(P1, P2, P3));
-		ASSERT_TRUE(concealedKong != MemorySavedSet(P1, P1, P1, P1, MeldedKongTypes::LITTLE, MeldTypes::LEFT));
-		ASSERT_TRUE(concealedKong != MemorySavedSet(S1, S1, S1, S1));
+		ASSERT_TRUE(P1P2P3.isChow());
+		ASSERT_TRUE(P1P2P3R.isChow());
+		ASSERT_TRUE(P1P2P3_L.isChow());
+		ASSERT_TRUE(S1S2S3.isChow());
+		ASSERT_TRUE(S7S8S9.isChow());
+		ASSERT_TRUE(S7S8S9_L.isChow());
+		ASSERT_TRUE(M7M8M9.isChow());
+		ASSERT_FALSE(P1P1.isChow());
+		ASSERT_FALSE(S1S1.isChow());
+		ASSERT_FALSE(P1P1P1.isChow());
+		ASSERT_FALSE(P1P1P1_L.isChow());
+		ASSERT_FALSE(M1M1M1.isChow());
+		ASSERT_FALSE(TNTNTN_A.isChow());
+		ASSERT_FALSE(TNTNTN_R.isChow());
+		ASSERT_FALSE(P1P1P1P1.isChow());
+		ASSERT_FALSE(P1P1P1P1_LL.isChow());
+		ASSERT_FALSE(P1P1P1P1_BL.isChow());
+	}
 
-		MemorySavedSet littleMeldedKong(S5, S5, S5, S5R, MeldedKongTypes::LITTLE, MeldTypes::ACROSS);
-		ASSERT_EQ(SetArrangements::KONG, littleMeldedKong.getArrangement());
-		ASSERT_EQ(MeldTypes::ACROSS, littleMeldedKong.getMeldType());
-		ASSERT_EQ(MeldedKongTypes::LITTLE, littleMeldedKong.getMeldedKongType());
-		ASSERT_EQ((MemorySavedSet::Tiles{ S5, S5, S5, S5R }), littleMeldedKong.getTiles());
-		ASSERT_FALSE(littleMeldedKong.isChow());
-		ASSERT_FALSE(littleMeldedKong.isPair());
-		ASSERT_FALSE(littleMeldedKong.isPung());
-		ASSERT_TRUE(littleMeldedKong.isKong());
-		ASSERT_FALSE(littleMeldedKong.isConcealed());
-		ASSERT_TRUE(littleMeldedKong.isMelded());
+	/// isPair 関数をテストする。
+	TEST_F(SetTest, testIsPair)
+	{
+		ASSERT_FALSE(P1P2P3.isPair());
+		ASSERT_FALSE(P1P2P3R.isPair());
+		ASSERT_FALSE(P1P2P3_L.isPair());
+		ASSERT_FALSE(S1S2S3.isPair());
+		ASSERT_FALSE(S7S8S9.isPair());
+		ASSERT_FALSE(S7S8S9_L.isPair());
+		ASSERT_FALSE(M7M8M9.isPair());
+		ASSERT_TRUE(P1P1.isPair());
+		ASSERT_TRUE(S1S1.isPair());
+		ASSERT_FALSE(P1P1P1.isPair());
+		ASSERT_FALSE(P1P1P1_L.isPair());
+		ASSERT_FALSE(M1M1M1.isPair());
+		ASSERT_FALSE(TNTNTN_A.isPair());
+		ASSERT_FALSE(TNTNTN_R.isPair());
+		ASSERT_FALSE(P1P1P1P1.isPair());
+		ASSERT_FALSE(P1P1P1P1_LL.isPair());
+		ASSERT_FALSE(P1P1P1P1_BL.isPair());
+	}
 
-		MemorySavedSet bigMeldedKong(M9, M9, M9, M9, MeldedKongTypes::BIG, MeldTypes::RIGHT);
-		ASSERT_EQ(SetArrangements::KONG, bigMeldedKong.getArrangement());
-		ASSERT_EQ(MeldTypes::RIGHT, bigMeldedKong.getMeldType());
-		ASSERT_EQ(MeldedKongTypes::BIG, bigMeldedKong.getMeldedKongType());
-		ASSERT_EQ((MemorySavedSet::Tiles{ M9, M9, M9, M9 }), bigMeldedKong.getTiles());
-		ASSERT_FALSE(bigMeldedKong.isChow());
-		ASSERT_FALSE(bigMeldedKong.isPair());
-		ASSERT_FALSE(bigMeldedKong.isPung());
-		ASSERT_TRUE(bigMeldedKong.isKong());
-		ASSERT_FALSE(bigMeldedKong.isConcealed());
-		ASSERT_TRUE(bigMeldedKong.isMelded());
+	/// isPung 関数をテストする。
+	TEST_F(SetTest, testIsPung)
+	{
+		ASSERT_FALSE(P1P2P3.isPung());
+		ASSERT_FALSE(P1P2P3R.isPung());
+		ASSERT_FALSE(P1P2P3_L.isPung());
+		ASSERT_FALSE(S1S2S3.isPung());
+		ASSERT_FALSE(S7S8S9.isPung());
+		ASSERT_FALSE(S7S8S9_L.isPung());
+		ASSERT_FALSE(M7M8M9.isPung());
+		ASSERT_FALSE(P1P1.isPung());
+		ASSERT_FALSE(S1S1.isPung());
+		ASSERT_TRUE(P1P1P1.isPung());
+		ASSERT_TRUE(P1P1P1_L.isPung());
+		ASSERT_TRUE(M1M1M1.isPung());
+		ASSERT_TRUE(TNTNTN_A.isPung());
+		ASSERT_TRUE(TNTNTN_R.isPung());
+		ASSERT_FALSE(P1P1P1P1.isPung());
+		ASSERT_FALSE(P1P1P1P1_LL.isPung());
+		ASSERT_FALSE(P1P1P1P1_BL.isPung());
+	}
+
+	/// isKong 関数をテストする。
+	TEST_F(SetTest, testIsKong)
+	{
+		ASSERT_FALSE(P1P2P3.isKong());
+		ASSERT_FALSE(P1P2P3R.isKong());
+		ASSERT_FALSE(P1P2P3_L.isKong());
+		ASSERT_FALSE(S1S2S3.isKong());
+		ASSERT_FALSE(S7S8S9.isKong());
+		ASSERT_FALSE(S7S8S9_L.isKong());
+		ASSERT_FALSE(M7M8M9.isKong());
+		ASSERT_FALSE(P1P1.isKong());
+		ASSERT_FALSE(S1S1.isKong());
+		ASSERT_FALSE(P1P1P1.isKong());
+		ASSERT_FALSE(P1P1P1_L.isKong());
+		ASSERT_FALSE(M1M1M1.isKong());
+		ASSERT_FALSE(TNTNTN_A.isKong());
+		ASSERT_FALSE(TNTNTN_R.isKong());
+		ASSERT_TRUE(P1P1P1P1.isKong());
+		ASSERT_TRUE(P1P1P1P1_LL.isKong());
+		ASSERT_TRUE(P1P1P1P1_BL.isKong());
+	}
+
+	/// isConcealed 関数をテストする。
+	TEST_F(SetTest, testIsConcealed)
+	{
+		ASSERT_TRUE(P1P2P3.isConcealed());
+		ASSERT_TRUE(P1P2P3R.isConcealed());
+		ASSERT_FALSE(P1P2P3_L.isConcealed());
+		ASSERT_TRUE(S1S2S3.isConcealed());
+		ASSERT_TRUE(S7S8S9.isConcealed());
+		ASSERT_FALSE(S7S8S9_L.isConcealed());
+		ASSERT_TRUE(M7M8M9.isConcealed());
+		ASSERT_TRUE(P1P1.isConcealed());
+		ASSERT_TRUE(S1S1.isConcealed());
+		ASSERT_TRUE(P1P1P1.isConcealed());
+		ASSERT_FALSE(P1P1P1_L.isConcealed());
+		ASSERT_TRUE(M1M1M1.isConcealed());
+		ASSERT_FALSE(TNTNTN_A.isConcealed());
+		ASSERT_FALSE(TNTNTN_R.isConcealed());
+		ASSERT_TRUE(P1P1P1P1.isConcealed());
+		ASSERT_FALSE(P1P1P1P1_LL.isConcealed());
+		ASSERT_FALSE(P1P1P1P1_BL.isConcealed());
+	}
+
+	/// isMelded 関数をテストする。
+	TEST_F(SetTest, testIsMelded)
+	{
+		ASSERT_FALSE(P1P2P3.isMelded());
+		ASSERT_FALSE(P1P2P3R.isMelded());
+		ASSERT_TRUE(P1P2P3_L.isMelded());
+		ASSERT_FALSE(S1S2S3.isMelded());
+		ASSERT_FALSE(S7S8S9.isMelded());
+		ASSERT_TRUE(S7S8S9_L.isMelded());
+		ASSERT_FALSE(M7M8M9.isMelded());
+		ASSERT_FALSE(P1P1.isMelded());
+		ASSERT_FALSE(S1S1.isMelded());
+		ASSERT_FALSE(P1P1P1.isMelded());
+		ASSERT_TRUE(P1P1P1_L.isMelded());
+		ASSERT_FALSE(M1M1M1.isMelded());
+		ASSERT_TRUE(TNTNTN_A.isMelded());
+		ASSERT_TRUE(TNTNTN_R.isMelded());
+		ASSERT_FALSE(P1P1P1P1.isMelded());
+		ASSERT_TRUE(P1P1P1P1_LL.isMelded());
+		ASSERT_TRUE(P1P1P1P1_BL.isMelded());
+	}
+
+	/// == 演算子をテストする。
+	TEST_F(SetTest, testEquals)
+	{
+		// 自身と比較する。
+		ASSERT_TRUE(P1P2P3 == P1P2P3);
+		ASSERT_TRUE(P1P2P3R == P1P2P3R);
+		ASSERT_TRUE(P1P2P3_L == P1P2P3_L);
+		ASSERT_TRUE(S1S2S3 == S1S2S3);
+		ASSERT_TRUE(S7S8S9 == S7S8S9);
+		ASSERT_TRUE(S7S8S9_L == S7S8S9_L);
+		ASSERT_TRUE(M7M8M9 == M7M8M9);
+		ASSERT_TRUE(P1P1 == P1P1);
+		ASSERT_TRUE(S1S1 == S1S1);
+		ASSERT_TRUE(P1P1P1 == P1P1P1);
+		ASSERT_TRUE(P1P1P1_L == P1P1P1_L);
+		ASSERT_TRUE(M1M1M1 == M1M1M1);
+		ASSERT_TRUE(TNTNTN_A == TNTNTN_A);
+		ASSERT_TRUE(TNTNTN_R == TNTNTN_R);
+		ASSERT_TRUE(P1P1P1P1 == P1P1P1P1);
+		ASSERT_TRUE(P1P1P1P1_LL == P1P1P1P1_LL);
+		ASSERT_TRUE(P1P1P1P1_BL == P1P1P1P1_BL);
+
+		// 同じ牌と比較する。
+		ASSERT_TRUE(P1P2P3 == Set(P1, P2, P3));
+		ASSERT_TRUE(P1P2P3R == Set(P1, P2, Tile(TileDesigns::CIRCLES, 3, TileAttributes::RED)));
+		ASSERT_TRUE(P1P2P3_L == Set(P1, P2, P3, MeldTypes::LEFT));
+		ASSERT_TRUE(S1S2S3 == Set(S1, S2, S3));
+		ASSERT_TRUE(S7S8S9 == Set(S7, S8, S9));
+		ASSERT_TRUE(S7S8S9_L == Set(S7, S8, S9, MeldTypes::LEFT));
+		ASSERT_TRUE(M7M8M9 == Set(M7, M8, M9));
+		ASSERT_TRUE(P1P1 == Set(P1, P1));
+		ASSERT_TRUE(S1S1 == Set(S1, S1));
+		ASSERT_TRUE(P1P1P1 == Set(P1, P1, P1));
+		ASSERT_TRUE(P1P1P1_L == Set(P1, P1, P1, MeldTypes::LEFT));
+		ASSERT_TRUE(M1M1M1 == Set(M1, M1, M1));
+		ASSERT_TRUE(TNTNTN_A == Set(TN, TN, TN, MeldTypes::ACROSS));
+		ASSERT_TRUE(TNTNTN_R == Set(TN, TN, TN, MeldTypes::RIGHT));
+		ASSERT_TRUE(P1P1P1P1 == Set(P1, P1, P1, P1));
+		ASSERT_TRUE(P1P1P1P1_LL == Set(P1, P1, P1, P1, MeldedKongTypes::LITTLE, MeldTypes::LEFT));
+		ASSERT_TRUE(P1P1P1P1_BL == Set(P1, P1, P1, P1, MeldedKongTypes::BIG, MeldTypes::LEFT));
+
+		// 異なる牌と比較する。
+		vector<Set> sets{ P1P2P3, P1P2P3R, P1P2P3_L, S1S2S3, S7S8S9, S7S8S9_L, M7M8M9, P1P1, S1S1, P1P1P1, P1P1P1_L, M1M1M1, TNTNTN_A, TNTNTN_R, P1P1P1P1, P1P1P1P1_LL, P1P1P1P1_BL };
+		for (auto i = 0; i < sets.size(); ++i) {
+			for (auto j = 0; j < sets.size(); ++j) {
+				if (i != j) {
+					ASSERT_FALSE(sets[i] == sets[j]);
+				}
+			}
+		}
+	}
+
+	/// != 演算子をテストする。
+	TEST_F(SetTest, testNotEquals)
+	{
+		// 自身と比較する。
+		ASSERT_FALSE(P1P2P3 != P1P2P3);
+		ASSERT_FALSE(P1P2P3R != P1P2P3R);
+		ASSERT_FALSE(P1P2P3_L != P1P2P3_L);
+		ASSERT_FALSE(S1S2S3 != S1S2S3);
+		ASSERT_FALSE(S7S8S9 != S7S8S9);
+		ASSERT_FALSE(S7S8S9_L != S7S8S9_L);
+		ASSERT_FALSE(M7M8M9 != M7M8M9);
+		ASSERT_FALSE(P1P1 != P1P1);
+		ASSERT_FALSE(S1S1 != S1S1);
+		ASSERT_FALSE(P1P1P1 != P1P1P1);
+		ASSERT_FALSE(P1P1P1_L != P1P1P1_L);
+		ASSERT_FALSE(M1M1M1 != M1M1M1);
+		ASSERT_FALSE(TNTNTN_A != TNTNTN_A);
+		ASSERT_FALSE(TNTNTN_R != TNTNTN_R);
+		ASSERT_FALSE(P1P1P1P1 != P1P1P1P1);
+		ASSERT_FALSE(P1P1P1P1_LL != P1P1P1P1_LL);
+		ASSERT_FALSE(P1P1P1P1_BL != P1P1P1P1_BL);
+
+		// 同じ牌と比較する。
+		ASSERT_FALSE(P1P2P3 != Set(P1, P2, P3));
+		ASSERT_FALSE(P1P2P3R != Set(P1, P2, Tile(TileDesigns::CIRCLES, 3, TileAttributes::RED)));
+		ASSERT_FALSE(P1P2P3_L != Set(P1, P2, P3, MeldTypes::LEFT));
+		ASSERT_FALSE(S1S2S3 != Set(S1, S2, S3));
+		ASSERT_FALSE(S7S8S9 != Set(S7, S8, S9));
+		ASSERT_FALSE(S7S8S9_L != Set(S7, S8, S9, MeldTypes::LEFT));
+		ASSERT_FALSE(M7M8M9 != Set(M7, M8, M9));
+		ASSERT_FALSE(P1P1 != Set(P1, P1));
+		ASSERT_FALSE(S1S1 != Set(S1, S1));
+		ASSERT_FALSE(P1P1P1 != Set(P1, P1, P1));
+		ASSERT_FALSE(P1P1P1_L != Set(P1, P1, P1, MeldTypes::LEFT));
+		ASSERT_FALSE(M1M1M1 != Set(M1, M1, M1));
+		ASSERT_FALSE(TNTNTN_A != Set(TN, TN, TN, MeldTypes::ACROSS));
+		ASSERT_FALSE(TNTNTN_R != Set(TN, TN, TN, MeldTypes::RIGHT));
+		ASSERT_FALSE(P1P1P1P1 != Set(P1, P1, P1, P1));
+		ASSERT_FALSE(P1P1P1P1_LL != Set(P1, P1, P1, P1, MeldedKongTypes::LITTLE, MeldTypes::LEFT));
+		ASSERT_FALSE(P1P1P1P1_BL != Set(P1, P1, P1, P1, MeldedKongTypes::BIG, MeldTypes::LEFT));
+
+		// 異なる牌と比較する。
+		vector<Set> sets{ P1P2P3, P1P2P3R, P1P2P3_L, S1S2S3, S7S8S9, S7S8S9_L, M7M8M9, P1P1, S1S1, P1P1P1, P1P1P1_L, M1M1M1, TNTNTN_A, TNTNTN_R, P1P1P1P1, P1P1P1P1_LL, P1P1P1P1_BL };
+		for (auto i = 0; i < sets.size(); ++i) {
+			for (auto j = 0; j < sets.size(); ++j) {
+				if (i != j) {
+					ASSERT_TRUE(sets[i] != sets[j]);
+				}
+			}
+		}
 	}
 }

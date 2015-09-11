@@ -31,9 +31,6 @@
     <ClCompile Include="..\..\..\..\test\core\MeldedKongTypesTest.cpp">
       <Filter>OpenRiichiTest</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\..\..\test\core\MemorySavedSetTest.cpp">
-      <Filter>OpenRiichiTest</Filter>
-    </ClCompile>
     <ClCompile Include="..\..\..\..\test\core\SimpleHandTest.cpp">
       <Filter>OpenRiichiTest</Filter>
     </ClCompile>
@@ -59,6 +56,9 @@
       <Filter>OpenRiichiTest</Filter>
     </ClCompile>
     <ClCompile Include="..\..\..\..\test\core\TileTest.cpp">
+      <Filter>OpenRiichiTest</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\test\core\SetTest.cpp">
       <Filter>OpenRiichiTest</Filter>
     </ClCompile>
   </ItemGroup>
