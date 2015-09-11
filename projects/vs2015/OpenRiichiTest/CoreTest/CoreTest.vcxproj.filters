@@ -46,5 +46,11 @@
     <ClCompile Include="..\..\..\..\test\core\LimitedVectorTest.cpp">
       <Filter>OpenRiichiTest</Filter>
     </ClCompile>
+    <ClCompile Include="..\..\..\..\test\core\SimplePlayerInfoTest.cpp">
+      <Filter>OpenRiichiTest</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\test\core\MemorySavedRiichiStatusTest.cpp">
+      <Filter>OpenRiichiTest</Filter>
+    </ClCompile>
   </ItemGroup>
 </Project>
