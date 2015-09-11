@@ -20,6 +20,7 @@
 #include <array>
 #include <cassert>
 #include <cstdint>
+#include <initializer_list>
 
 
 namespace openriichi
@@ -57,6 +58,13 @@ namespace openriichi
 		 */
 		LimitedVector();
 
+		/**
+		 * 有限可変長配列を生成する。
+		 *
+		 * @param[in] list 初期値。
+		 */
+		LimitedVector(const std::initializer_list<T> &list);
+
 
 	public:
 		/**
@@ -72,6 +80,13 @@ namespace openriichi
 		 * @param[in] other 他の有限可変長配列。
 		 */
 		bool operator!=(const LimitedVector<T, size, SizeType> &other) const;
+
+		/**
+		 * 代入する。
+		 *
+		 * @param[in] list 代入値。
+		 */
+		LimitedVector<T, size, SizeType> &operator=(const std::initializer_list<T> &list);
 
 
 	public:
@@ -216,6 +231,19 @@ namespace openriichi
 
 
 	template<class T, size_t size, typename SizeType>
+	LimitedVector<T, size, SizeType>::LimitedVector(const std::initializer_list<T> &list)
+		: m_elements()
+		, m_elementsSize(static_cast<SizeType>(list.size()))
+	{
+		// デバッグ版の場合のみ，引数をチェックする。
+		assert(list.size() <= size);
+
+		// 要素を設定する。
+		std::copy(list.begin(), list.end(), m_elements.begin());
+	}
+
+
+	template<class T, size_t size, typename SizeType>
 	bool LimitedVector<T, size, SizeType>::operator==(const LimitedVector<T, size, SizeType> &other) const
 	{
 		// 自分自身との比較であれば，true を返す。
@@ -236,9 +264,23 @@ namespace openriichi
 
 
 	template<class T, size_t size, typename SizeType>
-	bool LimitedVector<T, size, SizeType>::operator!=(const LimitedVector<T, size, SizeType>& other) const
+	bool LimitedVector<T, size, SizeType>::operator!=(const LimitedVector<T, size, SizeType> &other) const
 	{
 		return !(*this == other);
+	}
+
+
+	template<class T, size_t size, typename SizeType>
+	LimitedVector<T, size, SizeType> &LimitedVector<T, size, SizeType>::operator=(const std::initializer_list<T> &list)
+	{
+		// デバッグ版の場合のみ，引数をチェックする。
+		assert(list.size() <= size);
+
+		// 要素を設定する。
+		std::copy(list.begin(), list.end(), m_elements.begin());
+		m_elementsSize = static_cast<SizeType>(list.size());
+
+		return *this;
 	}
 
 

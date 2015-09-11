@@ -445,4 +445,19 @@ namespace openriichi
 		ASSERT_TRUE(limitedVector1 == limitedVector2);
 		ASSERT_FALSE(limitedVector1 != limitedVector2);
 	}
+
+	// 初期化子を用いた生成／代入をテストする。
+	TEST_F(LimitedVectorTest, testUsingInitializerList)
+	{
+		LimitedVector<int, 10> limitedVector1{ 1, 2, 3 };
+		LimitedVector<int, 10> limitedVector2;
+
+		ASSERT_EQ(3, limitedVector1.count());
+		ASSERT_EQ(1, limitedVector1.get(0));
+		ASSERT_EQ(2, limitedVector1.get(1));
+		ASSERT_EQ(3, limitedVector1.get(2));
+
+		limitedVector2 = { 1, 2, 3 };
+		ASSERT_EQ(limitedVector1, limitedVector2);
+	}
 }
