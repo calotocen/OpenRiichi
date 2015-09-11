@@ -178,6 +178,29 @@ namespace openriichi
 		 */
 		MemorySavedTile(const TileDesign &design, int number, const TileAttribute &attribute = TileAttributes::NONE);
 
+		/**
+		 * 牌を生成する。
+		 *
+		 * @param[in] designId 図柄 ID。次の値を指定する。
+		 *                         - 筒子 ... 1
+		 *                         - 索子 ... 2
+		 *                         - 萬子 ... 3
+		 *                         - 東 ... 4
+		 *                         - 南 ... 5
+		 *                         - 西 ... 6
+		 *                         - 北 ... 7
+		 *                         - 中 ... 8
+		 *                         - 白 ... 9
+		 *                         - 發 ... 10
+		 * @param[in] number 数字。数牌の場合は 1 以上 9 以下を，字牌の場合は 0 を指定する。
+		 * @param[in] attributeId 属性 ID。次の値を指定する。
+		 *                            - 属性なし ... 0
+		 *                            - 赤 ... 1
+		 * @note 本コンストラクタは，グローバル変数，およびクラスのスタティック変数を生成するためにある。
+		 *       それ以外の用途で，本コンストラクタを使用してはならない。
+		 */
+		MemorySavedTile(int designId, int number, int attributeId = 0);
+
 
 	public:
 		/**

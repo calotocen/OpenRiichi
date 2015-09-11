@@ -114,6 +114,73 @@ MemorySavedTile::MemorySavedTile(const TileDesign &design, int number, const Til
 }
 
 
+MemorySavedTile::MemorySavedTile(int designId, int number, int attributeId)
+	: m_value(0)
+{
+	// グローバル変数，およびクラスのスタティック変数に依存しないように注意して処理を実装する。
+
+	// デバッグ版の場合のみ，引数をチェックする。
+	assert(1 <= designId && designId <= 10);
+	assert(((1 <= designId && designId <= 3) && (1 <= number && number <= 9)) || number == 0);
+	assert(0 <= attributeId && attributeId <= 1);
+
+	// 図柄を設定する。
+	switch (designId)
+	{
+	case 1: // 筒子
+		m_value = DesignValue::CIRCLES;
+		break;
+
+	case 2: // 索子
+		m_value = DesignValue::BAMBOO;
+		break;
+
+	case 3: // 萬子
+		m_value = DesignValue::CHARACTERS;
+		break;
+
+	case 4: // 東
+		m_value = DesignValue::EAST;
+		break;
+
+	case 5: // 南
+		m_value = DesignValue::SOUTH;
+		break;
+
+	case 6: // 西
+		m_value = DesignValue::WEST;
+		break;
+
+	case 7: // 北
+		m_value = DesignValue::NORTH;
+		break;
+
+	case 8: // 中
+		m_value = DesignValue::DV_RED;
+		break;
+
+	case 9: // 白
+		m_value = DesignValue::WHITE;
+		break;
+
+	case 10: // 發
+		m_value = DesignValue::GREEN;
+		break;
+	}
+
+	// 数字を設定する。
+	m_value |= number;
+
+	// 属性を設定する。
+	switch (attributeId)
+	{
+	case 1:
+		m_value |= AttributeValue::AV_RED;
+		break;
+	}
+}
+
+
 bool MemorySavedTile::operator==(const MemorySavedTile &other) const
 {
 	bool returnValue = m_value == other.m_value;		// 戻り値。

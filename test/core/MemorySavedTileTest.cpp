@@ -373,4 +373,19 @@ namespace openriichi
 		ASSERT_FALSE(green.isTerminals());
 		ASSERT_TRUE(green.isTerminalsOrHonours());
 	}
+
+	/// ID を用いた牌の生成をテストする。
+	TEST_F(MemorySavedTileTest, testConstructorWithId)
+	{
+		ASSERT_EQ(MemorySavedTile(TileDesigns::CIRCLES, 1), MemorySavedTile(1, 1));
+		ASSERT_EQ(MemorySavedTile(TileDesigns::BAMBOO, 5, TileAttributes::RED), MemorySavedTile(2, 5, 1));
+		ASSERT_EQ(MemorySavedTile(TileDesigns::CHARACTERS, 9), MemorySavedTile(3, 9));
+		ASSERT_EQ(MemorySavedTile(TileDesigns::EAST), MemorySavedTile(4, 0));
+		ASSERT_EQ(MemorySavedTile(TileDesigns::SOUTH), MemorySavedTile(5, 0));
+		ASSERT_EQ(MemorySavedTile(TileDesigns::WEST), MemorySavedTile(6, 0));
+		ASSERT_EQ(MemorySavedTile(TileDesigns::NORTH), MemorySavedTile(7, 0));
+		ASSERT_EQ(MemorySavedTile(TileDesigns::RED), MemorySavedTile(8, 0));
+		ASSERT_EQ(MemorySavedTile(TileDesigns::WHITE), MemorySavedTile(9, 0));
+		ASSERT_EQ(MemorySavedTile(TileDesigns::GREEN), MemorySavedTile(10, 0));
+	}
 }
