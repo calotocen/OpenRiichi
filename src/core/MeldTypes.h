@@ -121,13 +121,13 @@ namespace openriichi
 		/// 面前であることを表す鳴き種別。
 		static const NoneMeldType NONE;
 
-		/// 順子の場合は左の牌，刻子，槓子の場合は上家の牌を鳴いたことを表す南の鳴き種別。
+		/// 上家の牌を鳴いたことを表す南の鳴き種別。
 		static const LeftMeldType LEFT;
 		
-		/// 順子の場合は中央の牌，刻子，槓子の場合は対面の牌を鳴いたことを表す鳴き種別。
-		static const CenterMeldType CENTER;
+		/// 対面の牌を鳴いたことを表す鳴き種別。
+		static const CenterMeldType ACROSS;
 		
-		/// 順子の場合は右の牌，刻子，槓子の場合は下家の牌を鳴いたことを表す鳴き種別。
+		/// 下家の牌を鳴いたことを表す鳴き種別。
 		static const RightMeldType RIGHT;
 	};
 }

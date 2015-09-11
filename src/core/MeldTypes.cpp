@@ -21,7 +21,7 @@ using namespace openriichi;
 
 const NoneMeldType MeldTypes::NONE = NoneMeldType();
 const LeftMeldType MeldTypes::LEFT = LeftMeldType();
-const CenterMeldType MeldTypes::CENTER = CenterMeldType();
+const CenterMeldType MeldTypes::ACROSS = CenterMeldType();
 const RightMeldType MeldTypes::RIGHT = RightMeldType();
 
 

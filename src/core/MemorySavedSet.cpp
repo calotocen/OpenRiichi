@@ -13,24 +13,29 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
+#include <algorithm>
 #include <cassert>
 #include <cstdint>
 #include "MeldedKongTypes.h"
 #include "MeldTypes.h"
 #include "SetArrangements.h"
+#include "Tile.h"
+#include "Tiles.h"
 #include "MemorySavedSet.h"
 
 
+using namespace std;
 using namespace openriichi;
 
 
 MemorySavedSet::MemorySavedSet()
-	: MemorySavedSet(SetArrangements::CHOW, Tile(TileDesigns::CIRCLES, 1))
+	: MemorySavedSet(P1, P2, P3)
 {
 	// 何もしない。
 }
 
 
+#if 0
 MemorySavedSet::MemorySavedSet(const SetArrangement & setArrangement, const Tile & keyTile)
 	: MemorySavedSet(setArrangement, MeldTypes::NONE, keyTile)
 {
@@ -106,21 +111,155 @@ MemorySavedSet::MemorySavedSet(const SetArrangement & setArrangement, const Meld
 		break;
 	}
 }
+#endif
+
+
+MemorySavedSet::MemorySavedSet(const Tile & tile1, const Tile & tile2)
+	: m_value(0)
+	, m_tiles()
+{
+	// デバッグ版の場合のみ，引数をチェックする。
+	assert(tile1.getDesign() == tile2.getDesign() && tile1.getNumber() == tile2.getNumber());
+
+	// 面子属性を設定する。
+	setArrangement(SetArrangements::PAIR);
+
+	// 牌を格納する。
+	m_tiles.add(tile1);
+	m_tiles.add(tile2);
+}
+
+
+MemorySavedSet::MemorySavedSet(const Tile & tile1, const Tile & tile2, const Tile & tile3, const MeldType & meldType)
+	: m_value(0)
+	, m_tiles()
+{
+	// デバッグ版の場合のみ，引数をチェックする。
+#if !defined(NDEBUG)
+	int number[3] = { tile1.getNumber(), tile2.getNumber(), tile3.getNumber() };
+	sort(number, number + 3);
+
+	assert(tile1.getDesign() == tile2.getDesign() && tile1.getDesign() == tile3.getDesign());
+	assert((number[0] + 1 == number[1] && number[0] + 2 == number[2])
+		|| (number[0] == number[1] && number[0] == number[2]));
+	assert((number[0] == number[1]) || (meldType == MeldTypes::NONE || meldType == MeldTypes::LEFT));
+#endif	// !defined(NDEBUG)
+
+	// 面子属性を設定する。
+	if (tile1.getNumber() != tile2.getNumber()) {
+		setArrangement(SetArrangements::CHOW);
+	} else {
+		setArrangement(SetArrangements::PUNG);
+	}
+	setMeldType(meldType);
+
+	// 牌を格納する。
+	m_tiles.add(tile1);
+	m_tiles.add(tile2);
+	m_tiles.add(tile3);
+}
+
+
+MemorySavedSet::MemorySavedSet(const Tile & tile1, const Tile & tile2, const Tile & tile3, const Tile & tile4, const MeldedKongType & meldedKongType, const MeldType & meldType)
+	: m_value(0)
+	, m_tiles() 
+{
+	// デバッグ版の場合のみ，引数をチェックする。
+	assert(tile1.getDesign() == tile2.getDesign() && tile1.getDesign() == tile3.getDesign() && tile1.getDesign() == tile4.getDesign());
+	assert(tile1.getNumber() == tile2.getNumber() && tile1.getNumber() == tile3.getNumber() && tile1.getNumber() == tile4.getNumber());
+
+	// 面子属性を設定する。
+	setArrangement(SetArrangements::KONG);
+	setMeldedKongType(meldedKongType);
+	setMeldType(meldType);
+
+	// 牌を格納する。
+	m_tiles.add(tile1);
+	m_tiles.add(tile2);
+	m_tiles.add(tile3);
+	m_tiles.add(tile4);
+}
 
 
 bool MemorySavedSet::operator==(const MemorySavedSet &other) const
 {
-	bool returnValue = m_value == other.m_value && m_keyTile == other.m_keyTile;		// 戻り値。
+	if (this == &other) {
+		return true;
+	}
 
-	return returnValue;
+	return m_value == other.m_value && m_tiles == other.m_tiles;
 }
 
 
 bool MemorySavedSet::operator!=(const MemorySavedSet &other) const
 {
-	bool returnValue = m_value != other.m_value || m_keyTile != other.m_keyTile;		// 戻り値。
+	return !(*this == other);
+}
 
-	return returnValue;
+
+void MemorySavedSet::setArrangement(const SetArrangement & setArrangement)
+{
+	// 面子属性値の面子種別をリセットする。
+	m_value &= ~Mask::SET_ARRANGEMENT;
+
+	// 面子種別に応じた値を設定する。
+	switch (setArrangement.getId()) {
+	case SetArrangements::CHOW.ID:
+		m_value |= ArrangementValue::CHOW;
+		break;
+
+	case SetArrangements::PAIR.ID:
+		m_value |= ArrangementValue::PAIR;
+		break;
+
+	case SetArrangements::PUNG.ID:
+		m_value |= ArrangementValue::PUNG;
+		break;
+
+	case SetArrangements::KONG.ID:
+		m_value |= ArrangementValue::KONG;
+		break;
+	}
+}
+
+
+void MemorySavedSet::setMeldType(const MeldType & meldType)
+{
+	// 面子属性値の鳴き種別をリセットする。
+	m_value &= ~Mask::MELD_TYPE;
+
+	// 鳴き種別に応じた値を設定する。
+	switch (meldType.getId()) {
+	case MeldTypes::LEFT.ID:
+		m_value |= MeldTypeValue::LEFT;
+		break;
+
+	case MeldTypes::ACROSS.ID:
+		m_value |= MeldTypeValue::ACROSS;
+		break;
+
+	case MeldTypes::RIGHT.ID:
+		m_value |= MeldTypeValue::RIGHT;
+		break;
+	}
+}
+
+
+void MemorySavedSet::setMeldedKongType(const MeldedKongType & meldedKongType)
+{
+	// 面子属性値の鳴き槓子種別をリセットする。
+	m_value &= ~Mask::MELDED_KONG_TYPE;
+
+	// 鳴き槓子種別に応じた値を設定する。
+	switch (meldedKongType.getId()) {
+	case MeldedKongTypes::LITTLE.ID:
+		m_value |= MeldedKongTypeValue::LITTLE;
+		break;
+
+	case MeldedKongTypes::BIG.ID:
+		m_value |= MeldedKongTypeValue::BIG;
+		break;
+	}
 }
 
 
@@ -169,8 +308,8 @@ const MeldType &MemorySavedSet::getMeldType() const
 		returnValue = &MeldTypes::LEFT;
 		break;
 
-	case MeldTypeValue::CENTER:
-		returnValue = &MeldTypes::CENTER;
+	case MeldTypeValue::ACROSS:
+		returnValue = &MeldTypes::ACROSS;
 		break;
 
 	case MeldTypeValue::RIGHT:
@@ -207,9 +346,9 @@ const MeldedKongType &MemorySavedSet::getMeldedKongType() const
 }
 
 
-const Tile &MemorySavedSet::getKeyTile() const
+const MemorySavedSet::Tiles &MemorySavedSet::getTiles() const
 {
-	return m_keyTile;
+	return m_tiles;
 }
 
 

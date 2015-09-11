@@ -17,13 +17,14 @@
 
 
 #include <cstdint>
+#include "LimitedVector.h"
+#include "MeldedKongTypes.h"
+#include "MeldTypes.h"
 #include "Tile.h"
 
 
 namespace openriichi
 {
-	class MeldedKongType;
-	class MeldType;
 	class SetArrangement;
 
 
@@ -59,13 +60,13 @@ namespace openriichi
 			/// 面前であることを表す。
 			NONE = 0x00,
 
-			/// 順子の場合は左の牌，刻子，槓子の場合は上家の牌を鳴いたことを表す。
+			/// 上家の牌を鳴いたことを表す。
 			LEFT = 0x10,
 
-			/// 順子の場合は中央の牌，刻子，槓子の場合は対面の牌を鳴いたことを表す。 
-			CENTER = 0x20,
+			/// 対面の牌を鳴いたことを表す。 
+			ACROSS = 0x20,
 
-			/// 順子の場合は右の牌，刻子，槓子の場合は下家の牌を鳴いたことを表す。 
+			/// 下家の牌を鳴いたことを表す。 
 			RIGHT = 0x30,
 		};
 
@@ -100,9 +101,19 @@ namespace openriichi
 		};
 
 
+	public:
+		/// 牌の最大個数。
+		static const size_t MAX_TILES_SIZE = 4;
+
+
+	public:
+		/// 牌配列型。
+		using Tiles = LimitedVector<Tile, MAX_TILES_SIZE>;
+
+
 	private:
 		/**
-		 * 面子を表す値。
+		 * 面子属性値。
 		 * 値の構成は次の通りである (ビットの番号は最上位を 1 番目，最下位を 8 番目とする)。
 		 *     - 1 ～ 2 ビット目 ... 鳴き槓子種別。
 		 *     - 3 ～ 4 ビット目 ... 鳴き種別。
@@ -110,12 +121,8 @@ namespace openriichi
 		 */
 		uint8_t m_value;
 
-		/**
-		 * キー牌。
-		 * 順子の場合は，面子の中で一番数字の小さい牌である。
-		 * 対子，刻子，槓子の場合は，面子を構成する牌である。
-		 */
-		Tile m_keyTile;
+		/// 牌配列。
+		Tiles m_tiles;
 
 
 	public:
@@ -124,6 +131,7 @@ namespace openriichi
 		 */
 		MemorySavedSet();
 
+#if 0
 		/**
 		 * 面子を生成する。
 		 * 暗順，対子，暗刻，または暗槓の生成に使用する。
@@ -171,6 +179,64 @@ namespace openriichi
 		 * @note 明槓生成時に『鳴き槓子ではない』を鳴き槓子種別として指定した場合の動作は，未定義である。
 		 */
 		MemorySavedSet(const SetArrangement &setArrangement, const MeldType &meldType, const MeldedKongType &meldedKongType, const Tile &keyTile);
+#endif
+
+		/**
+		 * 対子を生成する。
+		 * 牌の指定ルールは次の通りである。
+		 *     - 牌属性の ID 順に指定する。
+		 *
+		 * @param[in] tile1 面子を構成する牌。
+		 * @param[in] tile2 面子を構成する牌。
+		 * @note 対子でない面子を指定した場合の動作は，未定義である。
+		 * @note 牌の指定ルールに従わなかった場合の動作は，未定義である。
+		 */
+		MemorySavedSet(const Tile &tile1, const Tile &tile2);
+
+		/**
+		 * 順子，または刻子を生成する。
+		 * 牌の指定ルールは次の通りである。
+		 *     - 暗順の場合
+		 *         - tile1 に一番数字の小さな牌を，tile2 に数字の真ん中な牌を，tile3 に残りの牌を指定する。
+		 *     - 明順の場合
+		 *         - tile1 に鳴いた牌を，tile2 に残りの牌の中で一番数字の小さな牌を，tile3 に残りの牌を指定する。
+		 *     - 暗刻の場合
+		 *         - 牌属性の ID 順に指定する。
+		 *     - 明刻の場合
+		 *         - tile1 ～ tile3 の対応する位置に鳴かれた牌を指定する。
+		 *         - 残りの牌は，牌属性の ID 順に指定する。
+		 *
+		 * @param[in] tile1 面子を構成する牌。
+		 * @param[in] tile2 面子を構成する牌。
+		 * @param[in] tile3 面子を構成する牌。
+		 * @param[in] meldType 鳴き種別。
+		 * @note 順子，または刻子でない面子を指定した場合の動作は，未定義である。
+		 * @note 牌の指定ルールに従わなかった場合の動作は，未定義である。
+		 */
+		MemorySavedSet(const Tile &tile1, const Tile &tile2, const Tile &tile3, const MeldType &meldType = MeldTypes::NONE);
+
+		/**
+		 * 槓子を生成する。
+		 * 牌の指定ルールは次の通りである。
+		 *     - 暗槓の場合
+		 *         - 牌属性の ID 順に指定する。
+		 *     - 小明槓 (加槓) の場合
+		 *         - tile2 に鳴いた牌を指定する。
+		 *         - 残りの牌は，牌属性の ID 順に指定する。
+		 *     - 大明槓の場合
+		 *         - tile2 に鳴いた牌を指定する。
+		 *         - 残りの牌は，牌属性の ID 順に指定する。
+		 *
+		 * @param[in] tile1 面子を構成する牌。
+		 * @param[in] tile2 面子を構成する牌。
+		 * @param[in] tile3 面子を構成する牌。
+		 * @param[in] tile4 面子を構成する牌。
+		 * @param[in] meldedKongType 鳴き槓子種別。
+		 * @param[in] meldType 鳴き種別。
+		 * @note 槓子でない面子を指定した場合の動作は，未定義である。
+		 * @note 牌の指定ルールに従わなかった場合の動作は，未定義である。
+		 */
+		MemorySavedSet(const Tile &tile1, const Tile &tile2, const Tile &tile3, const Tile &tile4, const MeldedKongType &meldedKongType = MeldedKongTypes::NO, const MeldType &meldType = MeldTypes::NONE);
 
 
 	public:
@@ -187,6 +253,29 @@ namespace openriichi
 		 * @param[in] other 他の面子。
 		 */
 		bool operator!=(const MemorySavedSet &other) const;
+
+
+	private:
+		/**
+		 * 面子種別を設定する。
+		 *
+		 * @param[in] setArrangement 面子種別。
+		 */
+		void setArrangement(const SetArrangement &setArrangement);
+
+		/**
+		 * 鳴き種別を設定する。
+		 *
+		 * @param[in] meldType 鳴き種別。
+		 */
+		void setMeldType(const MeldType &meldType);
+
+		/**
+		 * 鳴き槓子種別を設定する。
+		 *
+		 * @param[in] 鳴き槓子種別。
+		 */
+		void setMeldedKongType(const MeldedKongType &meldedKongType);
 
 
 	public:
@@ -218,13 +307,13 @@ namespace openriichi
 		const MeldedKongType &getMeldedKongType() const;
 
 		/**
-		 * キー牌を返す。
+		 * 牌配列を返す。
 		 *
-		 * @return キー牌。
+		 * @return 牌配列。
 		 * @note 本関数の戻り値は，少なくとも本インスタンスが生存している間，有効である。
 		 * @note 本関数の戻り値が使用するリソースを本関数の呼び出し側で管理する必要はない。
 		 */
-		const Tile &getKeyTile() const;
+		const Tiles &getTiles() const;
 
 		/**
 		 * 順子であるかを調べる。

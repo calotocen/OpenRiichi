@@ -58,7 +58,7 @@ namespace openriichi
 	/// 順子の場合は中央の牌，刻子，槓子の場合は対面の牌を鳴いたことを表す鳴き種別をテストする。
 	TEST_F(MeldTypesTest, testCenter)
 	{
-		const MeldType &meldType = MeldTypes::CENTER;
+		const MeldType &meldType = MeldTypes::ACROSS;
 		ASSERT_EQ(2, meldType.getId());
 
 		ASSERT_FALSE(NoneMeldType() == meldType);

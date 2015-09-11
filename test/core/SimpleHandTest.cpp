@@ -25,7 +25,7 @@ namespace openriichi
 	TEST_F(SimpleHandTest, testSizeOfInstance)
 	{
 		SimpleHand hand;
-		ASSERT_EQ(26, sizeof(hand));
+		ASSERT_EQ(46, sizeof(hand));
 	}
 
 	// 手牌をテストする。
