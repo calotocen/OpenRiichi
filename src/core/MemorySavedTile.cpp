@@ -34,36 +34,44 @@ MemorySavedTile::MemorySavedTile(const TileDesign &design, const TileAttribute &
 		|| design == TileDesigns::RED
 		|| design == TileDesigns::WHITE
 		|| design == TileDesigns::GREEN);
-	assert(attribute == TileAttributes::NONE);
+	assert(attribute == TileAttributes::NONE
+		|| attribute == TileAttributes::RED);
+
+	// 属性に応じた値を設定する。
+	switch (attribute.getId()) {
+	case TileAttributes::RED.ID:
+		m_value = AttributeValue::AV_RED;
+		break;
+	}
 		
 	// 図柄に応じた値を設定する。
 	switch (design.getId()) {
 		case TileDesigns::EAST.ID:
-			m_value = DesignValue::EAST;
+			m_value |= DesignValue::EAST;
 			break;
 
 		case TileDesigns::SOUTH.ID:
-			m_value = DesignValue::SOUTH;
+			m_value |= DesignValue::SOUTH;
 			break;
 
 		case TileDesigns::WEST.ID:
-			m_value = DesignValue::WEST;
+			m_value |= DesignValue::WEST;
 			break;
 
 		case TileDesigns::NORTH.ID:
-			m_value = DesignValue::NORTH;
+			m_value |= DesignValue::NORTH;
 			break;
 
 		case TileDesigns::RED.ID:
-			m_value = DesignValue::DV_RED;
+			m_value |= DesignValue::DV_RED;
 			break;
 
 		case TileDesigns::GREEN.ID:
-			m_value = DesignValue::GREEN;
+			m_value |= DesignValue::GREEN;
 			break;
 
 		case TileDesigns::WHITE.ID:
-			m_value = DesignValue::WHITE;
+			m_value |= DesignValue::WHITE;
 			break;
 	}
 }

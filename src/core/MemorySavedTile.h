@@ -165,7 +165,7 @@ namespace openriichi
 		 * 字牌を生成する。
 		 * 
 		 * @param[in] design 図柄。字牌の図柄を指定する。
-		 * @param[in] attribute 属性。常に属性なしを指定する。
+		 * @param[in] attribute 属性。属性なし，または赤を指定する。
 		 */
 		MemorySavedTile(const TileDesign &design, const TileAttribute &attribute = TileAttributes::NONE);
 
