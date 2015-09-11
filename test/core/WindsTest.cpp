@@ -21,71 +21,29 @@ namespace openriichi
 {
 	class WindsTest : public ::testing::Test {};
 
-	/// 東の風をテストする。
-	TEST_F(WindsTest, testEast)
+	/// ID 変数をテストする。
+	TEST_F(WindsTest, testId)
 	{
-		const Wind &wind = Winds::EAST;
-		ASSERT_EQ(1, wind.getId());
-
-		ASSERT_TRUE(EastWind() == wind);
-		ASSERT_FALSE(SouthWind() == wind);
-		ASSERT_FALSE(WestWind() == wind);
-		ASSERT_FALSE(NorthWind() == wind);
-
-		ASSERT_FALSE(EastWind() != wind);
-		ASSERT_TRUE(SouthWind() != wind);
-		ASSERT_TRUE(WestWind() != wind);
-		ASSERT_TRUE(NorthWind() != wind);
+		ASSERT_EQ(1, Winds::EAST.ID);
+		ASSERT_EQ(2, Winds::SOUTH.ID);
+		ASSERT_EQ(3, Winds::WEST.ID);
+		ASSERT_EQ(4, Winds::NORTH.ID);
 	}
 
-	/// 南の風をテストする。
-	TEST_F(WindsTest, testSouth)
+	/// getId 関数をテストする。
+	TEST_F(WindsTest, testGetId)
 	{
-		const Wind &wind = Winds::SOUTH;
-		ASSERT_EQ(2, wind.getId());
-
-		ASSERT_FALSE(EastWind() == wind);
-		ASSERT_TRUE(SouthWind() == wind);
-		ASSERT_FALSE(WestWind() == wind);
-		ASSERT_FALSE(NorthWind() == wind);
-
-		ASSERT_TRUE(EastWind() != wind);
-		ASSERT_FALSE(SouthWind() != wind);
-		ASSERT_TRUE(WestWind() != wind);
-		ASSERT_TRUE(NorthWind() != wind);
+		ASSERT_EQ(1, Winds::EAST.getId());
+		ASSERT_EQ(2, Winds::SOUTH.getId());
+		ASSERT_EQ(3, Winds::WEST.getId());
+		ASSERT_EQ(4, Winds::NORTH.getId());
 	}
 
-	/// 西の風をテストする。
-	TEST_F(WindsTest, testWest)
+	/// 同一種類の列挙型を比較可能であるかテストする。
+	TEST_F(WindsTest, testComparable)
 	{
-		const Wind &wind = Winds::WEST;
-		ASSERT_EQ(3, wind.getId());
-
-		ASSERT_FALSE(EastWind() == wind);
-		ASSERT_FALSE(SouthWind() == wind);
-		ASSERT_TRUE(WestWind() == wind);
-		ASSERT_FALSE(NorthWind() == wind);
-
-		ASSERT_TRUE(EastWind() != wind);
-		ASSERT_TRUE(SouthWind() != wind);
-		ASSERT_FALSE(WestWind() != wind);
-		ASSERT_TRUE(NorthWind() != wind);
-	}
-
-	/// 南の風をテストする。
-	TEST_F(WindsTest, testNorth)
-	{
-		const Wind &wind = Winds::NORTH;
-		ASSERT_EQ(4, wind.getId());
-
-		ASSERT_FALSE(EastWind() == wind);
-		ASSERT_FALSE(SouthWind() == wind);
-		ASSERT_FALSE(WestWind() == wind);
-		ASSERT_TRUE(NorthWind() == wind);
-
-		ASSERT_TRUE(EastWind() != wind);
-		ASSERT_TRUE(SouthWind() != wind);
-		ASSERT_TRUE(WestWind() != wind);
-		ASSERT_FALSE(NorthWind() != wind);
+		ASSERT_FALSE(Winds::EAST == Winds::SOUTH);
+		ASSERT_FALSE(Winds::EAST == Winds::WEST);
+		ASSERT_FALSE(Winds::EAST == Winds::NORTH);
 	}
 }

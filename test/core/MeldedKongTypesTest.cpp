@@ -21,48 +21,26 @@ namespace openriichi
 {
 	class MeldedKongTypesTest : public ::testing::Test {};
 
-	/// 鳴き槓子でないことを表す鳴き槓子種別をテストする。
-	TEST_F(MeldedKongTypesTest, testNo)
+	/// ID 変数をテストする。
+	TEST_F(MeldedKongTypesTest, testId)
 	{
-		const MeldedKongType &meldedKongType = MeldedKongTypes::NO;
-		ASSERT_EQ(0, meldedKongType.getId());
-
-		ASSERT_TRUE(NoMeldedKongType() == meldedKongType);
-		ASSERT_FALSE(LittleMeldedKongType() == meldedKongType);
-		ASSERT_FALSE(BigMeldedKongType() == meldedKongType);
-
-		ASSERT_FALSE(NoMeldedKongType() != meldedKongType);
-		ASSERT_TRUE(LittleMeldedKongType() != meldedKongType);
-		ASSERT_TRUE(BigMeldedKongType() != meldedKongType);
+		ASSERT_EQ(0, MeldedKongTypes::NO.ID);
+		ASSERT_EQ(1, MeldedKongTypes::LITTLE.ID);
+		ASSERT_EQ(2, MeldedKongTypes::BIG.ID);
 	}
 
-	/// 小明槓 (加槓) を表す鳴き槓子種別をテストする。
-	TEST_F(MeldedKongTypesTest, testLittle)
+	/// getId 関数をテストする。
+	TEST_F(MeldedKongTypesTest, testGetId)
 	{
-		const MeldedKongType &meldedKongType = MeldedKongTypes::LITTLE;
-		ASSERT_EQ(1, meldedKongType.getId());
-
-		ASSERT_FALSE(NoMeldedKongType() == meldedKongType);
-		ASSERT_TRUE(LittleMeldedKongType() == meldedKongType);
-		ASSERT_FALSE(BigMeldedKongType() == meldedKongType);
-
-		ASSERT_TRUE(NoMeldedKongType() != meldedKongType);
-		ASSERT_FALSE(LittleMeldedKongType() != meldedKongType);
-		ASSERT_TRUE(BigMeldedKongType() != meldedKongType);
+		ASSERT_EQ(0, MeldedKongTypes::NO.getId());
+		ASSERT_EQ(1, MeldedKongTypes::LITTLE.getId());
+		ASSERT_EQ(2, MeldedKongTypes::BIG.getId());
 	}
 
-	/// 大明槓を表す鳴き槓子種別をテストする。
-	TEST_F(MeldedKongTypesTest, testBig)
+	/// 同一種類の列挙型を比較可能であるかテストする。
+	TEST_F(MeldedKongTypesTest, testComparable)
 	{
-		const MeldedKongType &meldedKongType = MeldedKongTypes::BIG;
-		ASSERT_EQ(2, meldedKongType.getId());
-
-		ASSERT_FALSE(NoMeldedKongType() == meldedKongType);
-		ASSERT_FALSE(LittleMeldedKongType() == meldedKongType);
-		ASSERT_TRUE(BigMeldedKongType() == meldedKongType);
-
-		ASSERT_TRUE(NoMeldedKongType() != meldedKongType);
-		ASSERT_TRUE(LittleMeldedKongType() != meldedKongType);
-		ASSERT_FALSE(BigMeldedKongType() != meldedKongType);
+		ASSERT_FALSE(MeldedKongTypes::NO == MeldedKongTypes::LITTLE);
+		ASSERT_FALSE(MeldedKongTypes::NO == MeldedKongTypes::BIG);
 	}
 }

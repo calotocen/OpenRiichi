@@ -21,29 +21,23 @@ namespace openriichi
 {
 	class TileAttributesTest : public ::testing::Test {};
 
-	/// 属性なしの牌属性をテストする。
-	TEST_F(TileAttributesTest, testNone)
+	/// ID 変数をテストする。
+	TEST_F(TileAttributesTest, testId)
 	{
-		const TileAttribute &tileAttribute = TileAttributes::NONE;
-		ASSERT_EQ(0, tileAttribute.getId());
-
-		ASSERT_TRUE(NoneTileAttribute() == tileAttribute);
-		ASSERT_FALSE(RedTileAttribute() == tileAttribute);
-
-		ASSERT_FALSE(NoneTileAttribute() != tileAttribute);
-		ASSERT_TRUE(RedTileAttribute() != tileAttribute);
+		ASSERT_EQ(0, TileAttributes::NONE.ID);
+		ASSERT_EQ(1, TileAttributes::RED.ID);
 	}
 
-	/// 赤の牌属性をテストする。
-	TEST_F(TileAttributesTest, testRed)
+	/// getId 関数をテストする。
+	TEST_F(TileAttributesTest, testGetId)
 	{
-		const TileAttribute &tileAttribute = TileAttributes::RED;
-		ASSERT_EQ(1, tileAttribute.getId());
+		ASSERT_EQ(0, TileAttributes::NONE.getId());
+		ASSERT_EQ(1, TileAttributes::RED.getId());
+	}
 
-		ASSERT_FALSE(NoneTileAttribute() == tileAttribute);
-		ASSERT_TRUE(RedTileAttribute() == tileAttribute);
-
-		ASSERT_TRUE(NoneTileAttribute() != tileAttribute);
-		ASSERT_FALSE(RedTileAttribute() != tileAttribute);
+	/// 同一種類の列挙型を比較可能であるかテストする。
+	TEST_F(TileAttributesTest, testComparable)
+	{
+		ASSERT_FALSE(TileAttributes::NONE == TileAttributes::RED);
 	}
 }

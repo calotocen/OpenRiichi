@@ -21,333 +21,47 @@ namespace openriichi
 {
 	class TileDesignsTest : public ::testing::Test {};
 
-	/// 筒子の牌図柄をテストする。
-	TEST_F(TileDesignsTest, testCircles)
+	/// ID 変数をテストする。
+	TEST_F(TileDesignsTest, testId)
 	{
-		const TileDesign &tileDesign = TileDesigns::CIRCLES;
-		ASSERT_EQ(1, tileDesign.getId());
-		ASSERT_TRUE(tileDesign.isSuits());
-		ASSERT_FALSE(tileDesign.isHonours());
-		ASSERT_FALSE(tileDesign.isWinds());
-		ASSERT_FALSE(tileDesign.isDragons());
-
-		ASSERT_TRUE(CirclesTileDesign() == tileDesign);
-		ASSERT_FALSE(BambooTileDesign() == tileDesign);
-		ASSERT_FALSE(CharactersTileDesign() == tileDesign);
-		ASSERT_FALSE(EastTileDesign() == tileDesign);
-		ASSERT_FALSE(SouthTileDesign() == tileDesign);
-		ASSERT_FALSE(WestTileDesign() == tileDesign);
-		ASSERT_FALSE(NorthTileDesign() == tileDesign);
-		ASSERT_FALSE(RedTileDesign() == tileDesign);
-		ASSERT_FALSE(WhiteTileDesign() == tileDesign);
-		ASSERT_FALSE(GreenTileDesign() == tileDesign);
-
-		ASSERT_FALSE(CirclesTileDesign() != tileDesign);
-		ASSERT_TRUE(BambooTileDesign() != tileDesign);
-		ASSERT_TRUE(CharactersTileDesign() != tileDesign);
-		ASSERT_TRUE(EastTileDesign() != tileDesign);
-		ASSERT_TRUE(SouthTileDesign() != tileDesign);
-		ASSERT_TRUE(WestTileDesign() != tileDesign);
-		ASSERT_TRUE(NorthTileDesign() != tileDesign);
-		ASSERT_TRUE(RedTileDesign() != tileDesign);
-		ASSERT_TRUE(WhiteTileDesign() != tileDesign);
-		ASSERT_TRUE(GreenTileDesign() != tileDesign);
+		ASSERT_EQ(1, TileDesigns::CIRCLES.ID);
+		ASSERT_EQ(2, TileDesigns::BAMBOO.ID);
+		ASSERT_EQ(3, TileDesigns::CHARACTERS.ID);
+		ASSERT_EQ(4, TileDesigns::EAST.ID);
+		ASSERT_EQ(5, TileDesigns::SOUTH.ID);
+		ASSERT_EQ(6, TileDesigns::WEST.ID);
+		ASSERT_EQ(7, TileDesigns::NORTH.ID);
+		ASSERT_EQ(8, TileDesigns::RED.ID);
+		ASSERT_EQ(9, TileDesigns::WHITE.ID);
+		ASSERT_EQ(10, TileDesigns::GREEN.ID);
 	}
 
-	/// 索子の牌図柄をテストする。
-	TEST_F(TileDesignsTest, testBamboo)
+	/// getId 関数をテストする。
+	TEST_F(TileDesignsTest, testGetId)
 	{
-		const TileDesign &tileDesign = TileDesigns::BAMBOO;
-		ASSERT_EQ(2, tileDesign.getId());
-		ASSERT_TRUE(tileDesign.isSuits());
-		ASSERT_FALSE(tileDesign.isHonours());
-		ASSERT_FALSE(tileDesign.isWinds());
-		ASSERT_FALSE(tileDesign.isDragons());
-
-		ASSERT_FALSE(CirclesTileDesign() == tileDesign);
-		ASSERT_TRUE(BambooTileDesign() == tileDesign);
-		ASSERT_FALSE(CharactersTileDesign() == tileDesign);
-		ASSERT_FALSE(EastTileDesign() == tileDesign);
-		ASSERT_FALSE(SouthTileDesign() == tileDesign);
-		ASSERT_FALSE(WestTileDesign() == tileDesign);
-		ASSERT_FALSE(NorthTileDesign() == tileDesign);
-		ASSERT_FALSE(RedTileDesign() == tileDesign);
-		ASSERT_FALSE(WhiteTileDesign() == tileDesign);
-		ASSERT_FALSE(GreenTileDesign() == tileDesign);
-
-		ASSERT_TRUE(CirclesTileDesign() != tileDesign);
-		ASSERT_FALSE(BambooTileDesign() != tileDesign);
-		ASSERT_TRUE(CharactersTileDesign() != tileDesign);
-		ASSERT_TRUE(EastTileDesign() != tileDesign);
-		ASSERT_TRUE(SouthTileDesign() != tileDesign);
-		ASSERT_TRUE(WestTileDesign() != tileDesign);
-		ASSERT_TRUE(NorthTileDesign() != tileDesign);
-		ASSERT_TRUE(RedTileDesign() != tileDesign);
-		ASSERT_TRUE(WhiteTileDesign() != tileDesign);
-		ASSERT_TRUE(GreenTileDesign() != tileDesign);
+		ASSERT_EQ(1, TileDesigns::CIRCLES.getId());
+		ASSERT_EQ(2, TileDesigns::BAMBOO.getId());
+		ASSERT_EQ(3, TileDesigns::CHARACTERS.getId());
+		ASSERT_EQ(4, TileDesigns::EAST.getId());
+		ASSERT_EQ(5, TileDesigns::SOUTH.getId());
+		ASSERT_EQ(6, TileDesigns::WEST.getId());
+		ASSERT_EQ(7, TileDesigns::NORTH.getId());
+		ASSERT_EQ(8, TileDesigns::RED.getId());
+		ASSERT_EQ(9, TileDesigns::WHITE.getId());
+		ASSERT_EQ(10, TileDesigns::GREEN.getId());
 	}
 
-	/// 萬子の牌図柄をテストする。
-	TEST_F(TileDesignsTest, testCharacters)
+	/// 同一種類の列挙型を比較可能であるかテストする。
+	TEST_F(TileDesignsTest, testComparable)
 	{
-		const TileDesign &tileDesign = TileDesigns::CHARACTERS;
-		ASSERT_EQ(3, tileDesign.getId());
-		ASSERT_TRUE(tileDesign.isSuits());
-		ASSERT_FALSE(tileDesign.isHonours());
-		ASSERT_FALSE(tileDesign.isWinds());
-		ASSERT_FALSE(tileDesign.isDragons());
-
-		ASSERT_FALSE(CirclesTileDesign() == tileDesign);
-		ASSERT_FALSE(BambooTileDesign() == tileDesign);
-		ASSERT_TRUE(CharactersTileDesign() == tileDesign);
-		ASSERT_FALSE(EastTileDesign() == tileDesign);
-		ASSERT_FALSE(SouthTileDesign() == tileDesign);
-		ASSERT_FALSE(WestTileDesign() == tileDesign);
-		ASSERT_FALSE(NorthTileDesign() == tileDesign);
-		ASSERT_FALSE(RedTileDesign() == tileDesign);
-		ASSERT_FALSE(WhiteTileDesign() == tileDesign);
-		ASSERT_FALSE(GreenTileDesign() == tileDesign);
-
-		ASSERT_TRUE(CirclesTileDesign() != tileDesign);
-		ASSERT_TRUE(BambooTileDesign() != tileDesign);
-		ASSERT_FALSE(CharactersTileDesign() != tileDesign);
-		ASSERT_TRUE(EastTileDesign() != tileDesign);
-		ASSERT_TRUE(SouthTileDesign() != tileDesign);
-		ASSERT_TRUE(WestTileDesign() != tileDesign);
-		ASSERT_TRUE(NorthTileDesign() != tileDesign);
-		ASSERT_TRUE(RedTileDesign() != tileDesign);
-		ASSERT_TRUE(WhiteTileDesign() != tileDesign);
-		ASSERT_TRUE(GreenTileDesign() != tileDesign);
-	}
-
-	/// 東の牌図柄をテストする。
-	TEST_F(TileDesignsTest, testEast)
-	{
-		const TileDesign &tileDesign = TileDesigns::EAST;
-		ASSERT_EQ(4, tileDesign.getId());
-		ASSERT_FALSE(tileDesign.isSuits());
-		ASSERT_TRUE(tileDesign.isHonours());
-		ASSERT_TRUE(tileDesign.isWinds());
-		ASSERT_FALSE(tileDesign.isDragons());
-
-		ASSERT_FALSE(CirclesTileDesign() == tileDesign);
-		ASSERT_FALSE(BambooTileDesign() == tileDesign);
-		ASSERT_FALSE(CharactersTileDesign() == tileDesign);
-		ASSERT_TRUE(EastTileDesign() == tileDesign);
-		ASSERT_FALSE(SouthTileDesign() == tileDesign);
-		ASSERT_FALSE(WestTileDesign() == tileDesign);
-		ASSERT_FALSE(NorthTileDesign() == tileDesign);
-		ASSERT_FALSE(RedTileDesign() == tileDesign);
-		ASSERT_FALSE(WhiteTileDesign() == tileDesign);
-		ASSERT_FALSE(GreenTileDesign() == tileDesign);
-
-		ASSERT_TRUE(CirclesTileDesign() != tileDesign);
-		ASSERT_TRUE(BambooTileDesign() != tileDesign);
-		ASSERT_TRUE(CharactersTileDesign() != tileDesign);
-		ASSERT_FALSE(EastTileDesign() != tileDesign);
-		ASSERT_TRUE(SouthTileDesign() != tileDesign);
-		ASSERT_TRUE(WestTileDesign() != tileDesign);
-		ASSERT_TRUE(NorthTileDesign() != tileDesign);
-		ASSERT_TRUE(RedTileDesign() != tileDesign);
-		ASSERT_TRUE(WhiteTileDesign() != tileDesign);
-		ASSERT_TRUE(GreenTileDesign() != tileDesign);
-	}
-
-	/// 南の牌図柄をテストする。
-	TEST_F(TileDesignsTest, testSouth)
-	{
-		const TileDesign &tileDesign = TileDesigns::SOUTH;
-		ASSERT_EQ(5, tileDesign.getId());
-		ASSERT_FALSE(tileDesign.isSuits());
-		ASSERT_TRUE(tileDesign.isHonours());
-		ASSERT_TRUE(tileDesign.isWinds());
-		ASSERT_FALSE(tileDesign.isDragons());
-
-		ASSERT_FALSE(CirclesTileDesign() == tileDesign);
-		ASSERT_FALSE(BambooTileDesign() == tileDesign);
-		ASSERT_FALSE(CharactersTileDesign() == tileDesign);
-		ASSERT_FALSE(EastTileDesign() == tileDesign);
-		ASSERT_TRUE(SouthTileDesign() == tileDesign);
-		ASSERT_FALSE(WestTileDesign() == tileDesign);
-		ASSERT_FALSE(NorthTileDesign() == tileDesign);
-		ASSERT_FALSE(RedTileDesign() == tileDesign);
-		ASSERT_FALSE(WhiteTileDesign() == tileDesign);
-		ASSERT_FALSE(GreenTileDesign() == tileDesign);
-
-		ASSERT_TRUE(CirclesTileDesign() != tileDesign);
-		ASSERT_TRUE(BambooTileDesign() != tileDesign);
-		ASSERT_TRUE(CharactersTileDesign() != tileDesign);
-		ASSERT_TRUE(EastTileDesign() != tileDesign);
-		ASSERT_FALSE(SouthTileDesign() != tileDesign);
-		ASSERT_TRUE(WestTileDesign() != tileDesign);
-		ASSERT_TRUE(NorthTileDesign() != tileDesign);
-		ASSERT_TRUE(RedTileDesign() != tileDesign);
-		ASSERT_TRUE(WhiteTileDesign() != tileDesign);
-		ASSERT_TRUE(GreenTileDesign() != tileDesign);
-	}
-
-	/// 西の牌図柄をテストする。
-	TEST_F(TileDesignsTest, testWest)
-	{
-		const TileDesign &tileDesign = TileDesigns::WEST;
-		ASSERT_EQ(6, tileDesign.getId());
-		ASSERT_FALSE(tileDesign.isSuits());
-		ASSERT_TRUE(tileDesign.isHonours());
-		ASSERT_TRUE(tileDesign.isWinds());
-		ASSERT_FALSE(tileDesign.isDragons());
-
-		ASSERT_FALSE(CirclesTileDesign() == tileDesign);
-		ASSERT_FALSE(BambooTileDesign() == tileDesign);
-		ASSERT_FALSE(CharactersTileDesign() == tileDesign);
-		ASSERT_FALSE(EastTileDesign() == tileDesign);
-		ASSERT_FALSE(SouthTileDesign() == tileDesign);
-		ASSERT_TRUE(WestTileDesign() == tileDesign);
-		ASSERT_FALSE(NorthTileDesign() == tileDesign);
-		ASSERT_FALSE(RedTileDesign() == tileDesign);
-		ASSERT_FALSE(WhiteTileDesign() == tileDesign);
-		ASSERT_FALSE(GreenTileDesign() == tileDesign);
-
-		ASSERT_TRUE(CirclesTileDesign() != tileDesign);
-		ASSERT_TRUE(BambooTileDesign() != tileDesign);
-		ASSERT_TRUE(CharactersTileDesign() != tileDesign);
-		ASSERT_TRUE(EastTileDesign() != tileDesign);
-		ASSERT_TRUE(SouthTileDesign() != tileDesign);
-		ASSERT_FALSE(WestTileDesign() != tileDesign);
-		ASSERT_TRUE(NorthTileDesign() != tileDesign);
-		ASSERT_TRUE(RedTileDesign() != tileDesign);
-		ASSERT_TRUE(WhiteTileDesign() != tileDesign);
-		ASSERT_TRUE(GreenTileDesign() != tileDesign);
-	}
-
-	/// 北の牌図柄をテストする。
-	TEST_F(TileDesignsTest, testNorth)
-	{
-		const TileDesign &tileDesign = TileDesigns::NORTH;
-		ASSERT_EQ(7, tileDesign.getId());
-		ASSERT_FALSE(tileDesign.isSuits());
-		ASSERT_TRUE(tileDesign.isHonours());
-		ASSERT_TRUE(tileDesign.isWinds());
-		ASSERT_FALSE(tileDesign.isDragons());
-
-		ASSERT_FALSE(CirclesTileDesign() == tileDesign);
-		ASSERT_FALSE(BambooTileDesign() == tileDesign);
-		ASSERT_FALSE(CharactersTileDesign() == tileDesign);
-		ASSERT_FALSE(EastTileDesign() == tileDesign);
-		ASSERT_FALSE(SouthTileDesign() == tileDesign);
-		ASSERT_FALSE(WestTileDesign() == tileDesign);
-		ASSERT_TRUE(NorthTileDesign() == tileDesign);
-		ASSERT_FALSE(RedTileDesign() == tileDesign);
-		ASSERT_FALSE(WhiteTileDesign() == tileDesign);
-		ASSERT_FALSE(GreenTileDesign() == tileDesign);
-
-		ASSERT_TRUE(CirclesTileDesign() != tileDesign);
-		ASSERT_TRUE(BambooTileDesign() != tileDesign);
-		ASSERT_TRUE(CharactersTileDesign() != tileDesign);
-		ASSERT_TRUE(EastTileDesign() != tileDesign);
-		ASSERT_TRUE(SouthTileDesign() != tileDesign);
-		ASSERT_TRUE(WestTileDesign() != tileDesign);
-		ASSERT_FALSE(NorthTileDesign() != tileDesign);
-		ASSERT_TRUE(RedTileDesign() != tileDesign);
-		ASSERT_TRUE(WhiteTileDesign() != tileDesign);
-		ASSERT_TRUE(GreenTileDesign() != tileDesign);
-	}
-
-	/// 中の牌図柄をテストする。
-	TEST_F(TileDesignsTest, testRed)
-	{
-		const TileDesign &tileDesign = TileDesigns::RED;
-		ASSERT_EQ(8, tileDesign.getId());
-		ASSERT_FALSE(tileDesign.isSuits());
-		ASSERT_TRUE(tileDesign.isHonours());
-		ASSERT_FALSE(tileDesign.isWinds());
-		ASSERT_TRUE(tileDesign.isDragons());
-
-		ASSERT_FALSE(CirclesTileDesign() == tileDesign);
-		ASSERT_FALSE(BambooTileDesign() == tileDesign);
-		ASSERT_FALSE(CharactersTileDesign() == tileDesign);
-		ASSERT_FALSE(EastTileDesign() == tileDesign);
-		ASSERT_FALSE(SouthTileDesign() == tileDesign);
-		ASSERT_FALSE(WestTileDesign() == tileDesign);
-		ASSERT_FALSE(NorthTileDesign() == tileDesign);
-		ASSERT_TRUE(RedTileDesign() == tileDesign);
-		ASSERT_FALSE(WhiteTileDesign() == tileDesign);
-		ASSERT_FALSE(GreenTileDesign() == tileDesign);
-
-		ASSERT_TRUE(CirclesTileDesign() != tileDesign);
-		ASSERT_TRUE(BambooTileDesign() != tileDesign);
-		ASSERT_TRUE(CharactersTileDesign() != tileDesign);
-		ASSERT_TRUE(EastTileDesign() != tileDesign);
-		ASSERT_TRUE(SouthTileDesign() != tileDesign);
-		ASSERT_TRUE(WestTileDesign() != tileDesign);
-		ASSERT_TRUE(NorthTileDesign() != tileDesign);
-		ASSERT_FALSE(RedTileDesign() != tileDesign);
-		ASSERT_TRUE(WhiteTileDesign() != tileDesign);
-		ASSERT_TRUE(GreenTileDesign() != tileDesign);
-	}
-
-	/// 白の牌図柄をテストする。
-	TEST_F(TileDesignsTest, testWhite)
-	{
-		const TileDesign &tileDesign = TileDesigns::WHITE;
-		ASSERT_EQ(9, tileDesign.getId());
-		ASSERT_FALSE(tileDesign.isSuits());
-		ASSERT_TRUE(tileDesign.isHonours());
-		ASSERT_FALSE(tileDesign.isWinds());
-		ASSERT_TRUE(tileDesign.isDragons());
-
-		ASSERT_FALSE(CirclesTileDesign() == tileDesign);
-		ASSERT_FALSE(BambooTileDesign() == tileDesign);
-		ASSERT_FALSE(CharactersTileDesign() == tileDesign);
-		ASSERT_FALSE(EastTileDesign() == tileDesign);
-		ASSERT_FALSE(SouthTileDesign() == tileDesign);
-		ASSERT_FALSE(WestTileDesign() == tileDesign);
-		ASSERT_FALSE(NorthTileDesign() == tileDesign);
-		ASSERT_FALSE(RedTileDesign() == tileDesign);
-		ASSERT_TRUE(WhiteTileDesign() == tileDesign);
-		ASSERT_FALSE(GreenTileDesign() == tileDesign);
-
-		ASSERT_TRUE(CirclesTileDesign() != tileDesign);
-		ASSERT_TRUE(BambooTileDesign() != tileDesign);
-		ASSERT_TRUE(CharactersTileDesign() != tileDesign);
-		ASSERT_TRUE(EastTileDesign() != tileDesign);
-		ASSERT_TRUE(SouthTileDesign() != tileDesign);
-		ASSERT_TRUE(WestTileDesign() != tileDesign);
-		ASSERT_TRUE(NorthTileDesign() != tileDesign);
-		ASSERT_TRUE(RedTileDesign() != tileDesign);
-		ASSERT_FALSE(WhiteTileDesign() != tileDesign);
-		ASSERT_TRUE(GreenTileDesign() != tileDesign);
-	}
-
-	/// 發の牌図柄をテストする。
-	TEST_F(TileDesignsTest, testGreen)
-	{
-		const TileDesign &tileDesign = TileDesigns::GREEN;
-		ASSERT_EQ(10, tileDesign.getId());
-		ASSERT_FALSE(tileDesign.isSuits());
-		ASSERT_TRUE(tileDesign.isHonours());
-		ASSERT_FALSE(tileDesign.isWinds());
-		ASSERT_TRUE(tileDesign.isDragons());
-
-		ASSERT_FALSE(CirclesTileDesign() == tileDesign);
-		ASSERT_FALSE(BambooTileDesign() == tileDesign);
-		ASSERT_FALSE(CharactersTileDesign() == tileDesign);
-		ASSERT_FALSE(EastTileDesign() == tileDesign);
-		ASSERT_FALSE(SouthTileDesign() == tileDesign);
-		ASSERT_FALSE(WestTileDesign() == tileDesign);
-		ASSERT_FALSE(NorthTileDesign() == tileDesign);
-		ASSERT_FALSE(RedTileDesign() == tileDesign);
-		ASSERT_FALSE(WhiteTileDesign() == tileDesign);
-		ASSERT_TRUE(GreenTileDesign() == tileDesign);
-
-		ASSERT_TRUE(CirclesTileDesign() != tileDesign);
-		ASSERT_TRUE(BambooTileDesign() != tileDesign);
-		ASSERT_TRUE(CharactersTileDesign() != tileDesign);
-		ASSERT_TRUE(EastTileDesign() != tileDesign);
-		ASSERT_TRUE(SouthTileDesign() != tileDesign);
-		ASSERT_TRUE(WestTileDesign() != tileDesign);
-		ASSERT_TRUE(NorthTileDesign() != tileDesign);
-		ASSERT_TRUE(RedTileDesign() != tileDesign);
-		ASSERT_TRUE(WhiteTileDesign() != tileDesign);
-		ASSERT_FALSE(GreenTileDesign() != tileDesign);
+		ASSERT_FALSE(TileDesigns::CIRCLES == TileDesigns::BAMBOO);
+		ASSERT_FALSE(TileDesigns::CIRCLES == TileDesigns::CHARACTERS);
+		ASSERT_FALSE(TileDesigns::CIRCLES == TileDesigns::EAST);
+		ASSERT_FALSE(TileDesigns::CIRCLES == TileDesigns::SOUTH);
+		ASSERT_FALSE(TileDesigns::CIRCLES == TileDesigns::WEST);
+		ASSERT_FALSE(TileDesigns::CIRCLES == TileDesigns::NORTH);
+		ASSERT_FALSE(TileDesigns::CIRCLES == TileDesigns::RED);
+		ASSERT_FALSE(TileDesigns::CIRCLES == TileDesigns::WHITE);
+		ASSERT_FALSE(TileDesigns::CIRCLES == TileDesigns::GREEN);
 	}
 }

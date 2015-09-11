@@ -21,71 +21,29 @@ namespace openriichi
 {
 	class MeldTypesTest : public ::testing::Test {};
 
-	/// 面前であることを表す鳴き種別をテストする。
-	TEST_F(MeldTypesTest, testNone)
+	/// ID 変数をテストする。
+	TEST_F(MeldTypesTest, testId)
 	{
-		const MeldType &meldType = MeldTypes::NONE;
-		ASSERT_EQ(0, meldType.getId());
-
-		ASSERT_TRUE(NoneMeldType() == meldType);
-		ASSERT_FALSE(LeftMeldType() == meldType);
-		ASSERT_FALSE(CenterMeldType() == meldType);
-		ASSERT_FALSE(RightMeldType() == meldType);
-
-		ASSERT_FALSE(NoneMeldType() != meldType);
-		ASSERT_TRUE(LeftMeldType() != meldType);
-		ASSERT_TRUE(CenterMeldType() != meldType);
-		ASSERT_TRUE(RightMeldType() != meldType);
+		ASSERT_EQ(0, MeldTypes::NONE.ID);
+		ASSERT_EQ(1, MeldTypes::LEFT.ID);
+		ASSERT_EQ(2, MeldTypes::ACROSS.ID);
+		ASSERT_EQ(3, MeldTypes::RIGHT.ID);
 	}
 
-	/// 順子の場合は左の牌，刻子，槓子の場合は上家の牌を鳴いたことを表す鳴き種別をテストする。
-	TEST_F(MeldTypesTest, testLeft)
+	/// getId 関数をテストする。
+	TEST_F(MeldTypesTest, testGetId)
 	{
-		const MeldType &meldType = MeldTypes::LEFT;
-		ASSERT_EQ(1, meldType.getId());
-
-		ASSERT_FALSE(NoneMeldType() == meldType);
-		ASSERT_TRUE(LeftMeldType() == meldType);
-		ASSERT_FALSE(CenterMeldType() == meldType);
-		ASSERT_FALSE(RightMeldType() == meldType);
-
-		ASSERT_TRUE(NoneMeldType() != meldType);
-		ASSERT_FALSE(LeftMeldType() != meldType);
-		ASSERT_TRUE(CenterMeldType() != meldType);
-		ASSERT_TRUE(RightMeldType() != meldType);
+		ASSERT_EQ(0, MeldTypes::NONE.getId());
+		ASSERT_EQ(1, MeldTypes::LEFT.getId());
+		ASSERT_EQ(2, MeldTypes::ACROSS.getId());
+		ASSERT_EQ(3, MeldTypes::RIGHT.getId());
 	}
 
-	/// 順子の場合は中央の牌，刻子，槓子の場合は対面の牌を鳴いたことを表す鳴き種別をテストする。
-	TEST_F(MeldTypesTest, testCenter)
+	/// 同一種類の列挙型を比較可能であるかテストする。
+	TEST_F(MeldTypesTest, testComparable)
 	{
-		const MeldType &meldType = MeldTypes::ACROSS;
-		ASSERT_EQ(2, meldType.getId());
-
-		ASSERT_FALSE(NoneMeldType() == meldType);
-		ASSERT_FALSE(LeftMeldType() == meldType);
-		ASSERT_TRUE(CenterMeldType() == meldType);
-		ASSERT_FALSE(RightMeldType() == meldType);
-
-		ASSERT_TRUE(NoneMeldType() != meldType);
-		ASSERT_TRUE(LeftMeldType() != meldType);
-		ASSERT_FALSE(CenterMeldType() != meldType);
-		ASSERT_TRUE(RightMeldType() != meldType);
-	}
-
-	/// 順子の場合は右の牌，刻子，槓子の場合は下家の牌を鳴いたことを表す鳴き種別をテストする。
-	TEST_F(MeldTypesTest, testRight)
-	{
-		const MeldType &meldType = MeldTypes::RIGHT;
-		ASSERT_EQ(3, meldType.getId());
-
-		ASSERT_FALSE(NoneMeldType() == meldType);
-		ASSERT_FALSE(LeftMeldType() == meldType);
-		ASSERT_FALSE(CenterMeldType() == meldType);
-		ASSERT_TRUE(RightMeldType() == meldType);
-
-		ASSERT_TRUE(NoneMeldType() != meldType);
-		ASSERT_TRUE(LeftMeldType() != meldType);
-		ASSERT_TRUE(CenterMeldType() != meldType);
-		ASSERT_FALSE(RightMeldType() != meldType);
+		ASSERT_FALSE(MeldTypes::NONE == MeldTypes::LEFT);
+		ASSERT_FALSE(MeldTypes::NONE == MeldTypes::ACROSS);
+		ASSERT_FALSE(MeldTypes::NONE == MeldTypes::RIGHT);
 	}
 }

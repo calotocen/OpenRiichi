@@ -21,71 +21,29 @@ namespace openriichi
 {
 	class SetArrangementsTest : public ::testing::Test {};
 
-	/// 順子をテストする。
-	TEST_F(SetArrangementsTest, testChow)
+	/// ID 変数をテストする。
+	TEST_F(SetArrangementsTest, testId)
 	{
-		const SetArrangement &setArrangement = SetArrangements::CHOW;
-		ASSERT_EQ(1, setArrangement.getId());
-
-		ASSERT_TRUE(ChowSetArrangement() == setArrangement);
-		ASSERT_FALSE(PairSetArrangement() == setArrangement);
-		ASSERT_FALSE(PungSetArrangement() == setArrangement);
-		ASSERT_FALSE(KongSetArrangement() == setArrangement);
-
-		ASSERT_FALSE(ChowSetArrangement() != setArrangement);
-		ASSERT_TRUE(PairSetArrangement() != setArrangement);
-		ASSERT_TRUE(PungSetArrangement() != setArrangement);
-		ASSERT_TRUE(KongSetArrangement() != setArrangement);
+		ASSERT_EQ(1, SetArrangements::CHOW.ID);
+		ASSERT_EQ(2, SetArrangements::PAIR.ID);
+		ASSERT_EQ(3, SetArrangements::PUNG.ID);
+		ASSERT_EQ(4, SetArrangements::KONG.ID);
 	}
 
-	/// 対子をテストする。
-	TEST_F(SetArrangementsTest, testPair)
+	/// getId 関数をテストする。
+	TEST_F(SetArrangementsTest, testGetId)
 	{
-		const SetArrangement &setArrangement = SetArrangements::PAIR;
-		ASSERT_EQ(2, setArrangement.getId());
-
-		ASSERT_FALSE(ChowSetArrangement() == setArrangement);
-		ASSERT_TRUE(PairSetArrangement() == setArrangement);
-		ASSERT_FALSE(PungSetArrangement() == setArrangement);
-		ASSERT_FALSE(KongSetArrangement() == setArrangement);
-
-		ASSERT_TRUE(ChowSetArrangement() != setArrangement);
-		ASSERT_FALSE(PairSetArrangement() != setArrangement);
-		ASSERT_TRUE(PungSetArrangement() != setArrangement);
-		ASSERT_TRUE(KongSetArrangement() != setArrangement);
+		ASSERT_EQ(1, SetArrangements::CHOW.getId());
+		ASSERT_EQ(2, SetArrangements::PAIR.getId());
+		ASSERT_EQ(3, SetArrangements::PUNG.getId());
+		ASSERT_EQ(4, SetArrangements::KONG.getId());
 	}
 
-	/// 刻子をテストする。
-	TEST_F(SetArrangementsTest, testPung)
+	/// 同一種類の列挙型を比較可能であるかテストする。
+	TEST_F(SetArrangementsTest, testComparable)
 	{
-		const SetArrangement &setArrangement = SetArrangements::PUNG;
-		ASSERT_EQ(3, setArrangement.getId());
-
-		ASSERT_FALSE(ChowSetArrangement() == setArrangement);
-		ASSERT_FALSE(PairSetArrangement() == setArrangement);
-		ASSERT_TRUE(PungSetArrangement() == setArrangement);
-		ASSERT_FALSE(KongSetArrangement() == setArrangement);
-
-		ASSERT_TRUE(ChowSetArrangement() != setArrangement);
-		ASSERT_TRUE(PairSetArrangement() != setArrangement);
-		ASSERT_FALSE(PungSetArrangement() != setArrangement);
-		ASSERT_TRUE(KongSetArrangement() != setArrangement);
-	}
-
-	/// 槓子をテストする。
-	TEST_F(SetArrangementsTest, testKong)
-	{
-		const SetArrangement &setArrangement = SetArrangements::KONG;
-		ASSERT_EQ(4, setArrangement.getId());
-
-		ASSERT_FALSE(ChowSetArrangement() == setArrangement);
-		ASSERT_FALSE(PairSetArrangement() == setArrangement);
-		ASSERT_FALSE(PungSetArrangement() == setArrangement);
-		ASSERT_TRUE(KongSetArrangement() == setArrangement);
-
-		ASSERT_TRUE(ChowSetArrangement() != setArrangement);
-		ASSERT_TRUE(PairSetArrangement() != setArrangement);
-		ASSERT_TRUE(PungSetArrangement() != setArrangement);
-		ASSERT_FALSE(KongSetArrangement() != setArrangement);
+		ASSERT_FALSE(SetArrangements::CHOW == SetArrangements::PAIR);
+		ASSERT_FALSE(SetArrangements::CHOW == SetArrangements::PUNG);
+		ASSERT_FALSE(SetArrangements::CHOW == SetArrangements::KONG);
 	}
 }
