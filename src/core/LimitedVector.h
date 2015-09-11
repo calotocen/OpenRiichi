@@ -208,8 +208,10 @@ namespace openriichi
 
 	template<class T, size_t size, typename SizeType>
 	LimitedVector<T, size, SizeType>::LimitedVector()
+		: m_elements()
+		, m_elementsSize(0)
 	{
-		m_elementsSize = 0;
+		// 何もしない。
 	}
 
 
