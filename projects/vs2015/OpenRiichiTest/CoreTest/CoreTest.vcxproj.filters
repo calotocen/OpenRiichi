@@ -22,9 +22,6 @@
     <ClCompile Include="..\..\..\..\test\core\WindsTest.cpp">
       <Filter>OpenRiichiTest</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\..\..\test\core\MemorySavedTileTest.cpp">
-      <Filter>OpenRiichiTest</Filter>
-    </ClCompile>
     <ClCompile Include="..\..\..\..\test\core\MeldTypesTest.cpp">
       <Filter>OpenRiichiTest</Filter>
     </ClCompile>
@@ -59,6 +56,9 @@
       <Filter>OpenRiichiTest</Filter>
     </ClCompile>
     <ClCompile Include="..\..\..\..\test\core\TilesTest.cpp">
+      <Filter>OpenRiichiTest</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\test\core\TileTest.cpp">
       <Filter>OpenRiichiTest</Filter>
     </ClCompile>
   </ItemGroup>
