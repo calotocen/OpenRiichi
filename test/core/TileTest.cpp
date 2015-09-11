@@ -13,379 +13,400 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
+#include <vector>
 #include <gtest/gtest.h>
-#include <MemorySavedTile.h>
-#include <TileDesigns.h>
-#include <TileAttributes.h>
+#include <Tile.h>
+
+
+using namespace std;
 
 
 namespace openriichi
 {
-	class MemorySavedTileTest : public ::testing::Test {};
-
-	/// インスタンスのサイズをテストする。
-	TEST_F(MemorySavedTileTest, testSizeOfInstance)
+	class TileTest : public ::testing::Test
 	{
-		MemorySavedTile circles1(TileDesigns::CIRCLES, 1);
-		ASSERT_EQ(1, sizeof(circles1));
-	}
+	protected:
+		Tile P1;
+		Tile P1R;
+		Tile P3;
+		Tile P9;
+		Tile S1;
+		Tile S5;
+		Tile S5R;
+		Tile S9;
+		Tile M1;
+		Tile M7;
+		Tile M9;
+		Tile M9R;
+		Tile TN;
+		Tile TNR;
+		Tile NN;
+		Tile SH;
+		Tile PE;
+		Tile CH;
+		Tile CHR;
+		Tile HK;
+		Tile HT;
 
-	/// 筒子牌をテストする。
-	TEST_F(MemorySavedTileTest, testCirclesTile)
-	{
-		const MemorySavedTile circles1(TileDesigns::CIRCLES, 1);
-		ASSERT_EQ(1, circles1.getNumber());
-		ASSERT_EQ(TileDesigns::CIRCLES, circles1.getDesign());
-		ASSERT_EQ(TileAttributes::NONE, circles1.getAttribute());
-		ASSERT_TRUE(circles1.isSuits());
-		ASSERT_FALSE(circles1.isHonours());
-		ASSERT_FALSE(circles1.isWinds());
-		ASSERT_FALSE(circles1.isDragons());
-		ASSERT_FALSE(circles1.isSimples());
-		ASSERT_TRUE(circles1.isTerminals());
-		ASSERT_TRUE(circles1.isTerminalsOrHonours());
-		ASSERT_TRUE(circles1 == MemorySavedTile(TileDesigns::CIRCLES, 1));
-		ASSERT_FALSE(circles1 == MemorySavedTile(TileDesigns::CIRCLES, 2));
-		ASSERT_FALSE(circles1 == MemorySavedTile(TileDesigns::BAMBOO, 1));
-		ASSERT_FALSE(circles1 == MemorySavedTile(TileDesigns::CHARACTERS, 1));
-		ASSERT_FALSE(circles1 == MemorySavedTile(TileDesigns::EAST));
-		ASSERT_FALSE(circles1 == MemorySavedTile(TileDesigns::RED));
-		ASSERT_FALSE(circles1 != MemorySavedTile(TileDesigns::CIRCLES, 1));
-		ASSERT_TRUE(circles1 != MemorySavedTile(TileDesigns::CIRCLES, 2));
-		ASSERT_TRUE(circles1 != MemorySavedTile(TileDesigns::BAMBOO, 1));
-		ASSERT_TRUE(circles1 != MemorySavedTile(TileDesigns::CHARACTERS, 1));
-		ASSERT_TRUE(circles1 != MemorySavedTile(TileDesigns::EAST));
-		ASSERT_TRUE(circles1 != MemorySavedTile(TileDesigns::RED));
-
-		const MemorySavedTile circles2(TileDesigns::CIRCLES, 2);
-		ASSERT_EQ(2, circles2.getNumber());
-		ASSERT_EQ(TileDesigns::CIRCLES, circles2.getDesign());
-		ASSERT_EQ(TileAttributes::NONE, circles2.getAttribute());
-		ASSERT_TRUE(circles2.isSuits());
-		ASSERT_FALSE(circles2.isHonours());
-		ASSERT_FALSE(circles2.isWinds());
-		ASSERT_FALSE(circles2.isDragons());
-		ASSERT_TRUE(circles2.isSimples());
-		ASSERT_FALSE(circles2.isTerminals());
-		ASSERT_FALSE(circles2.isTerminalsOrHonours());
-
-		const MemorySavedTile circles5(TileDesigns::CIRCLES, 5, TileAttributes::RED);
-		ASSERT_EQ(5, circles5.getNumber());
-		ASSERT_EQ(TileDesigns::CIRCLES, circles5.getDesign());
-		ASSERT_EQ(TileAttributes::RED, circles5.getAttribute());
-		ASSERT_TRUE(circles5.isSuits());
-		ASSERT_FALSE(circles5.isHonours());
-		ASSERT_FALSE(circles5.isWinds());
-		ASSERT_FALSE(circles5.isDragons());
-		ASSERT_TRUE(circles5.isSimples());
-		ASSERT_FALSE(circles5.isTerminals());
-		ASSERT_FALSE(circles5.isTerminalsOrHonours());
-
-		const MemorySavedTile circles8(TileDesigns::CIRCLES, 8);
-		ASSERT_EQ(8, circles8.getNumber());
-		ASSERT_EQ(TileDesigns::CIRCLES, circles8.getDesign());
-		ASSERT_EQ(TileAttributes::NONE, circles8.getAttribute());
-		ASSERT_TRUE(circles8.isSuits());
-		ASSERT_FALSE(circles8.isHonours());
-		ASSERT_FALSE(circles8.isWinds());
-		ASSERT_FALSE(circles8.isDragons());
-		ASSERT_TRUE(circles8.isSimples());
-		ASSERT_FALSE(circles8.isTerminals());
-		ASSERT_FALSE(circles8.isTerminalsOrHonours());
-
-		const MemorySavedTile circles9(TileDesigns::CIRCLES, 9);
-		ASSERT_EQ(9, circles9.getNumber());
-		ASSERT_EQ(TileDesigns::CIRCLES, circles9.getDesign());
-		ASSERT_EQ(TileAttributes::NONE, circles9.getAttribute());
-		ASSERT_TRUE(circles9.isSuits());
-		ASSERT_FALSE(circles9.isHonours());
-		ASSERT_FALSE(circles9.isWinds());
-		ASSERT_FALSE(circles9.isDragons());
-		ASSERT_FALSE(circles9.isSimples());
-		ASSERT_TRUE(circles9.isTerminals());
-		ASSERT_TRUE(circles9.isTerminalsOrHonours());
-	}
-
-	/// 索子牌をテストする。
-	TEST_F(MemorySavedTileTest, testBambooTile)
-	{
-		const MemorySavedTile bamboo1(TileDesigns::BAMBOO, 1);
-		ASSERT_EQ(1, bamboo1.getNumber());
-		ASSERT_EQ(TileDesigns::BAMBOO, bamboo1.getDesign());
-		ASSERT_EQ(TileAttributes::NONE, bamboo1.getAttribute());
-		ASSERT_TRUE(bamboo1.isSuits());
-		ASSERT_FALSE(bamboo1.isHonours());
-		ASSERT_FALSE(bamboo1.isWinds());
-		ASSERT_FALSE(bamboo1.isDragons());
-		ASSERT_FALSE(bamboo1.isSimples());
-		ASSERT_TRUE(bamboo1.isTerminals());
-		ASSERT_TRUE(bamboo1.isTerminalsOrHonours());
-		ASSERT_FALSE(bamboo1 == MemorySavedTile(TileDesigns::CIRCLES, 1));
-		ASSERT_TRUE(bamboo1 == MemorySavedTile(TileDesigns::BAMBOO, 1));
-		ASSERT_FALSE(bamboo1 == MemorySavedTile(TileDesigns::BAMBOO, 2));
-		ASSERT_FALSE(bamboo1 == MemorySavedTile(TileDesigns::CHARACTERS, 1));
-		ASSERT_FALSE(bamboo1 == MemorySavedTile(TileDesigns::EAST));
-		ASSERT_FALSE(bamboo1 == MemorySavedTile(TileDesigns::RED));
-		ASSERT_TRUE(bamboo1 != MemorySavedTile(TileDesigns::CIRCLES, 1));
-		ASSERT_FALSE(bamboo1 != MemorySavedTile(TileDesigns::BAMBOO, 1));
-		ASSERT_TRUE(bamboo1 != MemorySavedTile(TileDesigns::BAMBOO, 2));
-		ASSERT_TRUE(bamboo1 != MemorySavedTile(TileDesigns::CHARACTERS, 1));
-		ASSERT_TRUE(bamboo1 != MemorySavedTile(TileDesigns::EAST));
-		ASSERT_TRUE(bamboo1 != MemorySavedTile(TileDesigns::RED));
-
-		const MemorySavedTile bamboo2(TileDesigns::BAMBOO, 2);
-		ASSERT_EQ(2, bamboo2.getNumber());
-		ASSERT_EQ(TileDesigns::BAMBOO, bamboo2.getDesign());
-		ASSERT_EQ(TileAttributes::NONE, bamboo2.getAttribute());
-		ASSERT_TRUE(bamboo2.isSuits());
-		ASSERT_FALSE(bamboo2.isHonours());
-		ASSERT_FALSE(bamboo2.isWinds());
-		ASSERT_FALSE(bamboo2.isDragons());
-		ASSERT_TRUE(bamboo2.isSimples());
-		ASSERT_FALSE(bamboo2.isTerminals());
-		ASSERT_FALSE(bamboo2.isTerminalsOrHonours());
-
-		const MemorySavedTile bamboo5(TileDesigns::BAMBOO, 5, TileAttributes::RED);
-		ASSERT_EQ(5, bamboo5.getNumber());
-		ASSERT_EQ(TileDesigns::BAMBOO, bamboo5.getDesign());
-		ASSERT_EQ(TileAttributes::RED, bamboo5.getAttribute());
-		ASSERT_TRUE(bamboo5.isSuits());
-		ASSERT_FALSE(bamboo5.isHonours());
-		ASSERT_FALSE(bamboo5.isWinds());
-		ASSERT_FALSE(bamboo5.isDragons());
-		ASSERT_TRUE(bamboo5.isSimples());
-		ASSERT_FALSE(bamboo5.isTerminals());
-		ASSERT_FALSE(bamboo5.isTerminalsOrHonours());
-
-		const MemorySavedTile bamboo8(TileDesigns::BAMBOO, 8);
-		ASSERT_EQ(8, bamboo8.getNumber());
-		ASSERT_EQ(TileDesigns::BAMBOO, bamboo8.getDesign());
-		ASSERT_EQ(TileAttributes::NONE, bamboo8.getAttribute());
-		ASSERT_TRUE(bamboo8.isSuits());
-		ASSERT_FALSE(bamboo8.isHonours());
-		ASSERT_FALSE(bamboo8.isWinds());
-		ASSERT_FALSE(bamboo8.isDragons());
-		ASSERT_TRUE(bamboo8.isSimples());
-		ASSERT_FALSE(bamboo8.isTerminals());
-		ASSERT_FALSE(bamboo8.isTerminalsOrHonours());
-
-		const MemorySavedTile bamboo9(TileDesigns::BAMBOO, 9);
-		ASSERT_EQ(9, bamboo9.getNumber());
-		ASSERT_EQ(TileDesigns::BAMBOO, bamboo9.getDesign());
-		ASSERT_EQ(TileAttributes::NONE, bamboo9.getAttribute());
-		ASSERT_TRUE(bamboo9.isSuits());
-		ASSERT_FALSE(bamboo9.isHonours());
-		ASSERT_FALSE(bamboo9.isWinds());
-		ASSERT_FALSE(bamboo9.isDragons());
-		ASSERT_FALSE(bamboo9.isSimples());
-		ASSERT_TRUE(bamboo9.isTerminals());
-		ASSERT_TRUE(bamboo9.isTerminalsOrHonours());
-	}
-
-	/// 萬子牌をテストする。
-	TEST_F(MemorySavedTileTest, testCharactersTile)
-	{
-		const MemorySavedTile characters1(TileDesigns::CHARACTERS, 1);
-		ASSERT_EQ(1, characters1.getNumber());
-		ASSERT_EQ(TileDesigns::CHARACTERS, characters1.getDesign());
-		ASSERT_EQ(TileAttributes::NONE, characters1.getAttribute());
-		ASSERT_TRUE(characters1.isSuits());
-		ASSERT_FALSE(characters1.isHonours());
-		ASSERT_FALSE(characters1.isWinds());
-		ASSERT_FALSE(characters1.isDragons());
-		ASSERT_FALSE(characters1.isSimples());
-		ASSERT_TRUE(characters1.isTerminals());
-		ASSERT_TRUE(characters1.isTerminalsOrHonours());
-		ASSERT_FALSE(characters1 == MemorySavedTile(TileDesigns::CIRCLES, 1));
-		ASSERT_FALSE(characters1 == MemorySavedTile(TileDesigns::BAMBOO, 1));
-		ASSERT_TRUE(characters1 == MemorySavedTile(TileDesigns::CHARACTERS, 1));
-		ASSERT_FALSE(characters1 == MemorySavedTile(TileDesigns::CHARACTERS, 2));
-		ASSERT_FALSE(characters1 == MemorySavedTile(TileDesigns::EAST));
-		ASSERT_FALSE(characters1 == MemorySavedTile(TileDesigns::RED));
-		ASSERT_TRUE(characters1 != MemorySavedTile(TileDesigns::CIRCLES, 1));
-		ASSERT_TRUE(characters1 != MemorySavedTile(TileDesigns::BAMBOO, 1));
-		ASSERT_FALSE(characters1 != MemorySavedTile(TileDesigns::CHARACTERS, 1));
-		ASSERT_TRUE(characters1 != MemorySavedTile(TileDesigns::CHARACTERS, 2));
-		ASSERT_TRUE(characters1 != MemorySavedTile(TileDesigns::EAST));
-		ASSERT_TRUE(characters1 != MemorySavedTile(TileDesigns::RED));
-
-		const MemorySavedTile characters2(TileDesigns::CHARACTERS, 2);
-		ASSERT_EQ(2, characters2.getNumber());
-		ASSERT_EQ(TileDesigns::CHARACTERS, characters2.getDesign());
-		ASSERT_EQ(TileAttributes::NONE, characters2.getAttribute());
-		ASSERT_TRUE(characters2.isSuits());
-		ASSERT_FALSE(characters2.isHonours());
-		ASSERT_FALSE(characters2.isWinds());
-		ASSERT_FALSE(characters2.isDragons());
-		ASSERT_TRUE(characters2.isSimples());
-		ASSERT_FALSE(characters2.isTerminals());
-		ASSERT_FALSE(characters2.isTerminalsOrHonours());
-
-		const MemorySavedTile characters5(TileDesigns::CHARACTERS, 5, TileAttributes::RED);
-		ASSERT_EQ(5, characters5.getNumber());
-		ASSERT_EQ(TileDesigns::CHARACTERS, characters5.getDesign());
-		ASSERT_EQ(TileAttributes::RED, characters5.getAttribute());
-		ASSERT_TRUE(characters5.isSuits());
-		ASSERT_FALSE(characters5.isHonours());
-		ASSERT_FALSE(characters5.isWinds());
-		ASSERT_FALSE(characters5.isDragons());
-		ASSERT_TRUE(characters5.isSimples());
-		ASSERT_FALSE(characters5.isTerminals());
-		ASSERT_FALSE(characters5.isTerminalsOrHonours());
-
-		const MemorySavedTile characters8(TileDesigns::CHARACTERS, 8);
-		ASSERT_EQ(8, characters8.getNumber());
-		ASSERT_EQ(TileDesigns::CHARACTERS, characters8.getDesign());
-		ASSERT_EQ(TileAttributes::NONE, characters8.getAttribute());
-		ASSERT_TRUE(characters8.isSuits());
-		ASSERT_FALSE(characters8.isHonours());
-		ASSERT_FALSE(characters8.isWinds());
-		ASSERT_FALSE(characters8.isDragons());
-		ASSERT_TRUE(characters8.isSimples());
-		ASSERT_FALSE(characters8.isTerminals());
-		ASSERT_FALSE(characters8.isTerminalsOrHonours());
-
-		const MemorySavedTile characters9(TileDesigns::CHARACTERS, 9);
-		ASSERT_EQ(9, characters9.getNumber());
-		ASSERT_EQ(TileDesigns::CHARACTERS, characters9.getDesign());
-		ASSERT_EQ(TileAttributes::NONE, characters9.getAttribute());
-		ASSERT_TRUE(characters9.isSuits());
-		ASSERT_FALSE(characters9.isHonours());
-		ASSERT_FALSE(characters9.isWinds());
-		ASSERT_FALSE(characters9.isDragons());
-		ASSERT_FALSE(characters9.isSimples());
-		ASSERT_TRUE(characters9.isTerminals());
-		ASSERT_TRUE(characters9.isTerminalsOrHonours());
-	}
-
-	/// 風牌をテストする。
-	TEST_F(MemorySavedTileTest, testWindsTile)
-	{
-		const MemorySavedTile east(TileDesigns::EAST);
-		ASSERT_EQ(0, east.getNumber());
-		ASSERT_EQ(TileDesigns::EAST, east.getDesign());
-		ASSERT_EQ(TileAttributes::NONE, east.getAttribute());
-		ASSERT_FALSE(east.isSuits());
-		ASSERT_TRUE(east.isHonours());
-		ASSERT_TRUE(east.isWinds());
-		ASSERT_FALSE(east.isDragons());
-		ASSERT_FALSE(east.isSimples());
-		ASSERT_FALSE(east.isTerminals());
-		ASSERT_TRUE(east.isTerminalsOrHonours());
-		ASSERT_FALSE(east == MemorySavedTile(TileDesigns::CIRCLES, 1));
-		ASSERT_FALSE(east == MemorySavedTile(TileDesigns::BAMBOO, 1));
-		ASSERT_FALSE(east == MemorySavedTile(TileDesigns::CHARACTERS, 1));
-		ASSERT_TRUE(east == MemorySavedTile(TileDesigns::EAST));
-		ASSERT_FALSE(east == MemorySavedTile(TileDesigns::SOUTH));
-		ASSERT_FALSE(east == MemorySavedTile(TileDesigns::RED));
-		ASSERT_TRUE(east != MemorySavedTile(TileDesigns::CIRCLES, 1));
-		ASSERT_TRUE(east != MemorySavedTile(TileDesigns::BAMBOO, 1));
-		ASSERT_TRUE(east != MemorySavedTile(TileDesigns::CHARACTERS, 1));
-		ASSERT_FALSE(east != MemorySavedTile(TileDesigns::EAST));
-		ASSERT_TRUE(east != MemorySavedTile(TileDesigns::SOUTH));
-		ASSERT_TRUE(east != MemorySavedTile(TileDesigns::RED));
-
-		const MemorySavedTile south(TileDesigns::SOUTH);
-		ASSERT_EQ(0, south.getNumber());
-		ASSERT_EQ(TileDesigns::SOUTH, south.getDesign());
-		ASSERT_EQ(TileAttributes::NONE, south.getAttribute());
-		ASSERT_FALSE(south.isSuits());
-		ASSERT_TRUE(south.isHonours());
-		ASSERT_TRUE(south.isWinds());
-		ASSERT_FALSE(south.isDragons());
-		ASSERT_FALSE(south.isSimples());
-		ASSERT_FALSE(south.isTerminals());
-		ASSERT_TRUE(south.isTerminalsOrHonours());
-
-		const MemorySavedTile west(TileDesigns::WEST);
-		ASSERT_EQ(0, west.getNumber());
-		ASSERT_EQ(TileDesigns::WEST, west.getDesign());
-		ASSERT_EQ(TileAttributes::NONE, west.getAttribute());
-		ASSERT_FALSE(west.isSuits());
-		ASSERT_TRUE(west.isHonours());
-		ASSERT_TRUE(west.isWinds());
-		ASSERT_FALSE(west.isDragons());
-		ASSERT_FALSE(west.isSimples());
-		ASSERT_FALSE(west.isTerminals());
-		ASSERT_TRUE(west.isTerminalsOrHonours());
-
-		const MemorySavedTile north(TileDesigns::NORTH);
-		ASSERT_EQ(0, north.getNumber());
-		ASSERT_EQ(TileDesigns::NORTH, north.getDesign());
-		ASSERT_EQ(TileAttributes::NONE, north.getAttribute());
-		ASSERT_FALSE(north.isSuits());
-		ASSERT_TRUE(north.isHonours());
-		ASSERT_TRUE(north.isWinds());
-		ASSERT_FALSE(north.isDragons());
-		ASSERT_FALSE(north.isSimples());
-		ASSERT_FALSE(north.isTerminals());
-		ASSERT_TRUE(north.isTerminalsOrHonours());
-	}
-
-	/// 三元牌をテストする。
-	TEST_F(MemorySavedTileTest, testDragonsTile)
-	{
-		const MemorySavedTile red(TileDesigns::RED);
-		ASSERT_EQ(0, red.getNumber());
-		ASSERT_EQ(TileDesigns::RED, red.getDesign());
-		ASSERT_EQ(TileAttributes::NONE, red.getAttribute());
-		ASSERT_FALSE(red.isSuits());
-		ASSERT_TRUE(red.isHonours());
-		ASSERT_FALSE(red.isWinds());
-		ASSERT_TRUE(red.isDragons());
-		ASSERT_FALSE(red.isSimples());
-		ASSERT_FALSE(red.isTerminals());
-		ASSERT_TRUE(red.isTerminalsOrHonours());
-		ASSERT_FALSE(red == MemorySavedTile(TileDesigns::CIRCLES, 1));
-		ASSERT_FALSE(red == MemorySavedTile(TileDesigns::BAMBOO, 1));
-		ASSERT_FALSE(red == MemorySavedTile(TileDesigns::CHARACTERS, 1));
-		ASSERT_FALSE(red == MemorySavedTile(TileDesigns::EAST));
-		ASSERT_TRUE(red == MemorySavedTile(TileDesigns::RED));
-		ASSERT_FALSE(red == MemorySavedTile(TileDesigns::WHITE));
-		ASSERT_TRUE(red != MemorySavedTile(TileDesigns::CIRCLES, 1));
-		ASSERT_TRUE(red != MemorySavedTile(TileDesigns::BAMBOO, 1));
-		ASSERT_TRUE(red != MemorySavedTile(TileDesigns::CHARACTERS, 1));
-		ASSERT_TRUE(red != MemorySavedTile(TileDesigns::EAST));
-		ASSERT_FALSE(red != MemorySavedTile(TileDesigns::RED));
-		ASSERT_TRUE(red != MemorySavedTile(TileDesigns::WHITE));
-
-		const MemorySavedTile white(TileDesigns::WHITE);
-		ASSERT_EQ(0, white.getNumber());
-		ASSERT_EQ(TileDesigns::WHITE, white.getDesign());
-		ASSERT_EQ(TileAttributes::NONE, white.getAttribute());
-		ASSERT_FALSE(white.isSuits());
-		ASSERT_TRUE(white.isHonours());
-		ASSERT_FALSE(white.isWinds());
-		ASSERT_TRUE(white.isDragons());
-		ASSERT_FALSE(white.isSimples());
-		ASSERT_FALSE(white.isTerminals());
-		ASSERT_TRUE(white.isTerminalsOrHonours());
-
-		const MemorySavedTile green(TileDesigns::GREEN);
-		ASSERT_EQ(0, green.getNumber());
-		ASSERT_EQ(TileDesigns::GREEN, green.getDesign());
-		ASSERT_EQ(TileAttributes::NONE, green.getAttribute());
-		ASSERT_FALSE(green.isSuits());
-		ASSERT_TRUE(green.isHonours());
-		ASSERT_FALSE(green.isWinds());
-		ASSERT_TRUE(green.isDragons());
-		ASSERT_FALSE(green.isSimples());
-		ASSERT_FALSE(green.isTerminals());
-		ASSERT_TRUE(green.isTerminalsOrHonours());
-	}
+	public:
+		TileTest()
+			: P1(TileDesigns::CIRCLES, 1)
+			, P1R(TileDesigns::CIRCLES, 1, TileAttributes::RED)
+			, P3(TileDesigns::CIRCLES, 3)
+			, P9(TileDesigns::CIRCLES, 9)
+			, S1(TileDesigns::BAMBOO, 1)
+			, S5(TileDesigns::BAMBOO, 5)
+			, S5R(TileDesigns::BAMBOO, 5, TileAttributes::RED)
+			, S9(TileDesigns::BAMBOO, 9)
+			, M1(TileDesigns::CHARACTERS, 1)
+			, M7(TileDesigns::CHARACTERS, 7)
+			, M9(TileDesigns::CHARACTERS, 9)
+			, M9R(TileDesigns::CHARACTERS, 9, TileAttributes::RED)
+			, TN(TileDesigns::EAST)
+			, TNR(TileDesigns::EAST, TileAttributes::RED)
+			, NN(TileDesigns::SOUTH)
+			, SH(TileDesigns::WEST)
+			, PE(TileDesigns::NORTH)
+			, CH(TileDesigns::RED)
+			, CHR(TileDesigns::RED, TileAttributes::RED)
+			, HK(TileDesigns::WHITE)
+			, HT(TileDesigns::GREEN)
+		{}
+	};
 
 	/// ID を用いた牌の生成をテストする。
-	TEST_F(MemorySavedTileTest, testConstructorWithId)
+	TEST_F(TileTest, testConstructWithId)
 	{
-		ASSERT_EQ(MemorySavedTile(TileDesigns::CIRCLES, 1), MemorySavedTile(1, 1));
-		ASSERT_EQ(MemorySavedTile(TileDesigns::BAMBOO, 5, TileAttributes::RED), MemorySavedTile(2, 5, 1));
-		ASSERT_EQ(MemorySavedTile(TileDesigns::CHARACTERS, 9), MemorySavedTile(3, 9));
-		ASSERT_EQ(MemorySavedTile(TileDesigns::EAST), MemorySavedTile(4, 0));
-		ASSERT_EQ(MemorySavedTile(TileDesigns::SOUTH), MemorySavedTile(5, 0));
-		ASSERT_EQ(MemorySavedTile(TileDesigns::WEST), MemorySavedTile(6, 0));
-		ASSERT_EQ(MemorySavedTile(TileDesigns::NORTH), MemorySavedTile(7, 0));
-		ASSERT_EQ(MemorySavedTile(TileDesigns::RED), MemorySavedTile(8, 0));
-		ASSERT_EQ(MemorySavedTile(TileDesigns::WHITE), MemorySavedTile(9, 0));
-		ASSERT_EQ(MemorySavedTile(TileDesigns::GREEN), MemorySavedTile(10, 0));
+		ASSERT_EQ(Tile(TileDesigns::CIRCLES, 1), Tile(1, 1));
+		ASSERT_EQ(Tile(TileDesigns::CIRCLES, 1, TileAttributes::RED), Tile(1, 1, 1));
+		ASSERT_EQ(Tile(TileDesigns::CIRCLES, 3), Tile(1, 3));
+		ASSERT_EQ(Tile(TileDesigns::CIRCLES, 9), Tile(1, 9));
+		ASSERT_EQ(Tile(TileDesigns::BAMBOO, 1), Tile(2, 1));
+		ASSERT_EQ(Tile(TileDesigns::BAMBOO, 5), Tile(2, 5));
+		ASSERT_EQ(Tile(TileDesigns::BAMBOO, 5, TileAttributes::RED), Tile(2, 5, 1));
+		ASSERT_EQ(Tile(TileDesigns::BAMBOO, 9), Tile(2, 9));
+		ASSERT_EQ(Tile(TileDesigns::CHARACTERS, 1), Tile(3, 1));
+		ASSERT_EQ(Tile(TileDesigns::CHARACTERS, 7), Tile(3, 7));
+		ASSERT_EQ(Tile(TileDesigns::CHARACTERS, 9), Tile(3, 9));
+		ASSERT_EQ(Tile(TileDesigns::CHARACTERS, 9, TileAttributes::RED), Tile(3, 9, 1));
+		ASSERT_EQ(Tile(TileDesigns::EAST), Tile(4, 0));
+		ASSERT_EQ(Tile(TileDesigns::EAST, TileAttributes::RED), Tile(4, 0, 1));
+		ASSERT_EQ(Tile(TileDesigns::SOUTH), Tile(5, 0));
+		ASSERT_EQ(Tile(TileDesigns::WEST), Tile(6, 0));
+		ASSERT_EQ(Tile(TileDesigns::NORTH), Tile(7, 0));
+		ASSERT_EQ(Tile(TileDesigns::RED), Tile(8, 0));
+		ASSERT_EQ(Tile(TileDesigns::RED, TileAttributes::RED), Tile(8, 0, 1));
+		ASSERT_EQ(Tile(TileDesigns::WHITE), Tile(9, 0));
+		ASSERT_EQ(Tile(TileDesigns::GREEN), Tile(10, 0));
+	}
+
+	/// getDesign 関数をテストする。
+	TEST_F(TileTest, testGetDesign)
+	{
+		ASSERT_EQ(TileDesigns::CIRCLES, P1R.getDesign());
+		ASSERT_EQ(TileDesigns::CIRCLES, P3.getDesign());
+		ASSERT_EQ(TileDesigns::CIRCLES, P9.getDesign());
+		ASSERT_EQ(TileDesigns::BAMBOO, S1.getDesign());
+		ASSERT_EQ(TileDesigns::BAMBOO, S5R.getDesign());
+		ASSERT_EQ(TileDesigns::BAMBOO, S9.getDesign());
+		ASSERT_EQ(TileDesigns::CHARACTERS, M1.getDesign());
+		ASSERT_EQ(TileDesigns::CHARACTERS, M7.getDesign());
+		ASSERT_EQ(TileDesigns::CHARACTERS, M9R.getDesign());
+		ASSERT_EQ(TileDesigns::EAST, TNR.getDesign());
+		ASSERT_EQ(TileDesigns::SOUTH, NN.getDesign());
+		ASSERT_EQ(TileDesigns::WEST, SH.getDesign());
+		ASSERT_EQ(TileDesigns::NORTH, PE.getDesign());
+		ASSERT_EQ(TileDesigns::RED, CHR.getDesign());
+		ASSERT_EQ(TileDesigns::WHITE, HK.getDesign());
+		ASSERT_EQ(TileDesigns::GREEN, HT.getDesign());
+	}
+
+	/// getNumber 関数をテストする。
+	TEST_F(TileTest, testGetNumber)
+	{
+		ASSERT_EQ(1, P1R.getNumber());
+		ASSERT_EQ(3, P3.getNumber());
+		ASSERT_EQ(9, P9.getNumber());
+		ASSERT_EQ(1, S1.getNumber());
+		ASSERT_EQ(5, S5R.getNumber());
+		ASSERT_EQ(9, S9.getNumber());
+		ASSERT_EQ(1, M1.getNumber());
+		ASSERT_EQ(7, M7.getNumber());
+		ASSERT_EQ(9, M9R.getNumber());
+		ASSERT_EQ(0, TNR.getNumber());
+		ASSERT_EQ(0, NN.getNumber());
+		ASSERT_EQ(0, SH.getNumber());
+		ASSERT_EQ(0, PE.getNumber());
+		ASSERT_EQ(0, CHR.getNumber());
+		ASSERT_EQ(0, HK.getNumber());
+		ASSERT_EQ(0, HT.getNumber());
+	}
+
+	/// getAttribute 関数をテストする。
+	TEST_F(TileTest, testGetAttribute)
+	{
+		ASSERT_EQ(TileAttributes::RED, P1R.getAttribute());
+		ASSERT_EQ(TileAttributes::NONE, P3.getAttribute());
+		ASSERT_EQ(TileAttributes::NONE, P9.getAttribute());
+		ASSERT_EQ(TileAttributes::NONE, S1.getAttribute());
+		ASSERT_EQ(TileAttributes::RED, S5R.getAttribute());
+		ASSERT_EQ(TileAttributes::NONE, S9.getAttribute());
+		ASSERT_EQ(TileAttributes::NONE, M1.getAttribute());
+		ASSERT_EQ(TileAttributes::NONE, M7.getAttribute());
+		ASSERT_EQ(TileAttributes::RED, M9R.getAttribute());
+		ASSERT_EQ(TileAttributes::RED, TNR.getAttribute());
+		ASSERT_EQ(TileAttributes::NONE, NN.getAttribute());
+		ASSERT_EQ(TileAttributes::NONE, SH.getAttribute());
+		ASSERT_EQ(TileAttributes::NONE, PE.getAttribute());
+		ASSERT_EQ(TileAttributes::RED, CHR.getAttribute());
+		ASSERT_EQ(TileAttributes::NONE, HK.getAttribute());
+		ASSERT_EQ(TileAttributes::NONE, HT.getAttribute());
+	}
+
+	/// isSuits 関数をテストする。
+	TEST_F(TileTest, testIsSuits)
+	{
+		ASSERT_TRUE(P1R.isSuits());
+		ASSERT_TRUE(P3.isSuits());
+		ASSERT_TRUE(P9.isSuits());
+		ASSERT_TRUE(S1.isSuits());
+		ASSERT_TRUE(S5R.isSuits());
+		ASSERT_TRUE(S9.isSuits());
+		ASSERT_TRUE(M1.isSuits());
+		ASSERT_TRUE(M7.isSuits());
+		ASSERT_TRUE(M9R.isSuits());
+		ASSERT_FALSE(TNR.isSuits());
+		ASSERT_FALSE(NN.isSuits());
+		ASSERT_FALSE(SH.isSuits());
+		ASSERT_FALSE(PE.isSuits());
+		ASSERT_FALSE(CHR.isSuits());
+		ASSERT_FALSE(HK.isSuits());
+		ASSERT_FALSE(HT.isSuits());
+	}
+
+	/// isHonours 関数をテストする。
+	TEST_F(TileTest, testIsHonours)
+	{
+		ASSERT_FALSE(P1R.isHonours());
+		ASSERT_FALSE(P3.isHonours());
+		ASSERT_FALSE(P9.isHonours());
+		ASSERT_FALSE(S1.isHonours());
+		ASSERT_FALSE(S5R.isHonours());
+		ASSERT_FALSE(S9.isHonours());
+		ASSERT_FALSE(M1.isHonours());
+		ASSERT_FALSE(M7.isHonours());
+		ASSERT_FALSE(M9R.isHonours());
+		ASSERT_TRUE(TNR.isHonours());
+		ASSERT_TRUE(NN.isHonours());
+		ASSERT_TRUE(SH.isHonours());
+		ASSERT_TRUE(PE.isHonours());
+		ASSERT_TRUE(CHR.isHonours());
+		ASSERT_TRUE(HK.isHonours());
+		ASSERT_TRUE(HT.isHonours());
+	}
+
+	/// isWinds 関数をテストする。
+	TEST_F(TileTest, testIsWinds)
+	{
+		ASSERT_FALSE(P1R.isWinds());
+		ASSERT_FALSE(P3.isWinds());
+		ASSERT_FALSE(P9.isWinds());
+		ASSERT_FALSE(S1.isWinds());
+		ASSERT_FALSE(S5R.isWinds());
+		ASSERT_FALSE(S9.isWinds());
+		ASSERT_FALSE(M1.isWinds());
+		ASSERT_FALSE(M7.isWinds());
+		ASSERT_FALSE(M9R.isWinds());
+		ASSERT_TRUE(TNR.isWinds());
+		ASSERT_TRUE(NN.isWinds());
+		ASSERT_TRUE(SH.isWinds());
+		ASSERT_TRUE(PE.isWinds());
+		ASSERT_FALSE(CHR.isWinds());
+		ASSERT_FALSE(HK.isWinds());
+		ASSERT_FALSE(HT.isWinds());
+	}
+
+	/// isDragons 関数をテストする。
+	TEST_F(TileTest, testIsDragons)
+	{
+		ASSERT_FALSE(P1R.isDragons());
+		ASSERT_FALSE(P3.isDragons());
+		ASSERT_FALSE(P9.isDragons());
+		ASSERT_FALSE(S1.isDragons());
+		ASSERT_FALSE(S5R.isDragons());
+		ASSERT_FALSE(S9.isDragons());
+		ASSERT_FALSE(M1.isDragons());
+		ASSERT_FALSE(M7.isDragons());
+		ASSERT_FALSE(M9R.isDragons());
+		ASSERT_FALSE(TNR.isDragons());
+		ASSERT_FALSE(NN.isDragons());
+		ASSERT_FALSE(SH.isDragons());
+		ASSERT_FALSE(PE.isDragons());
+		ASSERT_TRUE(CHR.isDragons());
+		ASSERT_TRUE(HK.isDragons());
+		ASSERT_TRUE(HT.isDragons());
+	}
+
+	/// isSimples 関数をテストする。
+	TEST_F(TileTest, testIsSimples)
+	{
+		ASSERT_FALSE(P1R.isSimples());
+		ASSERT_TRUE(P3.isSimples());
+		ASSERT_FALSE(P9.isSimples());
+		ASSERT_FALSE(S1.isSimples());
+		ASSERT_TRUE(S5R.isSimples());
+		ASSERT_FALSE(S9.isSimples());
+		ASSERT_FALSE(M1.isSimples());
+		ASSERT_TRUE(M7.isSimples());
+		ASSERT_FALSE(M9R.isSimples());
+		ASSERT_FALSE(TNR.isSimples());
+		ASSERT_FALSE(NN.isSimples());
+		ASSERT_FALSE(SH.isSimples());
+		ASSERT_FALSE(PE.isSimples());
+		ASSERT_FALSE(CHR.isSimples());
+		ASSERT_FALSE(HK.isSimples());
+		ASSERT_FALSE(HT.isSimples());
+	}
+
+	/// isTerminals 関数をテストする。
+	TEST_F(TileTest, testIsTerminals)
+	{
+		ASSERT_TRUE(P1R.isTerminals());
+		ASSERT_FALSE(P3.isTerminals());
+		ASSERT_TRUE(P9.isTerminals());
+		ASSERT_TRUE(S1.isTerminals());
+		ASSERT_FALSE(S5R.isTerminals());
+		ASSERT_TRUE(S9.isTerminals());
+		ASSERT_TRUE(M1.isTerminals());
+		ASSERT_FALSE(M7.isTerminals());
+		ASSERT_TRUE(M9R.isTerminals());
+		ASSERT_FALSE(TNR.isTerminals());
+		ASSERT_FALSE(NN.isTerminals());
+		ASSERT_FALSE(SH.isTerminals());
+		ASSERT_FALSE(PE.isTerminals());
+		ASSERT_FALSE(CHR.isTerminals());
+		ASSERT_FALSE(HK.isTerminals());
+		ASSERT_FALSE(HT.isTerminals());
+	}
+
+	/// isTerminalsOrHonours 関数をテストする。
+	TEST_F(TileTest, testIsTerminalsOrHonours)
+	{
+		ASSERT_TRUE(P1R.isTerminalsOrHonours());
+		ASSERT_FALSE(P3.isTerminalsOrHonours());
+		ASSERT_TRUE(P9.isTerminalsOrHonours());
+		ASSERT_TRUE(S1.isTerminalsOrHonours());
+		ASSERT_FALSE(S5R.isTerminalsOrHonours());
+		ASSERT_TRUE(S9.isTerminalsOrHonours());
+		ASSERT_TRUE(M1.isTerminalsOrHonours());
+		ASSERT_FALSE(M7.isTerminalsOrHonours());
+		ASSERT_TRUE(M9R.isTerminalsOrHonours());
+		ASSERT_TRUE(TNR.isTerminalsOrHonours());
+		ASSERT_TRUE(NN.isTerminalsOrHonours());
+		ASSERT_TRUE(SH.isTerminalsOrHonours());
+		ASSERT_TRUE(PE.isTerminalsOrHonours());
+		ASSERT_TRUE(CHR.isTerminalsOrHonours());
+		ASSERT_TRUE(HK.isTerminalsOrHonours());
+		ASSERT_TRUE(HT.isTerminalsOrHonours());
+	}
+
+	/// == 演算子をテストする。
+	TEST_F(TileTest, testEquals)
+	{
+		// 自身と比較する。
+		ASSERT_TRUE(P1R == P1R);
+		ASSERT_TRUE(P3 == P3);
+		ASSERT_TRUE(P9 == P9);
+		ASSERT_TRUE(S1 == S1);
+		ASSERT_TRUE(S5R == S5R);
+		ASSERT_TRUE(S9 == S9);
+		ASSERT_TRUE(M1 == M1);
+		ASSERT_TRUE(M7 == M7);
+		ASSERT_TRUE(M9R == M9R);
+		ASSERT_TRUE(TNR == TNR);
+		ASSERT_TRUE(NN == NN);
+		ASSERT_TRUE(SH == SH);
+		ASSERT_TRUE(PE == PE);
+		ASSERT_TRUE(CHR == CHR);
+		ASSERT_TRUE(HK == HK);
+		ASSERT_TRUE(HT == HT);
+
+		// 同じ牌と比較する。
+		ASSERT_TRUE(P1R == Tile(TileDesigns::CIRCLES, 1, TileAttributes::RED));
+		ASSERT_TRUE(P3 == Tile(TileDesigns::CIRCLES, 3));
+		ASSERT_TRUE(P9 == Tile(TileDesigns::CIRCLES, 9));
+		ASSERT_TRUE(S1 == Tile(TileDesigns::BAMBOO, 1));
+		ASSERT_TRUE(S5R == Tile(TileDesigns::BAMBOO, 5, TileAttributes::RED));
+		ASSERT_TRUE(S9 == Tile(TileDesigns::BAMBOO, 9));
+		ASSERT_TRUE(M1 == Tile(TileDesigns::CHARACTERS, 1));
+		ASSERT_TRUE(M7 == Tile(TileDesigns::CHARACTERS, 7));
+		ASSERT_TRUE(M9R == Tile(TileDesigns::CHARACTERS, 9, TileAttributes::RED));
+		ASSERT_TRUE(TNR == Tile(TileDesigns::EAST, TileAttributes::RED));
+		ASSERT_TRUE(NN == Tile(TileDesigns::SOUTH));
+		ASSERT_TRUE(SH == Tile(TileDesigns::WEST));
+		ASSERT_TRUE(PE == Tile(TileDesigns::NORTH));
+		ASSERT_TRUE(CHR == Tile(TileDesigns::RED, TileAttributes::RED));
+		ASSERT_TRUE(HK == Tile(TileDesigns::WHITE));
+		ASSERT_TRUE(HT == Tile(TileDesigns::GREEN));
+
+		// 異なる牌と比較する。
+		vector<Tile> tiles{ P1, P1R, P3, P9, S1, S5, S5R, S9, M1, M7, M9, M9R, TN, TNR, NN, SH, PE, CH, CHR, HK, HT };
+		for (auto i = 0; i < tiles.size(); ++i) {
+			for (auto j = 0; j < tiles.size(); ++j) {
+				if (i != j) {
+					ASSERT_FALSE(tiles[i] == tiles[j]);
+				}
+			}
+		}
+	}
+
+	/// != 演算子をテストする。
+	TEST_F(TileTest, testNotEquals)
+	{
+		// 自身と比較する。
+		ASSERT_FALSE(P1R != P1R);
+		ASSERT_FALSE(P3 != P3);
+		ASSERT_FALSE(P9 != P9);
+		ASSERT_FALSE(S1 != S1);
+		ASSERT_FALSE(S5R != S5R);
+		ASSERT_FALSE(S9 != S9);
+		ASSERT_FALSE(M1 != M1);
+		ASSERT_FALSE(M7 != M7);
+		ASSERT_FALSE(M9R != M9R);
+		ASSERT_FALSE(TNR != TNR);
+		ASSERT_FALSE(NN != NN);
+		ASSERT_FALSE(SH != SH);
+		ASSERT_FALSE(PE != PE);
+		ASSERT_FALSE(CHR != CHR);
+		ASSERT_FALSE(HK != HK);
+		ASSERT_FALSE(HT != HT);
+
+		// 同じ牌と比較する。
+		ASSERT_FALSE(P1R != Tile(TileDesigns::CIRCLES, 1, TileAttributes::RED));
+		ASSERT_FALSE(P3 != Tile(TileDesigns::CIRCLES, 3));
+		ASSERT_FALSE(P9 != Tile(TileDesigns::CIRCLES, 9));
+		ASSERT_FALSE(S1 != Tile(TileDesigns::BAMBOO, 1));
+		ASSERT_FALSE(S5R != Tile(TileDesigns::BAMBOO, 5, TileAttributes::RED));
+		ASSERT_FALSE(S9 != Tile(TileDesigns::BAMBOO, 9));
+		ASSERT_FALSE(M1 != Tile(TileDesigns::CHARACTERS, 1));
+		ASSERT_FALSE(M7 != Tile(TileDesigns::CHARACTERS, 7));
+		ASSERT_FALSE(M9R != Tile(TileDesigns::CHARACTERS, 9, TileAttributes::RED));
+		ASSERT_FALSE(TNR != Tile(TileDesigns::EAST, TileAttributes::RED));
+		ASSERT_FALSE(NN != Tile(TileDesigns::SOUTH));
+		ASSERT_FALSE(SH != Tile(TileDesigns::WEST));
+		ASSERT_FALSE(PE != Tile(TileDesigns::NORTH));
+		ASSERT_FALSE(CHR != Tile(TileDesigns::RED, TileAttributes::RED));
+		ASSERT_FALSE(HK != Tile(TileDesigns::WHITE));
+		ASSERT_FALSE(HT != Tile(TileDesigns::GREEN));
+
+		// 異なる牌と比較する。
+		vector<Tile> tiles{ P1, P1R, P3, P9, S1, S5, S5R, S9, M1, M7, M9, M9R, TN, TNR, NN, SH, PE, CH, CHR, HK, HT };
+		for (auto i = 0; i < tiles.size(); ++i) {
+			for (auto j = 0; j < tiles.size(); ++j) {
+				if (i != j) {
+					ASSERT_TRUE(tiles[i] != tiles[j]);
+				}
+			}
+		}
 	}
 }
