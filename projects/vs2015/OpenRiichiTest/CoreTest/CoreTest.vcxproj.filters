@@ -58,5 +58,8 @@
     <ClCompile Include="..\..\..\..\test\core\DiscardSourcesTest.cpp">
       <Filter>OpenRiichiTest</Filter>
     </ClCompile>
+    <ClCompile Include="..\..\..\..\test\core\TilesTest.cpp">
+      <Filter>OpenRiichiTest</Filter>
+    </ClCompile>
   </ItemGroup>
 </Project>

@@ -34,6 +34,7 @@
     <ClCompile Include="..\..\..\..\test\core\SimplePlayerInfoTest.cpp" />
     <ClCompile Include="..\..\..\..\test\core\TileAttributesTest.cpp" />
     <ClCompile Include="..\..\..\..\test\core\TileDesignsTest.cpp" />
+    <ClCompile Include="..\..\..\..\test\core\TilesTest.cpp" />
     <ClCompile Include="..\..\..\..\test\core\WindsTest.cpp" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
