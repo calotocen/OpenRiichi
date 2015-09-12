@@ -14,81 +14,119 @@
  * limitations under the License.
  */
 #include <gtest/gtest.h>
-#include <MemorySavedRiichiStatus.h>
+#include <RiichiStatus.h>
 
 
 namespace openriichi
 {
-	class MemorySavedRiichiStatusTest : public ::testing::Test {};
-
-	/// インスタンスのサイズをテストする。
-	TEST_F(MemorySavedRiichiStatusTest, testSizeOfInstance)
+	class RiichiStatusTest : public ::testing::Test
 	{
-		MemorySavedRiichiStatus riichiStatus;
-		ASSERT_EQ(1, sizeof(riichiStatus));
+	protected:
+		RiichiStatus riichiStatus1;
+		RiichiStatus riichiStatus2;
+
+	protected:
+		RiichiStatusTest()
+			: riichiStatus1()
+			, riichiStatus2(true, true, true, true)
+		{}
+	};
+
+	/// isDeclared 関数をテストする。
+	TEST_F(RiichiStatusTest, testIsDeclared)
+	{
+		ASSERT_EQ(false, riichiStatus1.isDeclared());
+		ASSERT_EQ(true, riichiStatus2.isDeclared());
 	}
 
-	/// 捨て牌をテストする。
-	TEST_F(MemorySavedRiichiStatusTest, testDiscard)
+	/// isOpen 関数をテストする。
+	TEST_F(RiichiStatusTest, testIsOpen)
 	{
-		MemorySavedRiichiStatus riichiStatus1;
-		ASSERT_EQ(false, riichiStatus1.isDeclared());
 		ASSERT_EQ(false, riichiStatus1.isOpen());
-		ASSERT_EQ(false, riichiStatus1.isDouble());
-		ASSERT_EQ(false, riichiStatus1.isOneShot());
-
-		MemorySavedRiichiStatus riichiStatus2(true, true, true, true);
-		ASSERT_EQ(true, riichiStatus2.isDeclared());
 		ASSERT_EQ(true, riichiStatus2.isOpen());
+	}
+
+	/// isDouble 関数をテストする。
+	TEST_F(RiichiStatusTest, testIsDouble)
+	{
+		ASSERT_EQ(false, riichiStatus1.isDouble());
 		ASSERT_EQ(true, riichiStatus2.isDouble());
+	}
+
+	/// isOneShot 関数をテストする。
+	TEST_F(RiichiStatusTest, testIsOneShot)
+	{
+		ASSERT_EQ(false, riichiStatus1.isOneShot());
 		ASSERT_EQ(true, riichiStatus2.isOneShot());
+	}
+
+	/// setDeclared 関数をテストする。
+	TEST_F(RiichiStatusTest, testSetDeclared)
+	{
+		riichiStatus1.setDeclared(true);
+		ASSERT_EQ(RiichiStatus(true, false, false, false), riichiStatus1);
 
 		riichiStatus2.setDeclared(false);
-		ASSERT_EQ(false, riichiStatus2.isDeclared());
-		ASSERT_EQ(true, riichiStatus2.isOpen());
-		ASSERT_EQ(true, riichiStatus2.isDouble());
-		ASSERT_EQ(true, riichiStatus2.isOneShot());
+		ASSERT_EQ(RiichiStatus(false, true, true, true), riichiStatus2);
+	}
+
+	/// setOpen 関数をテストする。
+	TEST_F(RiichiStatusTest, testSetOpen)
+	{
+		riichiStatus1.setOpen(true);
+		ASSERT_EQ(RiichiStatus(false, true, false, false), riichiStatus1);
 
 		riichiStatus2.setOpen(false);
-		ASSERT_EQ(false, riichiStatus2.isDeclared());
-		ASSERT_EQ(false, riichiStatus2.isOpen());
-		ASSERT_EQ(true, riichiStatus2.isDouble());
-		ASSERT_EQ(true, riichiStatus2.isOneShot());
+		ASSERT_EQ(RiichiStatus(true, false, true, true), riichiStatus2);
+	}
+
+	/// setDouble 関数をテストする。
+	TEST_F(RiichiStatusTest, testSetDouble)
+	{
+		riichiStatus1.setDouble(true);
+		ASSERT_EQ(RiichiStatus(false, false, true, false), riichiStatus1);
 
 		riichiStatus2.setDouble(false);
-		ASSERT_EQ(false, riichiStatus2.isDeclared());
-		ASSERT_EQ(false, riichiStatus2.isOpen());
-		ASSERT_EQ(false, riichiStatus2.isDouble());
-		ASSERT_EQ(true, riichiStatus2.isOneShot());
+		ASSERT_EQ(RiichiStatus(true, true, false, true), riichiStatus2);
+	}
+
+	/// setOneShot 関数をテストする。
+	TEST_F(RiichiStatusTest, testSetOneShot)
+	{
+		riichiStatus1.setOneShot(true);
+		ASSERT_EQ(RiichiStatus(false, false, false, true), riichiStatus1);
 
 		riichiStatus2.setOneShot(false);
-		ASSERT_EQ(false, riichiStatus2.isDeclared());
-		ASSERT_EQ(false, riichiStatus2.isOpen());
-		ASSERT_EQ(false, riichiStatus2.isDouble());
-		ASSERT_EQ(false, riichiStatus2.isOneShot());
+		ASSERT_EQ(RiichiStatus(true, true, true, false), riichiStatus2);
+	}
 
-		riichiStatus2.setOneShot(true);
-		ASSERT_EQ(false, riichiStatus2.isDeclared());
-		ASSERT_EQ(false, riichiStatus2.isOpen());
-		ASSERT_EQ(false, riichiStatus2.isDouble());
-		ASSERT_EQ(true, riichiStatus2.isOneShot());
+	/// == 演算子をテストする。
+	TEST_F(RiichiStatusTest, testEquals)
+	{
+		// 自身と比較する。
+		ASSERT_TRUE(riichiStatus1 == riichiStatus1);
+		ASSERT_TRUE(riichiStatus2 == riichiStatus2);
 
-		riichiStatus2.setDouble(true);
-		ASSERT_EQ(false, riichiStatus2.isDeclared());
-		ASSERT_EQ(false, riichiStatus2.isOpen());
-		ASSERT_EQ(true, riichiStatus2.isDouble());
-		ASSERT_EQ(true, riichiStatus2.isOneShot());
+		// 同じ立直状態と比較する。
+		ASSERT_TRUE(riichiStatus1 == RiichiStatus());
+		ASSERT_TRUE(riichiStatus2 == RiichiStatus(true, true, true, true));
 
-		riichiStatus2.setOpen(true);
-		ASSERT_EQ(false, riichiStatus2.isDeclared());
-		ASSERT_EQ(true, riichiStatus2.isOpen());
-		ASSERT_EQ(true, riichiStatus2.isDouble());
-		ASSERT_EQ(true, riichiStatus2.isOneShot());
+		// 異なる立直状態と比較する。
+		ASSERT_FALSE(riichiStatus1 == riichiStatus2);
+	}
 
-		riichiStatus2.setDeclared(true);
-		ASSERT_EQ(true, riichiStatus2.isDeclared());
-		ASSERT_EQ(true, riichiStatus2.isOpen());
-		ASSERT_EQ(true, riichiStatus2.isDouble());
-		ASSERT_EQ(true, riichiStatus2.isOneShot());
+	/// != 演算子をテストする。
+	TEST_F(RiichiStatusTest, testNotEquals)
+	{
+		// 自身と比較する。
+		ASSERT_FALSE(riichiStatus1 != riichiStatus1);
+		ASSERT_FALSE(riichiStatus2 != riichiStatus2);
+
+		// 同じ立直状態と比較する。
+		ASSERT_FALSE(riichiStatus1 != RiichiStatus());
+		ASSERT_FALSE(riichiStatus2 != RiichiStatus(true, true, true, true));
+
+		// 異なる立直状態と比較する。
+		ASSERT_TRUE(riichiStatus1 != riichiStatus2);
 	}
 }
