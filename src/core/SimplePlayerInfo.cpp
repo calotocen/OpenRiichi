@@ -31,9 +31,33 @@ SimplePlayerInfo::SimplePlayerInfo()
 }
 
 
+const Hand &SimplePlayerInfo::getHand() const
+{
+	return m_hand;
+}
+
+
+void SimplePlayerInfo::setHand(const Hand &hand)
+{
+	m_hand = hand;
+}
+
+
 Hand &SimplePlayerInfo::hand()
 {
 	return m_hand;
+}
+
+
+const SimplePlayerInfo::Discards &SimplePlayerInfo::getDiscards() const
+{
+	return m_discards;
+}
+
+
+void SimplePlayerInfo::setDiscards(const Discards &discards)
+{
+	m_discards = discards;
 }
 
 
@@ -76,6 +100,18 @@ void SimplePlayerInfo::setDrawCount(size_t drawCount)
 void SimplePlayerInfo::increaseDrawCount()
 {
 	++m_drawCount;
+}
+
+
+const RiichiStatus &SimplePlayerInfo::getRiichiStatus() const
+{
+	return m_riichiStatus;
+}
+
+
+void SimplePlayerInfo::setRiichiStatus(const RiichiStatus &riichiStatus)
+{
+	m_riichiStatus = riichiStatus;
 }
 
 

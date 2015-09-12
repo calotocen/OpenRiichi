@@ -63,6 +63,22 @@ namespace openriichi
 		 */
 		SimplePlayerInfo();
 
+
+	public:
+		/**
+		 * 手牌を返す。
+		 *
+		 * @return 手牌。
+		 */
+		const Hand &getHand() const;
+
+		/**
+		 * 手牌を設定する。
+		 *
+		 * @param[in] hand 手牌。
+		 */
+		void setHand(const Hand &hand);
+
 		/**
 		 * 手牌を返す。
 		 *
@@ -74,9 +90,23 @@ namespace openriichi
 		Hand &hand();
 
 		/**
-		 * 捨て牌を返す。
+		 * 捨て牌配列を返す。
 		 *
-		 * @return 捨て牌。
+		 * @return 捨て牌配列。
+		 */
+		const Discards &getDiscards() const;
+
+		/**
+		 * 捨て牌配列を設定する。
+		 *
+		 * @param[in] discards 捨て牌配列。
+		 */
+		void setDiscards(const Discards &discards);
+
+		/**
+		 * 捨て牌配列を返す。
+		 *
+		 * @return 捨て牌配列。
 		 * @note 本関数の戻り値は，少なくとも本インスタンスが生存している間，有効である。
 		 * @note 本関数が返す参照の内容は，変更してもよい。
 		 *       その場合，変更内容は取得元のインスタンスに反映される。
@@ -122,6 +152,20 @@ namespace openriichi
 		 * ツモ数に 1 を加算する。
 		 */
 		void increaseDrawCount();
+
+		/**
+		 * 立直状態を返す。
+		 *
+		 * @return 立直状態。
+		 */
+		const RiichiStatus &getRiichiStatus() const;
+
+		/**
+		 * 立直状態を設定する。
+		 *
+		 * @param[in] riichiStatus 立直状態。
+		 */
+		void setRiichiStatus(const RiichiStatus &riichiStatus);
 
 		/**
 		 * 立直状態を返す。
