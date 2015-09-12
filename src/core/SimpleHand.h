@@ -17,6 +17,7 @@
 
 
 #include <cstdint>
+#include <initializer_list>
 #include "LimitedVector.h"
 #include "Set.h"
 #include "Tile.h"
@@ -59,6 +60,28 @@ namespace openriichi
 		 */
 		SimpleHand();
 
+		/**
+		 * 手牌を生成する。
+		 *
+		 * @param[in] tiles 牌配列。
+		 * @param[in] sets 面子配列。
+		 */
+		SimpleHand(const Tiles &tiles, const Sets &sets);
+
+		/**
+		 * 手牌を生成する。
+		 *
+		 * @param[in] tiles 牌配列。
+		 */
+		SimpleHand(const std::initializer_list<Tile> &tiles);
+
+		/**
+		 * 手牌を生成する。
+		 *
+		 * @param[in] sets 面子配列。
+		 */
+		SimpleHand(const std::initializer_list<Set> &sets);
+
 
 	public:
 		/**
@@ -74,6 +97,20 @@ namespace openriichi
 		 * @param[in] other 他の手牌。
 		 */
 		bool operator!=(const SimpleHand &other) const;
+
+		/**
+		 * 代入する。
+		 *
+		 * @param[in] tiles 牌配列。
+		 */
+		SimpleHand &operator=(const std::initializer_list<Tile> &tiles);
+
+		/**
+		 * 代入する。
+		 *
+		 * @param[in] sets 面子配列。
+		 */
+		SimpleHand &operator=(const std::initializer_list<Set> &sets);
 
 
 	public:

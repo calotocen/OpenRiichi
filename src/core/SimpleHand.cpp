@@ -14,15 +14,41 @@
  * limitations under the License.
  */
 #include <cassert>
+#include <initializer_list>
 #include "SimpleHand.h"
 
 
+using namespace std;
 using namespace openriichi;
 
 
 SimpleHand::SimpleHand()
 	: m_tiles()
 	, m_sets()
+{
+	// 何もしない。
+}
+
+
+SimpleHand::SimpleHand(const Tiles &tiles, const Sets &sets)
+	: m_tiles(tiles)
+	, m_sets(sets)
+{
+	// 何もしない。
+}
+
+
+SimpleHand::SimpleHand(const initializer_list<Tile> &tiles)
+	: m_tiles(tiles)
+	, m_sets()
+{
+	// 何もしない。
+}
+
+
+SimpleHand::SimpleHand(const initializer_list<Set> &sets)
+	: m_tiles()
+	, m_sets(sets)
 {
 	// 何もしない。
 }
@@ -44,6 +70,22 @@ bool SimpleHand::operator==(const SimpleHand & other) const
 bool SimpleHand::operator!=(const SimpleHand & other) const
 {
 	return !(*this == other);
+}
+
+
+SimpleHand &SimpleHand::operator=(const std::initializer_list<Tile> &tiles)
+{
+	m_tiles = tiles;
+
+	return *this;
+}
+
+
+SimpleHand &SimpleHand::operator=(const std::initializer_list<Set> &sets)
+{
+	m_sets = sets;
+
+	return *this;
 }
 
 
