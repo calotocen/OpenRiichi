@@ -88,14 +88,14 @@ namespace openriichi
 
 		ASSERT_EQ(Hand::Sets(), hand.getSets());
 
-		hand.sets() = { Set(P1, P2, P3), Set(S1, S2, S3), Set(M1, M2, M3), Set(TN, TN, TN, TN) };
+		hand.sets() = { Set(P1, P2, P3), Set(S1, S2, S3), Set(M1, M2, M3) };
+		ASSERT_EQ((Hand::Sets{ Set(P1, P2, P3), Set(S1, S2, S3), Set(M1, M2, M3) }), hand.getSets());
+
+		hand.sets().add(Set(TN, TN, TN, TN));
 		ASSERT_EQ((Hand::Sets{ Set(P1, P2, P3), Set(S1, S2, S3), Set(M1, M2, M3), Set(TN, TN, TN, TN) }), hand.getSets());
 
-		hand.sets().add(Set(NN, NN));
-		ASSERT_EQ((Hand::Sets{ Set(P1, P2, P3), Set(S1, S2, S3), Set(M1, M2, M3), Set(TN, TN, TN, TN), Set(NN, NN) }), hand.getSets());
-
 		hand.sets().remove(0);
-		ASSERT_EQ((Hand::Sets{ Set(S1, S2, S3), Set(M1, M2, M3), Set(TN, TN, TN, TN), Set(NN, NN) }), hand.getSets());
+		ASSERT_EQ((Hand::Sets{ Set(S1, S2, S3), Set(M1, M2, M3), Set(TN, TN, TN, TN) }), hand.getSets());
 	}
 
 	/// setSets 関数をテストする。
@@ -117,14 +117,14 @@ namespace openriichi
 
 		ASSERT_EQ(Hand::Sets(), hand.sets());
 
-		hand.sets() = { Set(P1, P2, P3), Set(S1, S2, S3), Set(M1, M2, M3), Set(TN, TN, TN, TN) };
+		hand.sets() = { Set(P1, P2, P3), Set(S1, S2, S3), Set(M1, M2, M3) };
+		ASSERT_EQ((Hand::Sets{ Set(P1, P2, P3), Set(S1, S2, S3), Set(M1, M2, M3) }), hand.sets());
+
+		hand.sets().add(Set(TN, TN, TN, TN));
 		ASSERT_EQ((Hand::Sets{ Set(P1, P2, P3), Set(S1, S2, S3), Set(M1, M2, M3), Set(TN, TN, TN, TN) }), hand.sets());
 
-		hand.sets().add(Set(NN, NN));
-		ASSERT_EQ((Hand::Sets{ Set(P1, P2, P3), Set(S1, S2, S3), Set(M1, M2, M3), Set(TN, TN, TN, TN), Set(NN, NN) }), hand.sets());
-
 		hand.sets().remove(0);
-		ASSERT_EQ((Hand::Sets{ Set(S1, S2, S3), Set(M1, M2, M3), Set(TN, TN, TN, TN), Set(NN, NN) }), hand.sets());
+		ASSERT_EQ((Hand::Sets{ Set(S1, S2, S3), Set(M1, M2, M3), Set(TN, TN, TN, TN) }), hand.sets());
 	}
 
 	/// == 演算子をテストする。

@@ -35,7 +35,7 @@ namespace openriichi
 		static const size_t MAX_TILES_SIZE = 14;
 
 		/// 面子の最大個数。
-		static const size_t MAX_SETS_SIZE = 5;
+		static const size_t MAX_SETS_SIZE = 4;
 
 
 	public:
