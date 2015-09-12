@@ -66,6 +66,22 @@ namespace openriichi
 
 	public:
 		/**
+		 * 他のプレイヤー情報と等しいか調べる。
+		 *
+		 * @param[in] other 他のプレイヤー情報。
+		 */
+		bool operator==(const SimplePlayerInfo &other) const;
+
+		/**
+		 * 他のプレイヤー情報と等しくないか調べる。
+		 *
+		 * @param[in] other 他のプレイヤー情報。
+		 */
+		bool operator!=(const SimplePlayerInfo &other) const;
+
+
+	public:
+		/**
 		 * 手牌を返す。
 		 *
 		 * @return 手牌。

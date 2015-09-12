@@ -31,6 +31,26 @@ SimplePlayerInfo::SimplePlayerInfo()
 }
 
 
+bool SimplePlayerInfo::operator==(const SimplePlayerInfo &other) const
+{
+	if (this == &other) {
+		return true;
+	}
+
+	return m_hand == other.m_hand
+		&& m_discards == other.m_discards
+		&& m_points == other.m_points
+		&& m_drawCount == other.m_drawCount
+		&& m_riichiStatus == other.m_riichiStatus;
+}
+
+
+bool SimplePlayerInfo::operator!=(const SimplePlayerInfo &other) const
+{
+	return !(*this == other);
+}
+
+
 const Hand &SimplePlayerInfo::getHand() const
 {
 	return m_hand;

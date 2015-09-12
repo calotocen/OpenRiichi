@@ -13,9 +13,13 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
+#include <vector>
 #include <gtest/gtest.h>	
 #include <PlayerInfo.h>
 #include <Tiles.h>
+
+
+using namespace std;
 
 
 namespace openriichi
@@ -167,5 +171,105 @@ namespace openriichi
 
 		playerInfo.riichiStatus().setDeclared(true);
 		ASSERT_EQ(RiichiStatus(true), playerInfo.riichiStatus());
+	}
+
+	/// == 演算子をテストする。
+	TEST_F(PlayerInfoTest, testEquals)
+	{
+		PlayerInfo playerInfo1A;
+		PlayerInfo playerInfo1B;
+		PlayerInfo playerInfo2A;
+		PlayerInfo playerInfo2B;
+		PlayerInfo playerInfo3A;
+		PlayerInfo playerInfo3B;
+		PlayerInfo playerInfo4A;
+		PlayerInfo playerInfo4B;
+		PlayerInfo playerInfo5A;
+		PlayerInfo playerInfo5B;
+
+		playerInfo1A.hand() = { P1 };
+		playerInfo1B.hand() = { P1 };
+		playerInfo2A.discards() = { Discard(P1, DiscardSources::DRAWED) };
+		playerInfo2B.discards() = { Discard(P1, DiscardSources::DRAWED) };
+		playerInfo3A.setPoints(1000);
+		playerInfo3B.setPoints(1000);
+		playerInfo4A.setDrawCount(1);
+		playerInfo4B.setDrawCount(1);
+		playerInfo5A.riichiStatus().setDeclared(true);
+		playerInfo5B.riichiStatus().setDeclared(true);
+
+		// 自身と比較する。
+		ASSERT_TRUE(playerInfo1A == playerInfo1A);
+		ASSERT_TRUE(playerInfo2A == playerInfo2A);
+		ASSERT_TRUE(playerInfo3A == playerInfo3A);
+		ASSERT_TRUE(playerInfo4A == playerInfo4A);
+		ASSERT_TRUE(playerInfo5A == playerInfo5A);
+
+		// 同じプレイヤー情報と比較する。
+		ASSERT_TRUE(playerInfo1A == playerInfo1B);
+		ASSERT_TRUE(playerInfo2A == playerInfo2B);
+		ASSERT_TRUE(playerInfo3A == playerInfo3B);
+		ASSERT_TRUE(playerInfo4A == playerInfo4B);
+		ASSERT_TRUE(playerInfo5A == playerInfo5B);
+
+		// 異なるプレイヤー情報と比較する。
+		vector<PlayerInfo> playerInfos{ playerInfo1A, playerInfo2A, playerInfo3A, playerInfo4A, playerInfo5A };
+		for (auto i = 0; i < playerInfos.size(); ++i) {
+			for (auto j = 0; j < playerInfos.size(); ++j) {
+				if (i != j) {
+					ASSERT_FALSE(playerInfos[i] == playerInfos[j]);
+				}
+			}
+		}
+	}
+
+	/// != 演算子をテストする。
+	TEST_F(PlayerInfoTest, testNotEquals)
+	{
+		PlayerInfo playerInfo1A;
+		PlayerInfo playerInfo1B;
+		PlayerInfo playerInfo2A;
+		PlayerInfo playerInfo2B;
+		PlayerInfo playerInfo3A;
+		PlayerInfo playerInfo3B;
+		PlayerInfo playerInfo4A;
+		PlayerInfo playerInfo4B;
+		PlayerInfo playerInfo5A;
+		PlayerInfo playerInfo5B;
+
+		playerInfo1A.hand() = { P1 };
+		playerInfo1B.hand() = { P1 };
+		playerInfo2A.discards() = { Discard(P1, DiscardSources::DRAWED) };
+		playerInfo2B.discards() = { Discard(P1, DiscardSources::DRAWED) };
+		playerInfo3A.setPoints(1000);
+		playerInfo3B.setPoints(1000);
+		playerInfo4A.setDrawCount(1);
+		playerInfo4B.setDrawCount(1);
+		playerInfo5A.riichiStatus().setDeclared(true);
+		playerInfo5B.riichiStatus().setDeclared(true);
+
+		// 自身と比較する。
+		ASSERT_FALSE(playerInfo1A != playerInfo1A);
+		ASSERT_FALSE(playerInfo2A != playerInfo2A);
+		ASSERT_FALSE(playerInfo3A != playerInfo3A);
+		ASSERT_FALSE(playerInfo4A != playerInfo4A);
+		ASSERT_FALSE(playerInfo5A != playerInfo5A);
+
+		// 同じプレイヤー情報と比較する。
+		ASSERT_FALSE(playerInfo1A != playerInfo1B);
+		ASSERT_FALSE(playerInfo2A != playerInfo2B);
+		ASSERT_FALSE(playerInfo3A != playerInfo3B);
+		ASSERT_FALSE(playerInfo4A != playerInfo4B);
+		ASSERT_FALSE(playerInfo5A != playerInfo5B);
+
+		// 異なるプレイヤー情報と比較する。
+		vector<PlayerInfo> playerInfos{ playerInfo1A, playerInfo2A, playerInfo3A, playerInfo4A, playerInfo5A };
+		for (auto i = 0; i < playerInfos.size(); ++i) {
+			for (auto j = 0; j < playerInfos.size(); ++j) {
+				if (i != j) {
+					ASSERT_TRUE(playerInfos[i] != playerInfos[j]);
+				}
+			}
+		}
 	}
 }
