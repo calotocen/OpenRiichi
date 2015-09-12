@@ -131,11 +131,39 @@ namespace openriichi
 		 * 牌配列を返す。
 		 *
 		 * @return 牌配列。
+		 */
+		const Tiles &getTiles() const;
+
+		/**
+		 * 牌配列を設定する。
+		 *
+		 * @param[in] tiles 牌配列。
+		 */
+		void setTiles(const Tiles &tiles);
+
+		/**
+		 * 牌配列を返す。
+		 *
+		 * @return 牌配列。
 		 * @note 本関数の戻り値は，少なくとも本インスタンスが生存している間，有効である。
 		 * @note 本関数が返す参照の内容は，変更してもよい。
 		 *       その場合，変更内容は取得元のインスタンスに反映される。
 		 */
 		Tiles &tiles();
+
+		/**
+		 * 面子配列を返す。
+		 *
+		 * @return 面子配列。
+		 */
+		const Sets &getSets() const;
+
+		/**
+		 * 面子配列を設定する。
+		 *
+		 * @param[in] sets 面子配列。
+		 */
+		void setSets(const Sets &sets);
 
 		/**
 		 * 面子配列を返す。

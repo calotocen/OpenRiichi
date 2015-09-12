@@ -54,7 +54,7 @@ SimpleHand::SimpleHand(const initializer_list<Set> &sets)
 }
 
 
-bool SimpleHand::operator==(const SimpleHand & other) const
+bool SimpleHand::operator==(const SimpleHand &other) const
 {
 	// 自分自身との比較であれば，true を返す。
 	if (this == &other)
@@ -67,7 +67,7 @@ bool SimpleHand::operator==(const SimpleHand & other) const
 }
 
 
-bool SimpleHand::operator!=(const SimpleHand & other) const
+bool SimpleHand::operator!=(const SimpleHand &other) const
 {
 	return !(*this == other);
 }
@@ -104,9 +104,33 @@ void SimpleHand::clear()
 }
 
 
+const SimpleHand::Tiles &SimpleHand::getTiles() const
+{
+	return m_tiles;
+}
+
+
+void SimpleHand::setTiles(const Tiles &tiles)
+{
+	m_tiles = tiles;
+}
+
+
 SimpleHand::Tiles &SimpleHand::tiles()
 {
 	return m_tiles;
+}
+
+
+const SimpleHand::Sets &SimpleHand::getSets() const
+{
+	return m_sets;
+}
+
+
+void SimpleHand::setSets(const Sets &sets)
+{
+	m_sets = sets;
 }
 
 
