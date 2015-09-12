@@ -76,6 +76,7 @@ bool SimpleHand::operator!=(const SimpleHand &other) const
 SimpleHand &SimpleHand::operator=(const std::initializer_list<Tile> &tiles)
 {
 	m_tiles = tiles;
+	m_sets.clear();
 
 	return *this;
 }
@@ -83,6 +84,7 @@ SimpleHand &SimpleHand::operator=(const std::initializer_list<Tile> &tiles)
 
 SimpleHand &SimpleHand::operator=(const std::initializer_list<Set> &sets)
 {
+	m_tiles.clear();
 	m_sets = sets;
 
 	return *this;

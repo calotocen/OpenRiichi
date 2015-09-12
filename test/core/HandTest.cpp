@@ -192,7 +192,7 @@ namespace openriichi
 	/// = 演算子 (牌初期化子リスト用) をテストする。
 	TEST_F(HandTest, testSubstituteTiles)
 	{
-		Hand hand;
+		Hand hand(Hand::Tiles(), Hand::Sets{ Set(P1, P2, P3) });
 
 		hand = { P1, P2, P3 };
 		ASSERT_EQ((Hand{ P1, P2, P3 }), hand);
@@ -201,7 +201,7 @@ namespace openriichi
 	/// = 演算子 (面子初期化子リスト用) をテストする。
 	TEST_F(HandTest, testSubstituteSets)
 	{
-		Hand hand;
+		Hand hand(Hand::Tiles{ P1 }, Hand::Sets());
 
 		hand = { Set(P1, P2, P3) };
 		ASSERT_EQ((Hand{ Set(P1, P2, P3) }), hand);
