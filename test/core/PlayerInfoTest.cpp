@@ -14,41 +14,98 @@
  * limitations under the License.
  */
 #include <gtest/gtest.h>	
-#include <SimplePlayerInfo.h>
+#include <PlayerInfo.h>
+#include <Tiles.h>
 
 
 namespace openriichi
 {
-	class SimplePlayerInfoTest : public ::testing::Test {};
+	class PlayerInfoTest : public ::testing::Test {};
 
-	/// インスタンスのサイズをテストする。
-	TEST_F(SimplePlayerInfoTest, testSizeOfInstance)
+	/// hand 関数をテストする。
+	TEST_F(PlayerInfoTest, testHand)
 	{
-		SimplePlayerInfo playerInfo;
-		ASSERT_EQ(104, sizeof(playerInfo));
-	}
-
-	// プレイヤー情報をテストする。
-	TEST_F(SimplePlayerInfoTest, testPlayerInfo)
-	{
-		SimplePlayerInfo playerInfo;
+		PlayerInfo playerInfo;
 
 		ASSERT_EQ(Hand(), playerInfo.hand());
-		ASSERT_EQ(SimplePlayerInfo::Discards(), playerInfo.discards());
+
+		playerInfo.hand() = { P1, P2, P3, P4, P5, P6, P7, P8, P9, TN, TN, TN, NN, NN };
+		ASSERT_EQ((Hand{ P1, P2, P3, P4, P5, P6, P7, P8, P9, TN, TN, TN, NN, NN }), playerInfo.hand());
+	}
+
+	/// discards 関数をテストする。
+	TEST_F(PlayerInfoTest, testDiscards)
+	{
+		PlayerInfo playerInfo;
+
+		ASSERT_EQ(PlayerInfo::Discards(), playerInfo.discards());
+
+		playerInfo.discards() = { Discard(P1, DiscardSources::DRAWED) };
+		ASSERT_EQ((PlayerInfo::Discards{ Discard(P1, DiscardSources::DRAWED) }), playerInfo.discards());
+	}
+
+	/// getPoints 関数をテストする。
+	TEST_F(PlayerInfoTest, testGetPoints)
+	{
+		PlayerInfo playerInfo;
+
 		ASSERT_EQ(0, playerInfo.getPoints());
-		ASSERT_EQ(0, playerInfo.getDrawCount());
-		ASSERT_EQ(RiichiStatus(), playerInfo.riichiStatus());
+	}
+
+	/// setPoints 関数をテストする。
+	TEST_F(PlayerInfoTest, testSetPoints)
+	{
+		PlayerInfo playerInfo;
 
 		playerInfo.setPoints(1000);
 		ASSERT_EQ(1000, playerInfo.getPoints());
+	}
 
+	/// addPoints 関数をテストする。
+	TEST_F(PlayerInfoTest, testAddPoints)
+	{
+		PlayerInfo playerInfo;
+
+		playerInfo.setPoints(1000);
 		playerInfo.addPoints(2000);
 		ASSERT_EQ(3000, playerInfo.getPoints());
+	}
+
+	/// getDrawCount 関数をテストする。
+	TEST_F(PlayerInfoTest, testGetDrawCount)
+	{
+		PlayerInfo playerInfo;
+
+		ASSERT_EQ(0, playerInfo.getDrawCount());
+	}
+
+	/// setDrawCount 関数をテストする。
+	TEST_F(PlayerInfoTest, testSetDrawCount)
+	{
+		PlayerInfo playerInfo;
 
 		playerInfo.setDrawCount(3);
 		ASSERT_EQ(3, playerInfo.getDrawCount());
+	}
 
+	/// increaseDrawCount 関数をテストする。
+	TEST_F(PlayerInfoTest, testIncreaseDrawCount)
+	{
+		PlayerInfo playerInfo;
+
+		playerInfo.setDrawCount(3);
 		playerInfo.increaseDrawCount();
 		ASSERT_EQ(4, playerInfo.getDrawCount());
+	}
+
+	/// riichiStatus 関数をテストする。
+	TEST_F(PlayerInfoTest, testRiichiStatus)
+	{
+		PlayerInfo playerInfo;
+
+		ASSERT_EQ(RiichiStatus(), playerInfo.riichiStatus());
+
+		playerInfo.riichiStatus().setDeclared(true);
+		ASSERT_EQ(RiichiStatus(true), playerInfo.riichiStatus());
 	}
 }
