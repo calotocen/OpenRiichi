@@ -309,7 +309,7 @@ namespace openriichi
 		ASSERT_TRUE(P1P1P1P1_LL == P1P1P1P1_LL);
 		ASSERT_TRUE(P1P1P1P1_BL == P1P1P1P1_BL);
 
-		// 同じ牌と比較する。
+		// 同じ面子と比較する。
 		ASSERT_TRUE(P1P2P3 == Set(P1, P2, P3));
 		ASSERT_TRUE(P1P2P3R == Set(P1, P2, Tile(TileDesigns::CIRCLES, 3, TileAttributes::RED)));
 		ASSERT_TRUE(P1P2P3_L == Set(P1, P2, P3, MeldTypes::LEFT));
@@ -328,7 +328,7 @@ namespace openriichi
 		ASSERT_TRUE(P1P1P1P1_LL == Set(P1, P1, P1, P1, MeldedKongTypes::LITTLE, MeldTypes::LEFT));
 		ASSERT_TRUE(P1P1P1P1_BL == Set(P1, P1, P1, P1, MeldedKongTypes::BIG, MeldTypes::LEFT));
 
-		// 異なる牌と比較する。
+		// 異なる面子と比較する。
 		vector<Set> sets{ P1P2P3, P1P2P3R, P1P2P3_L, S1S2S3, S7S8S9, S7S8S9_L, M7M8M9, P1P1, S1S1, P1P1P1, P1P1P1_L, M1M1M1, TNTNTN_A, TNTNTN_R, P1P1P1P1, P1P1P1P1_LL, P1P1P1P1_BL };
 		for (auto i = 0; i < sets.size(); ++i) {
 			for (auto j = 0; j < sets.size(); ++j) {
@@ -361,7 +361,7 @@ namespace openriichi
 		ASSERT_FALSE(P1P1P1P1_LL != P1P1P1P1_LL);
 		ASSERT_FALSE(P1P1P1P1_BL != P1P1P1P1_BL);
 
-		// 同じ牌と比較する。
+		// 同じ面子と比較する。
 		ASSERT_FALSE(P1P2P3 != Set(P1, P2, P3));
 		ASSERT_FALSE(P1P2P3R != Set(P1, P2, Tile(TileDesigns::CIRCLES, 3, TileAttributes::RED)));
 		ASSERT_FALSE(P1P2P3_L != Set(P1, P2, P3, MeldTypes::LEFT));
@@ -380,7 +380,7 @@ namespace openriichi
 		ASSERT_FALSE(P1P1P1P1_LL != Set(P1, P1, P1, P1, MeldedKongTypes::LITTLE, MeldTypes::LEFT));
 		ASSERT_FALSE(P1P1P1P1_BL != Set(P1, P1, P1, P1, MeldedKongTypes::BIG, MeldTypes::LEFT));
 
-		// 異なる牌と比較する。
+		// 異なる面子と比較する。
 		vector<Set> sets{ P1P2P3, P1P2P3R, P1P2P3_L, S1S2S3, S7S8S9, S7S8S9_L, M7M8M9, P1P1, S1S1, P1P1P1, P1P1P1_L, M1M1M1, TNTNTN_A, TNTNTN_R, P1P1P1P1, P1P1P1P1_LL, P1P1P1P1_BL };
 		for (auto i = 0; i < sets.size(); ++i) {
 			for (auto j = 0; j < sets.size(); ++j) {
