@@ -20,13 +20,13 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\..\..\..\test\core\DiscardSourcesTest.cpp" />
+    <ClCompile Include="..\..\..\..\test\core\DiscardTest.cpp" />
     <ClCompile Include="..\..\..\..\test\core\EnumerationTest.cpp" />
     <ClCompile Include="..\..\..\..\test\core\HandTest.cpp" />
     <ClCompile Include="..\..\..\..\test\core\LimitedVectorTest.cpp" />
     <ClCompile Include="..\..\..\..\test\core\Main.cpp" />
     <ClCompile Include="..\..\..\..\test\core\MeldedKongTypesTest.cpp" />
     <ClCompile Include="..\..\..\..\test\core\MeldTypesTest.cpp" />
-    <ClCompile Include="..\..\..\..\test\core\MemorySavedDiscardTest.cpp" />
     <ClCompile Include="..\..\..\..\test\core\MemorySavedRiichiStatusTest.cpp" />
     <ClCompile Include="..\..\..\..\test\core\SetTest.cpp" />
     <ClCompile Include="..\..\..\..\test\core\SetArrangementsTest.cpp" />
