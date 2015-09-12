@@ -33,7 +33,7 @@ namespace openriichi
 		Discard discard4;
 		Discard discard5;
 
-	public:
+	protected:
 		DiscardTest()
 			: discard1()
 			, discard2(S3, DiscardSources::HELD, false, false)

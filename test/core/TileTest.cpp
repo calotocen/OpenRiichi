@@ -48,7 +48,7 @@ namespace openriichi
 		Tile HK;
 		Tile HT;
 
-	public:
+	protected:
 		TileTest()
 			: P1(TileDesigns::CIRCLES, 1)
 			, P1R(TileDesigns::CIRCLES, 1, TileAttributes::RED)

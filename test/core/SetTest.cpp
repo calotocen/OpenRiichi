@@ -45,7 +45,7 @@ namespace openriichi
 		Set P1P1P1P1_LL;
 		Set P1P1P1P1_BL;
 
-	public:
+	protected:
 		SetTest()
 			: P1P2P3(P1, P2, P3)
 			, P1P2P3R(P1, P2, Tile(TileDesigns::CIRCLES, 3, TileAttributes::RED))
