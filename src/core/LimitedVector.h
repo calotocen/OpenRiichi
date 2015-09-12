@@ -287,36 +287,28 @@ namespace openriichi
 	template<class T, size_t size, typename SizeType>
 	typename LimitedVector<T, size, SizeType>::Iterator LimitedVector<T, size, SizeType>::getHeadIterator()
 	{
-		Iterator returnValue = m_elements.begin();		// 戻り値。
-
-		return returnValue;
+		return m_elements.begin();
 	}
 
 
 	template<class T, size_t size, typename SizeType>
 	typename LimitedVector<T, size, SizeType>::ConstIterator LimitedVector<T, size, SizeType>::getHeadConstIterator() const
 	{
-		ConstIterator returnValue = m_elements.cbegin();		// 戻り値。
-
-		return returnValue;
+		return m_elements.cbegin();
 	}
 
 
 	template<class T, size_t size, typename SizeType>
 	typename LimitedVector<T, size, SizeType>::Iterator LimitedVector<T, size, SizeType>::getTailIterator()
 	{
-		Iterator returnValue = m_elements.begin() + m_elementsSize;		// 戻り値。
-
-		return returnValue;
+		return m_elements.begin() + m_elementsSize;
 	}
 
 
 	template<class T, size_t size, typename SizeType>
 	typename LimitedVector<T, size, SizeType>::ConstIterator LimitedVector<T, size, SizeType>::getTailConstIterator() const
 	{
-		ConstIterator returnValue = m_elements.cbegin() + m_elementsSize;		// 戻り値。
-
-		return returnValue;
+		return m_elements.cbegin() + m_elementsSize;
 	}
 
 
@@ -356,18 +348,14 @@ namespace openriichi
 	template<class T, size_t size, typename SizeType>
 	bool LimitedVector<T, size, SizeType>::isEmpty() const
 	{
-		bool returnValue = m_elementsSize == 0;		// 戻り値。
-
-		return returnValue;
+		return m_elementsSize == 0;
 	}
 
 
 	template<class T, size_t size, typename SizeType>
 	size_t LimitedVector<T, size, SizeType>::count() const
 	{
-		size_t returnValue = m_elementsSize;		// 戻り値。
-
-		return returnValue;
+		return m_elementsSize;
 	}
 
 

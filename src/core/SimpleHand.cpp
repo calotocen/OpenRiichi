@@ -91,9 +91,7 @@ SimpleHand &SimpleHand::operator=(const std::initializer_list<Set> &sets)
 
 bool SimpleHand::isEmpty() const
 {
-	bool returnValue = m_tiles.isEmpty() && m_sets.isEmpty();		// 戻り値。
-
-	return returnValue;
+	return m_tiles.isEmpty() && m_sets.isEmpty();
 }
 
 

@@ -86,12 +86,10 @@ const Tile &MemorySavedDiscard::getTile() const
 
 const DiscardSource &MemorySavedDiscard::getSource() const
 {
-	uint8_t sourceValue;							// 捨て元を表す値。
 	const DiscardSource *returnValue = nullptr;		// 戻り値。
 
 	// 値に応じた捨て元を返す。
-	sourceValue = m_value & Mask::SOURCE;
-	switch (sourceValue) {
+	switch (m_value & Mask::SOURCE) {
 	case SourceValue::DRAWED:
 		returnValue = &DiscardSources::DRAWED;
 		break;
@@ -107,25 +105,11 @@ const DiscardSource &MemorySavedDiscard::getSource() const
 
 bool MemorySavedDiscard::isRiichiDeclared() const
 {
-	uint8_t riichiDeclaredValue;		// 立直宣言牌であるかを表す値。
-	bool returnValue;					// 戻り値。
-
-	// 値に応じた戻り値を返す。
-	riichiDeclaredValue = m_value & Mask::RIICHI_DECLARED;
-	returnValue = (riichiDeclaredValue) ? true : false;
-
-	return returnValue;
+	return (m_value & Mask::RIICHI_DECLARED) ? true : false;
 }
 
 
 bool MemorySavedDiscard::isTaken() const
 {
-	uint8_t takenValue;		// 鳴かれた牌であるかを表す値。
-	bool returnValue;		// 戻り値。
-
-	// 値に応じた戻り値を返す。
-	takenValue = m_value & Mask::TAKEN;
-	returnValue = (takenValue) ? true : false;
-
-	return returnValue;
+	return (m_value & Mask::TAKEN) ? true : false;
 }

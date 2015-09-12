@@ -51,14 +51,7 @@ bool MemorySavedRiichiStatus::operator!=(const MemorySavedRiichiStatus & other) 
 
 bool MemorySavedRiichiStatus::isDeclared() const
 {
-	uint8_t declaredValue;		// 立直宣言有無。
-	bool returnValue;				// 戻り値。
-
-	// 値に応じた戻り値を返す。
-	declaredValue = m_value & Flag::DECLARED;
-	returnValue = (declaredValue) ? true : false;
-
-	return returnValue;
+	return (m_value & Flag::DECLARED) ? true : false;
 }
 
 
@@ -75,14 +68,7 @@ void MemorySavedRiichiStatus::setDeclared(bool declared)
 
 bool MemorySavedRiichiStatus::isOpen() const
 {
-	uint8_t openValue;		// 立直宣言有無。
-	bool returnValue;		// 戻り値。
-
-	// 値に応じた戻り値を返す。
-	openValue = m_value & Flag::OPEN;
-	returnValue = (openValue) ? true : false;
-
-	return returnValue;
+	return (m_value & Flag::OPEN) ? true : false;
 }
 
 
@@ -99,14 +85,7 @@ void MemorySavedRiichiStatus::setOpen(bool open)
 
 bool MemorySavedRiichiStatus::isDouble() const
 {
-	uint8_t doubleValue;		// 立直宣言有無。
-	bool returnValue;			// 戻り値。
-
-	// 値に応じた戻り値を返す。
-	doubleValue = m_value & Flag::DOUBLE;
-	returnValue = (doubleValue) ? true : false;
-
-	return returnValue;
+	return (m_value & Flag::DOUBLE) ? true : false;
 }
 
 
@@ -123,14 +102,7 @@ void MemorySavedRiichiStatus::setDouble(bool doubl)
 
 bool MemorySavedRiichiStatus::isOneShot() const
 {
-	uint8_t oneShotValue;		// 立直宣言有無。
-	bool returnValue;			// 戻り値。
-
-	// 値に応じた戻り値を返す。
-	oneShotValue = m_value & Flag::ONE_SHOT;
-	returnValue = (oneShotValue) ? true : false;
-
-	return returnValue;
+	return (m_value & Flag::ONE_SHOT) ? true : false;
 }
 
 

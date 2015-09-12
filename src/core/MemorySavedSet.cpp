@@ -265,12 +265,10 @@ void MemorySavedSet::setMeldedKongType(const MeldedKongType & meldedKongType)
 
 const SetArrangement &MemorySavedSet::getArrangement() const
 {
-	uint8_t arrangementValue;							// 面子種別値。
 	const SetArrangement *returnValue = nullptr;		// 戻り値。
 
 	// 値に応じた面子種別を返す。
-	arrangementValue = m_value & Mask::ARRANGEMENT;
-	switch (arrangementValue) {
+	switch (m_value & Mask::ARRANGEMENT) {
 	case ArrangementValue::CHOW:
 		returnValue = &SetArrangements::CHOW;
 		break;
@@ -294,12 +292,10 @@ const SetArrangement &MemorySavedSet::getArrangement() const
 
 const MeldType &MemorySavedSet::getMeldType() const
 {
-	uint8_t meldTypeValue;						// 鳴き種別値。
 	const MeldType *returnValue = nullptr;		// 戻り値。
 
 	// 値に応じた鳴き種別を返す。
-	meldTypeValue = m_value & Mask::MELD_TYPE;
-	switch (meldTypeValue) {
+	switch (m_value & Mask::MELD_TYPE) {
 	case MeldTypeValue::NONE:
 		returnValue = &MeldTypes::NONE;
 		break;
@@ -323,12 +319,10 @@ const MeldType &MemorySavedSet::getMeldType() const
 
 const MeldedKongType &MemorySavedSet::getMeldedKongType() const
 {
-	uint8_t meldedKongValue;							// 鳴き槓子種別値。
 	const MeldedKongType *returnValue = nullptr;		// 戻り値。
 
 	// 値に応じた鳴き槓子種別を返す。
-	meldedKongValue = m_value & Mask::MELDED_KONG_TYPE;
-	switch (meldedKongValue) {
+	switch (m_value & Mask::MELDED_KONG_TYPE) {
 	case MeldedKongTypeValue::NO:
 		returnValue = &MeldedKongTypes::NO;
 		break;
@@ -354,76 +348,34 @@ const MemorySavedSet::Tiles &MemorySavedSet::getTiles() const
 
 bool MemorySavedSet::isChow() const
 {
-	uint8_t arrangementValue;		// 面子種別値。
-	bool returnValue;				// 戻り値。
-
-	// 面子種別が順子であるかを調べる。
-	arrangementValue = m_value & Mask::ARRANGEMENT;
-	returnValue = arrangementValue == ArrangementValue::CHOW;
-
-	return returnValue;
+	return (m_value & Mask::ARRANGEMENT) == ArrangementValue::CHOW;
 }
 
 
 bool MemorySavedSet::isPair() const
 {
-	uint8_t arrangementValue;		// 面子種別値。
-	bool returnValue;				// 戻り値。
-
-	// 面子種別が対子であるかを調べる。
-	arrangementValue = m_value & Mask::ARRANGEMENT;
-	returnValue = arrangementValue == ArrangementValue::PAIR;
-
-	return returnValue;
+	return (m_value & Mask::ARRANGEMENT) == ArrangementValue::PAIR;
 }
 
 bool MemorySavedSet::isPung() const
 {
-	uint8_t arrangementValue;		// 面子種別値。
-	bool returnValue;				// 戻り値。
-
-	// 面子種別が刻子であるかを調べる。
-	arrangementValue = m_value & Mask::ARRANGEMENT;
-	returnValue = arrangementValue == ArrangementValue::PUNG;
-
-	return returnValue;
+	return (m_value & Mask::ARRANGEMENT) == ArrangementValue::PUNG;
 }
 
 
 bool MemorySavedSet::isKong() const
 {
-	uint8_t arrangementValue;		// 面子種別値。
-	bool returnValue;				// 戻り値。
-
-	// 面子種別が槓子であるかを調べる。
-	arrangementValue = m_value & Mask::ARRANGEMENT;
-	returnValue = arrangementValue == ArrangementValue::KONG;
-
-	return returnValue;
+	return (m_value & Mask::ARRANGEMENT) == ArrangementValue::KONG;
 }
 
 
 bool MemorySavedSet::isConcealed() const
 {
-	uint8_t meldTypeValue;		// 鳴き種別値。
-	bool returnValue;			// 戻り値。
-
-	// 面前面子であるかを調べる。
-	meldTypeValue = m_value & Mask::MELD_TYPE;
-	returnValue = meldTypeValue == MeldTypeValue::NONE;
-
-	return returnValue;
+	return (m_value & Mask::MELD_TYPE) == MeldTypeValue::NONE;
 }
 
 
 bool MemorySavedSet::isMelded() const
 {
-	uint8_t meldTypeValue;		// 鳴き種別値。
-	bool returnValue;			// 戻り値。
-
-	// 鳴き面子であるかを調べる。
-	meldTypeValue = m_value & Mask::MELD_TYPE;
-	returnValue = meldTypeValue != MeldTypeValue::NONE;
-
-	return returnValue;
+	return (m_value & Mask::MELD_TYPE) != MeldTypeValue::NONE;
 }
