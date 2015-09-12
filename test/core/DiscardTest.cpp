@@ -83,41 +83,6 @@ namespace openriichi
 		ASSERT_EQ(true, discard5.isTaken());
 	}
 
-
-	/// 捨て牌をテストする。
-	TEST_F(DiscardTest, testDiscard)
-	{
-		Discard discard1;
-		ASSERT_EQ(Tile(), discard1.getTile());
-		ASSERT_EQ(DiscardSources::DRAWED, discard1.getSource());
-		ASSERT_EQ(false, discard1.isRiichiDeclared());
-		ASSERT_EQ(false, discard1.isTaken());
-
-		Discard discard2(Tile(TileDesigns::BAMBOO, 3), DiscardSources::HELD, false, false);
-		ASSERT_EQ(Tile(TileDesigns::BAMBOO, 3), discard2.getTile());
-		ASSERT_EQ(DiscardSources::HELD, discard2.getSource());
-		ASSERT_EQ(false, discard2.isRiichiDeclared());
-		ASSERT_EQ(false, discard2.isTaken());
-
-		Discard discard3(Tile(TileDesigns::CHARACTERS, 7), DiscardSources::DRAWED, false, true);
-		ASSERT_EQ(Tile(TileDesigns::CHARACTERS, 7), discard3.getTile());
-		ASSERT_EQ(DiscardSources::DRAWED, discard3.getSource());
-		ASSERT_EQ(false, discard3.isRiichiDeclared());
-		ASSERT_EQ(true, discard3.isTaken());
-
-		Discard discard4(Tile(TileDesigns::EAST), DiscardSources::HELD, true, false);
-		ASSERT_EQ(Tile(TileDesigns::EAST), discard4.getTile());
-		ASSERT_EQ(DiscardSources::HELD, discard4.getSource());
-		ASSERT_EQ(true, discard4.isRiichiDeclared());
-		ASSERT_EQ(false, discard4.isTaken());
-
-		Discard discard5(Tile(TileDesigns::RED), DiscardSources::DRAWED, true, true);
-		ASSERT_EQ(Tile(TileDesigns::RED), discard5.getTile());
-		ASSERT_EQ(DiscardSources::DRAWED, discard5.getSource());
-		ASSERT_EQ(true, discard5.isRiichiDeclared());
-		ASSERT_EQ(true, discard5.isTaken());
-	}
-
 	/// == 演算子をテストする。
 	TEST_F(DiscardTest, testEquals)
 	{
