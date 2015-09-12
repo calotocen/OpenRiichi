@@ -13,57 +13,79 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
+#include <vector>
 #include <gtest/gtest.h>	
 #include <LimitedVector.h>
+
+
+using namespace std;
 
 
 namespace openriichi
 {
 	class LimitedVectorTest : public ::testing::Test {};
 
+	// count 関数をテストする。
+	TEST_F(LimitedVectorTest, testCount)
+	{
+		LimitedVector<int, 10> limitedVector1;
+		LimitedVector<int, 10> limitedVector2{ 0, 1, 2, 3, 4 };
+		LimitedVector<int, 10> limitedVector3{ 0, 1, 2, 3, 4, 5, 6, 7, 8, 9 };
 
-	// 要素数の取得，要素の取得，要素の設定，要素の追加，およびイテレータをテストする。
-	TEST_F(LimitedVectorTest, testCountAndGetAndSetAndAddAndIteratorAndConstIterator)
+		ASSERT_EQ(0, limitedVector1.count());
+		ASSERT_EQ(5, limitedVector2.count());
+		ASSERT_EQ(10, limitedVector3.count());
+	}
+
+	// get 関数をテストする。
+	TEST_F(LimitedVectorTest, testGet)
+	{
+		LimitedVector<int, 10> limitedVector{ 0, 1, 2, 3, 4, 5, 6, 7, 8, 9 };
+
+		ASSERT_EQ(0, limitedVector.get(0));
+		ASSERT_EQ(5, limitedVector.get(5));
+		ASSERT_EQ(9, limitedVector.get(9));
+	}
+
+	// getFirst 関数をテストする。
+	TEST_F(LimitedVectorTest, testGetFirst)
+	{
+		LimitedVector<int, 10> limitedVector1{ 0 };
+		LimitedVector<int, 10> limitedVector2{ 0, 1, 2, 3, 4, 5, 6, 7, 8, 9 };
+
+		ASSERT_EQ(0, limitedVector1.getFirst());
+		ASSERT_EQ(0, limitedVector2.getFirst());
+	}
+
+	// getLast 関数をテストする。
+	TEST_F(LimitedVectorTest, testGetLast)
+	{
+		LimitedVector<int, 10> limitedVector1{ 0 };
+		LimitedVector<int, 10> limitedVector2{ 0, 1, 2, 3, 4, 5, 6, 7, 8, 9 };
+
+		ASSERT_EQ(0, limitedVector1.getLast());
+		ASSERT_EQ(9, limitedVector2.getLast());
+	}
+
+	/// set 関数をテストする。
+	TEST_F(LimitedVectorTest, testSet)
+	{
+		LimitedVector<int, 10> limitedVector{ 0, 1, 2, 3, 4, 5, 6, 7, 8, 9 };
+
+		limitedVector.set(0, 10);
+		limitedVector.set(5, 11);
+		limitedVector.set(9, 12);
+		ASSERT_EQ((LimitedVector<int, 10>{ 10, 1, 2, 3, 4, 11, 6, 7, 8, 12 }), limitedVector);
+	}
+
+	/// add 関数をテストする。
+	TEST_F(LimitedVectorTest, testAdd)
 	{
 		LimitedVector<int, 10> limitedVector;
-		LimitedVector<int, 10>::Iterator iterator;
-		LimitedVector<int, 10>::ConstIterator constIterator;
 
-		// 生成直後の配列は空である。
-		ASSERT_EQ(0, limitedVector.count());
-		ASSERT_EQ(limitedVector.getHeadIterator(), limitedVector.getTailIterator());
-		ASSERT_EQ(limitedVector.getHeadConstIterator(), limitedVector.getTailConstIterator());
-
-		// 要素を追加する。
+		limitedVector.add(0);
 		limitedVector.add(1);
-		ASSERT_EQ(1, limitedVector.count());
-		ASSERT_EQ(1, limitedVector.get(0));
-		ASSERT_EQ(1, limitedVector.getFirst());
-		ASSERT_EQ(1, limitedVector.getLast());
-		iterator = limitedVector.getHeadIterator();
-		ASSERT_EQ(1, *iterator++);
-		ASSERT_EQ(limitedVector.getTailIterator(), iterator);
-		constIterator = limitedVector.getHeadConstIterator();
-		ASSERT_EQ(1, *constIterator++);
-		ASSERT_EQ(limitedVector.getTailConstIterator(), constIterator);
-
-		// 要素を追加する。
 		limitedVector.add(2);
-		ASSERT_EQ(2, limitedVector.count());
-		ASSERT_EQ(1, limitedVector.get(0));
-		ASSERT_EQ(2, limitedVector.get(1));
-		ASSERT_EQ(1, limitedVector.getFirst());
-		ASSERT_EQ(2, limitedVector.getLast());
-		iterator = limitedVector.getHeadIterator();
-		ASSERT_EQ(1, *iterator++);
-		ASSERT_EQ(2, *iterator++);
-		ASSERT_EQ(limitedVector.getTailIterator(), iterator);
-		constIterator = limitedVector.getHeadConstIterator();
-		ASSERT_EQ(1, *constIterator++);
-		ASSERT_EQ(2, *constIterator++);
-		ASSERT_EQ(limitedVector.getTailConstIterator(), constIterator);
-
-		// 要素を追加する。
 		limitedVector.add(3);
 		limitedVector.add(4);
 		limitedVector.add(5);
@@ -71,21 +93,28 @@ namespace openriichi
 		limitedVector.add(7);
 		limitedVector.add(8);
 		limitedVector.add(9);
-		limitedVector.add(10);
-		ASSERT_EQ(10, limitedVector.count());
-		ASSERT_EQ(1, limitedVector.get(0));
-		ASSERT_EQ(2, limitedVector.get(1));
-		ASSERT_EQ(3, limitedVector.get(2));
-		ASSERT_EQ(4, limitedVector.get(3));
-		ASSERT_EQ(5, limitedVector.get(4));
-		ASSERT_EQ(6, limitedVector.get(5));
-		ASSERT_EQ(7, limitedVector.get(6));
-		ASSERT_EQ(8, limitedVector.get(7));
-		ASSERT_EQ(9, limitedVector.get(8));
-		ASSERT_EQ(10, limitedVector.get(9));
-		ASSERT_EQ(1, limitedVector.getFirst());
-		ASSERT_EQ(10, limitedVector.getLast());
-		iterator = limitedVector.getHeadIterator();
+		ASSERT_EQ((LimitedVector<int, 10>{ 0, 1, 2, 3, 4, 5, 6, 7, 8, 9 }), limitedVector);
+	}
+
+	/// getHeadIterator 関数をテストする。
+	TEST_F(LimitedVectorTest, testGetHeadIterator)
+	{
+		LimitedVector<int, 10> limitedVector1{ 0 };
+		LimitedVector<int, 10> limitedVector2{ 0, 1, 2, 3, 4, 5, 6, 7, 8, 9 };
+		LimitedVector<int, 10>::Iterator iterator = limitedVector2.getHeadIterator();
+
+		ASSERT_EQ(0, *limitedVector1.getHeadIterator());
+		ASSERT_EQ(0, *(iterator + 0));
+		ASSERT_EQ(1, *(iterator + 1));
+		ASSERT_EQ(2, *(iterator + 2));
+		ASSERT_EQ(3, *(iterator + 3));
+		ASSERT_EQ(4, *(iterator + 4));
+		ASSERT_EQ(5, *(iterator + 5));
+		ASSERT_EQ(6, *(iterator + 6));
+		ASSERT_EQ(7, *(iterator + 7));
+		ASSERT_EQ(8, *(iterator + 8));
+		ASSERT_EQ(9, *(iterator + 9));
+		ASSERT_EQ(0, *iterator++);
 		ASSERT_EQ(1, *iterator++);
 		ASSERT_EQ(2, *iterator++);
 		ASSERT_EQ(3, *iterator++);
@@ -95,63 +124,99 @@ namespace openriichi
 		ASSERT_EQ(7, *iterator++);
 		ASSERT_EQ(8, *iterator++);
 		ASSERT_EQ(9, *iterator++);
-		ASSERT_EQ(10, *iterator++);
-		ASSERT_EQ(limitedVector.getTailIterator(), iterator);
-		constIterator = limitedVector.getHeadConstIterator();
-		ASSERT_EQ(1, *constIterator++);
-		ASSERT_EQ(2, *constIterator++);
-		ASSERT_EQ(3, *constIterator++);
-		ASSERT_EQ(4, *constIterator++);
-		ASSERT_EQ(5, *constIterator++);
-		ASSERT_EQ(6, *constIterator++);
-		ASSERT_EQ(7, *constIterator++);
-		ASSERT_EQ(8, *constIterator++);
-		ASSERT_EQ(9, *constIterator++);
-		ASSERT_EQ(10, *constIterator++);
-		ASSERT_EQ(limitedVector.getTailConstIterator(), constIterator);
+	}
 
-		// 要素を設定する。
-		limitedVector.set(0, 11);
-		limitedVector.set(5, 12);
-		limitedVector.set(9, 13);
-		ASSERT_EQ(10, limitedVector.count());
-		ASSERT_EQ(11, limitedVector.get(0));
-		ASSERT_EQ(2, limitedVector.get(1));
-		ASSERT_EQ(3, limitedVector.get(2));
-		ASSERT_EQ(4, limitedVector.get(3));
-		ASSERT_EQ(5, limitedVector.get(4));
-		ASSERT_EQ(12, limitedVector.get(5));
-		ASSERT_EQ(7, limitedVector.get(6));
-		ASSERT_EQ(8, limitedVector.get(7));
-		ASSERT_EQ(9, limitedVector.get(8));
-		ASSERT_EQ(13, limitedVector.get(9));
-		iterator = limitedVector.getHeadIterator();
-		ASSERT_EQ(11, *iterator++);
+	/// getHeadConstIterator 関数をテストする。
+	TEST_F(LimitedVectorTest, testGetHeadConstIterator)
+	{
+		LimitedVector<int, 10> limitedVector1{ 0 };
+		LimitedVector<int, 10> limitedVector2{ 0, 1, 2, 3, 4, 5, 6, 7, 8, 9 };
+		LimitedVector<int, 10>::ConstIterator iterator = limitedVector2.getHeadConstIterator();
+
+		ASSERT_EQ(0, *limitedVector1.getHeadConstIterator());
+		ASSERT_EQ(0, *(iterator + 0));
+		ASSERT_EQ(1, *(iterator + 1));
+		ASSERT_EQ(2, *(iterator + 2));
+		ASSERT_EQ(3, *(iterator + 3));
+		ASSERT_EQ(4, *(iterator + 4));
+		ASSERT_EQ(5, *(iterator + 5));
+		ASSERT_EQ(6, *(iterator + 6));
+		ASSERT_EQ(7, *(iterator + 7));
+		ASSERT_EQ(8, *(iterator + 8));
+		ASSERT_EQ(9, *(iterator + 9));
+		ASSERT_EQ(0, *iterator++);
+		ASSERT_EQ(1, *iterator++);
 		ASSERT_EQ(2, *iterator++);
 		ASSERT_EQ(3, *iterator++);
 		ASSERT_EQ(4, *iterator++);
 		ASSERT_EQ(5, *iterator++);
-		ASSERT_EQ(12, *iterator++);
+		ASSERT_EQ(6, *iterator++);
 		ASSERT_EQ(7, *iterator++);
 		ASSERT_EQ(8, *iterator++);
 		ASSERT_EQ(9, *iterator++);
-		ASSERT_EQ(13, *iterator++);
-		ASSERT_EQ(limitedVector.getTailIterator(), iterator);
-		constIterator = limitedVector.getHeadConstIterator();
-		ASSERT_EQ(11, *constIterator++);
-		ASSERT_EQ(2, *constIterator++);
-		ASSERT_EQ(3, *constIterator++);
-		ASSERT_EQ(4, *constIterator++);
-		ASSERT_EQ(5, *constIterator++);
-		ASSERT_EQ(12, *constIterator++);
-		ASSERT_EQ(7, *constIterator++);
-		ASSERT_EQ(8, *constIterator++);
-		ASSERT_EQ(9, *constIterator++);
-		ASSERT_EQ(13, *constIterator++);
-		ASSERT_EQ(limitedVector.getTailConstIterator(), constIterator);
 	}
 
-	// 要素の挿入 (イテレータ版) をテストする。
+	/// getTailIterator 関数をテストする。
+	TEST_F(LimitedVectorTest, testGetTailIterator)
+	{
+		LimitedVector<int, 10> limitedVector1{ 0 };
+		LimitedVector<int, 10> limitedVector2{ 0, 1, 2, 3, 4, 5, 6, 7, 8, 9 };
+		LimitedVector<int, 10>::Iterator iterator = limitedVector2.getTailIterator();
+
+		ASSERT_EQ(0, *(limitedVector1.getTailIterator() - 1));
+		ASSERT_EQ(9, *(iterator - 1));
+		ASSERT_EQ(8, *(iterator - 2));
+		ASSERT_EQ(7, *(iterator - 3));
+		ASSERT_EQ(6, *(iterator - 4));
+		ASSERT_EQ(5, *(iterator - 5));
+		ASSERT_EQ(4, *(iterator - 6));
+		ASSERT_EQ(3, *(iterator - 7));
+		ASSERT_EQ(2, *(iterator - 8));
+		ASSERT_EQ(1, *(iterator - 9));
+		ASSERT_EQ(0, *(iterator - 10));
+		ASSERT_EQ(9, *--iterator);
+		ASSERT_EQ(8, *--iterator);
+		ASSERT_EQ(7, *--iterator);
+		ASSERT_EQ(6, *--iterator);
+		ASSERT_EQ(5, *--iterator);
+		ASSERT_EQ(4, *--iterator);
+		ASSERT_EQ(3, *--iterator);
+		ASSERT_EQ(2, *--iterator);
+		ASSERT_EQ(1, *--iterator);
+		ASSERT_EQ(0, *--iterator);
+	}
+
+	/// getTailConstIterator 関数をテストする。
+	TEST_F(LimitedVectorTest, testGetTailConstIterator)
+	{
+		LimitedVector<int, 10> limitedVector1{ 0 };
+		LimitedVector<int, 10> limitedVector2{ 0, 1, 2, 3, 4, 5, 6, 7, 8, 9 };
+		LimitedVector<int, 10>::ConstIterator iterator = limitedVector2.getTailConstIterator();
+
+		ASSERT_EQ(0, *(limitedVector1.getTailConstIterator() - 1));
+		ASSERT_EQ(9, *(iterator - 1));
+		ASSERT_EQ(8, *(iterator - 2));
+		ASSERT_EQ(7, *(iterator - 3));
+		ASSERT_EQ(6, *(iterator - 4));
+		ASSERT_EQ(5, *(iterator - 5));
+		ASSERT_EQ(4, *(iterator - 6));
+		ASSERT_EQ(3, *(iterator - 7));
+		ASSERT_EQ(2, *(iterator - 8));
+		ASSERT_EQ(1, *(iterator - 9));
+		ASSERT_EQ(0, *(iterator - 10));
+		ASSERT_EQ(9, *--iterator);
+		ASSERT_EQ(8, *--iterator);
+		ASSERT_EQ(7, *--iterator);
+		ASSERT_EQ(6, *--iterator);
+		ASSERT_EQ(5, *--iterator);
+		ASSERT_EQ(4, *--iterator);
+		ASSERT_EQ(3, *--iterator);
+		ASSERT_EQ(2, *--iterator);
+		ASSERT_EQ(1, *--iterator);
+		ASSERT_EQ(0, *--iterator);
+	}
+
+	/// insert (イテレータ版) 関数をテストする。
 	TEST_F(LimitedVectorTest, testInsertUsingIterator)
 	{
 		LimitedVector<int, 10> limitedVector;
@@ -159,24 +224,15 @@ namespace openriichi
 
 		// 要素を挿入する。
 		iterator = limitedVector.insert(limitedVector.getHeadIterator(), 1);
-		ASSERT_EQ(limitedVector.getHeadIterator(), iterator);
-		ASSERT_EQ(1, limitedVector.count());
-		ASSERT_EQ(1, limitedVector.get(0));
+		ASSERT_EQ((LimitedVector<int, 10>{ 1 }), limitedVector);
 
 		// 要素を先頭に挿入する。
 		iterator = limitedVector.insert(limitedVector.getHeadIterator(), 2);
-		ASSERT_EQ(limitedVector.getHeadIterator(), iterator);
-		ASSERT_EQ(2, limitedVector.count());
-		ASSERT_EQ(2, limitedVector.get(0));
-		ASSERT_EQ(1, limitedVector.get(1));
+		ASSERT_EQ((LimitedVector<int, 10>{ 2, 1 }), limitedVector);
 
 		// 要素を末尾に挿入する。
 		iterator = limitedVector.insert(limitedVector.getTailIterator(), 3);
-		ASSERT_EQ(limitedVector.getTailIterator() - 1, iterator);
-		ASSERT_EQ(3, limitedVector.count());
-		ASSERT_EQ(2, limitedVector.get(0));
-		ASSERT_EQ(1, limitedVector.get(1));
-		ASSERT_EQ(3, limitedVector.get(2));
+		ASSERT_EQ((LimitedVector<int, 10>{ 2, 1, 3 }), limitedVector);
 
 		// 要素を間に挿入する。
 		iterator = limitedVector.insert(limitedVector.getHeadIterator() + 1, 4);
@@ -186,42 +242,25 @@ namespace openriichi
 		iterator = limitedVector.insert(iterator + 1, 8);
 		iterator = limitedVector.insert(iterator + 1, 9);
 		iterator = limitedVector.insert(iterator + 1, 10);
-		ASSERT_EQ(limitedVector.getHeadIterator() + 7, iterator);
-		ASSERT_EQ(10, limitedVector.count());
-		ASSERT_EQ(2, limitedVector.get(0));
-		ASSERT_EQ(4, limitedVector.get(1));
-		ASSERT_EQ(5, limitedVector.get(2));
-		ASSERT_EQ(6, limitedVector.get(3));
-		ASSERT_EQ(7, limitedVector.get(4));
-		ASSERT_EQ(8, limitedVector.get(5));
-		ASSERT_EQ(9, limitedVector.get(6));
-		ASSERT_EQ(10, limitedVector.get(7));
-		ASSERT_EQ(1, limitedVector.get(8));
-		ASSERT_EQ(3, limitedVector.get(9));
+		ASSERT_EQ((LimitedVector<int, 10>{ 2, 4, 5, 6, 7, 8, 9, 10, 1, 3 }), limitedVector);
 	}
 
-	// 要素の挿入 (添え字版) をテストする。
+	/// insert (添え字版) をテストする。
 	TEST_F(LimitedVectorTest, testInsertUsingIndex)
 	{
 		LimitedVector<int, 10> limitedVector;
 
 		// 要素を挿入する。
 		limitedVector.insert(0, 1);
-		ASSERT_EQ(1, limitedVector.count());
-		ASSERT_EQ(1, limitedVector.get(0));
+		ASSERT_EQ((LimitedVector<int, 10>{ 1 }), limitedVector);
 
 		// 要素を先頭に挿入する。
 		limitedVector.insert(0, 2);
-		ASSERT_EQ(2, limitedVector.count());
-		ASSERT_EQ(2, limitedVector.get(0));
-		ASSERT_EQ(1, limitedVector.get(1));
+		ASSERT_EQ((LimitedVector<int, 10>{ 2, 1 }), limitedVector);
 
 		// 要素を末尾に挿入する。
 		limitedVector.insert(limitedVector.count(), 3);
-		ASSERT_EQ(3, limitedVector.count());
-		ASSERT_EQ(2, limitedVector.get(0));
-		ASSERT_EQ(1, limitedVector.get(1));
-		ASSERT_EQ(3, limitedVector.get(2));
+		ASSERT_EQ((LimitedVector<int, 10>{ 2, 1, 3 }), limitedVector);
 
 		// 要素を間に挿入する。
 		limitedVector.insert(1, 4);
@@ -231,20 +270,10 @@ namespace openriichi
 		limitedVector.insert(5, 8);
 		limitedVector.insert(6, 9);
 		limitedVector.insert(7, 10);
-		ASSERT_EQ(10, limitedVector.count());
-		ASSERT_EQ(2, limitedVector.get(0));
-		ASSERT_EQ(4, limitedVector.get(1));
-		ASSERT_EQ(5, limitedVector.get(2));
-		ASSERT_EQ(6, limitedVector.get(3));
-		ASSERT_EQ(7, limitedVector.get(4));
-		ASSERT_EQ(8, limitedVector.get(5));
-		ASSERT_EQ(9, limitedVector.get(6));
-		ASSERT_EQ(10, limitedVector.get(7));
-		ASSERT_EQ(1, limitedVector.get(8));
-		ASSERT_EQ(3, limitedVector.get(9));
+		ASSERT_EQ((LimitedVector<int, 10>{ 2, 4, 5, 6, 7, 8, 9, 10, 1, 3 }), limitedVector);
 	}
 
-	// 要素の削除 (イテレータ版) と要素の全削除をテストする。
+	/// remove (イテレータ版) をテストする。
 	TEST_F(LimitedVectorTest, testRemoveUsingIndexAndClear)
 	{
 		LimitedVector<int, 10> limitedVector;
@@ -253,23 +282,18 @@ namespace openriichi
 		// 要素を削除する。
 		limitedVector.add(1);
 		iterator = limitedVector.remove(limitedVector.getHeadIterator());
-		ASSERT_EQ(limitedVector.getHeadIterator(), iterator);
-		ASSERT_EQ(0, limitedVector.count());
+		ASSERT_EQ((LimitedVector<int, 10>()), limitedVector);
 
 		// 先頭の要素を削除する。
 		limitedVector.add(2);
 		limitedVector.add(3);
 		iterator = limitedVector.remove(limitedVector.getHeadIterator());
-		ASSERT_EQ(limitedVector.getHeadIterator(), iterator);
-		ASSERT_EQ(1, limitedVector.count());
-		ASSERT_EQ(3, limitedVector.get(0));
+		ASSERT_EQ((LimitedVector<int, 10>{ 3 }), limitedVector);
 
 		// 末尾の要素を削除する。
 		limitedVector.insert(limitedVector.getHeadIterator(), 4);
 		iterator = limitedVector.remove(limitedVector.getTailIterator() - 1);
-		ASSERT_EQ(limitedVector.getTailIterator(), iterator);
-		ASSERT_EQ(1, limitedVector.count());
-		ASSERT_EQ(4, limitedVector.get(0));
+		ASSERT_EQ((LimitedVector<int, 10>{ 4 }), limitedVector);
 
 		// 間の要素を削除する。
 		limitedVector.add(5);
@@ -284,51 +308,22 @@ namespace openriichi
 		limitedVector.remove(limitedVector.getHeadIterator() + 1);
 		limitedVector.remove(limitedVector.getHeadIterator() + 3);
 		limitedVector.remove(limitedVector.getHeadIterator() + 5);
-		ASSERT_EQ(7, limitedVector.count());
-		ASSERT_EQ(4, limitedVector.get(0));
-		ASSERT_EQ(6, limitedVector.get(1));
-		ASSERT_EQ(7, limitedVector.get(2));
-		ASSERT_EQ(9, limitedVector.get(3));
-		ASSERT_EQ(10, limitedVector.get(4));
-		ASSERT_EQ(12, limitedVector.get(5));
-		ASSERT_EQ(13, limitedVector.get(6));
+		ASSERT_EQ((LimitedVector<int, 10>{ 4, 6, 7, 9, 10, 12, 13 }), limitedVector);
 
 		// 先頭の要素を削除する (要素配列サイズ最大時)
 		limitedVector.add(14);
 		limitedVector.add(15);
 		limitedVector.add(16);
 		limitedVector.remove(limitedVector.getHeadIterator());
-		ASSERT_EQ(9, limitedVector.count());
-		ASSERT_EQ(6, limitedVector.get(0));
-		ASSERT_EQ(7, limitedVector.get(1));
-		ASSERT_EQ(9, limitedVector.get(2));
-		ASSERT_EQ(10, limitedVector.get(3));
-		ASSERT_EQ(12, limitedVector.get(4));
-		ASSERT_EQ(13, limitedVector.get(5));
-		ASSERT_EQ(14, limitedVector.get(6));
-		ASSERT_EQ(15, limitedVector.get(7));
-		ASSERT_EQ(16, limitedVector.get(8));
+		ASSERT_EQ((LimitedVector<int, 10>{ 6, 7, 9, 10, 12, 13, 14, 15, 16 }), limitedVector);
 
 		// 末尾の要素を削除する (要素配列サイズ最大時)
 		limitedVector.insert(limitedVector.getHeadIterator(), 17);
 		limitedVector.remove(limitedVector.getTailIterator() - 1);
-		ASSERT_EQ(9, limitedVector.count());
-		ASSERT_EQ(17, limitedVector.get(0));
-		ASSERT_EQ(6, limitedVector.get(1));
-		ASSERT_EQ(7, limitedVector.get(2));
-		ASSERT_EQ(9, limitedVector.get(3));
-		ASSERT_EQ(10, limitedVector.get(4));
-		ASSERT_EQ(12, limitedVector.get(5));
-		ASSERT_EQ(13, limitedVector.get(6));
-		ASSERT_EQ(14, limitedVector.get(7));
-		ASSERT_EQ(15, limitedVector.get(8));
-
-		// 要素を全削除する。
-		limitedVector.clear();
-		ASSERT_EQ(0, limitedVector.count());
+		ASSERT_EQ((LimitedVector<int, 10>{ 17, 6, 7, 9, 10, 12, 13, 14, 15 }), limitedVector);
 	}
 
-	// 要素の削除 (添え字版) をテストする。
+	// remove (添え字版) をテストする。
 	TEST_F(LimitedVectorTest, testRemoveUsingIndex)
 	{
 		LimitedVector<int, 10> limitedVector;
@@ -336,20 +331,18 @@ namespace openriichi
 		// 要素を削除する。
 		limitedVector.add(1);
 		limitedVector.remove(0);
-		ASSERT_EQ(0, limitedVector.count());
+		ASSERT_EQ((LimitedVector<int, 10>()), limitedVector);
 
 		// 先頭の要素を削除する。
 		limitedVector.add(2);
 		limitedVector.add(3);
 		limitedVector.remove(0);
-		ASSERT_EQ(1, limitedVector.count());
-		ASSERT_EQ(3, limitedVector.get(0));
+		ASSERT_EQ((LimitedVector<int, 10>{ 3 }), limitedVector);
 
 		// 末尾の要素を削除する。
 		limitedVector.insert(0, 4);
 		limitedVector.remove(limitedVector.count() - 1);
-		ASSERT_EQ(1, limitedVector.count());
-		ASSERT_EQ(4, limitedVector.get(0));
+		ASSERT_EQ((LimitedVector<int, 10>{ 4 }), limitedVector);
 
 		// 間の要素を削除する。
 		limitedVector.add(5);
@@ -364,100 +357,95 @@ namespace openriichi
 		limitedVector.remove(1);
 		limitedVector.remove(3);
 		limitedVector.remove(5);
-		ASSERT_EQ(7, limitedVector.count());
-		ASSERT_EQ(7, limitedVector.count());
-		ASSERT_EQ(4, limitedVector.get(0));
-		ASSERT_EQ(6, limitedVector.get(1));
-		ASSERT_EQ(7, limitedVector.get(2));
-		ASSERT_EQ(9, limitedVector.get(3));
-		ASSERT_EQ(10, limitedVector.get(4));
-		ASSERT_EQ(12, limitedVector.get(5));
-		ASSERT_EQ(13, limitedVector.get(6));
+		ASSERT_EQ((LimitedVector<int, 10>{ 4, 6, 7, 9, 10, 12, 13 }), limitedVector);
 
 		// 先頭の要素を削除する (要素配列サイズ最大時)
 		limitedVector.add(14);
 		limitedVector.add(15);
 		limitedVector.add(16);
 		limitedVector.remove(0);
-		ASSERT_EQ(9, limitedVector.count());
-		ASSERT_EQ(6, limitedVector.get(0));
-		ASSERT_EQ(7, limitedVector.get(1));
-		ASSERT_EQ(9, limitedVector.get(2));
-		ASSERT_EQ(10, limitedVector.get(3));
-		ASSERT_EQ(12, limitedVector.get(4));
-		ASSERT_EQ(13, limitedVector.get(5));
-		ASSERT_EQ(14, limitedVector.get(6));
-		ASSERT_EQ(15, limitedVector.get(7));
-		ASSERT_EQ(16, limitedVector.get(8));
+		ASSERT_EQ((LimitedVector<int, 10>{ 6, 7, 9, 10, 12, 13, 14, 15, 16 }), limitedVector);
 
 		// 末尾の要素を削除する (要素配列サイズ最大時)
 		limitedVector.insert(limitedVector.getHeadIterator(), 17);
 		limitedVector.remove(limitedVector.count() - 1);
-		ASSERT_EQ(9, limitedVector.count());
-		ASSERT_EQ(17, limitedVector.get(0));
-		ASSERT_EQ(6, limitedVector.get(1));
-		ASSERT_EQ(7, limitedVector.get(2));
-		ASSERT_EQ(9, limitedVector.get(3));
-		ASSERT_EQ(10, limitedVector.get(4));
-		ASSERT_EQ(12, limitedVector.get(5));
-		ASSERT_EQ(13, limitedVector.get(6));
-		ASSERT_EQ(14, limitedVector.get(7));
-		ASSERT_EQ(15, limitedVector.get(8));
+		ASSERT_EQ((LimitedVector<int, 10>{ 17, 6, 7, 9, 10, 12, 13, 14, 15 }), limitedVector);
 	}
 
-	// 配列の比較をテストする。
-	TEST_F(LimitedVectorTest, testEqualsAndNotEquals)
+	/// clear 関数をテストする。
+	TEST_F(LimitedVectorTest, testClear)
+	{
+		LimitedVector<int, 10> limitedVector{ 0, 1, 2, 3, 4, 5, 6, 7, 8, 9 };
+
+		limitedVector.clear();
+		ASSERT_EQ((LimitedVector<int, 10>()), limitedVector);
+	}
+
+	/// == 演算子をテストする。
+	TEST_F(LimitedVectorTest, testEquals)
 	{
 		LimitedVector<int, 10> limitedVector1;
-		LimitedVector<int, 10> limitedVector2;
+		LimitedVector<int, 10> limitedVector2{ 0 };
+		LimitedVector<int, 10> limitedVector3{ 1 };
+		LimitedVector<int, 10> limitedVector4{ 0, 1, 2, 3, 4, 5, 6, 7, 8, 9 };
+		LimitedVector<int, 10> limitedVector5{ 0, 1, 2, 3, 4, 5, 6, 7, 8, 10 };
 
+		// 自身と比較する。
 		ASSERT_TRUE(limitedVector1 == limitedVector1);
-		ASSERT_FALSE(limitedVector1 != limitedVector1);
-		ASSERT_TRUE(limitedVector1 == limitedVector2);
-		ASSERT_FALSE(limitedVector1 != limitedVector2);
+		ASSERT_TRUE(limitedVector2 == limitedVector2);
+		ASSERT_TRUE(limitedVector3 == limitedVector3);
+		ASSERT_TRUE(limitedVector4 == limitedVector4);
+		ASSERT_TRUE(limitedVector5 == limitedVector5);
 
-		limitedVector1.add(1);
-		ASSERT_FALSE(limitedVector1 == limitedVector2);
-		ASSERT_TRUE(limitedVector1 != limitedVector2);
+		// 同じ有限可変長配列と比較する。
+		ASSERT_TRUE(limitedVector1 == (LimitedVector<int, 10>()));
+		ASSERT_TRUE(limitedVector2 == (LimitedVector<int, 10>{ 0 }));
+		ASSERT_TRUE(limitedVector3 == (LimitedVector<int, 10>{ 1 }));
+		ASSERT_TRUE(limitedVector4 == (LimitedVector<int, 10>{ 0, 1, 2, 3, 4, 5, 6, 7, 8, 9 }));
+		ASSERT_TRUE(limitedVector5 == (LimitedVector<int, 10>{ 0, 1, 2, 3, 4, 5, 6, 7, 8, 10 }));
 
-		limitedVector2.add(2);
-		ASSERT_FALSE(limitedVector1 == limitedVector2);
-		ASSERT_TRUE(limitedVector1 != limitedVector2);
-
-		limitedVector1.add(3);
-		limitedVector1.add(4);
-		limitedVector1.add(5);
-		limitedVector1.add(6);
-		limitedVector1.add(7);
-		limitedVector1.add(8);
-		limitedVector1.add(9);
-		limitedVector2.add(3);
-		limitedVector2.add(4);
-		limitedVector2.add(5);
-		limitedVector2.add(6);
-		limitedVector2.add(7);
-		limitedVector2.add(8);
-		limitedVector2.add(9);
-		ASSERT_FALSE(limitedVector1 == limitedVector2);
-		ASSERT_TRUE(limitedVector1 != limitedVector2);
-
-		limitedVector2.set(0, 1);
-		ASSERT_TRUE(limitedVector1 == limitedVector2);
-		ASSERT_FALSE(limitedVector1 != limitedVector2);
+		// 異なる有限可変長配列と比較する。
+		vector<LimitedVector<int, 10>> limitedVectors{ limitedVector1, limitedVector2, limitedVector3, limitedVector4, limitedVector5 };
+		for (auto i = 0; i < limitedVectors.size(); ++i) {
+			for (auto j = 0; j < limitedVectors.size(); ++j) {
+				if (i != j) {
+					ASSERT_FALSE(limitedVectors[i] == limitedVectors[j]);
+				}
+			}
+		}
 	}
 
-	// 初期化子を用いた生成／代入をテストする。
-	TEST_F(LimitedVectorTest, testUsingInitializerList)
+	/// != 演算子をテストする。
+	TEST_F(LimitedVectorTest, testNotEquals)
 	{
-		LimitedVector<int, 10> limitedVector1{ 1, 2, 3 };
-		LimitedVector<int, 10> limitedVector2;
+		LimitedVector<int, 10> limitedVector1;
+		LimitedVector<int, 10> limitedVector2{ 0 };
+		LimitedVector<int, 10> limitedVector3{ 1 };
+		LimitedVector<int, 10> limitedVector4{ 0, 1, 2, 3, 4, 5, 6, 7, 8, 9 };
+		LimitedVector<int, 10> limitedVector5{ 0, 1, 2, 3, 4, 5, 6, 7, 8, 10 };
 
-		ASSERT_EQ(3, limitedVector1.count());
-		ASSERT_EQ(1, limitedVector1.get(0));
-		ASSERT_EQ(2, limitedVector1.get(1));
-		ASSERT_EQ(3, limitedVector1.get(2));
+		// 自身と比較する。
+		ASSERT_FALSE(limitedVector1 != limitedVector1);
+		ASSERT_FALSE(limitedVector2 != limitedVector2);
+		ASSERT_FALSE(limitedVector3 != limitedVector3);
+		ASSERT_FALSE(limitedVector4 != limitedVector4);
+		ASSERT_FALSE(limitedVector5 != limitedVector5);
 
-		limitedVector2 = { 1, 2, 3 };
-		ASSERT_EQ(limitedVector1, limitedVector2);
+		// 同じ有限可変長配列と比較する。
+		ASSERT_FALSE(limitedVector1 != (LimitedVector<int, 10>()));
+		ASSERT_FALSE(limitedVector2 != (LimitedVector<int, 10>{ 0 }));
+		ASSERT_FALSE(limitedVector3 != (LimitedVector<int, 10>{ 1 }));
+		ASSERT_FALSE(limitedVector4 != (LimitedVector<int, 10>{ 0, 1, 2, 3, 4, 5, 6, 7, 8, 9 }));
+		ASSERT_FALSE(limitedVector5 != (LimitedVector<int, 10>{ 0, 1, 2, 3, 4, 5, 6, 7, 8, 10 }));
+
+		// 異なる有限可変長配列と比較する。
+		vector<LimitedVector<int, 10>> limitedVectors{ limitedVector1, limitedVector2, limitedVector3, limitedVector4, limitedVector5 };
+		for (auto i = 0; i < limitedVectors.size(); ++i) {
+			for (auto j = 0; j < limitedVectors.size(); ++j) {
+				if (i != j) {
+					ASSERT_TRUE(limitedVectors[i] != limitedVectors[j]);
+				}
+			}
+		}
 	}
 }
