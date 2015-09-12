@@ -200,7 +200,7 @@ bool MemorySavedSet::operator!=(const MemorySavedSet &other) const
 void MemorySavedSet::setArrangement(const SetArrangement & setArrangement)
 {
 	// 面子属性値の面子種別をリセットする。
-	m_value &= ~Mask::SET_ARRANGEMENT;
+	m_value &= ~Mask::ARRANGEMENT;
 
 	// 面子種別に応じた値を設定する。
 	switch (setArrangement.getId()) {
@@ -269,7 +269,7 @@ const SetArrangement &MemorySavedSet::getArrangement() const
 	const SetArrangement *returnValue = nullptr;		// 戻り値。
 
 	// 値に応じた面子種別を返す。
-	arrangementValue = m_value & Mask::SET_ARRANGEMENT;
+	arrangementValue = m_value & Mask::ARRANGEMENT;
 	switch (arrangementValue) {
 	case ArrangementValue::CHOW:
 		returnValue = &SetArrangements::CHOW;
@@ -358,7 +358,7 @@ bool MemorySavedSet::isChow() const
 	bool returnValue;				// 戻り値。
 
 	// 面子種別が順子であるかを調べる。
-	arrangementValue = m_value & Mask::SET_ARRANGEMENT;
+	arrangementValue = m_value & Mask::ARRANGEMENT;
 	returnValue = arrangementValue == ArrangementValue::CHOW;
 
 	return returnValue;
@@ -371,7 +371,7 @@ bool MemorySavedSet::isPair() const
 	bool returnValue;				// 戻り値。
 
 	// 面子種別が対子であるかを調べる。
-	arrangementValue = m_value & Mask::SET_ARRANGEMENT;
+	arrangementValue = m_value & Mask::ARRANGEMENT;
 	returnValue = arrangementValue == ArrangementValue::PAIR;
 
 	return returnValue;
@@ -383,7 +383,7 @@ bool MemorySavedSet::isPung() const
 	bool returnValue;				// 戻り値。
 
 	// 面子種別が刻子であるかを調べる。
-	arrangementValue = m_value & Mask::SET_ARRANGEMENT;
+	arrangementValue = m_value & Mask::ARRANGEMENT;
 	returnValue = arrangementValue == ArrangementValue::PUNG;
 
 	return returnValue;
@@ -396,7 +396,7 @@ bool MemorySavedSet::isKong() const
 	bool returnValue;				// 戻り値。
 
 	// 面子種別が槓子であるかを調べる。
-	arrangementValue = m_value & Mask::SET_ARRANGEMENT;
+	arrangementValue = m_value & Mask::ARRANGEMENT;
 	returnValue = arrangementValue == ArrangementValue::KONG;
 
 	return returnValue;

@@ -91,7 +91,7 @@ namespace openriichi
 		enum Mask : uint8_t
 		{
 			/// 面子種別のマスク。
-			SET_ARRANGEMENT = 0x0f,
+			ARRANGEMENT = 0x0f,
 
 			/// 鳴き種別のマスク。
 			MELD_TYPE = 0x30,
