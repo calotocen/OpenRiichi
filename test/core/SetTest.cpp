@@ -26,7 +26,7 @@ namespace openriichi
 {
 	class SetTest : public ::testing::Test
 	{
-	public:
+	protected:
 		Set P1P2P3;
 		Set P1P2P3R;
 		Set P1P2P3_L;
