@@ -27,10 +27,10 @@
     <ClCompile Include="..\..\..\..\test\core\Main.cpp" />
     <ClCompile Include="..\..\..\..\test\core\MeldedKongTypesTest.cpp" />
     <ClCompile Include="..\..\..\..\test\core\MeldTypesTest.cpp" />
+    <ClCompile Include="..\..\..\..\test\core\PlayerInfoTest.cpp" />
     <ClCompile Include="..\..\..\..\test\core\RiichiStatusTest.cpp" />
     <ClCompile Include="..\..\..\..\test\core\SetTest.cpp" />
     <ClCompile Include="..\..\..\..\test\core\SetArrangementsTest.cpp" />
-    <ClCompile Include="..\..\..\..\test\core\SimplePlayerInfoTest.cpp" />
     <ClCompile Include="..\..\..\..\test\core\TileAttributesTest.cpp" />
     <ClCompile Include="..\..\..\..\test\core\TileDesignsTest.cpp" />
     <ClCompile Include="..\..\..\..\test\core\TilesTest.cpp" />

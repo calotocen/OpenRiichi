@@ -34,9 +34,6 @@
     <ClCompile Include="..\..\..\..\test\core\LimitedVectorTest.cpp">
       <Filter>OpenRiichiTest</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\..\..\test\core\SimplePlayerInfoTest.cpp">
-      <Filter>OpenRiichiTest</Filter>
-    </ClCompile>
     <ClCompile Include="..\..\..\..\test\core\EnumerationTest.cpp">
       <Filter>OpenRiichiTest</Filter>
     </ClCompile>
@@ -59,6 +56,9 @@
       <Filter>OpenRiichiTest</Filter>
     </ClCompile>
     <ClCompile Include="..\..\..\..\test\core\RiichiStatusTest.cpp">
+      <Filter>OpenRiichiTest</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\test\core\PlayerInfoTest.cpp">
       <Filter>OpenRiichiTest</Filter>
     </ClCompile>
   </ItemGroup>
