@@ -44,8 +44,6 @@ namespace openriichi
 		{}
 	};
 
-	
-
 	/// コンストラクタ (全指定) をテストする。
 	TEST_F(DiscardTest, testConstructWithAll)
 	{
