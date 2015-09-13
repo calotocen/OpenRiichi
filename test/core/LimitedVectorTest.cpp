@@ -464,8 +464,8 @@ namespace openriichi
 
 		// 異なる有限可変長配列と比較する。
 		vector<LimitedVector<int, 10>> limitedVectors{ limitedVector1, limitedVector2, limitedVector3, limitedVector4, limitedVector5 };
-		for (auto i = 0; i < limitedVectors.size(); ++i) {
-			for (auto j = 0; j < limitedVectors.size(); ++j) {
+		for (size_t i = 0; i < limitedVectors.size(); ++i) {
+			for (size_t j = 0; j < limitedVectors.size(); ++j) {
 				if (i != j) {
 					ASSERT_FALSE(limitedVectors[i] == limitedVectors[j]);
 				}
@@ -498,8 +498,8 @@ namespace openriichi
 
 		// 異なる有限可変長配列と比較する。
 		vector<LimitedVector<int, 10>> limitedVectors{ limitedVector1, limitedVector2, limitedVector3, limitedVector4, limitedVector5 };
-		for (auto i = 0; i < limitedVectors.size(); ++i) {
-			for (auto j = 0; j < limitedVectors.size(); ++j) {
+		for (size_t i = 0; i < limitedVectors.size(); ++i) {
+			for (size_t j = 0; j < limitedVectors.size(); ++j) {
 				if (i != j) {
 					ASSERT_TRUE(limitedVectors[i] != limitedVectors[j]);
 				}

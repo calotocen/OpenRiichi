@@ -149,8 +149,8 @@ namespace openriichi
 
 		// 異なる手牌と比較する。
 		vector<Hand> hands{ hand1, hand2, hand3, hand4 };
-		for (auto i = 0; i < hands.size(); ++i) {
-			for (auto j = 0; j < hands.size(); ++j) {
+		for (size_t i = 0; i < hands.size(); ++i) {
+			for (size_t j = 0; j < hands.size(); ++j) {
 				if (i != j) {
 					ASSERT_FALSE(hands[i] == hands[j]);
 				}
@@ -180,8 +180,8 @@ namespace openriichi
 
 		// 異なる手牌と比較する。
 		vector<Hand> hands{ hand1, hand2, hand3, hand4 };
-		for (auto i = 0; i < hands.size(); ++i) {
-			for (auto j = 0; j < hands.size(); ++j) {
+		for (size_t i = 0; i < hands.size(); ++i) {
+			for (size_t j = 0; j < hands.size(); ++j) {
 				if (i != j) {
 					ASSERT_TRUE(hands[i] != hands[j]);
 				}

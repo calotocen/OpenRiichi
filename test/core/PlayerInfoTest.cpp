@@ -214,8 +214,8 @@ namespace openriichi
 
 		// 異なるプレイヤー情報と比較する。
 		vector<PlayerInfo> playerInfos{ playerInfo1A, playerInfo2A, playerInfo3A, playerInfo4A, playerInfo5A };
-		for (auto i = 0; i < playerInfos.size(); ++i) {
-			for (auto j = 0; j < playerInfos.size(); ++j) {
+		for (size_t i = 0; i < playerInfos.size(); ++i) {
+			for (size_t j = 0; j < playerInfos.size(); ++j) {
 				if (i != j) {
 					ASSERT_FALSE(playerInfos[i] == playerInfos[j]);
 				}
@@ -264,8 +264,8 @@ namespace openriichi
 
 		// 異なるプレイヤー情報と比較する。
 		vector<PlayerInfo> playerInfos{ playerInfo1A, playerInfo2A, playerInfo3A, playerInfo4A, playerInfo5A };
-		for (auto i = 0; i < playerInfos.size(); ++i) {
-			for (auto j = 0; j < playerInfos.size(); ++j) {
+		for (size_t i = 0; i < playerInfos.size(); ++i) {
+			for (size_t j = 0; j < playerInfos.size(); ++j) {
 				if (i != j) {
 					ASSERT_TRUE(playerInfos[i] != playerInfos[j]);
 				}

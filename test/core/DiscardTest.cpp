@@ -113,8 +113,8 @@ namespace openriichi
 
 		// 異なる捨て牌と比較する。
 		vector<Discard> discards{ discard1, discard2, discard3, discard4, discard5 };
-		for (auto i = 0; i < discards.size(); ++i) {
-			for (auto j = 0; j < discards.size(); ++j) {
+		for (size_t i = 0; i < discards.size(); ++i) {
+			for (size_t j = 0; j < discards.size(); ++j) {
 				if (i != j) {
 					ASSERT_FALSE(discards[i] == discards[j]);
 				}
@@ -141,8 +141,8 @@ namespace openriichi
 
 		// 異なる捨て牌と比較する。
 		vector<Discard> discards{ discard1, discard2, discard3, discard4, discard5 };
-		for (auto i = 0; i < discards.size(); ++i) {
-			for (auto j = 0; j < discards.size(); ++j) {
+		for (size_t i = 0; i < discards.size(); ++i) {
+			for (size_t j = 0; j < discards.size(); ++j) {
 				if (i != j) {
 					ASSERT_TRUE(discards[i] != discards[j]);
 				}

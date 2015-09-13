@@ -383,8 +383,8 @@ namespace openriichi
 
 		// 異なる牌と比較する。
 		vector<Tile> tiles{ P1, P1R, P3, P9, S1, S5, S5R, S9, M1, M7, M9, M9R, TN, TNR, NN, SH, PE, CH, CHR, HK, HT };
-		for (auto i = 0; i < tiles.size(); ++i) {
-			for (auto j = 0; j < tiles.size(); ++j) {
+		for (size_t i = 0; i < tiles.size(); ++i) {
+			for (size_t j = 0; j < tiles.size(); ++j) {
 				if (i != j) {
 					ASSERT_FALSE(tiles[i] == tiles[j]);
 				}
@@ -433,8 +433,8 @@ namespace openriichi
 
 		// 異なる牌と比較する。
 		vector<Tile> tiles{ P1, P1R, P3, P9, S1, S5, S5R, S9, M1, M7, M9, M9R, TN, TNR, NN, SH, PE, CH, CHR, HK, HT };
-		for (auto i = 0; i < tiles.size(); ++i) {
-			for (auto j = 0; j < tiles.size(); ++j) {
+		for (size_t i = 0; i < tiles.size(); ++i) {
+			for (size_t j = 0; j < tiles.size(); ++j) {
 				if (i != j) {
 					ASSERT_TRUE(tiles[i] != tiles[j]);
 				}

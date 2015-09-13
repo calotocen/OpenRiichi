@@ -379,8 +379,8 @@ namespace openriichi
 
 		// 異なる面子と比較する。
 		vector<Set> sets{ P1P2P3, P1P2P3R, P1P2P3_L, S1S2S3, S7S8S9, S8S7S9_L, M7M8M9, P1P1, S1S1, P1P1P1, P1P1P1_L, M1M1M1, TNTNTN_A, TNTNTN_R, P1P1P1P1, P1P1P1P1_LL, P1P1P1P1_BL };
-		for (auto i = 0; i < sets.size(); ++i) {
-			for (auto j = 0; j < sets.size(); ++j) {
+		for (size_t i = 0; i < sets.size(); ++i) {
+			for (size_t j = 0; j < sets.size(); ++j) {
 				if (i != j) {
 					ASSERT_FALSE(sets[i] == sets[j]);
 				}
@@ -431,8 +431,8 @@ namespace openriichi
 
 		// 異なる面子と比較する。
 		vector<Set> sets{ P1P2P3, P1P2P3R, P1P2P3_L, S1S2S3, S7S8S9, S8S7S9_L, M7M8M9, P1P1, S1S1, P1P1P1, P1P1P1_L, M1M1M1, TNTNTN_A, TNTNTN_R, P1P1P1P1, P1P1P1P1_LL, P1P1P1P1_BL };
-		for (auto i = 0; i < sets.size(); ++i) {
-			for (auto j = 0; j < sets.size(); ++j) {
+		for (size_t i = 0; i < sets.size(); ++i) {
+			for (size_t j = 0; j < sets.size(); ++j) {
 				if (i != j) {
 					ASSERT_TRUE(sets[i] != sets[j]);
 				}
