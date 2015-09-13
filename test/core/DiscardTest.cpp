@@ -17,6 +17,7 @@
 #include <gtest/gtest.h>
 #include <Discard.h>
 #include <Tiles.h>
+#include <OpenRiichiAssertion.h>
 
 
 using namespace std;
@@ -42,6 +43,16 @@ namespace openriichi
 			, discard5(CH, DiscardSources::DRAWED, true, true)
 		{}
 	};
+
+	
+
+	/// コンストラクタ (全指定) をテストする。
+	TEST_F(DiscardTest, testConstructWithAll)
+	{
+#if OPENRIICHI_ENABLE_ASSERTION == 1
+		ASSERT_THROW(Discard(P1, DiscardSourceTemplate<3>()), OpenRiichiAssertion);
+#endif // OPENRIICHI_ENABLE_ASSERTION == 1
+	}
 
 	/// getTile 関数をテストする。
 	TEST_F(DiscardTest, testGetTile)

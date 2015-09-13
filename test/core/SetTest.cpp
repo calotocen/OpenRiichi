@@ -15,6 +15,7 @@
  */
 #include <vector>
 #include <gtest/gtest.h>
+#include <OpenRiichiAssertion.h>
 #include <Set.h>
 #include <Tiles.h>
 
@@ -32,7 +33,7 @@ namespace openriichi
 		Set P1P2P3_L;
 		Set S1S2S3;
 		Set S7S8S9;
-		Set S7S8S9_L;
+		Set S8S7S9_L;
 		Set M7M8M9;
 		Set P1P1;
 		Set S1S1;
@@ -52,7 +53,7 @@ namespace openriichi
 			, P1P2P3_L(P1, P2, P3, MeldTypes::LEFT)
 			, S1S2S3(S1, S2, S3)
 			, S7S8S9(S7, S8, S9)
-			, S7S8S9_L(S7, S8, S9, MeldTypes::LEFT)
+			, S8S7S9_L(S8, S7, S9, MeldTypes::LEFT)
 			, M7M8M9(M7, M8, M9)
 			, P1P1(P1, P1)
 			, S1S1(S1, S1)
@@ -67,6 +68,54 @@ namespace openriichi
 		{}
 	};
 
+	/// コンストラクタ (対子用) をテストする。
+	TEST_F(SetTest, testConstructForPair)
+	{
+		Set pair(P5, P5R);
+		ASSERT_EQ((Set::Tiles{ P5, P5R }), pair.getTiles());
+
+#if OPENRIICHI_ENABLE_ASSERTION == 1
+		ASSERT_THROW(Set(P1, P2), OpenRiichiAssertion);
+		ASSERT_THROW(Set(TN, NN), OpenRiichiAssertion);
+#endif // OPENRIICHI_ENABLE_ASSERTION == 1
+	}
+
+	/// コンストラクタ (順子，刻子用) をテストする。
+	TEST_F(SetTest, testConstructForChowAndPung)
+	{
+		Set chow(S4, S5R, S6);
+		Set pung(S5, S5R, S5R);
+
+		ASSERT_EQ((Set::Tiles{ S4, S5R, S6 }), chow.getTiles());
+		ASSERT_EQ((Set::Tiles{ S5, S5R, S5R }), pung.getTiles());
+
+#if OPENRIICHI_ENABLE_ASSERTION == 1
+		ASSERT_THROW(Set(P1, P2, S3), OpenRiichiAssertion);
+		ASSERT_THROW(Set(P1, P1, S1), OpenRiichiAssertion);
+		ASSERT_THROW(Set(P1, P2, P2), OpenRiichiAssertion);
+		ASSERT_THROW(Set(P1, P2, P3, MeldTypeTemplate<4>()), OpenRiichiAssertion);
+		ASSERT_THROW(Set(P1, P2, P3, MeldTypes::ACROSS), OpenRiichiAssertion);
+		ASSERT_THROW(Set(P1, P2, P3, MeldTypes::RIGHT), OpenRiichiAssertion);
+#endif // OPENRIICHI_ENABLE_ASSERTION == 1
+	}
+
+	/// コンストラクタ (槓子用) をテストする。
+	TEST_F(SetTest, testConstructForKong)
+	{
+		Set kong(M5, M5, M5R, M5R);
+
+		ASSERT_EQ((Set::Tiles{ M5, M5, M5R, M5R }), kong.getTiles());
+
+#if OPENRIICHI_ENABLE_ASSERTION == 1
+		ASSERT_THROW(Set(TN, TN, TN, NN), OpenRiichiAssertion);
+		ASSERT_THROW(Set(P1, P1, P1, P2), OpenRiichiAssertion);
+		ASSERT_THROW(Set(P1, P1, P1, P1, MeldedKongTypeTemplate<3>(), MeldTypes::LEFT), OpenRiichiAssertion);
+		ASSERT_THROW(Set(P1, P1, P1, P1, MeldedKongTypes::LITTLE, MeldTypeTemplate<4>()), OpenRiichiAssertion);
+		ASSERT_THROW(Set(P1, P1, P1, P1, MeldedKongTypes::NO, MeldTypes::LEFT), OpenRiichiAssertion);
+		ASSERT_THROW(Set(P1, P1, P1, P1, MeldedKongTypes::BIG, MeldTypes::NONE), OpenRiichiAssertion);
+#endif // OPENRIICHI_ENABLE_ASSERTION == 1
+	}
+
 	/// getArrangement 関数をテストする。
 	TEST_F(SetTest, testGetArrangement)
 	{
@@ -75,7 +124,7 @@ namespace openriichi
 		ASSERT_EQ(SetArrangements::CHOW, P1P2P3_L.getArrangement());
 		ASSERT_EQ(SetArrangements::CHOW, S1S2S3.getArrangement());
 		ASSERT_EQ(SetArrangements::CHOW, S7S8S9.getArrangement());
-		ASSERT_EQ(SetArrangements::CHOW, S7S8S9_L.getArrangement());
+		ASSERT_EQ(SetArrangements::CHOW, S8S7S9_L.getArrangement());
 		ASSERT_EQ(SetArrangements::CHOW, M7M8M9.getArrangement());
 		ASSERT_EQ(SetArrangements::PAIR, P1P1.getArrangement());
 		ASSERT_EQ(SetArrangements::PAIR, S1S1.getArrangement());
@@ -97,7 +146,7 @@ namespace openriichi
 		ASSERT_EQ(MeldTypes::LEFT, P1P2P3_L.getMeldType());
 		ASSERT_EQ(MeldTypes::NONE, S1S2S3.getMeldType());
 		ASSERT_EQ(MeldTypes::NONE, S7S8S9.getMeldType());
-		ASSERT_EQ(MeldTypes::LEFT, S7S8S9_L.getMeldType());
+		ASSERT_EQ(MeldTypes::LEFT, S8S7S9_L.getMeldType());
 		ASSERT_EQ(MeldTypes::NONE, M7M8M9.getMeldType());
 		ASSERT_EQ(MeldTypes::NONE, P1P1.getMeldType());
 		ASSERT_EQ(MeldTypes::NONE, S1S1.getMeldType());
@@ -119,7 +168,7 @@ namespace openriichi
 		ASSERT_EQ(MeldedKongTypes::NO, P1P2P3_L.getMeldedKongType());
 		ASSERT_EQ(MeldedKongTypes::NO, S1S2S3.getMeldedKongType());
 		ASSERT_EQ(MeldedKongTypes::NO, S7S8S9.getMeldedKongType());
-		ASSERT_EQ(MeldedKongTypes::NO, S7S8S9_L.getMeldedKongType());
+		ASSERT_EQ(MeldedKongTypes::NO, S8S7S9_L.getMeldedKongType());
 		ASSERT_EQ(MeldedKongTypes::NO, M7M8M9.getMeldedKongType());
 		ASSERT_EQ(MeldedKongTypes::NO, P1P1.getMeldedKongType());
 		ASSERT_EQ(MeldedKongTypes::NO, S1S1.getMeldedKongType());
@@ -141,7 +190,7 @@ namespace openriichi
 		ASSERT_EQ((Set::Tiles{ P1, P2, P3 }), P1P2P3_L.getTiles());
 		ASSERT_EQ((Set::Tiles{ S1, S2, S3 }), S1S2S3.getTiles());
 		ASSERT_EQ((Set::Tiles{ S7, S8, S9 }), S7S8S9.getTiles());
-		ASSERT_EQ((Set::Tiles{ S7, S8, S9 }), S7S8S9_L.getTiles());
+		ASSERT_EQ((Set::Tiles{ S8, S7, S9 }), S8S7S9_L.getTiles());
 		ASSERT_EQ((Set::Tiles{ M7, M8, M9 }), M7M8M9.getTiles());
 		ASSERT_EQ((Set::Tiles{ P1, P1 }), P1P1.getTiles());
 		ASSERT_EQ((Set::Tiles{ S1, S1 }), S1S1.getTiles());
@@ -163,7 +212,7 @@ namespace openriichi
 		ASSERT_TRUE(P1P2P3_L.isChow());
 		ASSERT_TRUE(S1S2S3.isChow());
 		ASSERT_TRUE(S7S8S9.isChow());
-		ASSERT_TRUE(S7S8S9_L.isChow());
+		ASSERT_TRUE(S8S7S9_L.isChow());
 		ASSERT_TRUE(M7M8M9.isChow());
 		ASSERT_FALSE(P1P1.isChow());
 		ASSERT_FALSE(S1S1.isChow());
@@ -185,7 +234,7 @@ namespace openriichi
 		ASSERT_FALSE(P1P2P3_L.isPair());
 		ASSERT_FALSE(S1S2S3.isPair());
 		ASSERT_FALSE(S7S8S9.isPair());
-		ASSERT_FALSE(S7S8S9_L.isPair());
+		ASSERT_FALSE(S8S7S9_L.isPair());
 		ASSERT_FALSE(M7M8M9.isPair());
 		ASSERT_TRUE(P1P1.isPair());
 		ASSERT_TRUE(S1S1.isPair());
@@ -207,7 +256,7 @@ namespace openriichi
 		ASSERT_FALSE(P1P2P3_L.isPung());
 		ASSERT_FALSE(S1S2S3.isPung());
 		ASSERT_FALSE(S7S8S9.isPung());
-		ASSERT_FALSE(S7S8S9_L.isPung());
+		ASSERT_FALSE(S8S7S9_L.isPung());
 		ASSERT_FALSE(M7M8M9.isPung());
 		ASSERT_FALSE(P1P1.isPung());
 		ASSERT_FALSE(S1S1.isPung());
@@ -229,7 +278,7 @@ namespace openriichi
 		ASSERT_FALSE(P1P2P3_L.isKong());
 		ASSERT_FALSE(S1S2S3.isKong());
 		ASSERT_FALSE(S7S8S9.isKong());
-		ASSERT_FALSE(S7S8S9_L.isKong());
+		ASSERT_FALSE(S8S7S9_L.isKong());
 		ASSERT_FALSE(M7M8M9.isKong());
 		ASSERT_FALSE(P1P1.isKong());
 		ASSERT_FALSE(S1S1.isKong());
@@ -251,7 +300,7 @@ namespace openriichi
 		ASSERT_FALSE(P1P2P3_L.isConcealed());
 		ASSERT_TRUE(S1S2S3.isConcealed());
 		ASSERT_TRUE(S7S8S9.isConcealed());
-		ASSERT_FALSE(S7S8S9_L.isConcealed());
+		ASSERT_FALSE(S8S7S9_L.isConcealed());
 		ASSERT_TRUE(M7M8M9.isConcealed());
 		ASSERT_TRUE(P1P1.isConcealed());
 		ASSERT_TRUE(S1S1.isConcealed());
@@ -273,7 +322,7 @@ namespace openriichi
 		ASSERT_TRUE(P1P2P3_L.isMelded());
 		ASSERT_FALSE(S1S2S3.isMelded());
 		ASSERT_FALSE(S7S8S9.isMelded());
-		ASSERT_TRUE(S7S8S9_L.isMelded());
+		ASSERT_TRUE(S8S7S9_L.isMelded());
 		ASSERT_FALSE(M7M8M9.isMelded());
 		ASSERT_FALSE(P1P1.isMelded());
 		ASSERT_FALSE(S1S1.isMelded());
@@ -296,7 +345,7 @@ namespace openriichi
 		ASSERT_TRUE(P1P2P3_L == P1P2P3_L);
 		ASSERT_TRUE(S1S2S3 == S1S2S3);
 		ASSERT_TRUE(S7S8S9 == S7S8S9);
-		ASSERT_TRUE(S7S8S9_L == S7S8S9_L);
+		ASSERT_TRUE(S8S7S9_L == S8S7S9_L);
 		ASSERT_TRUE(M7M8M9 == M7M8M9);
 		ASSERT_TRUE(P1P1 == P1P1);
 		ASSERT_TRUE(S1S1 == S1S1);
@@ -315,7 +364,7 @@ namespace openriichi
 		ASSERT_TRUE(P1P2P3_L == Set(P1, P2, P3, MeldTypes::LEFT));
 		ASSERT_TRUE(S1S2S3 == Set(S1, S2, S3));
 		ASSERT_TRUE(S7S8S9 == Set(S7, S8, S9));
-		ASSERT_TRUE(S7S8S9_L == Set(S7, S8, S9, MeldTypes::LEFT));
+		ASSERT_TRUE(S8S7S9_L == Set(S8, S7, S9, MeldTypes::LEFT));
 		ASSERT_TRUE(M7M8M9 == Set(M7, M8, M9));
 		ASSERT_TRUE(P1P1 == Set(P1, P1));
 		ASSERT_TRUE(S1S1 == Set(S1, S1));
@@ -329,7 +378,7 @@ namespace openriichi
 		ASSERT_TRUE(P1P1P1P1_BL == Set(P1, P1, P1, P1, MeldedKongTypes::BIG, MeldTypes::LEFT));
 
 		// 異なる面子と比較する。
-		vector<Set> sets{ P1P2P3, P1P2P3R, P1P2P3_L, S1S2S3, S7S8S9, S7S8S9_L, M7M8M9, P1P1, S1S1, P1P1P1, P1P1P1_L, M1M1M1, TNTNTN_A, TNTNTN_R, P1P1P1P1, P1P1P1P1_LL, P1P1P1P1_BL };
+		vector<Set> sets{ P1P2P3, P1P2P3R, P1P2P3_L, S1S2S3, S7S8S9, S8S7S9_L, M7M8M9, P1P1, S1S1, P1P1P1, P1P1P1_L, M1M1M1, TNTNTN_A, TNTNTN_R, P1P1P1P1, P1P1P1P1_LL, P1P1P1P1_BL };
 		for (auto i = 0; i < sets.size(); ++i) {
 			for (auto j = 0; j < sets.size(); ++j) {
 				if (i != j) {
@@ -348,7 +397,7 @@ namespace openriichi
 		ASSERT_FALSE(P1P2P3_L != P1P2P3_L);
 		ASSERT_FALSE(S1S2S3 != S1S2S3);
 		ASSERT_FALSE(S7S8S9 != S7S8S9);
-		ASSERT_FALSE(S7S8S9_L != S7S8S9_L);
+		ASSERT_FALSE(S8S7S9_L != S8S7S9_L);
 		ASSERT_FALSE(M7M8M9 != M7M8M9);
 		ASSERT_FALSE(P1P1 != P1P1);
 		ASSERT_FALSE(S1S1 != S1S1);
@@ -367,7 +416,7 @@ namespace openriichi
 		ASSERT_FALSE(P1P2P3_L != Set(P1, P2, P3, MeldTypes::LEFT));
 		ASSERT_FALSE(S1S2S3 != Set(S1, S2, S3));
 		ASSERT_FALSE(S7S8S9 != Set(S7, S8, S9));
-		ASSERT_FALSE(S7S8S9_L != Set(S7, S8, S9, MeldTypes::LEFT));
+		ASSERT_FALSE(S8S7S9_L != Set(S8, S7, S9, MeldTypes::LEFT));
 		ASSERT_FALSE(M7M8M9 != Set(M7, M8, M9));
 		ASSERT_FALSE(P1P1 != Set(P1, P1));
 		ASSERT_FALSE(S1S1 != Set(S1, S1));
@@ -381,7 +430,7 @@ namespace openriichi
 		ASSERT_FALSE(P1P1P1P1_BL != Set(P1, P1, P1, P1, MeldedKongTypes::BIG, MeldTypes::LEFT));
 
 		// 異なる面子と比較する。
-		vector<Set> sets{ P1P2P3, P1P2P3R, P1P2P3_L, S1S2S3, S7S8S9, S7S8S9_L, M7M8M9, P1P1, S1S1, P1P1P1, P1P1P1_L, M1M1M1, TNTNTN_A, TNTNTN_R, P1P1P1P1, P1P1P1P1_LL, P1P1P1P1_BL };
+		vector<Set> sets{ P1P2P3, P1P2P3R, P1P2P3_L, S1S2S3, S7S8S9, S8S7S9_L, M7M8M9, P1P1, S1S1, P1P1P1, P1P1P1_L, M1M1M1, TNTNTN_A, TNTNTN_R, P1P1P1P1, P1P1P1P1_LL, P1P1P1P1_BL };
 		for (auto i = 0; i < sets.size(); ++i) {
 			for (auto j = 0; j < sets.size(); ++j) {
 				if (i != j) {

@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 #include <vector>
-#include <gtest/gtest.h>	
+#include <gtest/gtest.h>
 #include <PlayerInfo.h>
 #include <Tiles.h>
 

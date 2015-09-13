@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 #include <vector>
-#include <gtest/gtest.h>	
+#include <gtest/gtest.h>
 #include <Hand.h>
 #include <Tiles.h>
 
@@ -27,7 +27,7 @@ namespace openriichi
 	class HandTest : public ::testing::Test {};
 
 	/// コンストラクタ (牌配列，面子配列指定) をテストする。
-	TEST_F(HandTest, testConstructorWithTilesAndSets)
+	TEST_F(HandTest, testConstructWithTilesAndSets)
 	{
 		Hand hand(Hand::Tiles{ HK, HK, HK }, Hand::Sets{ Set(HT, HT, HT) });
 

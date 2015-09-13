@@ -13,18 +13,22 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
+#include <cstdio>
 #include "OpenRiichiConfiguration.h"
-#include "TileAttributes.h"
+#include "OpenRiichiAssertion.h"
 
 
 using namespace openriichi;
 
 
-const NoneTileAttribute TileAttributes::NONE = NoneTileAttribute();
-const RedTileAttribute TileAttributes::RED = RedTileAttribute();
+OpenRiichiAssertion::OpenRiichiAssertion(const char *expression, const char *filePath, unsigned int lineNo)
+	: OpenRiichiException()
+{
+	snprintf(m_message, sizeof(m_message), "assertion failed: %s, file=%s, line=%u", expression, filePath, lineNo);
+}
 
 
-TileAttribute::~TileAttribute()
+OpenRiichiAssertion::~OpenRiichiAssertion()
 {
 	// 何もしない。
 }

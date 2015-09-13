@@ -13,8 +13,9 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-#include <cassert>
 #include <cstdint>
+#include "OpenRiichiConfiguration.h"
+#include "OpenRiichiAssertion.h"
 #include "TileAttributes.h"
 #include "TileDesigns.h"
 #include "MemorySavedTile.h"
@@ -33,15 +34,15 @@ MemorySavedTile::MemorySavedTile()
 MemorySavedTile::MemorySavedTile(const TileDesign &design, const TileAttribute &attribute)
 	: m_value(0)
 {
-	// デバッグ版の場合のみ，引数をチェックする。
-	assert(design == TileDesigns::EAST
+	// アサーションが有効である場合のみ，引数をチェックする。
+	openriichi_assert(design == TileDesigns::EAST
 		|| design == TileDesigns::SOUTH
 		|| design == TileDesigns::WEST
 		|| design == TileDesigns::NORTH
 		|| design == TileDesigns::RED
 		|| design == TileDesigns::WHITE
 		|| design == TileDesigns::GREEN);
-	assert(attribute == TileAttributes::NONE
+	openriichi_assert(attribute == TileAttributes::NONE
 		|| attribute == TileAttributes::RED);
 
 	// 属性に応じた値を設定する。
@@ -87,12 +88,12 @@ MemorySavedTile::MemorySavedTile(const TileDesign &design, const TileAttribute &
 MemorySavedTile::MemorySavedTile(const TileDesign &design, int number, const TileAttribute &attribute)
 	: m_value(0)
 {
-	// デバッグ版の場合のみ，引数をチェックする。
-	assert(design == TileDesigns::CIRCLES
+	// アサーションが有効である場合のみ，引数をチェックする。
+	openriichi_assert(design == TileDesigns::CIRCLES
 		|| design == TileDesigns::BAMBOO
 		|| design == TileDesigns::CHARACTERS);
-	assert(Range::MIN_NUMBER <= number && number <= Range::MAX_NUMBER);
-	assert(attribute == TileAttributes::NONE
+	openriichi_assert(Range::MIN_NUMBER <= number && number <= Range::MAX_NUMBER);
+	openriichi_assert(attribute == TileAttributes::NONE
 		|| attribute == TileAttributes::RED);
 
 	// 属性に応じた値を設定する。
@@ -127,10 +128,11 @@ MemorySavedTile::MemorySavedTile(int designId, int number, int attributeId)
 {
 	// グローバル変数，およびクラスのスタティック変数に依存しないように注意して処理を実装する。
 
-	// デバッグ版の場合のみ，引数をチェックする。
-	assert(1 <= designId && designId <= 10);
-	assert(((1 <= designId && designId <= 3) && (1 <= number && number <= 9)) || number == 0);
-	assert(0 <= attributeId && attributeId <= 1);
+	// アサーションが有効である場合のみ，引数をチェックする。
+	openriichi_assert(1 <= designId && designId <= 10);
+	openriichi_assert(((1 <= designId && designId <= 3) && (1 <= number && number <= 9))
+		|| ((4 <= designId && designId <= 10) && number == 0));
+	openriichi_assert(0 <= attributeId && attributeId <= 1);
 
 	// 図柄を設定する。
 	switch (designId)

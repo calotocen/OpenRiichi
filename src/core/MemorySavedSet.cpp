@@ -14,10 +14,11 @@
  * limitations under the License.
  */
 #include <algorithm>
-#include <cassert>
 #include <cstdint>
+#include "OpenRiichiConfiguration.h"
 #include "MeldedKongTypes.h"
 #include "MeldTypes.h"
+#include "OpenRiichiAssertion.h"
 #include "SetArrangements.h"
 #include "Tile.h"
 #include "Tiles.h"
@@ -54,12 +55,12 @@ MemorySavedSet::MemorySavedSet(const SetArrangement & setArrangement, const Meld
 	: m_value(0)
 	, m_keyTile(keyTile)
 {
-	// デバッグ版の場合のみ，引数をチェックする。
-	assert(setArrangement == SetArrangements::CHOW || setArrangement == SetArrangements::PAIR ||
+	// アサーションが有効である場合のみ，引数をチェックする。
+	openriichi_assert(setArrangement == SetArrangements::CHOW || setArrangement == SetArrangements::PAIR ||
 		setArrangement == SetArrangements::PUNG || setArrangement == SetArrangements::KONG);
-	assert(meldType == MeldTypes::NONE || meldType == MeldTypes::LEFT || meldType == MeldTypes::CENTER || meldType == MeldTypes::RIGHT);
-	assert(meldedKongType == MeldedKongTypes::NO || meldedKongType == MeldedKongTypes::LITTLE || meldedKongType == MeldedKongTypes::BIG);
-	assert((setArrangement == SetArrangements::CHOW && (keyTile.isSuits() || keyTile.getNumber() <= 7))
+	openriichi_assert(meldType == MeldTypes::NONE || meldType == MeldTypes::LEFT || meldType == MeldTypes::CENTER || meldType == MeldTypes::RIGHT);
+	openriichi_assert(meldedKongType == MeldedKongTypes::NO || meldedKongType == MeldedKongTypes::LITTLE || meldedKongType == MeldedKongTypes::BIG);
+	openriichi_assert((setArrangement == SetArrangements::CHOW && (keyTile.isSuits() || keyTile.getNumber() <= 7))
 		|| (setArrangement == SetArrangements::PAIR && meldType == MeldTypes::NONE)
 		|| (setArrangement != SetArrangements::KONG && meldedKongType == MeldedKongTypes::NO)
 		|| (setArrangement == SetArrangements::KONG
@@ -118,8 +119,8 @@ MemorySavedSet::MemorySavedSet(const Tile & tile1, const Tile & tile2)
 	: m_value(0)
 	, m_tiles()
 {
-	// デバッグ版の場合のみ，引数をチェックする。
-	assert(tile1.getDesign() == tile2.getDesign() && tile1.getNumber() == tile2.getNumber());
+	// アサーションが有効である場合のみ，引数をチェックする。
+	openriichi_assert(tile1.getDesign() == tile2.getDesign() && tile1.getNumber() == tile2.getNumber());
 
 	// 面子属性を設定する。
 	setArrangement(SetArrangements::PAIR);
@@ -134,15 +135,16 @@ MemorySavedSet::MemorySavedSet(const Tile & tile1, const Tile & tile2, const Til
 	: m_value(0)
 	, m_tiles()
 {
-	// デバッグ版の場合のみ，引数をチェックする。
-#if !defined(NDEBUG)
+	// アサーションが有効である場合のみ，引数をチェックする。
+#if OPENRIICHI_ENABLE_ASSERTION == 1
 	int number[3] = { tile1.getNumber(), tile2.getNumber(), tile3.getNumber() };
 	sort(number, number + 3);
 
-	assert(tile1.getDesign() == tile2.getDesign() && tile1.getDesign() == tile3.getDesign());
-	assert((number[0] + 1 == number[1] && number[0] + 2 == number[2])
+	openriichi_assert(tile1.getDesign() == tile2.getDesign() && tile1.getDesign() == tile3.getDesign());
+	openriichi_assert((number[0] + 1 == number[1] && number[0] + 2 == number[2])
 		|| (number[0] == number[1] && number[0] == number[2]));
-	assert((number[0] == number[1]) || (meldType == MeldTypes::NONE || meldType == MeldTypes::LEFT));
+	openriichi_assert(meldType == MeldTypes::NONE || meldType == MeldTypes::LEFT || meldType == MeldTypes::ACROSS || meldType == MeldTypes::RIGHT);
+	openriichi_assert((number[0] == number[1]) || (meldType == MeldTypes::NONE || meldType == MeldTypes::LEFT));
 #endif	// !defined(NDEBUG)
 
 	// 面子属性を設定する。
@@ -164,9 +166,13 @@ MemorySavedSet::MemorySavedSet(const Tile & tile1, const Tile & tile2, const Til
 	: m_value(0)
 	, m_tiles() 
 {
-	// デバッグ版の場合のみ，引数をチェックする。
-	assert(tile1.getDesign() == tile2.getDesign() && tile1.getDesign() == tile3.getDesign() && tile1.getDesign() == tile4.getDesign());
-	assert(tile1.getNumber() == tile2.getNumber() && tile1.getNumber() == tile3.getNumber() && tile1.getNumber() == tile4.getNumber());
+	// アサーションが有効である場合のみ，引数をチェックする。
+	openriichi_assert(tile1.getDesign() == tile2.getDesign() && tile1.getDesign() == tile3.getDesign() && tile1.getDesign() == tile4.getDesign());
+	openriichi_assert(tile1.getNumber() == tile2.getNumber() && tile1.getNumber() == tile3.getNumber() && tile1.getNumber() == tile4.getNumber());
+	openriichi_assert(meldType == MeldTypes::NONE || meldType == MeldTypes::LEFT || meldType == MeldTypes::ACROSS || meldType == MeldTypes::RIGHT);
+	openriichi_assert(meldedKongType == MeldedKongTypes::NO || meldedKongType == MeldedKongTypes::LITTLE || meldedKongType == MeldedKongTypes::BIG);
+	openriichi_assert((meldedKongType == MeldedKongTypes::NO && meldType == MeldTypes::NONE)
+		|| (meldedKongType != MeldedKongTypes::NO && meldType != MeldTypes::NONE));
 
 	// 面子属性を設定する。
 	setArrangement(SetArrangements::KONG);

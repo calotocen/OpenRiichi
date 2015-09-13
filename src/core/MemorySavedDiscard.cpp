@@ -13,9 +13,10 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-#include <cassert>
 #include <cstdint>
+#include "OpenRiichiConfiguration.h"
 #include "DiscardSources.h"
+#include "OpenRiichiAssertion.h"
 #include "MemorySavedDiscard.h"
 
 
@@ -33,8 +34,8 @@ MemorySavedDiscard::MemorySavedDiscard(const Tile &tile, const DiscardSource & s
 	: m_value(0)
 	, m_tile(tile)
 {
-	// デバッグ版の場合のみ，引数をチェックする。
-	assert(source == DiscardSources::DRAWED || source == DiscardSources::HELD);
+	// アサーションが有効である場合のみ，引数をチェックする。
+	openriichi_assert(source == DiscardSources::DRAWED || source == DiscardSources::HELD);
 
 	// 捨て元を設定する。
 	switch (source.getId()) {

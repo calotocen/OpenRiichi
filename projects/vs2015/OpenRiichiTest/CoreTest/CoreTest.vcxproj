@@ -27,6 +27,7 @@
     <ClCompile Include="..\..\..\..\test\core\Main.cpp" />
     <ClCompile Include="..\..\..\..\test\core\MeldedKongTypesTest.cpp" />
     <ClCompile Include="..\..\..\..\test\core\MeldTypesTest.cpp" />
+    <ClCompile Include="..\..\..\..\test\core\OpenRiichiExceptionTest.cpp" />
     <ClCompile Include="..\..\..\..\test\core\PlayerInfoTest.cpp" />
     <ClCompile Include="..\..\..\..\test\core\RiichiStatusTest.cpp" />
     <ClCompile Include="..\..\..\..\test\core\SetTest.cpp" />
@@ -112,7 +113,7 @@
       <Optimization>Disabled</Optimization>
       <PreprocessorDefinitions>WIN32;_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <SDLCheck>true</SDLCheck>
-      <AdditionalIncludeDirectories>$(GTEST_HOME)\include;..\..\..\..\src\core;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(GTEST_HOME)\include;..\..\..\..\src;..\..\..\..\src\core;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <DisableSpecificWarnings>4819</DisableSpecificWarnings>
     </ClCompile>
     <Link>
@@ -130,7 +131,7 @@
       <Optimization>Disabled</Optimization>
       <PreprocessorDefinitions>_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <SDLCheck>true</SDLCheck>
-      <AdditionalIncludeDirectories>$(GTEST_HOME)\include;..\..\..\..\src\core;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(GTEST_HOME)\include;..\..\..\..\src;..\..\..\..\src\core;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <DisableSpecificWarnings>4819</DisableSpecificWarnings>
     </ClCompile>
     <Link>
@@ -150,7 +151,7 @@
       <IntrinsicFunctions>true</IntrinsicFunctions>
       <PreprocessorDefinitions>WIN32;NDEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <SDLCheck>true</SDLCheck>
-      <AdditionalIncludeDirectories>$(GTEST_HOME)\include;..\..\..\..\src\core;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(GTEST_HOME)\include;..\..\..\..\src;..\..\..\..\src\core;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <DisableSpecificWarnings>4819</DisableSpecificWarnings>
     </ClCompile>
     <Link>
@@ -172,7 +173,7 @@
       <IntrinsicFunctions>true</IntrinsicFunctions>
       <PreprocessorDefinitions>NDEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <SDLCheck>true</SDLCheck>
-      <AdditionalIncludeDirectories>$(GTEST_HOME)\include;..\..\..\..\src\core;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(GTEST_HOME)\include;..\..\..\..\src;..\..\..\..\src\core;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <DisableSpecificWarnings>4819</DisableSpecificWarnings>
     </ClCompile>
     <Link>

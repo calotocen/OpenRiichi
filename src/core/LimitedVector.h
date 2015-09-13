@@ -18,9 +18,9 @@
 
 #include <algorithm>
 #include <array>
-#include <cassert>
 #include <cstdint>
 #include <initializer_list>
+#include "OpenRiichiAssertion.h"
 
 
 namespace openriichi
@@ -235,8 +235,8 @@ namespace openriichi
 		: m_elements()
 		, m_elementsSize(static_cast<SizeType>(list.size()))
 	{
-		// デバッグ版の場合のみ，引数をチェックする。
-		assert(list.size() <= size);
+		// アサーションが有効である場合のみ，引数をチェックする。
+		openriichi_assert(list.size() <= size);
 
 		// 要素を設定する。
 		std::copy(list.begin(), list.end(), m_elements.begin());
@@ -273,8 +273,8 @@ namespace openriichi
 	template<class T, size_t size, typename SizeType>
 	LimitedVector<T, size, SizeType> &LimitedVector<T, size, SizeType>::operator=(const std::initializer_list<T> &list)
 	{
-		// デバッグ版の場合のみ，引数をチェックする。
-		assert(list.size() <= size);
+		// アサーションが有効である場合のみ，引数をチェックする。
+		openriichi_assert(list.size() <= size);
 
 		// 要素を設定する。
 		std::copy(list.begin(), list.end(), m_elements.begin());
@@ -315,8 +315,8 @@ namespace openriichi
 	template<class T, size_t size, typename SizeType>
 	const T &LimitedVector<T, size, SizeType>::get(size_t index) const
 	{
-		// デバッグ版の場合のみ，引数をチェックする。
-		assert(0 <= index && index < m_elementsSize);
+		// アサーションが有効である場合のみ，引数をチェックする。
+		openriichi_assert(0 <= index && index < m_elementsSize);
 
 		// 要素を返す。
 		return m_elements[index];
@@ -326,8 +326,8 @@ namespace openriichi
 	template<class T, size_t size, typename SizeType>
 	const T &LimitedVector<T, size, SizeType>::getFirst() const
 	{
-		// デバッグ版の場合のみ，状態をチェックする。
-		assert(m_elementsSize > 0);
+		// アサーションが有効である場合のみ，状態をチェックする。
+		openriichi_assert(m_elementsSize > 0);
 
 		// 要素を返す。
 		return m_elements[0];
@@ -337,8 +337,8 @@ namespace openriichi
 	template<class T, size_t size, typename SizeType>
 	const T &LimitedVector<T, size, SizeType>::getLast() const
 	{
-		// デバッグ版の場合のみ，状態をチェックする。
-		assert(m_elementsSize > 0);
+		// アサーションが有効である場合のみ，状態をチェックする。
+		openriichi_assert(m_elementsSize > 0);
 
 		// 要素を返す。
 		return m_elements[m_elementsSize - 1];
@@ -362,8 +362,8 @@ namespace openriichi
 	template<class T, size_t size, typename SizeType>
 	void LimitedVector<T, size, SizeType>::set(size_t index, const T &element)
 	{
-		// デバッグ版の場合のみ，引数をチェックする。
-		assert(0 <= index && index < m_elementsSize);
+		// アサーションが有効である場合のみ，引数をチェックする。
+		openriichi_assert(0 <= index && index < m_elementsSize);
 
 		// 要素を設定する。
 		m_elements[index] = element;
@@ -373,8 +373,8 @@ namespace openriichi
 	template<class T, size_t size, typename SizeType>
 	void LimitedVector<T, size, SizeType>::add(const T &element)
 	{
-		// デバッグ版の場合のみ，状態をチェックする。
-		assert(m_elementsSize < m_elements.max_size());
+		// アサーションが有効である場合のみ，状態をチェックする。
+		openriichi_assert(m_elementsSize < m_elements.max_size());
 
 		// 要素を追加する。
 		m_elements[m_elementsSize] = element;
@@ -385,8 +385,8 @@ namespace openriichi
 	template<class T, size_t size, typename SizeType>
 	typename LimitedVector<T, size, SizeType>::Iterator LimitedVector<T, size, SizeType>::insert(Iterator iterator, const T &element)
 	{
-		// デバッグ版の場合のみ，引数をチェックする。
-		assert(m_elements.begin() <= iterator && iterator <= m_elements.begin() + m_elementsSize && m_elementsSize < m_elements.max_size());
+		// アサーションが有効である場合のみ，引数をチェックする。
+		openriichi_assert(m_elements.begin() <= iterator && iterator <= m_elements.begin() + m_elementsSize && m_elementsSize < m_elements.max_size());
 
 		// 挿入位置以降にある要素を一つ後ろにずらす。
 		if (iterator < m_elements.begin() + m_elementsSize) {
@@ -408,8 +408,8 @@ namespace openriichi
 	template<class T, size_t size, typename SizeType>
 	void LimitedVector<T, size, SizeType>::insert(size_t index, const T &element)
 	{
-		// デバッグ版の場合のみ，引数をチェックする。
-		assert(0 <= index && index <= m_elementsSize && m_elementsSize < m_elements.max_size());
+		// アサーションが有効である場合のみ，引数をチェックする。
+		openriichi_assert(0 <= index && index <= m_elementsSize && m_elementsSize < m_elements.max_size());
 
 		// 挿入位置以降にある要素を一つ後ろにずらす。
 		if (index < m_elementsSize) {
@@ -427,8 +427,8 @@ namespace openriichi
 	template<class T, size_t size, typename SizeType>
 	typename LimitedVector<T, size, SizeType>::Iterator LimitedVector<T, size, SizeType>::remove(Iterator iterator)
 	{
-		// デバッグ版の場合のみ，引数をチェックする。
-		assert(m_elements.begin() <= iterator && iterator < m_elements.begin() + m_elementsSize);
+		// アサーションが有効である場合のみ，引数をチェックする。
+		openriichi_assert(m_elements.begin() <= iterator && iterator < m_elements.begin() + m_elementsSize);
 
 		// 削除位置以降にある要素を一つ前にずらす。
 		for (auto it = iterator; it < m_elements.begin() + m_elementsSize - 1; ++it)
@@ -446,8 +446,8 @@ namespace openriichi
 	template<class T, size_t size, typename SizeType>
 	void LimitedVector<T, size, SizeType>::remove(size_t index)
 	{
-		// デバッグ版の場合のみ，引数をチェックする。
-		assert(0 <= index && index < m_elementsSize);
+		// アサーションが有効である場合のみ，引数をチェックする。
+		openriichi_assert(0 <= index && index < m_elementsSize);
 
 		// 削除位置以降にある要素を一つ前にずらす。
 		for (auto i = index; i + 1 < m_elementsSize; ++i)

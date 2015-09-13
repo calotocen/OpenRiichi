@@ -8,114 +8,132 @@
     <Filter Include="OpenRiichi">
       <UniqueIdentifier>{b92df1ce-c22b-4d15-b73c-48fef6dbb778}</UniqueIdentifier>
     </Filter>
+    <Filter Include="OpenRiichi\Core">
+      <UniqueIdentifier>{aa223294-bde1-4be4-b44b-15293887be74}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="..\..\..\..\src\core\Enumeration.h">
-      <Filter>OpenRiichi</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\..\..\src\core\TileAttributes.h">
-      <Filter>OpenRiichi</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\..\..\src\core\TileDesigns.h">
-      <Filter>OpenRiichi</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\..\..\src\core\Winds.h">
-      <Filter>OpenRiichi</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\..\..\src\core\MemorySavedTile.h">
-      <Filter>OpenRiichi</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\..\..\src\core\Tile.h">
-      <Filter>OpenRiichi</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\..\..\src\core\SetArrangements.h">
-      <Filter>OpenRiichi</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\..\..\src\core\MeldTypes.h">
-      <Filter>OpenRiichi</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\..\..\src\core\MeldedKongTypes.h">
-      <Filter>OpenRiichi</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\..\..\src\core\MemorySavedSet.h">
-      <Filter>OpenRiichi</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\..\..\src\core\Set.h">
-      <Filter>OpenRiichi</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\..\..\src\core\SimpleHand.h">
-      <Filter>OpenRiichi</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\..\..\src\core\Hand.h">
-      <Filter>OpenRiichi</Filter>
+    <ClInclude Include="..\..\..\..\src\core\Discard.h">
+      <Filter>OpenRiichi\Core</Filter>
     </ClInclude>
     <ClInclude Include="..\..\..\..\src\core\DiscardSources.h">
-      <Filter>OpenRiichi</Filter>
+      <Filter>OpenRiichi\Core</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\..\..\src\core\MemorySavedDiscard.h">
-      <Filter>OpenRiichi</Filter>
+    <ClInclude Include="..\..\..\..\src\core\Enumeration.h">
+      <Filter>OpenRiichi\Core</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\..\..\src\core\Discard.h">
-      <Filter>OpenRiichi</Filter>
+    <ClInclude Include="..\..\..\..\src\core\Hand.h">
+      <Filter>OpenRiichi\Core</Filter>
     </ClInclude>
     <ClInclude Include="..\..\..\..\src\core\LimitedVector.h">
-      <Filter>OpenRiichi</Filter>
+      <Filter>OpenRiichi\Core</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\..\..\src\core\SimplePlayerInfo.h">
-      <Filter>OpenRiichi</Filter>
+    <ClInclude Include="..\..\..\..\src\core\MeldedKongTypes.h">
+      <Filter>OpenRiichi\Core</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\..\..\src\core\PlayerInfo.h">
-      <Filter>OpenRiichi</Filter>
+    <ClInclude Include="..\..\..\..\src\core\MeldTypes.h">
+      <Filter>OpenRiichi\Core</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\src\core\MemorySavedDiscard.h">
+      <Filter>OpenRiichi\Core</Filter>
     </ClInclude>
     <ClInclude Include="..\..\..\..\src\core\MemorySavedRiichiStatus.h">
-      <Filter>OpenRiichi</Filter>
+      <Filter>OpenRiichi\Core</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\src\core\MemorySavedSet.h">
+      <Filter>OpenRiichi\Core</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\src\core\MemorySavedTile.h">
+      <Filter>OpenRiichi\Core</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\src\core\OpenRiichiAssertion.h">
+      <Filter>OpenRiichi\Core</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\src\core\OpenRiichiException.h">
+      <Filter>OpenRiichi\Core</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\src\core\PlayerInfo.h">
+      <Filter>OpenRiichi\Core</Filter>
     </ClInclude>
     <ClInclude Include="..\..\..\..\src\core\RiichiStatus.h">
-      <Filter>OpenRiichi</Filter>
+      <Filter>OpenRiichi\Core</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\src\core\Set.h">
+      <Filter>OpenRiichi\Core</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\src\core\SetArrangements.h">
+      <Filter>OpenRiichi\Core</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\src\core\SimpleHand.h">
+      <Filter>OpenRiichi\Core</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\src\core\SimplePlayerInfo.h">
+      <Filter>OpenRiichi\Core</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\src\core\Tile.h">
+      <Filter>OpenRiichi\Core</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\src\core\TileAttributes.h">
+      <Filter>OpenRiichi\Core</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\src\core\TileDesigns.h">
+      <Filter>OpenRiichi\Core</Filter>
     </ClInclude>
     <ClInclude Include="..\..\..\..\src\core\Tiles.h">
+      <Filter>OpenRiichi\Core</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\src\core\Winds.h">
+      <Filter>OpenRiichi\Core</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\src\OpenRiichiConfiguration.h">
       <Filter>OpenRiichi</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="..\..\..\..\src\core\TileAttributes.cpp">
-      <Filter>OpenRiichi</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\..\..\src\core\TileDesigns.cpp">
-      <Filter>OpenRiichi</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\..\..\src\core\Winds.cpp">
-      <Filter>OpenRiichi</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\..\..\src\core\MemorySavedTile.cpp">
-      <Filter>OpenRiichi</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\..\..\src\core\SetArrangements.cpp">
-      <Filter>OpenRiichi</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\..\..\src\core\MeldTypes.cpp">
-      <Filter>OpenRiichi</Filter>
+    <ClCompile Include="..\..\..\..\src\core\DiscardSources.cpp">
+      <Filter>OpenRiichi\Core</Filter>
     </ClCompile>
     <ClCompile Include="..\..\..\..\src\core\MeldedKongTypes.cpp">
-      <Filter>OpenRiichi</Filter>
+      <Filter>OpenRiichi\Core</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\..\..\src\core\MemorySavedSet.cpp">
-      <Filter>OpenRiichi</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\..\..\src\core\SimpleHand.cpp">
-      <Filter>OpenRiichi</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\..\..\src\core\DiscardSources.cpp">
-      <Filter>OpenRiichi</Filter>
+    <ClCompile Include="..\..\..\..\src\core\MeldTypes.cpp">
+      <Filter>OpenRiichi\Core</Filter>
     </ClCompile>
     <ClCompile Include="..\..\..\..\src\core\MemorySavedDiscard.cpp">
-      <Filter>OpenRiichi</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\..\..\src\core\SimplePlayerInfo.cpp">
-      <Filter>OpenRiichi</Filter>
+      <Filter>OpenRiichi\Core</Filter>
     </ClCompile>
     <ClCompile Include="..\..\..\..\src\core\MemorySavedRiichiStatus.cpp">
-      <Filter>OpenRiichi</Filter>
+      <Filter>OpenRiichi\Core</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\src\core\MemorySavedSet.cpp">
+      <Filter>OpenRiichi\Core</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\src\core\MemorySavedTile.cpp">
+      <Filter>OpenRiichi\Core</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\src\core\OpenRiichiAssertion.cpp">
+      <Filter>OpenRiichi\Core</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\src\core\OpenRiichiException.cpp">
+      <Filter>OpenRiichi\Core</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\src\core\SetArrangements.cpp">
+      <Filter>OpenRiichi\Core</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\src\core\SimpleHand.cpp">
+      <Filter>OpenRiichi\Core</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\src\core\SimplePlayerInfo.cpp">
+      <Filter>OpenRiichi\Core</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\src\core\TileAttributes.cpp">
+      <Filter>OpenRiichi\Core</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\src\core\TileDesigns.cpp">
+      <Filter>OpenRiichi\Core</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\src\core\Winds.cpp">
+      <Filter>OpenRiichi\Core</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

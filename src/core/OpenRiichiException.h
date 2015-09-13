@@ -13,18 +13,39 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-#include "OpenRiichiConfiguration.h"
-#include "TileAttributes.h"
+#pragma once
 
 
-using namespace openriichi;
-
-
-const NoneTileAttribute TileAttributes::NONE = NoneTileAttribute();
-const RedTileAttribute TileAttributes::RED = RedTileAttribute();
-
-
-TileAttribute::~TileAttribute()
+namespace openriichi
 {
-	// 何もしない。
+	/**
+	 * 例外である。
+	 */
+	class OpenRiichiException
+	{
+	protected:
+		/// メッセージ。
+		char m_message[1024];
+
+
+	public:
+		/**
+		 * 例外を生成する。
+		 */
+		OpenRiichiException(const char *message = nullptr);
+
+		/**
+		 * 例外を破棄する。
+		 */
+		virtual ~OpenRiichiException();
+
+
+	public:
+		/**
+		 * メッセージを返す。
+		 *
+		 * @return メッセージ。
+		 */
+		virtual const char *getMessage() const;
+	};
 }
