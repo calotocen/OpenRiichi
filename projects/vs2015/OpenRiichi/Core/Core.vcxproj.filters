@@ -88,6 +88,9 @@
     <ClInclude Include="..\..\..\..\src\OpenRiichiConfiguration.h">
       <Filter>OpenRiichi</Filter>
     </ClInclude>
+    <ClInclude Include="..\..\..\..\src\core\Dice.h">
+      <Filter>OpenRiichi\Core</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\..\..\..\src\core\DiscardSources.cpp">
@@ -133,6 +136,9 @@
       <Filter>OpenRiichi\Core</Filter>
     </ClCompile>
     <ClCompile Include="..\..\..\..\src\core\Winds.cpp">
+      <Filter>OpenRiichi\Core</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\src\core\Dice.cpp">
       <Filter>OpenRiichi\Core</Filter>
     </ClCompile>
   </ItemGroup>

@@ -19,6 +19,7 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="..\..\..\..\src\core\Dice.h" />
     <ClInclude Include="..\..\..\..\src\core\Discard.h" />
     <ClInclude Include="..\..\..\..\src\core\DiscardSources.h" />
     <ClInclude Include="..\..\..\..\src\core\Enumeration.h" />
@@ -46,6 +47,7 @@
     <ClInclude Include="..\..\..\..\src\OpenRiichiConfiguration.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="..\..\..\..\src\core\Dice.cpp" />
     <ClCompile Include="..\..\..\..\src\core\DiscardSources.cpp" />
     <ClCompile Include="..\..\..\..\src\core\MeldedKongTypes.cpp" />
     <ClCompile Include="..\..\..\..\src\core\MeldTypes.cpp" />

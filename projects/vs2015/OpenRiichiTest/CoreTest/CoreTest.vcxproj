@@ -19,6 +19,7 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="..\..\..\..\test\core\DiceTest.cpp" />
     <ClCompile Include="..\..\..\..\test\core\DiscardSourcesTest.cpp" />
     <ClCompile Include="..\..\..\..\test\core\DiscardTest.cpp" />
     <ClCompile Include="..\..\..\..\test\core\EnumerationTest.cpp" />
