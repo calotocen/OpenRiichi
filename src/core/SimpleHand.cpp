@@ -93,7 +93,7 @@ SimpleHand &SimpleHand::operator=(const std::initializer_list<Set> &sets)
 
 bool SimpleHand::isEmpty() const
 {
-	return m_tiles.isEmpty() && m_sets.isEmpty();
+	return m_tiles.empty() && m_sets.empty();
 }
 
 

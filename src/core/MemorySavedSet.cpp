@@ -47,8 +47,8 @@ MemorySavedSet::MemorySavedSet(const Tile & tile1, const Tile & tile2)
 	setArrangement(SetArrangements::PAIR);
 
 	// 牌を格納する。
-	m_tiles.add(tile1);
-	m_tiles.add(tile2);
+	m_tiles.push_back(tile1);
+	m_tiles.push_back(tile2);
 }
 
 
@@ -77,9 +77,9 @@ MemorySavedSet::MemorySavedSet(const Tile & tile1, const Tile & tile2, const Til
 	setMeldType(meldType);
 
 	// 牌を格納する。
-	m_tiles.add(tile1);
-	m_tiles.add(tile2);
-	m_tiles.add(tile3);
+	m_tiles.push_back(tile1);
+	m_tiles.push_back(tile2);
+	m_tiles.push_back(tile3);
 }
 
 
@@ -101,10 +101,10 @@ MemorySavedSet::MemorySavedSet(const Tile & tile1, const Tile & tile2, const Til
 	setMeldType(meldType);
 
 	// 牌を格納する。
-	m_tiles.add(tile1);
-	m_tiles.add(tile2);
-	m_tiles.add(tile3);
-	m_tiles.add(tile4);
+	m_tiles.push_back(tile1);
+	m_tiles.push_back(tile2);
+	m_tiles.push_back(tile3);
+	m_tiles.push_back(tile4);
 }
 
 

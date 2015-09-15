@@ -45,10 +45,10 @@ namespace openriichi
 		hand.tiles() = { P1, P2, P3, S1, S2, S3, M1, M2, M3, TN, TN, TN, NN };
 		ASSERT_EQ((Hand::Tiles{ P1, P2, P3, S1, S2, S3, M1, M2, M3, TN, TN, TN, NN }), hand.getTiles());
 
-		hand.tiles().add(NN);
+		hand.tiles().push_back(NN);
 		ASSERT_EQ((Hand::Tiles{ P1, P2, P3, S1, S2, S3, M1, M2, M3, TN, TN, TN, NN, NN }), hand.getTiles());
 
-		hand.tiles().remove(0);
+		hand.tiles().erase(hand.tiles().begin());
 		ASSERT_EQ((Hand::Tiles{ P2, P3, S1, S2, S3, M1, M2, M3, TN, TN, TN, NN, NN }), hand.getTiles());
 	}
 
@@ -74,10 +74,10 @@ namespace openriichi
 		hand.tiles() = { P1, P2, P3, S1, S2, S3, M1, M2, M3, TN, TN, TN, NN };
 		ASSERT_EQ((Hand::Tiles{ P1, P2, P3, S1, S2, S3, M1, M2, M3, TN, TN, TN, NN }), hand.tiles());
 
-		hand.tiles().add(NN);
+		hand.tiles().push_back(NN);
 		ASSERT_EQ((Hand::Tiles{ P1, P2, P3, S1, S2, S3, M1, M2, M3, TN, TN, TN, NN, NN }), hand.tiles());
 
-		hand.tiles().remove(0);
+		hand.tiles().erase(hand.tiles().begin());
 		ASSERT_EQ((Hand::Tiles{ P2, P3, S1, S2, S3, M1, M2, M3, TN, TN, TN, NN, NN }), hand.tiles());
 	}
 
@@ -91,10 +91,10 @@ namespace openriichi
 		hand.sets() = { Set(P1, P2, P3), Set(S1, S2, S3), Set(M1, M2, M3) };
 		ASSERT_EQ((Hand::Sets{ Set(P1, P2, P3), Set(S1, S2, S3), Set(M1, M2, M3) }), hand.getSets());
 
-		hand.sets().add(Set(TN, TN, TN, TN));
+		hand.sets().push_back(Set(TN, TN, TN, TN));
 		ASSERT_EQ((Hand::Sets{ Set(P1, P2, P3), Set(S1, S2, S3), Set(M1, M2, M3), Set(TN, TN, TN, TN) }), hand.getSets());
 
-		hand.sets().remove(0);
+		hand.sets().erase(hand.sets().begin());
 		ASSERT_EQ((Hand::Sets{ Set(S1, S2, S3), Set(M1, M2, M3), Set(TN, TN, TN, TN) }), hand.getSets());
 	}
 
@@ -120,10 +120,10 @@ namespace openriichi
 		hand.sets() = { Set(P1, P2, P3), Set(S1, S2, S3), Set(M1, M2, M3) };
 		ASSERT_EQ((Hand::Sets{ Set(P1, P2, P3), Set(S1, S2, S3), Set(M1, M2, M3) }), hand.sets());
 
-		hand.sets().add(Set(TN, TN, TN, TN));
+		hand.sets().push_back(Set(TN, TN, TN, TN));
 		ASSERT_EQ((Hand::Sets{ Set(P1, P2, P3), Set(S1, S2, S3), Set(M1, M2, M3), Set(TN, TN, TN, TN) }), hand.sets());
 
-		hand.sets().remove(0);
+		hand.sets().erase(hand.sets().begin());
 		ASSERT_EQ((Hand::Sets{ Set(S1, S2, S3), Set(M1, M2, M3), Set(TN, TN, TN, TN) }), hand.sets());
 	}
 
