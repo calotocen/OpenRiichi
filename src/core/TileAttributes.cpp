@@ -20,11 +20,12 @@
 using namespace openriichi;
 
 
-const NoneTileAttribute TileAttributes::NONE = NoneTileAttribute();
-const RedTileAttribute TileAttributes::RED = RedTileAttribute();
+const TileAttribute TileAttributes::NONE(NONE_ID);
+const TileAttribute TileAttributes::RED(RED_ID);
 
 
-TileAttribute::~TileAttribute()
+TileAttribute::TileAttribute(int id)
+	: Enumeration(id)
 {
 	// 何もしない。
 }

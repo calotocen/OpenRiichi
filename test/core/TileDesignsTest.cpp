@@ -14,6 +14,7 @@
  * limitations under the License.
  */
 #include <gtest/gtest.h>
+#include <OpenRiichiAssertion.h>
 #include <TileDesigns.h>
 
 
@@ -24,16 +25,24 @@ namespace openriichi
 	/// ID 変数をテストする。
 	TEST_F(TileDesignsTest, testId)
 	{
-		ASSERT_EQ(1, TileDesigns::CIRCLES.ID);
-		ASSERT_EQ(2, TileDesigns::BAMBOO.ID);
-		ASSERT_EQ(3, TileDesigns::CHARACTERS.ID);
-		ASSERT_EQ(4, TileDesigns::EAST.ID);
-		ASSERT_EQ(5, TileDesigns::SOUTH.ID);
-		ASSERT_EQ(6, TileDesigns::WEST.ID);
-		ASSERT_EQ(7, TileDesigns::NORTH.ID);
-		ASSERT_EQ(8, TileDesigns::RED.ID);
-		ASSERT_EQ(9, TileDesigns::WHITE.ID);
-		ASSERT_EQ(10, TileDesigns::GREEN.ID);
+		ASSERT_EQ(1, TileDesigns::CIRCLES_ID);
+		ASSERT_EQ(2, TileDesigns::BAMBOO_ID);
+		ASSERT_EQ(3, TileDesigns::CHARACTERS_ID);
+		ASSERT_EQ(4, TileDesigns::EAST_ID);
+		ASSERT_EQ(5, TileDesigns::SOUTH_ID);
+		ASSERT_EQ(6, TileDesigns::WEST_ID);
+		ASSERT_EQ(7, TileDesigns::NORTH_ID);
+		ASSERT_EQ(8, TileDesigns::RED_ID);
+		ASSERT_EQ(9, TileDesigns::WHITE_ID);
+		ASSERT_EQ(10, TileDesigns::GREEN_ID);
+	}
+
+	/// コンストラクタ (全パラメータ指定版) をテストする。
+	TEST_F(TileDesignsTest, testConstructUsingAllParameters)
+	{
+#if OPENRIICHI_ENABLE_ASSERTION == 1
+		ASSERT_THROW(TileDesign(11, 0), OpenRiichiAssertion);
+#endif // OPENRIICHI_ENABLE_ASSERTION == 1
 	}
 
 	/// getId 関数をテストする。

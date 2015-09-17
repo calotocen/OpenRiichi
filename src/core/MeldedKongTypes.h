@@ -28,79 +28,22 @@ namespace openriichi
 	{
 	public:
 		/**
-		 * 鳴き槓子種別を破棄する。
+		 * 鳴き槓子種別を生成する。
 		 */
-		virtual ~MeldedKongType();
-	};
+		MeldedKongType() = default;
 
-
-	/**
-	 * 鳴き槓子種別のテンプレートである。
-	 */
-	template<int _ID>
-	class MeldedKongTypeTemplate : public MeldedKongType
-	{
-	public:
-		/// 関連のある列挙型間で一意の値。
-		static const int ID = _ID;
-
-
-	public:
 		/**
-		 * 鳴き槓子種別を破棄する。
-		 */
-		virtual ~MeldedKongTypeTemplate();
-
-
-	public:
-		/**
-		 * 関連のある列挙型間で一意の値を返す。
+		 * 鳴き槓子種別を生成する。
 		 *
-		 * @return 関連のある列挙型間で一意の値。
+		 * @param[in] id ID。
 		 */
-		virtual int getId() const override;
+		explicit MeldedKongType(int id);
+
+		/**
+		 * 鳴き槓子種別を破棄する。
+		 */
+		virtual ~MeldedKongType() = default;
 	};
-
-
-	template<int _ID>
-	MeldedKongTypeTemplate<_ID>::~MeldedKongTypeTemplate()
-	{
-		// 何もしない。
-	}
-
-
-	template<int _ID>
-	int MeldedKongTypeTemplate<_ID>::getId() const
-	{
-		return _ID;
-	}
-
-
-	/**
-	 * 槓子でないことを表す鳴き槓子種別である。
-	 *
-	 * @note 本クラスを個別にインスタンス化してはならない。
-	 *       代わりに MeldedKongTypes::NO を使用すること。
-	 */
-	using NoMeldedKongType = MeldedKongTypeTemplate<0>;
-
-
-	/**
-	 * 小明槓 (加槓) を表す鳴き槓子種別である。
-	 *
-	 * @note 本クラスを個別にインスタンス化してはならない。
-	 *       代わりに MeldedKongTypes::LITTLE を使用すること。
-	 */
-	using LittleMeldedKongType = MeldedKongTypeTemplate<1>;
-
-
-	/**
-	 * 大明槓を表す鳴き槓子種別である。
-	 *
-	 * @note 本クラスを個別にインスタンス化してはならない。
-	 *       代わりに MeldedKongTypes::BIG を使用すること。
-	 */
-	using BigMeldedKongType = MeldedKongTypeTemplate<2>;
 
 
 	/**
@@ -109,13 +52,27 @@ namespace openriichi
 	class MeldedKongTypes
 	{
 	public:
+		enum ID : int
+		{
+			/// 鳴き槓子でないことを表す鳴き槓子種別の ID。
+			NO_ID = 0,
+
+			/// 小明槓 (加槓) を表す鳴き槓子種別の ID。
+			LITTLE_ID = 1,
+
+			/// 大明槓を表す鳴き槓子種別の ID。
+			BIG_ID = 2,
+		};
+
+
+	public:
 		/// 鳴き槓子でないことを表す鳴き槓子種別。
-		static const NoMeldedKongType NO;
+		static const MeldedKongType NO;
 
 		/// 小明槓 (加槓) を表す鳴き槓子種別。
-		static const LittleMeldedKongType LITTLE;
+		static const MeldedKongType LITTLE;
 		
 		/// 大明槓を表す鳴き槓子種別。
-		static const BigMeldedKongType BIG;
+		static const MeldedKongType BIG;
 	};
 }

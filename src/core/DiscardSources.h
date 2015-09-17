@@ -28,70 +28,22 @@ namespace openriichi
 	{
 	public:
 		/**
-		 * 捨て牌の捨て元を破棄する。
+		 * 捨て牌を生成する。
 		 */
-		virtual ~DiscardSource();
-	};
+		DiscardSource() = default;
 
-
-	/**
-	 * 捨て牌の捨て元のテンプレートである。
-	 */
-	template<int _ID>
-	class DiscardSourceTemplate : public DiscardSource
-	{
-	public:
-		/// 関連のある列挙型間で一意の値。
-		static const int ID = _ID;
-
-
-	public:
 		/**
-		 * 捨て牌の捨て元を破棄する。
-		 */
-		virtual ~DiscardSourceTemplate();
-
-
-	public:
-		/**
-		 * 関連のある列挙型間で一意の値を返す。
+		 * 捨て牌を生成する。
 		 *
-		 * @return 関連のある列挙型間で一意の値。
+		 * @param[in] id ID。
 		 */
-		virtual int getId() const override;
+		explicit DiscardSource(int id);
+
+		/**
+		 * 捨て牌の捨て元を破棄する。
+		 */
+		virtual ~DiscardSource() = default;
 	};
-
-
-	template<int _ID>
-	DiscardSourceTemplate<_ID>::~DiscardSourceTemplate()
-	{
-		// 何もしない。
-	}
-
-
-	template<int _ID>
-	int DiscardSourceTemplate<_ID>::getId() const
-	{
-		return _ID;
-	}
-
-
-	/**
-	 * 捨て元がツモ牌であることを表す。。
-	 *
-	 * @note 本クラスを個別にインスタンス化してはならない。
-	 *       代わりに DiscardSources::DRAWED を使用すること。
-	 */
-	using DrawedDiscardSource = DiscardSourceTemplate<1>;
-
-
-	/**
-	 * 捨て元が手持ち牌であることを表す。
-	 *
-	 * @note 本クラスを個別にインスタンス化してはならない。
-	 *       代わりに DiscardSources::HELD を使用すること。
-	 */
-	using HeldDiscardSource = DiscardSourceTemplate<2>;
 
 
 	/**
@@ -100,10 +52,21 @@ namespace openriichi
 	class DiscardSources
 	{
 	public:
-		/// 東の捨て牌の捨て元。
-		static const DrawedDiscardSource DRAWED;
+		enum ID : int
+		{
+			/// ツモ牌が捨て元の ID。
+			DRAWED_ID = 1,
 
-		/// 南の捨て牌の捨て元。
-		static const HeldDiscardSource HELD;
+			/// 手持ち牌が捨て元の ID。
+			HELD_ID = 2,
+		};
+
+
+	public:
+		/// ツモ牌が捨て元。
+		static const DiscardSource DRAWED;
+
+		/// 手持ち牌が捨て元。
+		static const DiscardSource HELD;
 	};
 }

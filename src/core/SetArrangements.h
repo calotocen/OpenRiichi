@@ -28,88 +28,22 @@ namespace openriichi
 	{
 	public:
 		/**
-		 * 面子種別を破棄する。
+		 * 面子種別を生成する。
 		 */
-		virtual ~SetArrangement();
-	};
+		SetArrangement() = default;
 
-
-	/**
-	 * 面子種別のテンプレートである。
-	 */
-	template<int _ID>
-	class SetArrangementTemplate : public SetArrangement
-	{
-	public:
-		/// 関連のある列挙型間で一意の値。
-		static const int ID = _ID;
-
-
-	public:
 		/**
-		 * 面子種別を破棄する。
-		 */
-		virtual ~SetArrangementTemplate();
-
-
-	public:
-		/**
-		 * 関連のある列挙型間で一意の値を返す。
+		 * 面子種別を生成する。
 		 *
-		 * @return 関連のある列挙型間で一意の値。
+		 * @param[in] id ID。
 		 */
-		virtual int getId() const override;
+		explicit SetArrangement(int id);
+
+		/**
+		 * 面子種別を破棄する。
+		 */
+		virtual ~SetArrangement() = default;
 	};
-
-
-	template<int _ID>
-	SetArrangementTemplate<_ID>::~SetArrangementTemplate()
-	{
-		// 何もしない。
-	}
-
-
-	template<int _ID>
-	int SetArrangementTemplate<_ID>::getId() const
-	{
-		return _ID;
-	}
-
-
-	/**
-	 * 順子の面子種別である。
-	 *
-	 * @note 本クラスを個別にインスタンス化してはならない。
-	 *       代わりに SetArrangements::CHOW を使用すること。
-	 */
-	using ChowSetArrangement = SetArrangementTemplate<1>;
-
-
-	/**
-	 * 対子の面子種別である。
-	 *
-	 * @note 本クラスを個別にインスタンス化してはならない。
-	 *       代わりに SetArrangements::PAIR を使用すること。
-	 */
-	using PairSetArrangement = SetArrangementTemplate<2>;
-
-
-	/**
-	 * 刻子の面子種別である。
-	 *
-	 * @note 本クラスを個別にインスタンス化してはならない。
-	 *       代わりに SetArrangements::PUNG を使用すること。
-	 */
-	using PungSetArrangement = SetArrangementTemplate<3>;
-
-
-	/**
-	 * 槓子の面子種別である。
-	 *
-	 * @note 本クラスを個別にインスタンス化してはならない。
-	 *       代わりに SetArrangements::KONG を使用すること。
-	 */
-	using KongSetArrangement = SetArrangementTemplate<4>;
 
 
 	/**
@@ -118,16 +52,33 @@ namespace openriichi
 	class SetArrangements
 	{
 	public:
+		enum ID : int
+		{
+			/// 順子の面子種別の ID。
+			CHOW_ID = 1,
+
+			/// 対子の面子種別の ID。
+			PAIR_ID = 2,
+
+			/// 刻子の面子種別の ID。
+			PUNG_ID = 3,
+
+			/// 槓子の面子種別の ID。
+			KONG_ID = 4,
+		};
+
+
+	public:
 		/// 順子の面子種別。
-		static const ChowSetArrangement CHOW;
+		static const SetArrangement CHOW;
 
 		/// 対子の面子種別。
-		static const PairSetArrangement PAIR;
+		static const SetArrangement PAIR;
 		
 		/// 刻子の面子種別。
-		static const PungSetArrangement PUNG;
+		static const SetArrangement PUNG;
 		
 		/// 槓子の面子種別。
-		static const KongSetArrangement KONG;
+		static const SetArrangement KONG;
 	};
 }

@@ -93,7 +93,7 @@ namespace openriichi
 		ASSERT_THROW(Set(P1, P2, S3), OpenRiichiAssertion);
 		ASSERT_THROW(Set(P1, P1, S1), OpenRiichiAssertion);
 		ASSERT_THROW(Set(P1, P2, P2), OpenRiichiAssertion);
-		ASSERT_THROW(Set(P1, P2, P3, MeldTypeTemplate<4>()), OpenRiichiAssertion);
+		ASSERT_THROW(Set(P1, P2, P3, MeldType(4)), OpenRiichiAssertion);
 		ASSERT_THROW(Set(P1, P2, P3, MeldTypes::ACROSS), OpenRiichiAssertion);
 		ASSERT_THROW(Set(P1, P2, P3, MeldTypes::RIGHT), OpenRiichiAssertion);
 #endif // OPENRIICHI_ENABLE_ASSERTION == 1
@@ -109,8 +109,8 @@ namespace openriichi
 #if OPENRIICHI_ENABLE_ASSERTION == 1
 		ASSERT_THROW(Set(TN, TN, TN, NN), OpenRiichiAssertion);
 		ASSERT_THROW(Set(P1, P1, P1, P2), OpenRiichiAssertion);
-		ASSERT_THROW(Set(P1, P1, P1, P1, MeldedKongTypeTemplate<3>(), MeldTypes::LEFT), OpenRiichiAssertion);
-		ASSERT_THROW(Set(P1, P1, P1, P1, MeldedKongTypes::LITTLE, MeldTypeTemplate<4>()), OpenRiichiAssertion);
+		ASSERT_THROW(Set(P1, P1, P1, P1, MeldedKongType(3), MeldTypes::LEFT), OpenRiichiAssertion);
+		ASSERT_THROW(Set(P1, P1, P1, P1, MeldedKongTypes::LITTLE, MeldType(4)), OpenRiichiAssertion);
 		ASSERT_THROW(Set(P1, P1, P1, P1, MeldedKongTypes::NO, MeldTypes::LEFT), OpenRiichiAssertion);
 		ASSERT_THROW(Set(P1, P1, P1, P1, MeldedKongTypes::BIG, MeldTypes::NONE), OpenRiichiAssertion);
 #endif // OPENRIICHI_ENABLE_ASSERTION == 1

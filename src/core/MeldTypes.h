@@ -28,88 +28,22 @@ namespace openriichi
 	{
 	public:
 		/**
-		 * 鳴き種別を破棄する。
+		 * 鳴き種別を生成する。
 		 */
-		virtual ~MeldType();
-	};
+		MeldType() = default;
 
-
-	/**
-	 * 鳴き種別のテンプレートである。
-	 */
-	template<int _ID>
-	class MeldTypeTemplate : public MeldType
-	{
-	public:
-		/// 関連のある列挙型間で一意の値。
-		static const int ID = _ID;
-
-
-	public:
 		/**
-		 * 鳴き種別を破棄する。
-		 */
-		virtual ~MeldTypeTemplate();
-
-
-	public:
-		/**
-		 * 関連のある列挙型間で一意の値を返す。
+		 * 鳴き種別を生成する。
 		 *
-		 * @return 関連のある列挙型間で一意の値。
+		 * @param[in] id ID。
 		 */
-		virtual int getId() const override;
+		explicit MeldType(int id);
+
+		/**
+		 * 鳴き種別を破棄する。
+		 */
+		virtual ~MeldType() = default;
 	};
-
-
-	template<int _ID>
-	MeldTypeTemplate<_ID>::~MeldTypeTemplate()
-	{
-		// 何もしない。
-	}
-
-
-	template<int _ID>
-	int MeldTypeTemplate<_ID>::getId() const
-	{
-		return _ID;
-	}
-
-
-	/**
-	 * 面前であることを表す鳴き種別である。
-	 *
-	 * @note 本クラスを個別にインスタンス化してはならない。
-	 *       代わりに MeldTypes::NONE を使用すること。
-	 */
-	using NoneMeldType = MeldTypeTemplate<0>;
-
-
-	/**
-	 * 順子の場合は左の牌，刻子，槓子の場合は上家の牌を鳴いたことを表す鳴き種別である。
-	 *
-	 * @note 本クラスを個別にインスタンス化してはならない。
-	 *       代わりに MeldTypes::LEFT を使用すること。
-	 */
-	using LeftMeldType = MeldTypeTemplate<1>;
-
-
-	/**
-	 * 順子の場合は中央の牌，刻子，槓子の場合は対面の牌を鳴いたことを表す鳴き種別である。
-	 *
-	 * @note 本クラスを個別にインスタンス化してはならない。
-	 *       代わりに MeldTypes::CENTER を使用すること。
-	 */
-	using CenterMeldType = MeldTypeTemplate<2>;
-
-
-	/**
-	 * 順子の場合は右の牌，刻子，槓子の場合は下家の牌を鳴いたことを表す鳴き種別である。
-	 *
-	 * @note 本クラスを個別にインスタンス化してはならない。
-	 *       代わりに MeldTypes::RIGHT を使用すること。
-	 */
-	using RightMeldType = MeldTypeTemplate<3>;
 
 
 	/**
@@ -118,16 +52,33 @@ namespace openriichi
 	class MeldTypes
 	{
 	public:
+		enum ID
+		{
+			/// 面前であることを表す鳴き種別の ID。
+			NONE_ID = 0,
+
+			/// 上家の牌を鳴いたことを表す南の鳴き種別の ID。
+			LEFT_ID = 1,
+
+			/// 対面の牌を鳴いたことを表す鳴き種別の ID。
+			ACROSS_ID = 2,
+
+			/// 下家の牌を鳴いたことを表す鳴き種別の ID。
+			RIGHT_ID = 3,
+		};
+
+
+	public:
 		/// 面前であることを表す鳴き種別。
-		static const NoneMeldType NONE;
+		static const MeldType NONE;
 
 		/// 上家の牌を鳴いたことを表す南の鳴き種別。
-		static const LeftMeldType LEFT;
+		static const MeldType LEFT;
 		
 		/// 対面の牌を鳴いたことを表す鳴き種別。
-		static const CenterMeldType ACROSS;
+		static const MeldType ACROSS;
 		
 		/// 下家の牌を鳴いたことを表す鳴き種別。
-		static const RightMeldType RIGHT;
+		static const MeldType RIGHT;
 	};
 }

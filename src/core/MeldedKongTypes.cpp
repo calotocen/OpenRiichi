@@ -20,12 +20,13 @@
 using namespace openriichi;
 
 
-const NoMeldedKongType MeldedKongTypes::NO = NoMeldedKongType();
-const LittleMeldedKongType MeldedKongTypes::LITTLE = LittleMeldedKongType();
-const BigMeldedKongType MeldedKongTypes::BIG = BigMeldedKongType();
+const MeldedKongType MeldedKongTypes::NO(NO_ID);
+const MeldedKongType MeldedKongTypes::LITTLE(LITTLE_ID);
+const MeldedKongType MeldedKongTypes::BIG(BIG_ID);
 
 
-MeldedKongType::~MeldedKongType()
+MeldedKongType::MeldedKongType(int id)
+	: Enumeration(id)
 {
 	// 何もしない。
 }

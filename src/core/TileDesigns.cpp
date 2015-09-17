@@ -14,25 +14,53 @@
  * limitations under the License.
  */
 #include "OpenRiichiConfiguration.h"
+#include "OpenRiichiAssertion.h"
 #include "TileDesigns.h"
 
 
 using namespace openriichi;
 
 
-const CirclesTileDesign TileDesigns::CIRCLES = CirclesTileDesign();
-const BambooTileDesign TileDesigns::BAMBOO = BambooTileDesign();
-const CharactersTileDesign TileDesigns::CHARACTERS = CharactersTileDesign();
-const EastTileDesign TileDesigns::EAST = EastTileDesign();
-const SouthTileDesign TileDesigns::SOUTH = SouthTileDesign();
-const WestTileDesign TileDesigns::WEST = WestTileDesign();
-const NorthTileDesign TileDesigns::NORTH = NorthTileDesign();
-const RedTileDesign TileDesigns::RED = RedTileDesign();
-const WhiteTileDesign TileDesigns::WHITE = WhiteTileDesign();
-const GreenTileDesign TileDesigns::GREEN = GreenTileDesign();
+const TileDesign TileDesigns::CIRCLES(CIRCLES_ID, TileDesign::SUITS_TYPE);
+const TileDesign TileDesigns::BAMBOO(BAMBOO_ID, TileDesign::SUITS_TYPE);
+const TileDesign TileDesigns::CHARACTERS(CHARACTERS_ID, TileDesign::SUITS_TYPE);
+const TileDesign TileDesigns::EAST(EAST_ID, TileDesign::WINDS_TYPE);
+const TileDesign TileDesigns::SOUTH(SOUTH_ID, TileDesign::WINDS_TYPE);
+const TileDesign TileDesigns::WEST(WEST_ID, TileDesign::WINDS_TYPE);
+const TileDesign TileDesigns::NORTH(NORTH_ID, TileDesign::WINDS_TYPE);
+const TileDesign TileDesigns::RED(RED_ID, TileDesign::DRAGONS_TYPE);
+const TileDesign TileDesigns::WHITE(WHITE_ID, TileDesign::DRAGONS_TYPE);
+const TileDesign TileDesigns::GREEN(GREEN_ID, TileDesign::DRAGONS_TYPE);
 
 
-TileDesign::~TileDesign()
+TileDesign::TileDesign(int id, int type)
+	: Enumeration(id)
+	, m_type(type)
 {
-	// 何もしない。
+	// アサーションが有効である場合のみ，引数をチェックする。
+	openriichi_assert(type == SUITS_TYPE || type == WINDS_TYPE || type == DRAGONS_TYPE);
+}
+
+
+bool TileDesign::isSuits() const
+{
+	return (m_type == SUITS_TYPE);
+}
+
+
+bool TileDesign::isHonours() const
+{
+	return (m_type != SUITS_TYPE);
+}
+
+
+bool TileDesign::isWinds() const
+{
+	return (m_type == WINDS_TYPE);
+}
+
+
+bool TileDesign::isDragons() const
+{
+	return (m_type == DRAGONS_TYPE);
 }

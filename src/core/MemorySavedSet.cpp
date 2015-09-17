@@ -131,19 +131,19 @@ void MemorySavedSet::setArrangement(const SetArrangement & setArrangement)
 
 	// 面子種別に応じた値を設定する。
 	switch (setArrangement.getId()) {
-	case SetArrangements::CHOW.ID:
+	case SetArrangements::CHOW_ID:
 		m_value |= ArrangementValue::CHOW;
 		break;
 
-	case SetArrangements::PAIR.ID:
+	case SetArrangements::PAIR_ID:
 		m_value |= ArrangementValue::PAIR;
 		break;
 
-	case SetArrangements::PUNG.ID:
+	case SetArrangements::PUNG_ID:
 		m_value |= ArrangementValue::PUNG;
 		break;
 
-	case SetArrangements::KONG.ID:
+	case SetArrangements::KONG_ID:
 		m_value |= ArrangementValue::KONG;
 		break;
 	}
@@ -157,15 +157,15 @@ void MemorySavedSet::setMeldType(const MeldType & meldType)
 
 	// 鳴き種別に応じた値を設定する。
 	switch (meldType.getId()) {
-	case MeldTypes::LEFT.ID:
+	case MeldTypes::LEFT_ID:
 		m_value |= MeldTypeValue::LEFT;
 		break;
 
-	case MeldTypes::ACROSS.ID:
+	case MeldTypes::ACROSS_ID:
 		m_value |= MeldTypeValue::ACROSS;
 		break;
 
-	case MeldTypes::RIGHT.ID:
+	case MeldTypes::RIGHT_ID:
 		m_value |= MeldTypeValue::RIGHT;
 		break;
 	}
@@ -179,11 +179,11 @@ void MemorySavedSet::setMeldedKongType(const MeldedKongType & meldedKongType)
 
 	// 鳴き槓子種別に応じた値を設定する。
 	switch (meldedKongType.getId()) {
-	case MeldedKongTypes::LITTLE.ID:
+	case MeldedKongTypes::LITTLE_ID:
 		m_value |= MeldedKongTypeValue::LITTLE;
 		break;
 
-	case MeldedKongTypes::BIG.ID:
+	case MeldedKongTypes::BIG_ID:
 		m_value |= MeldedKongTypeValue::BIG;
 		break;
 	}

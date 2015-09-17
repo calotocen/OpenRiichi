@@ -24,8 +24,8 @@ namespace openriichi
 	/// ID 変数をテストする。
 	TEST_F(TileAttributesTest, testId)
 	{
-		ASSERT_EQ(0, TileAttributes::NONE.ID);
-		ASSERT_EQ(1, TileAttributes::RED.ID);
+		ASSERT_EQ(0, TileAttributes::NONE_ID);
+		ASSERT_EQ(1, TileAttributes::RED_ID);
 	}
 
 	/// getId 関数をテストする。

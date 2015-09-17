@@ -20,11 +20,12 @@
 using namespace openriichi;
 
 
-const DrawedDiscardSource DiscardSources::DRAWED = DrawedDiscardSource();
-const HeldDiscardSource DiscardSources::HELD = HeldDiscardSource();
+const DiscardSource DiscardSources::DRAWED(DRAWED_ID);
+const DiscardSource DiscardSources::HELD(HELD_ID);
 
 
-DiscardSource::~DiscardSource()
+openriichi::DiscardSource::DiscardSource(int id)
+	: Enumeration(id)
 {
 	// 何もしない。
 }

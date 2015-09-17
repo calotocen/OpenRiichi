@@ -39,11 +39,11 @@ MemorySavedDiscard::MemorySavedDiscard(const Tile &tile, const DiscardSource & s
 
 	// 捨て元を設定する。
 	switch (source.getId()) {
-	case DiscardSources::DRAWED.ID:
+	case DiscardSources::DRAWED_ID:
 		m_value = SourceValue::DRAWED;
 		break;
 
-	case DiscardSources::HELD.ID:
+	case DiscardSources::HELD_ID:
 		m_value = SourceValue::HELD;
 		break;
 	}

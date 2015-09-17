@@ -20,13 +20,14 @@
 using namespace openriichi;
 
 
-const ChowSetArrangement SetArrangements::CHOW = ChowSetArrangement();
-const PairSetArrangement SetArrangements::PAIR = PairSetArrangement();
-const PungSetArrangement SetArrangements::PUNG = PungSetArrangement();
-const KongSetArrangement SetArrangements::KONG = KongSetArrangement();
+const SetArrangement SetArrangements::CHOW(CHOW_ID);
+const SetArrangement SetArrangements::PAIR(PAIR_ID);
+const SetArrangement SetArrangements::PUNG(PUNG_ID);
+const SetArrangement SetArrangements::KONG(KONG_ID);
 
 
-SetArrangement::~SetArrangement()
+SetArrangement::SetArrangement(int id)
+	: Enumeration(id)
 {
 	// 何もしない。
 }

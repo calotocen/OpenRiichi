@@ -27,10 +27,39 @@ namespace openriichi
 	class TileDesign : public Enumeration<TileDesign>
 	{
 	public:
+		/// 数牌の種別。
+		static const int SUITS_TYPE = 1;
+
+		/// 風牌の種別。
+		static const int WINDS_TYPE = 2;
+
+		/// 三元牌の種別。
+		static const int DRAGONS_TYPE = 3;
+
+
+	private:
+		/// 種別。
+		int m_type;
+
+
+	public:
+		/**
+		 * 牌図柄を生成する。
+		 */
+		TileDesign() = default;
+
+		/**
+		 * 牌図柄を生成する。
+		 *
+		 * @param[in] id ID。
+		 * @param[in] type 種別。数牌の場合は 0，風牌の場合は 1，三元牌の場合は 2 を指定する。
+		 */
+		TileDesign(int id, int type);
+
 		/**
 		 * 牌図柄を破棄する。
 		 */
-		virtual ~TileDesign();
+		virtual ~TileDesign() = default;
 
 
 	public:
@@ -40,7 +69,7 @@ namespace openriichi
 		 * @retval true 数牌であった。
 		 * @retval false 数牌ではなかった。
 		 */
-		virtual bool isSuits() const = 0;
+		bool isSuits() const;
 
 		/**
 		 * 字牌であるかを調べる。
@@ -48,7 +77,7 @@ namespace openriichi
 		 * @retval true 字牌であった。
 		 * @retval false 字牌ではなかった。
 		 */
-		virtual bool isHonours() const = 0;
+		bool isHonours() const;
 
 		/**
 		 * 風牌であるかを調べる。
@@ -56,7 +85,7 @@ namespace openriichi
 		 * @retval true 風牌であった。
 		 * @retval false 風牌ではなかった。
 		 */
-		virtual bool isWinds() const = 0;
+		bool isWinds() const;
 
 		/**
 		 * 三元牌であるかを調べる。
@@ -64,200 +93,8 @@ namespace openriichi
 		 * @retval true 三元牌であった。
 		 * @retval false 三元牌ではなかった。
 		 */
-		virtual bool isDragons() const = 0;
+		bool isDragons() const;
 	};
-
-
-	/**
-	 * 牌図柄のテンプレートである。
-	 */
-	template<int _ID, bool _SUITS, bool _HONOURS, bool _WINDS, bool _DRAGONS>
-	class TileDesignTemplate : public TileDesign
-	{
-	public:
-		/// 関連のある列挙型間で一意の値。
-		static const int ID = _ID;
-
-
-	public:
-		/**
-		 * 牌図柄を破棄する。
-		 */
-		virtual ~TileDesignTemplate();
-
-
-	public:
-		/**
-		 * 関連のある列挙型間で一意の値を返す。
-		 *
-		 * @return 関連のある列挙型間で一意の値。
-		 */
-		virtual int getId() const override;
-
-		/**
-		 * 数牌であるかを調べる。
-		 *
-		 * @retval true 数牌であった。
-		 * @retval false 数牌ではなかった。
-		 */
-		virtual bool isSuits() const override;
-
-		/**
-		 * 字牌であるかを調べる。
-		 *
-		 * @retval true 字牌であった。
-		 * @retval false 字牌ではなかった。
-		 */
-		virtual bool isHonours() const override;
-
-		/**
-		 * 風牌であるかを調べる。
-		 *
-		 * @retval true 風牌であった。
-		 * @retval false 風牌ではなかった。
-		 */
-		virtual bool isWinds() const override;
-
-		/**
-		 * 三元牌であるかを調べる。
-		 *
-		 * @retval true 三元牌であった。
-		 * @retval false 三元牌ではなかった。
-		 */
-		virtual bool isDragons() const override;
-	};
-
-
-	template<int _ID, bool _SUITS, bool _HONOURS, bool _WINDS, bool _DRAGONS>
-	TileDesignTemplate<_ID, _SUITS, _HONOURS, _WINDS, _DRAGONS>::~TileDesignTemplate()
-	{
-		// 何もしない。
-	}
-
-
-	template<int _ID, bool _SUITS, bool _HONOURS, bool _WINDS, bool _DRAGONS>
-	int TileDesignTemplate<_ID, _SUITS, _HONOURS, _WINDS, _DRAGONS>::getId() const
-	{
-		return _ID;
-	}
-
-
-	template<int _ID, bool _SUITS, bool _HONOURS, bool _WINDS, bool _DRAGONS>
-	bool TileDesignTemplate<_ID, _SUITS, _HONOURS, _WINDS, _DRAGONS>::isSuits() const
-	{
-		return _SUITS;
-	}
-
-
-	template<int _ID, bool _SUITS, bool _HONOURS, bool _WINDS, bool _DRAGONS>
-	bool TileDesignTemplate<_ID, _SUITS, _HONOURS, _WINDS, _DRAGONS>::isHonours() const
-	{
-		return _HONOURS;
-	}
-
-
-	template<int _ID, bool _SUITS, bool _HONOURS, bool _WINDS, bool _DRAGONS>
-	bool TileDesignTemplate<_ID, _SUITS, _HONOURS, _WINDS, _DRAGONS>::isWinds() const
-	{
-		return _WINDS;
-	}
-
-
-	template<int _ID, bool _SUITS, bool _HONOURS, bool _WINDS, bool _DRAGONS>
-	bool TileDesignTemplate<_ID, _SUITS, _HONOURS, _WINDS, _DRAGONS>::isDragons() const
-	{
-		return _DRAGONS;
-	}
-
-
-	/**
-	 * 筒子の牌図柄である。
-	 *
-	 * @note 本クラスを個別にインスタンス化してはならない。
-	 *       代わりに TileDesigns::CIRCLES を使用すること。
-	 */
-	using CirclesTileDesign = TileDesignTemplate<1, true, false, false, false>;
-
-
-	/**
-	 * 索子の牌図柄である。
-	 *
-	 * @note 本クラスを個別にインスタンス化してはならない。
-	 *       代わりに TileDesigns::BAMBOO を使用すること。
-	 */
-	using BambooTileDesign = TileDesignTemplate<2, true, false, false, false>;
-
-
-	/**
-	 * 萬子の牌図柄である。
-	 *
-	 * @note 本クラスを個別にインスタンス化してはならない。
-	 *       代わりに TileDesigns::CHARACTERS を使用すること。
-	 */
-	using CharactersTileDesign = TileDesignTemplate<3, true, false, false, false>;
-
-
-	/**
-	 * 東の牌図柄である。
-	 *
-	 * @note 本クラスを個別にインスタンス化してはならない。
-	 *       代わりに TileDesigns::EAST を使用すること。
-	 */
-	using EastTileDesign = TileDesignTemplate<4, false, true, true, false>;
-
-
-	/**
-	 * 南の牌図柄である。
-	 *
-	 * @note 本クラスを個別にインスタンス化してはならない。
-	 *       代わりに TileDesigns::SOUTH を使用すること。
-	 */
-	using SouthTileDesign = TileDesignTemplate<5, false, true, true, false>;
-
-
-	/**
-	 * 西の牌図柄である。
-	 *
-	 * @note 本クラスを個別にインスタンス化してはならない。
-	 *       代わりに TileDesigns::WEST を使用すること。
-	 */
-	using WestTileDesign = TileDesignTemplate<6, false, true, true, false>;
-
-
-	/**
-	 * 北の牌図柄である。
-	 *
-	 * @note 本クラスを個別にインスタンス化してはならない。
-	 *       代わりに TileDesigns::NORTH を使用すること。
-	 */
-	using NorthTileDesign = TileDesignTemplate<7, false, true, true, false>;
-
-
-	/**
-	 * 中の牌図柄である。
-	 *
-	 * @note 本クラスを個別にインスタンス化してはならない。
-	 *       代わりに TileDesigns::RED を使用すること。
-	 */
-	using RedTileDesign = TileDesignTemplate<8, false, true, false, true>;
-
-
-	/**
-	 * 白の牌図柄である。
-	 *
-	 * @note 本クラスを個別にインスタンス化してはならない。
-	 *       代わりに TileDesigns::WHITE を使用すること。
-	 */
-	using WhiteTileDesign = TileDesignTemplate<9, false, true, false, true>;
-
-
-	/**
-	 * 發の牌図柄である。
-	 *
-	 * @note 本クラスを個別にインスタンス化してはならない。
-	 *       代わりに TileDesigns::GREEN を使用すること。
-	 */
-	using GreenTileDesign = TileDesignTemplate<10, false, true, false, true>;
 
 
 	/**
@@ -266,43 +103,69 @@ namespace openriichi
 	class TileDesigns
 	{
 	public:
-		/// 筒子の牌図柄。
-		static const CirclesTileDesign CIRCLES;
+		enum ID : int
+		{
+			/// 筒子の牌図柄の ID。
+			CIRCLES_ID = 1,
 
+			/// 索子の牌図柄の ID。
+			BAMBOO_ID = 2,
+
+			/// 萬子の牌図柄の ID。
+			CHARACTERS_ID = 3,
+
+			/// 東の牌図柄の ID。
+			EAST_ID = 4,
+
+			/// 南の牌図柄の ID。
+			SOUTH_ID = 5,
+
+			/// 西の牌図柄の ID。
+			WEST_ID = 6,
+
+			/// 北の牌図柄の ID。
+			NORTH_ID = 7,
+
+			/// 中の牌図柄の ID。
+			RED_ID = 8,
+
+			/// 白の牌図柄の ID。
+			WHITE_ID = 9,
+
+			/// 發の牌図柄の ID。
+			GREEN_ID = 10,
+		};
+
+
+	public:
+		/// 筒子の牌図柄。
+		static const TileDesign CIRCLES;
 
 		/// 索子の牌図柄。
-		static const BambooTileDesign BAMBOO;
-
+		static const TileDesign BAMBOO;
 
 		/// 萬子の牌図柄。
-		static const CharactersTileDesign CHARACTERS;
-
+		static const TileDesign CHARACTERS;
 
 		/// 東の牌図柄。
-		static const EastTileDesign EAST;
-
+		static const TileDesign EAST;
 
 		/// 南の牌図柄。
-		static const SouthTileDesign SOUTH;
-
+		static const TileDesign SOUTH;
 
 		/// 西の牌図柄。
-		static const WestTileDesign WEST;
-
+		static const TileDesign WEST;
 
 		/// 北の牌図柄。
-		static const NorthTileDesign NORTH;
-
+		static const TileDesign NORTH;
 
 		/// 中の牌図柄。
-		static const RedTileDesign RED;
-
+		static const TileDesign RED;
 
 		/// 白の牌図柄。
-		static const WhiteTileDesign WHITE;
-
+		static const TileDesign WHITE;
 
 		/// 發の牌図柄。
-		static const GreenTileDesign GREEN;
+		static const TileDesign GREEN;
 	};
 }

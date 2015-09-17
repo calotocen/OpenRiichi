@@ -26,90 +26,28 @@ namespace openriichi
 	 */
 	class Wind : public Enumeration<Wind>
 	{
+	private:
+		int m_id;
+
+
 	public:
 		/**
-		 * 風を破棄する。
+		 * 風を生成する。
 		 */
-		virtual ~Wind();
-	};
+		Wind() = default;
 
-
-	/**
-	 * 風のテンプレートである。
-	 */
-	template<int _ID>
-	class WindTemplate : public Wind
-	{
-	public:
-		/// 関連のある列挙型間で一意の値。
-		static const int ID = _ID;
-
-
-	public:
 		/**
-		 * 風を破棄する。
-		 */
-		virtual ~WindTemplate();
-
-
-	public:
-		/**
-		 * 関連のある列挙型間で一意の値を返す。
+		 * 風を生成する。
 		 *
-		 * @return 関連のある列挙型間で一意の値。
+		 * @param[in] id ID。
 		 */
-		virtual int getId() const override;
+		explicit Wind(int id);
+
+		/**
+		 * 風を破棄する。
+		 */
+		virtual ~Wind() = default;
 	};
-
-
-	template<int _ID>
-	WindTemplate<_ID>::~WindTemplate()
-	{
-		// 何もしない。
-	}
-
-
-	template<int _ID>
-	int WindTemplate<_ID>::getId() const
-	{
-		return _ID;
-	}
-
-
-	/**
-	 * 東の風である。
-	 *
-	 * @note 本クラスを個別にインスタンス化してはならない。
-	 *       代わりに Winds::EAST を使用すること。
-	 */
-	using EastWind = WindTemplate<1>;
-
-
-	/**
-	 * 南の風である。
-	 *
-	 * @note 本クラスを個別にインスタンス化してはならない。
-	 *       代わりに Winds::SOUTH を使用すること。
-	 */
-	using SouthWind = WindTemplate<2>;
-
-
-	/**
-	 * 西の風である。
-	 *
-	 * @note 本クラスを個別にインスタンス化してはならない。
-	 *       代わりに Winds::WEST を使用すること。
-	 */
-	using WestWind = WindTemplate<3>;
-
-
-	/**
-	 * 北の風である。
-	 *
-	 * @note 本クラスを個別にインスタンス化してはならない。
-	 *       代わりに Winds::NORTH を使用すること。
-	 */
-	using NorthWind = WindTemplate<4>;
 
 
 	/**
@@ -118,16 +56,33 @@ namespace openriichi
 	class Winds
 	{
 	public:
+		enum ID : int
+		{
+			/// 東の風の ID。
+			EAST_ID = 1,
+
+			/// 南の風の ID。
+			SOUTH_ID = 2,
+
+			/// 西の風の ID。
+			WEST_ID = 3,
+
+			/// 北の風の ID。
+			NORTH_ID = 4,
+		};
+
+
+	public:
 		/// 東の風。
-		static const EastWind EAST;
+		static const Wind EAST;
 
 		/// 南の風。
-		static const SouthWind SOUTH;
+		static const Wind SOUTH;
 		
 		/// 西の風。
-		static const WestWind WEST;
+		static const Wind WEST;
 		
 		/// 北の風。
-		static const NorthWind NORTH;
+		static const Wind NORTH;
 	};
 }

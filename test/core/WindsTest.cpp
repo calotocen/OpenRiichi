@@ -24,10 +24,10 @@ namespace openriichi
 	/// ID 変数をテストする。
 	TEST_F(WindsTest, testId)
 	{
-		ASSERT_EQ(1, Winds::EAST.ID);
-		ASSERT_EQ(2, Winds::SOUTH.ID);
-		ASSERT_EQ(3, Winds::WEST.ID);
-		ASSERT_EQ(4, Winds::NORTH.ID);
+		ASSERT_EQ(1, Winds::EAST_ID);
+		ASSERT_EQ(2, Winds::SOUTH_ID);
+		ASSERT_EQ(3, Winds::WEST_ID);
+		ASSERT_EQ(4, Winds::NORTH_ID);
 	}
 
 	/// getId 関数をテストする。

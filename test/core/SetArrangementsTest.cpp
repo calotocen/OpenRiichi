@@ -24,10 +24,10 @@ namespace openriichi
 	/// ID 変数をテストする。
 	TEST_F(SetArrangementsTest, testId)
 	{
-		ASSERT_EQ(1, SetArrangements::CHOW.ID);
-		ASSERT_EQ(2, SetArrangements::PAIR.ID);
-		ASSERT_EQ(3, SetArrangements::PUNG.ID);
-		ASSERT_EQ(4, SetArrangements::KONG.ID);
+		ASSERT_EQ(1, SetArrangements::CHOW_ID);
+		ASSERT_EQ(2, SetArrangements::PAIR_ID);
+		ASSERT_EQ(3, SetArrangements::PUNG_ID);
+		ASSERT_EQ(4, SetArrangements::KONG_ID);
 	}
 
 	/// getId 関数をテストする。

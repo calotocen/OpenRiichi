@@ -28,70 +28,22 @@ namespace openriichi
 	{
 	public:
 		/**
-		 * 牌属性を破棄する。
+		 * 牌属性を生成する。
 		 */
-		virtual ~TileAttribute();
-	};
+		TileAttribute() = default;
 
-
-	/**
-	 * 牌属性のテンプレートである。
-	 */
-	template<int _ID>
-	class TileAttributeTemplate : public TileAttribute
-	{
-	public:
-		/// 関連のある列挙型間で一意の値。
-		static const int ID = _ID;
-
-
-	public:
 		/**
-		 * 牌属性を破棄する。
-		 */
-		virtual ~TileAttributeTemplate();
-
-
-	public:
-		/**
-		 * 関連のある列挙型間で一意の値を返す。
+		 * 牌属性を生成する。
 		 *
-		 * @return 関連のある列挙型間で一意の値。
+		 * @param[in] id ID。
 		 */
-		virtual int getId() const override;
+		explicit TileAttribute(int id);
+
+		/**
+		 * 牌属性を破棄する。
+		 */
+		virtual ~TileAttribute() = default;
 	};
-
-
-	template<int _ID>
-	TileAttributeTemplate<_ID>::~TileAttributeTemplate()
-	{
-		// 何もしない。
-	}
-
-
-	template<int _ID>
-	int TileAttributeTemplate<_ID>::getId() const
-	{
-		return _ID;
-	}
-
-
-	/**
-	 * 属性なしを表す牌属性である。
-	 *
-	 * @note 本クラスを個別にインスタンス化してはならない。
-	 *       代わりに TileAttributes::RED を使用すること。
-	 */
-	using NoneTileAttribute = TileAttributeTemplate<0>;
-
-
-	/**
-	 * 赤の牌属性である。
-	 *
-	 * @note 本クラスを個別にインスタンス化してはならない。
-	 *       代わりに TileAttributes::RED を使用すること。
-	 */
-	using RedTileAttribute = TileAttributeTemplate<1>;
 
 
 	/**
@@ -100,10 +52,21 @@ namespace openriichi
 	class TileAttributes
 	{
 	public:
-		/// 属性なしを表す牌属性。
-		static const NoneTileAttribute NONE;
+		enum ID : int
+		{
+			/// 属性なしの牌属性の ID
+			NONE_ID = 0,
+
+			/// 赤の牌属性の ID
+			RED_ID = 1,
+		};
+
+
+	public:
+		/// 属性なしの牌属性。
+		static const TileAttribute NONE;
 
 		/// 赤の牌属性。
-		static const RedTileAttribute RED;
+		static const TileAttribute RED;
 	};
 }

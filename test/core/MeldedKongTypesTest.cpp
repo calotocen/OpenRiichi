@@ -24,9 +24,9 @@ namespace openriichi
 	/// ID 変数をテストする。
 	TEST_F(MeldedKongTypesTest, testId)
 	{
-		ASSERT_EQ(0, MeldedKongTypes::NO.ID);
-		ASSERT_EQ(1, MeldedKongTypes::LITTLE.ID);
-		ASSERT_EQ(2, MeldedKongTypes::BIG.ID);
+		ASSERT_EQ(0, MeldedKongTypes::NO_ID);
+		ASSERT_EQ(1, MeldedKongTypes::LITTLE_ID);
+		ASSERT_EQ(2, MeldedKongTypes::BIG_ID);
 	}
 
 	/// getId 関数をテストする。

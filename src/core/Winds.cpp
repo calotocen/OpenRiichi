@@ -20,13 +20,14 @@
 using namespace openriichi;
 
 
-const EastWind Winds::EAST = EastWind();
-const SouthWind Winds::SOUTH = SouthWind();
-const WestWind Winds::WEST = WestWind();
-const NorthWind Winds::NORTH = NorthWind();
+const Wind Winds::EAST(EAST_ID);
+const Wind Winds::SOUTH(SOUTH_ID);
+const Wind Winds::WEST(WEST_ID);
+const Wind Winds::NORTH(NORTH_ID);
 
 
-Wind::~Wind()
+Wind::Wind(int id)
+	: Enumeration(id)
 {
 	// 何もしない。
 }

@@ -47,38 +47,38 @@ MemorySavedTile::MemorySavedTile(const TileDesign &design, const TileAttribute &
 
 	// 属性に応じた値を設定する。
 	switch (attribute.getId()) {
-	case TileAttributes::RED.ID:
+	case TileAttributes::RED_ID:
 		m_value = AttributeValue::AV_RED;
 		break;
 	}
 		
 	// 図柄に応じた値を設定する。
 	switch (design.getId()) {
-		case TileDesigns::EAST.ID:
+		case TileDesigns::EAST_ID:
 			m_value |= DesignValue::EAST;
 			break;
 
-		case TileDesigns::SOUTH.ID:
+		case TileDesigns::SOUTH_ID:
 			m_value |= DesignValue::SOUTH;
 			break;
 
-		case TileDesigns::WEST.ID:
+		case TileDesigns::WEST_ID:
 			m_value |= DesignValue::WEST;
 			break;
 
-		case TileDesigns::NORTH.ID:
+		case TileDesigns::NORTH_ID:
 			m_value |= DesignValue::NORTH;
 			break;
 
-		case TileDesigns::RED.ID:
+		case TileDesigns::RED_ID:
 			m_value |= DesignValue::DV_RED;
 			break;
 
-		case TileDesigns::GREEN.ID:
+		case TileDesigns::GREEN_ID:
 			m_value |= DesignValue::GREEN;
 			break;
 
-		case TileDesigns::WHITE.ID:
+		case TileDesigns::WHITE_ID:
 			m_value |= DesignValue::WHITE;
 			break;
 	}
@@ -98,22 +98,22 @@ MemorySavedTile::MemorySavedTile(const TileDesign &design, int number, const Til
 
 	// 属性に応じた値を設定する。
 	switch (attribute.getId()) {
-	case TileAttributes::RED.ID:
+	case TileAttributes::RED_ID:
 		m_value = AttributeValue::AV_RED;
 		break;
 	}
 
 	// 図柄に応じた値を設定する。
 	switch (design.getId()) {
-	case TileDesigns::CIRCLES.ID:
+	case TileDesigns::CIRCLES_ID:
 		m_value |= DesignValue::CIRCLES;
 		break;
 
-	case TileDesigns::BAMBOO.ID:
+	case TileDesigns::BAMBOO_ID:
 		m_value |= DesignValue::BAMBOO;
 		break;
 
-	case TileDesigns::CHARACTERS.ID:
+	case TileDesigns::CHARACTERS_ID:
 		m_value |= DesignValue::CHARACTERS;
 		break;
 	}

@@ -24,8 +24,8 @@ namespace openriichi
 	/// ID 変数をテストする。
 	TEST_F(DiscardSourcesTest, testId)
 	{
-		ASSERT_EQ(1, DiscardSources::DRAWED.ID);
-		ASSERT_EQ(2, DiscardSources::HELD.ID);
+		ASSERT_EQ(1, DiscardSources::DRAWED_ID);
+		ASSERT_EQ(2, DiscardSources::HELD_ID);
 	}
 
 	/// getId 関数をテストする。

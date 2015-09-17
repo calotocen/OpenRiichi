@@ -24,10 +24,10 @@ namespace openriichi
 	/// ID 変数をテストする。
 	TEST_F(MeldTypesTest, testId)
 	{
-		ASSERT_EQ(0, MeldTypes::NONE.ID);
-		ASSERT_EQ(1, MeldTypes::LEFT.ID);
-		ASSERT_EQ(2, MeldTypes::ACROSS.ID);
-		ASSERT_EQ(3, MeldTypes::RIGHT.ID);
+		ASSERT_EQ(0, MeldTypes::NONE_ID);
+		ASSERT_EQ(1, MeldTypes::LEFT_ID);
+		ASSERT_EQ(2, MeldTypes::ACROSS_ID);
+		ASSERT_EQ(3, MeldTypes::RIGHT_ID);
 	}
 
 	/// getId 関数をテストする。

@@ -20,13 +20,14 @@
 using namespace openriichi;
 
 
-const NoneMeldType MeldTypes::NONE = NoneMeldType();
-const LeftMeldType MeldTypes::LEFT = LeftMeldType();
-const CenterMeldType MeldTypes::ACROSS = CenterMeldType();
-const RightMeldType MeldTypes::RIGHT = RightMeldType();
+const MeldType MeldTypes::NONE(NONE_ID);
+const MeldType MeldTypes::LEFT(LEFT_ID);
+const MeldType MeldTypes::ACROSS(ACROSS_ID);
+const MeldType MeldTypes::RIGHT(RIGHT_ID);
 
 
-MeldType::~MeldType()
+MeldType::MeldType(int id)
+	: Enumeration(id)
 {
 	// 何もしない。
 }

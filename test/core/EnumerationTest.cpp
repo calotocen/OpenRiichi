@@ -23,18 +23,20 @@ namespace openriichi
 
 	class DerivedEnumeration : public Enumeration<DerivedEnumeration>
 	{
-	private:
-		int m_id;
-
 	public:
-		explicit DerivedEnumeration(int id) : m_id(id) {}
+		explicit DerivedEnumeration(int id) : Enumeration(id) {}
 		virtual ~DerivedEnumeration() {}
-
-	public:
-		virtual int getId() const override { return m_id; }
 	};
 
-	// == 演算子をテストする。
+	/// getId 関数をテストする。
+	TEST_F(EnumerationTest, testGetId)
+	{
+		ASSERT_EQ(0, DerivedEnumeration(0).getId());
+		ASSERT_EQ(1, DerivedEnumeration(1).getId());
+		ASSERT_EQ(2, DerivedEnumeration(2).getId());
+	}
+
+	/// == 演算子をテストする。
 	TEST_F(EnumerationTest, testEquals)
 	{
 		DerivedEnumeration enumeration(0);
@@ -44,7 +46,7 @@ namespace openriichi
 		ASSERT_FALSE(DerivedEnumeration(1) == DerivedEnumeration(2));
 	}
 
-	// != 演算子をテストする。
+	/// != 演算子をテストする。
 	TEST_F(EnumerationTest, testNotEquals)
 	{
 		DerivedEnumeration enumeration(0);
