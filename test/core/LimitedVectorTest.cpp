@@ -65,7 +65,7 @@ namespace openriichi
 	/// at 関数 (const 版) をテストする。
 	TEST_F(LimitedVectorTest, testAtAsConst)
 	{
-		LimitedVector<int, 10> limitedVector{ 0, 1, 2, 3, 4, 5, 6, 7, 8, 9 };
+		const LimitedVector<int, 10> limitedVector{ 0, 1, 2, 3, 4, 5, 6, 7, 8, 9 };
 
 		ASSERT_EQ(0, limitedVector.at(0));
 		ASSERT_EQ(5, limitedVector.at(5));
@@ -422,6 +422,36 @@ namespace openriichi
 #if OPENRIICHI_ENABLE_ASSERTION == 1
 		LimitedVector<int, 10> limitedVector;
 		ASSERT_THROW((limitedVector = { 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10 }), OpenRiichiAssertion);
+#endif // OPENRIICHI_ENABLE_ASSERTION == 1
+	}
+
+	/// [] 演算子 (非 const 版) をテストする。
+	TEST_F(LimitedVectorTest, testIndex)
+	{
+		LimitedVector<int, 10> limitedVector{ 0, 1, 2, 3, 4, 5, 6, 7, 8, 9 };
+
+		limitedVector[0] = 10;
+		limitedVector[5] = 11;
+		limitedVector[9] = 12;
+		ASSERT_EQ((LimitedVector<int, 10>{ 10, 1, 2, 3, 4, 11, 6, 7, 8, 12 }), limitedVector);
+
+#if OPENRIICHI_ENABLE_ASSERTION == 1
+		ASSERT_THROW(limitedVector[10] = 13, OpenRiichiAssertion);
+		ASSERT_THROW((LimitedVector<int, 10>()[0] = 14), OpenRiichiAssertion);
+#endif // OPENRIICHI_ENABLE_ASSERTION == 1
+	}
+
+	/// at 関数 (const 版) をテストする。
+	TEST_F(LimitedVectorTest, testIndexAsConst)
+	{
+		const LimitedVector<int, 10> limitedVector{ 0, 1, 2, 3, 4, 5, 6, 7, 8, 9 };
+
+		ASSERT_EQ(0, limitedVector[0]);
+		ASSERT_EQ(5, limitedVector[5]);
+		ASSERT_EQ(9, limitedVector[9]);
+
+#if OPENRIICHI_ENABLE_ASSERTION == 1
+		ASSERT_THROW(limitedVector[10], OpenRiichiAssertion);
 #endif // OPENRIICHI_ENABLE_ASSERTION == 1
 	}
 }

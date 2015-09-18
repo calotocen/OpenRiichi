@@ -88,6 +88,24 @@ namespace openriichi
 		 */
 		LimitedVector<T, SIZE, SizeType> &operator=(const std::initializer_list<T> &list);
 
+		/**
+		 * 指定された位置にある要素を返す。
+		 *
+		 * @param[in] index 位置。
+		 * @return 要素。
+		 * @note 配列の範囲外を位置に指定した場合の動作は，未定義である。
+		 */
+		T &operator[](SizeType index);
+
+		/**
+		 * 指定された位置にある要素を返す。
+		 *
+		 * @param[in] index 位置。
+		 * @return 要素。
+		 * @note 配列の範囲外を位置に指定した場合の動作は，未定義である。
+		 */
+		const T &operator[](SizeType index) const;
+
 
 	public:
 		/**
@@ -262,6 +280,28 @@ namespace openriichi
 		m_elementsSize = static_cast<SizeType>(list.size());
 
 		return *this;
+	}
+
+
+	template<class T, size_t SIZE, typename SizeType>
+	T &LimitedVector<T, SIZE, SizeType>::operator[](SizeType index)
+	{
+		// アサーションが有効である場合のみ，引数をチェックする。
+		openriichi_assert(0 <= index && index < m_elementsSize);
+
+		// 要素を返す。
+		return m_elements[index];
+	}
+
+
+	template<class T, size_t SIZE, typename SizeType>
+	const T &LimitedVector<T, SIZE, SizeType>::operator[](SizeType index) const
+	{
+		// アサーションが有効である場合のみ，引数をチェックする。
+		openriichi_assert(0 <= index && index < m_elementsSize);
+
+		// 要素を返す。
+		return m_elements[index];
 	}
 
 
