@@ -28,28 +28,31 @@ namespace openriichi
 	/**
 	 * 有限可変長配列である。
 	 */
-	template<class T, size_t SIZE, typename SizeType = uint8_t>
+	template<class T, size_t SIZE, typename SIZE_TYPE = uint8_t>
 	class LimitedVector
 	{
 	private:
 		/// 固定長配列型。
-		using Elements = typename std::array<T, SIZE>;
+		using Array = typename std::array<T, SIZE>;
 
 
 	public:
+		/// サイズ型。
+		using size_type = typename Array::size_type;
+
 		/// イテレータ型。
-		using iterator = typename Elements::iterator;
+		using iterator = typename Array::iterator;
 
 		/// Const イテレータ型。
-		using const_iterator = typename Elements::const_iterator;
+		using const_iterator = typename Array::const_iterator;
 
 
 	private:
 		/// 固定長配列。
-		Elements m_elements;
+		Array m_elements;
 
 		/// 要素の個数。
-		SizeType m_elementsSize;
+		SIZE_TYPE m_elementsSize;
 
 
 	public:
@@ -72,21 +75,21 @@ namespace openriichi
 		 *
 		 * @param[in] other 他の有限可変長配列。
 		 */
-		bool operator==(const LimitedVector<T, SIZE, SizeType> &other) const;
+		bool operator==(const LimitedVector<T, SIZE, SIZE_TYPE> &other) const;
 
 		/**
 		 * 他の有限可変長配列と等しくないか調べる。
 		 *
 		 * @param[in] other 他の有限可変長配列。
 		 */
-		bool operator!=(const LimitedVector<T, SIZE, SizeType> &other) const;
+		bool operator!=(const LimitedVector<T, SIZE, SIZE_TYPE> &other) const;
 
 		/**
 		 * 代入する。
 		 *
 		 * @param[in] list 代入値。
 		 */
-		LimitedVector<T, SIZE, SizeType> &operator=(const std::initializer_list<T> &list);
+		LimitedVector<T, SIZE, SIZE_TYPE> &operator=(const std::initializer_list<T> &list);
 
 		/**
 		 * 指定された位置にある要素を返す。
@@ -95,7 +98,7 @@ namespace openriichi
 		 * @return 要素。
 		 * @note 配列の範囲外を位置に指定した場合の動作は，未定義である。
 		 */
-		T &operator[](SizeType index);
+		T &operator[](size_type index);
 
 		/**
 		 * 指定された位置にある要素を返す。
@@ -104,7 +107,7 @@ namespace openriichi
 		 * @return 要素。
 		 * @note 配列の範囲外を位置に指定した場合の動作は，未定義である。
 		 */
-		const T &operator[](SizeType index) const;
+		const T &operator[](size_type index) const;
 
 
 	public:
@@ -143,7 +146,7 @@ namespace openriichi
 		 * @return 要素。
 		 * @note 配列の範囲外を位置に指定した場合の動作は，未定義である。
 		 */
-		T &at(SizeType index);
+		T &at(size_type index);
 
 		/**
 		 * 指定された位置にある要素を返す。
@@ -152,7 +155,7 @@ namespace openriichi
 		 * @return 要素。
 		 * @note 配列の範囲外を位置に指定した場合の動作は，未定義である。
 		 */
-		const T &at(SizeType index) const;
+		const T &at(size_type index) const;
 
 		/**
 		 * 先頭にある要素を返す。
@@ -182,7 +185,7 @@ namespace openriichi
 		 *
 		 * @return 要素の個数。
 		 */
-		SizeType size() const;
+		size_type size() const;
 
 		/**
 		 * 末尾に要素を追加する。
@@ -220,8 +223,8 @@ namespace openriichi
 	};
 
 
-	template<class T, size_t SIZE, typename SizeType>
-	LimitedVector<T, SIZE, SizeType>::LimitedVector()
+	template<class T, size_t SIZE, typename SIZE_TYPE>
+	LimitedVector<T, SIZE, SIZE_TYPE>::LimitedVector()
 		: m_elements()
 		, m_elementsSize(0)
 	{
@@ -229,10 +232,10 @@ namespace openriichi
 	}
 
 
-	template<class T, size_t SIZE, typename SizeType>
-	LimitedVector<T, SIZE, SizeType>::LimitedVector(const std::initializer_list<T> &list)
+	template<class T, size_t SIZE, typename SIZE_TYPE>
+	LimitedVector<T, SIZE, SIZE_TYPE>::LimitedVector(const std::initializer_list<T> &list)
 		: m_elements()
-		, m_elementsSize(static_cast<SizeType>(list.size()))
+		, m_elementsSize(static_cast<SIZE_TYPE>(list.size()))
 	{
 		// アサーションが有効である場合のみ，引数をチェックする。
 		openriichi_assert(list.size() <= SIZE);
@@ -242,8 +245,8 @@ namespace openriichi
 	}
 
 
-	template<class T, size_t SIZE, typename SizeType>
-	bool LimitedVector<T, SIZE, SizeType>::operator==(const LimitedVector<T, SIZE, SizeType> &other) const
+	template<class T, size_t SIZE, typename SIZE_TYPE>
+	bool LimitedVector<T, SIZE, SIZE_TYPE>::operator==(const LimitedVector<T, SIZE, SIZE_TYPE> &other) const
 	{
 		// 自分自身との比較であれば，true を返す。
 		if (this == &other)
@@ -262,29 +265,29 @@ namespace openriichi
 	}
 
 
-	template<class T, size_t SIZE, typename SizeType>
-	bool LimitedVector<T, SIZE, SizeType>::operator!=(const LimitedVector<T, SIZE, SizeType> &other) const
+	template<class T, size_t SIZE, typename SIZE_TYPE>
+	bool LimitedVector<T, SIZE, SIZE_TYPE>::operator!=(const LimitedVector<T, SIZE, SIZE_TYPE> &other) const
 	{
 		return !(*this == other);
 	}
 
 
-	template<class T, size_t SIZE, typename SizeType>
-	LimitedVector<T, SIZE, SizeType> &LimitedVector<T, SIZE, SizeType>::operator=(const std::initializer_list<T> &list)
+	template<class T, size_t SIZE, typename SIZE_TYPE>
+	LimitedVector<T, SIZE, SIZE_TYPE> &LimitedVector<T, SIZE, SIZE_TYPE>::operator=(const std::initializer_list<T> &list)
 	{
 		// アサーションが有効である場合のみ，引数をチェックする。
 		openriichi_assert(list.size() <= SIZE);
 
 		// 要素を設定する。
 		std::copy(list.begin(), list.end(), m_elements.begin());
-		m_elementsSize = static_cast<SizeType>(list.size());
+		m_elementsSize = static_cast<SIZE_TYPE>(list.size());
 
 		return *this;
 	}
 
 
-	template<class T, size_t SIZE, typename SizeType>
-	T &LimitedVector<T, SIZE, SizeType>::operator[](SizeType index)
+	template<class T, size_t SIZE, typename SIZE_TYPE>
+	T &LimitedVector<T, SIZE, SIZE_TYPE>::operator[](size_type index)
 	{
 		// アサーションが有効である場合のみ，引数をチェックする。
 		openriichi_assert(0 <= index && index < m_elementsSize);
@@ -294,8 +297,8 @@ namespace openriichi
 	}
 
 
-	template<class T, size_t SIZE, typename SizeType>
-	const T &LimitedVector<T, SIZE, SizeType>::operator[](SizeType index) const
+	template<class T, size_t SIZE, typename SIZE_TYPE>
+	const T &LimitedVector<T, SIZE, SIZE_TYPE>::operator[](size_type index) const
 	{
 		// アサーションが有効である場合のみ，引数をチェックする。
 		openriichi_assert(0 <= index && index < m_elementsSize);
@@ -305,36 +308,36 @@ namespace openriichi
 	}
 
 
-	template<class T, size_t SIZE, typename SizeType>
-	typename LimitedVector<T, SIZE, SizeType>::iterator LimitedVector<T, SIZE, SizeType>::begin()
+	template<class T, size_t SIZE, typename SIZE_TYPE>
+	typename LimitedVector<T, SIZE, SIZE_TYPE>::iterator LimitedVector<T, SIZE, SIZE_TYPE>::begin()
 	{
 		return m_elements.begin();
 	}
 
 
-	template<class T, size_t SIZE, typename SizeType>
-	typename LimitedVector<T, SIZE, SizeType>::const_iterator LimitedVector<T, SIZE, SizeType>::begin() const
+	template<class T, size_t SIZE, typename SIZE_TYPE>
+	typename LimitedVector<T, SIZE, SIZE_TYPE>::const_iterator LimitedVector<T, SIZE, SIZE_TYPE>::begin() const
 	{
 		return m_elements.cbegin();
 	}
 
 
-	template<class T, size_t SIZE, typename SizeType>
-	typename LimitedVector<T, SIZE, SizeType>::iterator LimitedVector<T, SIZE, SizeType>::end()
+	template<class T, size_t SIZE, typename SIZE_TYPE>
+	typename LimitedVector<T, SIZE, SIZE_TYPE>::iterator LimitedVector<T, SIZE, SIZE_TYPE>::end()
 	{
 		return m_elements.begin() + m_elementsSize;
 	}
 
 
-	template<class T, size_t SIZE, typename SizeType>
-	typename LimitedVector<T, SIZE, SizeType>::const_iterator LimitedVector<T, SIZE, SizeType>::end() const
+	template<class T, size_t SIZE, typename SIZE_TYPE>
+	typename LimitedVector<T, SIZE, SIZE_TYPE>::const_iterator LimitedVector<T, SIZE, SIZE_TYPE>::end() const
 	{
 		return m_elements.cbegin() + m_elementsSize;
 	}
 
 
-	template<class T, size_t SIZE, typename SizeType>
-	T &LimitedVector<T, SIZE, SizeType>::at(SizeType index)
+	template<class T, size_t SIZE, typename SIZE_TYPE>
+	T &LimitedVector<T, SIZE, SIZE_TYPE>::at(size_type index)
 	{
 		// アサーションが有効である場合のみ，引数をチェックする。
 		openriichi_assert(0 <= index && index < m_elementsSize);
@@ -344,8 +347,8 @@ namespace openriichi
 	}
 
 
-	template<class T, size_t SIZE, typename SizeType>
-	const T &LimitedVector<T, SIZE, SizeType>::at(SizeType index) const
+	template<class T, size_t SIZE, typename SIZE_TYPE>
+	const T &LimitedVector<T, SIZE, SIZE_TYPE>::at(size_type index) const
 	{
 		// アサーションが有効である場合のみ，引数をチェックする。
 		openriichi_assert(0 <= index && index < m_elementsSize);
@@ -355,8 +358,8 @@ namespace openriichi
 	}
 
 
-	template<class T, size_t SIZE, typename SizeType>
-	const T &LimitedVector<T, SIZE, SizeType>::front() const
+	template<class T, size_t SIZE, typename SIZE_TYPE>
+	const T &LimitedVector<T, SIZE, SIZE_TYPE>::front() const
 	{
 		// アサーションが有効である場合のみ，状態をチェックする。
 		openriichi_assert(m_elementsSize > 0);
@@ -366,8 +369,8 @@ namespace openriichi
 	}
 
 
-	template<class T, size_t SIZE, typename SizeType>
-	const T &LimitedVector<T, SIZE, SizeType>::back() const
+	template<class T, size_t SIZE, typename SIZE_TYPE>
+	const T &LimitedVector<T, SIZE, SIZE_TYPE>::back() const
 	{
 		// アサーションが有効である場合のみ，状態をチェックする。
 		openriichi_assert(m_elementsSize > 0);
@@ -377,22 +380,22 @@ namespace openriichi
 	}
 
 
-	template<class T, size_t SIZE, typename SizeType>
-	bool LimitedVector<T, SIZE, SizeType>::empty() const
+	template<class T, size_t SIZE, typename SIZE_TYPE>
+	bool LimitedVector<T, SIZE, SIZE_TYPE>::empty() const
 	{
 		return m_elementsSize == 0;
 	}
 
 
-	template<class T, size_t SIZE, typename SizeType>
-	SizeType LimitedVector<T, SIZE, SizeType>::size() const
+	template<class T, size_t SIZE, typename SIZE_TYPE>
+	typename LimitedVector<T, SIZE, SIZE_TYPE>::size_type LimitedVector<T, SIZE, SIZE_TYPE>::size() const
 	{
 		return m_elementsSize;
 	}
 
 
-	template<class T, size_t SIZE, typename SizeType>
-	void LimitedVector<T, SIZE, SizeType>::push_back(const T &element)
+	template<class T, size_t SIZE, typename SIZE_TYPE>
+	void LimitedVector<T, SIZE, SIZE_TYPE>::push_back(const T &element)
 	{
 		// アサーションが有効である場合のみ，状態をチェックする。
 		openriichi_assert(m_elementsSize < m_elements.max_size());
@@ -403,14 +406,14 @@ namespace openriichi
 	}
 
 
-	template<class T, size_t SIZE, typename SizeType>
-	typename LimitedVector<T, SIZE, SizeType>::iterator LimitedVector<T, SIZE, SizeType>::insert(const_iterator iterator, const T &element)
+	template<class T, size_t SIZE, typename SIZE_TYPE>
+	typename LimitedVector<T, SIZE, SIZE_TYPE>::iterator LimitedVector<T, SIZE, SIZE_TYPE>::insert(const_iterator iterator, const T &element)
 	{
 		// アサーションが有効である場合のみ，引数をチェックする。
 		openriichi_assert(m_elements.begin() <= iterator && iterator <= m_elements.begin() + m_elementsSize && m_elementsSize < m_elements.max_size());
 
 		// 挿入位置以降にある要素を一つ後ろにずらす。
-		Elements::difference_type index = iterator - m_elements.begin();
+		Array::difference_type index = iterator - m_elements.begin();
 		if (index < m_elementsSize) {
 			for (auto i = m_elementsSize; i >= index && i > 0; --i) {
 				m_elements[i] = m_elements[i - 1];
@@ -425,14 +428,14 @@ namespace openriichi
 	}
 
 
-	template<class T, size_t SIZE, typename SizeType>
-	typename LimitedVector<T, SIZE, SizeType>::iterator LimitedVector<T, SIZE, SizeType>::erase(const_iterator iterator)
+	template<class T, size_t SIZE, typename SIZE_TYPE>
+	typename LimitedVector<T, SIZE, SIZE_TYPE>::iterator LimitedVector<T, SIZE, SIZE_TYPE>::erase(const_iterator iterator)
 	{
 		// アサーションが有効である場合のみ，引数をチェックする。
 		openriichi_assert(m_elements.begin() <= iterator && iterator < m_elements.begin() + m_elementsSize);
 
 		// 削除位置以降にある要素を一つ前にずらす。
-		Elements::difference_type index = iterator - m_elements.begin();
+		Array::difference_type index = iterator - m_elements.begin();
 		for (auto i = index; i + 1 < m_elementsSize; ++i)
 		{
 			m_elements[i] = m_elements[i + 1];
@@ -445,8 +448,8 @@ namespace openriichi
 	}
 
 
-	template<class T, size_t SIZE, typename SizeType>
-	void LimitedVector<T, SIZE, SizeType>::clear()
+	template<class T, size_t SIZE, typename SIZE_TYPE>
+	void LimitedVector<T, SIZE, SIZE_TYPE>::clear()
 	{
 		m_elementsSize = 0;
 	}
