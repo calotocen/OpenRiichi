@@ -375,3 +375,105 @@ bool MemorySavedTile::isTerminalsOrHonours() const
 	return ((Range::MIN_DESIGN_TYPE_HONOURS <= designType && designType <= Range::MAX_DESIGN_TYPE_HONOURS)
 		|| (number == Range::MIN_NUMBER || number == Range::MAX_NUMBER));
 }
+
+
+MemorySavedTile MemorySavedTile::getPrecedingTile() const
+{
+	MemorySavedTile tile;
+	const TileDesign &design = getDesign();
+	int number = getNumber();
+
+	switch (design.getId()) {
+	case TileDesigns::CIRCLES_ID:
+	case TileDesigns::BAMBOO_ID:
+	case TileDesigns::CHARACTERS_ID:
+		if (number > 1) {
+			--number;
+		} else {
+			number = 9;
+		}
+		tile = MemorySavedTile(design, number);
+		break;
+
+	case TileDesigns::EAST_ID:
+		tile = MemorySavedTile(TileDesigns::NORTH);
+		break;
+
+	case TileDesigns::SOUTH_ID:
+		tile = MemorySavedTile(TileDesigns::EAST);
+		break;
+
+	case TileDesigns::WEST_ID:
+		tile = MemorySavedTile(TileDesigns::SOUTH);
+		break;
+
+	case TileDesigns::NORTH_ID:
+		tile = MemorySavedTile(TileDesigns::WEST);
+		break;
+
+	case TileDesigns::RED_ID:
+		tile = MemorySavedTile(TileDesigns::GREEN);
+		break;
+
+	case TileDesigns::WHITE_ID:
+		tile = MemorySavedTile(TileDesigns::RED);
+		break;
+
+	case TileDesigns::GREEN_ID:
+		tile = MemorySavedTile(TileDesigns::WHITE);
+		break;
+	}
+
+	return tile;
+}
+
+
+MemorySavedTile MemorySavedTile::getSucceedingTile() const
+{
+	MemorySavedTile tile;
+	const TileDesign &design = getDesign();
+	int number = getNumber();
+
+	switch (design.getId()) {
+	case TileDesigns::CIRCLES_ID:
+	case TileDesigns::BAMBOO_ID:
+	case TileDesigns::CHARACTERS_ID:
+		if (number < 9) {
+			++number;
+		} else {
+			number = 1;
+		}
+		tile = MemorySavedTile(design, number);
+		break;
+
+	case TileDesigns::EAST_ID:
+		tile = MemorySavedTile(TileDesigns::SOUTH);
+		break;
+
+	case TileDesigns::SOUTH_ID:
+		tile = MemorySavedTile(TileDesigns::WEST);
+		break;
+
+	case TileDesigns::WEST_ID:
+		tile = MemorySavedTile(TileDesigns::NORTH);
+		break;
+
+	case TileDesigns::NORTH_ID:
+		tile = MemorySavedTile(TileDesigns::EAST);
+		break;
+
+	case TileDesigns::RED_ID:
+		tile = MemorySavedTile(TileDesigns::WHITE);
+		break;
+
+	case TileDesigns::WHITE_ID:
+		tile = MemorySavedTile(TileDesigns::GREEN);
+		break;
+
+	case TileDesigns::GREEN_ID:
+		tile = MemorySavedTile(TileDesigns::RED);
+		break;
+	}
+
+	return tile;
+}

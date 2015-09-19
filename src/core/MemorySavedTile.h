@@ -299,5 +299,19 @@ namespace openriichi
 		 * @retval false 幺九牌ではなかった。
 		 */
 		bool isTerminalsOrHonours() const;
+
+		/**
+		 * 前位牌を取得する。
+		 *
+		 * @return 前位牌。
+		 */
+		MemorySavedTile getPrecedingTile() const;
+
+		/**
+		 * 次位牌を取得する。
+		 * 
+		 * @return 次位牌。
+		 */
+		MemorySavedTile getSucceedingTile() const;
 	};
 }
