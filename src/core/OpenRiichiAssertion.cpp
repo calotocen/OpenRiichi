@@ -26,9 +26,3 @@ OpenRiichiAssertion::OpenRiichiAssertion(const char *expression, const char *fil
 {
 	snprintf(m_message, sizeof(m_message), "assertion failed: %s, file=%s, line=%u", expression, filePath, lineNo);
 }
-
-
-OpenRiichiAssertion::~OpenRiichiAssertion()
-{
-	// 何もしない。
-}

@@ -37,7 +37,7 @@ namespace openriichi
 		/**
 		 * 例外を破棄する。
 		 */
-		virtual ~OpenRiichiException();
+		virtual ~OpenRiichiException() = default;
 
 
 	public:

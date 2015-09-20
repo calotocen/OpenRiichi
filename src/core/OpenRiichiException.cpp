@@ -32,12 +32,6 @@ OpenRiichiException::OpenRiichiException(const char *message)
 }
 
 
-OpenRiichiException::~OpenRiichiException()
-{
-	// 何もしない。
-}
-
-
 const char *OpenRiichiException::getMessage() const
 {
 	return m_message;

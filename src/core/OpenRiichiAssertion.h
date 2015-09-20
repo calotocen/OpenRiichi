@@ -36,7 +36,7 @@ namespace openriichi
 		/**
 		 * 例外を破棄する。
 		 */
-		virtual ~OpenRiichiAssertion();
+		virtual ~OpenRiichiAssertion() = default;
 	};
 }
 
