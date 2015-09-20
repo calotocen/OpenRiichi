@@ -26,10 +26,6 @@ namespace openriichi
 	 */
 	class Wind : public Enumeration<Wind>
 	{
-	private:
-		int m_id;
-
-
 	public:
 		/**
 		 * 風を生成する。
