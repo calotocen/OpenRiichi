@@ -57,7 +57,7 @@ MemorySavedSet::MemorySavedSet(const Tile & tile1, const Tile & tile2, const Til
 	, m_tiles()
 {
 	// アサーションが有効である場合のみ，引数をチェックする。
-#if OPENRIICHI_ENABLE_ASSERTION == 1
+#if defined(OPENRIICHI_ENABLE_ASSERTION) && OPENRIICHI_ENABLE_ASSERTION != 0
 	int number[3] = { tile1.getNumber(), tile2.getNumber(), tile3.getNumber() };
 	sort(number, number + 3);
 
@@ -66,7 +66,7 @@ MemorySavedSet::MemorySavedSet(const Tile & tile1, const Tile & tile2, const Til
 		|| (number[0] == number[1] && number[0] == number[2]));
 	openriichi_assert(meldType == MeldTypes::NONE || meldType == MeldTypes::LEFT || meldType == MeldTypes::ACROSS || meldType == MeldTypes::RIGHT);
 	openriichi_assert((number[0] == number[1]) || (meldType == MeldTypes::NONE || meldType == MeldTypes::LEFT));
-#endif	// !defined(NDEBUG)
+#endif	// defined(OPENRIICHI_ENABLE_ASSERTION) && OPENRIICHI_ENABLE_ASSERTION != 0
 
 	// 面子属性を設定する。
 	if (tile1.getNumber() != tile2.getNumber()) {

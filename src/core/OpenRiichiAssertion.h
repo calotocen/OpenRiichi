@@ -41,8 +41,8 @@ namespace openriichi
 }
 
 
-#if OPENRIICHI_ENABLE_ASSERTION == 0
+#if !defined(OPENRIICHI_ENABLE_ASSERTION) || OPENRIICHI_ENABLE_ASSERTION == 0
 #	define openriichi_assert(expression) ((void)0)
-#else // OPENRIICHI_ENABLE_ASSERTION == 0
+#else // !defined(OPENRIICHI_ENABLE_ASSERTION) || OPENRIICHI_ENABLE_ASSERTION == 0
 #	define openriichi_assert(expression) if (expression) {} else throw openriichi::OpenRiichiAssertion(#expression, __FILE__, __LINE__)
-#endif // OPENRIICHI_ENABLE_ASSERTION == 0
+#endif // !defined(OPENRIICHI_ENABLE_ASSERTION) || OPENRIICHI_ENABLE_ASSERTION == 0

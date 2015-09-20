@@ -47,9 +47,9 @@ namespace openriichi
 	/// コンストラクタ (全指定) をテストする。
 	TEST_F(DiscardTest, testConstructWithAll)
 	{
-#if OPENRIICHI_ENABLE_ASSERTION == 1
+#if defined(OPENRIICHI_ENABLE_ASSERTION) && OPENRIICHI_ENABLE_ASSERTION != 0
 		ASSERT_THROW(Discard(P1, DiscardSource(3)), OpenRiichiAssertion);
-#endif // OPENRIICHI_ENABLE_ASSERTION == 1
+#endif // defined(OPENRIICHI_ENABLE_ASSERTION) && OPENRIICHI_ENABLE_ASSERTION != 0
 	}
 
 	/// getTile 関数をテストする。

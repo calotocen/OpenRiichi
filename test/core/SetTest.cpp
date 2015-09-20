@@ -74,10 +74,10 @@ namespace openriichi
 		Set pair(P5, P5R);
 		ASSERT_EQ((Set::Tiles{ P5, P5R }), pair.getTiles());
 
-#if OPENRIICHI_ENABLE_ASSERTION == 1
+#if defined(OPENRIICHI_ENABLE_ASSERTION) && OPENRIICHI_ENABLE_ASSERTION != 0
 		ASSERT_THROW(Set(P1, P2), OpenRiichiAssertion);
 		ASSERT_THROW(Set(TN, NN), OpenRiichiAssertion);
-#endif // OPENRIICHI_ENABLE_ASSERTION == 1
+#endif // defined(OPENRIICHI_ENABLE_ASSERTION) && OPENRIICHI_ENABLE_ASSERTION != 0
 	}
 
 	/// コンストラクタ (順子，刻子用) をテストする。
@@ -89,14 +89,14 @@ namespace openriichi
 		ASSERT_EQ((Set::Tiles{ S4, S5R, S6 }), chow.getTiles());
 		ASSERT_EQ((Set::Tiles{ S5, S5R, S5R }), pung.getTiles());
 
-#if OPENRIICHI_ENABLE_ASSERTION == 1
+#if defined(OPENRIICHI_ENABLE_ASSERTION) && OPENRIICHI_ENABLE_ASSERTION != 0
 		ASSERT_THROW(Set(P1, P2, S3), OpenRiichiAssertion);
 		ASSERT_THROW(Set(P1, P1, S1), OpenRiichiAssertion);
 		ASSERT_THROW(Set(P1, P2, P2), OpenRiichiAssertion);
 		ASSERT_THROW(Set(P1, P2, P3, MeldType(4)), OpenRiichiAssertion);
 		ASSERT_THROW(Set(P1, P2, P3, MeldTypes::ACROSS), OpenRiichiAssertion);
 		ASSERT_THROW(Set(P1, P2, P3, MeldTypes::RIGHT), OpenRiichiAssertion);
-#endif // OPENRIICHI_ENABLE_ASSERTION == 1
+#endif // defined(OPENRIICHI_ENABLE_ASSERTION) && OPENRIICHI_ENABLE_ASSERTION != 0
 	}
 
 	/// コンストラクタ (槓子用) をテストする。
@@ -106,14 +106,14 @@ namespace openriichi
 
 		ASSERT_EQ((Set::Tiles{ M5, M5, M5R, M5R }), kong.getTiles());
 
-#if OPENRIICHI_ENABLE_ASSERTION == 1
+#if defined(OPENRIICHI_ENABLE_ASSERTION) && OPENRIICHI_ENABLE_ASSERTION != 0
 		ASSERT_THROW(Set(TN, TN, TN, NN), OpenRiichiAssertion);
 		ASSERT_THROW(Set(P1, P1, P1, P2), OpenRiichiAssertion);
 		ASSERT_THROW(Set(P1, P1, P1, P1, MeldedKongType(3), MeldTypes::LEFT), OpenRiichiAssertion);
 		ASSERT_THROW(Set(P1, P1, P1, P1, MeldedKongTypes::LITTLE, MeldType(4)), OpenRiichiAssertion);
 		ASSERT_THROW(Set(P1, P1, P1, P1, MeldedKongTypes::NO, MeldTypes::LEFT), OpenRiichiAssertion);
 		ASSERT_THROW(Set(P1, P1, P1, P1, MeldedKongTypes::BIG, MeldTypes::NONE), OpenRiichiAssertion);
-#endif // OPENRIICHI_ENABLE_ASSERTION == 1
+#endif // defined(OPENRIICHI_ENABLE_ASSERTION) && OPENRIICHI_ENABLE_ASSERTION != 0
 	}
 
 	/// getArrangement 関数をテストする。

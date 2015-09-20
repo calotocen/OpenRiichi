@@ -17,10 +17,7 @@
 
 
 #if !defined(OPENRIICHI_DEBUG)
-#	if !defined(_DEBUG)
-		/// デバッグフラグ。
-#		define OPENRIICHI_DEBUG (0)
-#	else // defined(_DEBUG)
+#	if defined(_DEBUG)
 		/// デバッグフラグ。
 #		define OPENRIICHI_DEBUG (1)
 #	endif // defined(_DEBUG)
@@ -28,11 +25,8 @@
 
 
 #if !defined(OPENRIICHI_ENABLE_ASSERTION)
-#	if OPENRIICHI_DEBUG == 0
-		/// アサーションフラグ。
-#		define OPENRIICHI_ENABLE_ASSERTION (0)
-#	else // OPENRIICHI_DEBUG == 0
+#	if defined(OPENRIICHI_DEBUG) && OPENRIICHI_DEBUG != 0
 		/// アサーションフラグ。
 #		define OPENRIICHI_ENABLE_ASSERTION (1)
-#	endif // OPENRIICHI_DEBUG == 0
+#	endif // OPENRIICHI_DEBUG != 0
 #endif // !defined(OPENRIICHI_ENABLE_ASSERTION)

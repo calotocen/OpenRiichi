@@ -57,9 +57,9 @@ namespace openriichi
 		dice.setNumber(1);
 		ASSERT_EQ(1, dice.getNumber());
 
-#if OPENRIICHI_ENABLE_ASSERTION == 1
+#if defined(OPENRIICHI_ENABLE_ASSERTION) && OPENRIICHI_ENABLE_ASSERTION != 0
 		ASSERT_THROW(dice.setNumber(0), OpenRiichiAssertion);
 		ASSERT_THROW(dice.setNumber(7), OpenRiichiAssertion);
-#endif // OPENRIICHI_ENABLE_ASSERTION == 1
+#endif // defined(OPENRIICHI_ENABLE_ASSERTION) && OPENRIICHI_ENABLE_ASSERTION != 0
 	}
 }

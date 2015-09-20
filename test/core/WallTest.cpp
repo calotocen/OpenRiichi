@@ -203,9 +203,9 @@ namespace openriichi
 		ASSERT_EQ(HK, wall3.drawReplacementTile());
 		ASSERT_EQ(HT, wall3.drawReplacementTile());
 
-#if OPENRIICHI_ENABLE_ASSERTION == 1
+#if defined(OPENRIICHI_ENABLE_ASSERTION) && OPENRIICHI_ENABLE_ASSERTION != 0
 		ASSERT_THROW(wall3.breaks(136), OpenRiichiAssertion);
-#endif // OPENRIICHI_ENABLE_ASSERTION == 1
+#endif // defined(OPENRIICHI_ENABLE_ASSERTION) && OPENRIICHI_ENABLE_ASSERTION != 0
 	}
 
 	/// draw 関数をテストする。
@@ -221,10 +221,10 @@ namespace openriichi
 			ASSERT_EQ(*it, wall2.draw());
 		}
 
-#if OPENRIICHI_ENABLE_ASSERTION == 1
+#if defined(OPENRIICHI_ENABLE_ASSERTION) && OPENRIICHI_ENABLE_ASSERTION != 0
 		ASSERT_THROW(wall1.draw(), OpenRiichiAssertion);
 		ASSERT_THROW(wall2.draw(), OpenRiichiAssertion);
-#endif // OPENRIICHI_ENABLE_ASSERTION == 1
+#endif // defined(OPENRIICHI_ENABLE_ASSERTION) && OPENRIICHI_ENABLE_ASSERTION != 0
 	}
 
 	/// drawReplacementTile 関数をテストする。
@@ -240,10 +240,10 @@ namespace openriichi
 			ASSERT_EQ(TILES2[n + (((n % 2) == 0) ? 12 : 14)], wall2.drawReplacementTile());
 		}
 
-#if OPENRIICHI_ENABLE_ASSERTION == 1
+#if defined(OPENRIICHI_ENABLE_ASSERTION) && OPENRIICHI_ENABLE_ASSERTION != 0
 		ASSERT_THROW(wall1.drawReplacementTile(), OpenRiichiAssertion);
 		ASSERT_THROW(wall2.drawReplacementTile(), OpenRiichiAssertion);
-#endif // OPENRIICHI_ENABLE_ASSERTION == 1
+#endif // defined(OPENRIICHI_ENABLE_ASSERTION) && OPENRIICHI_ENABLE_ASSERTION != 0
 	}
 
 	/// revealNewDora 関数をテストする。
@@ -255,51 +255,51 @@ namespace openriichi
 		ASSERT_EQ(Wall::Doras{ HT }, wall.getDoras());
 		ASSERT_EQ(Wall::Doras{ HT }, wall.getUraDoras());
 
-#if OPENRIICHI_ENABLE_ASSERTION == 1
+#if defined(OPENRIICHI_ENABLE_ASSERTION) && OPENRIICHI_ENABLE_ASSERTION != 0
 		ASSERT_THROW(wall.revealNewDora(), OpenRiichiAssertion);
-#endif // OPENRIICHI_ENABLE_ASSERTION == 1
+#endif // defined(OPENRIICHI_ENABLE_ASSERTION) && OPENRIICHI_ENABLE_ASSERTION != 0
 
 		wall.drawReplacementTile();
 		wall.revealNewDora();
 		ASSERT_EQ((Wall::Doras{ HT, HT }), wall.getDoras());
 		ASSERT_EQ((Wall::Doras{ HT, HT }), wall.getUraDoras());
 
-#if OPENRIICHI_ENABLE_ASSERTION == 1
+#if defined(OPENRIICHI_ENABLE_ASSERTION) && OPENRIICHI_ENABLE_ASSERTION != 0
 		ASSERT_THROW(wall.revealNewDora(), OpenRiichiAssertion);
-#endif // OPENRIICHI_ENABLE_ASSERTION == 1
+#endif // defined(OPENRIICHI_ENABLE_ASSERTION) && OPENRIICHI_ENABLE_ASSERTION != 0
 
 		wall.drawReplacementTile();
 		wall.revealNewDora();
 		ASSERT_EQ((Wall::Doras{ HT, HT, HK }), wall.getDoras());
 		ASSERT_EQ((Wall::Doras{ HT, HT, HK }), wall.getUraDoras());
 
-#if OPENRIICHI_ENABLE_ASSERTION == 1
+#if defined(OPENRIICHI_ENABLE_ASSERTION) && OPENRIICHI_ENABLE_ASSERTION != 0
 		ASSERT_THROW(wall.revealNewDora(), OpenRiichiAssertion);
-#endif // OPENRIICHI_ENABLE_ASSERTION == 1
+#endif // defined(OPENRIICHI_ENABLE_ASSERTION) && OPENRIICHI_ENABLE_ASSERTION != 0
 
 		wall.drawReplacementTile();
 		wall.revealNewDora();
 		ASSERT_EQ((Wall::Doras{ HT, HT, HK, HK }), wall.getDoras());
 		ASSERT_EQ((Wall::Doras{ HT, HT, HK, HK }), wall.getUraDoras());
 
-#if OPENRIICHI_ENABLE_ASSERTION == 1
+#if defined(OPENRIICHI_ENABLE_ASSERTION) && OPENRIICHI_ENABLE_ASSERTION != 0
 		ASSERT_THROW(wall.revealNewDora(), OpenRiichiAssertion);
-#endif // OPENRIICHI_ENABLE_ASSERTION == 1
+#endif // defined(OPENRIICHI_ENABLE_ASSERTION) && OPENRIICHI_ENABLE_ASSERTION != 0
 
 		for (auto n = 4; n <= 65; ++n) {
 			wall.drawReplacementTile();
 			wall.revealNewDora();
 			ASSERT_EQ(n + 1, wall.getDoras().size());
 
-#if OPENRIICHI_ENABLE_ASSERTION == 1
+#if defined(OPENRIICHI_ENABLE_ASSERTION) && OPENRIICHI_ENABLE_ASSERTION != 0
 			ASSERT_THROW(wall.revealNewDora(), OpenRiichiAssertion);
-#endif // OPENRIICHI_ENABLE_ASSERTION == 1
+#endif // defined(OPENRIICHI_ENABLE_ASSERTION) && OPENRIICHI_ENABLE_ASSERTION != 0
 		}
 
-#if OPENRIICHI_ENABLE_ASSERTION == 1
+#if defined(OPENRIICHI_ENABLE_ASSERTION) && OPENRIICHI_ENABLE_ASSERTION != 0
 		wall.drawReplacementTile();
 		ASSERT_THROW(wall.revealNewDora(), OpenRiichiAssertion);
-#endif // OPENRIICHI_ENABLE_ASSERTION == 1
+#endif // defined(OPENRIICHI_ENABLE_ASSERTION) && OPENRIICHI_ENABLE_ASSERTION != 0
 	}
 
 	/// countRemainingTiles 関数をテストする。

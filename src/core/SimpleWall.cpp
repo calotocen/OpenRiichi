@@ -44,9 +44,9 @@ SimpleWall::SimpleWall(const Tiles & tiles)
 	, m_uraDoras()
 	, m_index(0)
 	, m_deadWallIndex(INITIAL_DEAD_WALL_INDEX)
-#if OPENRIICHI_ENABLE_ASSERTION == 1
+#if defined(OPENRIICHI_ENABLE_ASSERTION) && OPENRIICHI_ENABLE_ASSERTION != 0
 	, m_lastRevealedDoraIndex(TILES_SIZE)
-#endif // OPENRIICHI_ENABLE_ASSERTION == 1
+#endif // defined(OPENRIICHI_ENABLE_ASSERTION) && OPENRIICHI_ENABLE_ASSERTION != 0
 {
 	// 何もしない。
 }
@@ -109,9 +109,9 @@ void SimpleWall::breaks(int index)
 	m_uraDoras.clear();
 	m_index = 0;
 	m_deadWallIndex = INITIAL_DEAD_WALL_INDEX;
-#if OPENRIICHI_ENABLE_ASSERTION == 1
+#if defined(OPENRIICHI_ENABLE_ASSERTION) && OPENRIICHI_ENABLE_ASSERTION != 0
 	m_lastRevealedDoraIndex = TILES_SIZE;
-#endif // OPENRIICHI_ENABLE_ASSERTION == 1
+#endif // defined(OPENRIICHI_ENABLE_ASSERTION) && OPENRIICHI_ENABLE_ASSERTION != 0
 }
 
 
@@ -154,11 +154,11 @@ void SimpleWall::revealNewDora()
 	// 現在のドラ表示牌の位置を計算する。
 	uint8_t currentDoraIndicatorIndex = TILES_SIZE - (3 + INITIAL_DEAD_WALL_INDEX - m_deadWallIndex) * 2;
 
-#if OPENRIICHI_ENABLE_ASSERTION == 1
+#if defined(OPENRIICHI_ENABLE_ASSERTION) && OPENRIICHI_ENABLE_ASSERTION != 0
 	// アサーションが有効である場合のみ，状態をチェック・更新する。
 	openriichi_assert(currentDoraIndicatorIndex < m_lastRevealedDoraIndex);
 	m_lastRevealedDoraIndex = currentDoraIndicatorIndex;
-#endif // OPENRIICHI_ENABLE_ASSERTION == 1
+#endif // defined(OPENRIICHI_ENABLE_ASSERTION) && OPENRIICHI_ENABLE_ASSERTION != 0
 
 	// ドラをめくる。
 	m_doras.push_back(m_tiles[currentDoraIndicatorIndex].getSucceedingTile());

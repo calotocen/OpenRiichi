@@ -78,21 +78,21 @@ namespace openriichi
 	/// コンストラクタ (字牌用) をテストする。
 	TEST_F(TileTest, testConstructForHonours)
 	{
-#if OPENRIICHI_ENABLE_ASSERTION == 1
+#if defined(OPENRIICHI_ENABLE_ASSERTION) && OPENRIICHI_ENABLE_ASSERTION != 0
 		ASSERT_THROW((Tile(TileDesigns::CIRCLES)), OpenRiichiAssertion);
 		// ASSERT_THROW((Tile(TileDesigns::EAST, TileAttributeTemplate<2>())), OpenRiichiAssertion);
-#endif // OPENRIICHI_ENABLE_ASSERTION == 1
+#endif // defined(OPENRIICHI_ENABLE_ASSERTION) && OPENRIICHI_ENABLE_ASSERTION != 0
 	}
 
 	/// コンストラクタ (数牌用) をテストする。
 	TEST_F(TileTest, testConstructForSuits)
 	{
-#if OPENRIICHI_ENABLE_ASSERTION == 1
+#if defined(OPENRIICHI_ENABLE_ASSERTION) && OPENRIICHI_ENABLE_ASSERTION != 0
 		ASSERT_THROW(Tile(TileDesigns::EAST, 1), OpenRiichiAssertion);
 		ASSERT_THROW(Tile(TileDesigns::CIRCLES, 0), OpenRiichiAssertion);
 		ASSERT_THROW(Tile(TileDesigns::CIRCLES, 10), OpenRiichiAssertion);
 		// ASSERT_THROW((Tile(TileDesigns::CIRCLES, 1, TileAttributeTemplate<2>())), OpenRiichiAssertion);
-#endif // OPENRIICHI_ENABLE_ASSERTION == 1
+#endif // defined(OPENRIICHI_ENABLE_ASSERTION) && OPENRIICHI_ENABLE_ASSERTION != 0
 	}
 
 	/// ID を用いた牌の生成をテストする。
@@ -120,7 +120,7 @@ namespace openriichi
 		ASSERT_EQ(Tile(TileDesigns::WHITE), Tile(9, 0));
 		ASSERT_EQ(Tile(TileDesigns::GREEN), Tile(10, 0));
 
-#if OPENRIICHI_ENABLE_ASSERTION == 1
+#if defined(OPENRIICHI_ENABLE_ASSERTION) && OPENRIICHI_ENABLE_ASSERTION != 0
 		ASSERT_THROW(Tile(0, 0, 0), OpenRiichiAssertion);
 		ASSERT_THROW(Tile(11, 0, 0), OpenRiichiAssertion);
 		ASSERT_THROW(Tile(1, 0, 0), OpenRiichiAssertion);
@@ -129,7 +129,7 @@ namespace openriichi
 		ASSERT_THROW(Tile(10, 1, 0), OpenRiichiAssertion);
 		ASSERT_THROW(Tile(1, 1, -1), OpenRiichiAssertion);
 		ASSERT_THROW(Tile(1, 1, 2), OpenRiichiAssertion);
-#endif // OPENRIICHI_ENABLE_ASSERTION == 1
+#endif // defined(OPENRIICHI_ENABLE_ASSERTION) && OPENRIICHI_ENABLE_ASSERTION != 0
 	}
 
 	/// getDesign 関数をテストする。

@@ -40,9 +40,9 @@ namespace openriichi
 	/// コンストラクタ (全パラメータ指定版) をテストする。
 	TEST_F(TileDesignsTest, testConstructUsingAllParameters)
 	{
-#if OPENRIICHI_ENABLE_ASSERTION == 1
+#if defined(OPENRIICHI_ENABLE_ASSERTION) && OPENRIICHI_ENABLE_ASSERTION != 0
 		ASSERT_THROW(TileDesign(11, 0), OpenRiichiAssertion);
-#endif // OPENRIICHI_ENABLE_ASSERTION == 1
+#endif // defined(OPENRIICHI_ENABLE_ASSERTION) && OPENRIICHI_ENABLE_ASSERTION != 0
 	}
 
 	/// getId 関数をテストする。

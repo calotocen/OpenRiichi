@@ -29,9 +29,9 @@ namespace openriichi
 	/// コンストラクタ (初期化子リスト指定) をテストする。
 	TEST_F(LimitedVectorTest, testConstructWithInitializerList)
 	{
-#if OPENRIICHI_ENABLE_ASSERTION == 1
+#if defined(OPENRIICHI_ENABLE_ASSERTION) && OPENRIICHI_ENABLE_ASSERTION != 0
 		ASSERT_THROW((LimitedVector<int, 10>{ 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10 }), OpenRiichiAssertion);
-#endif // OPENRIICHI_ENABLE_ASSERTION == 1
+#endif // defined(OPENRIICHI_ENABLE_ASSERTION) && OPENRIICHI_ENABLE_ASSERTION != 0
 	}
 
 	/// size 関数をテストする。
@@ -56,10 +56,10 @@ namespace openriichi
 		limitedVector.at(9) = 12;
 		ASSERT_EQ((LimitedVector<int, 10>{ 10, 1, 2, 3, 4, 11, 6, 7, 8, 12 }), limitedVector);
 
-#if OPENRIICHI_ENABLE_ASSERTION == 1
+#if defined(OPENRIICHI_ENABLE_ASSERTION) && OPENRIICHI_ENABLE_ASSERTION != 0
 		ASSERT_THROW(limitedVector.at(10) = 13, OpenRiichiAssertion);
 		ASSERT_THROW((LimitedVector<int, 10>().at(0) = 14), OpenRiichiAssertion);
-#endif // OPENRIICHI_ENABLE_ASSERTION == 1
+#endif // defined(OPENRIICHI_ENABLE_ASSERTION) && OPENRIICHI_ENABLE_ASSERTION != 0
 	}
 
 	/// at 関数 (const 版) をテストする。
@@ -71,9 +71,9 @@ namespace openriichi
 		ASSERT_EQ(5, limitedVector.at(5));
 		ASSERT_EQ(9, limitedVector.at(9));
 
-#if OPENRIICHI_ENABLE_ASSERTION == 1
+#if defined(OPENRIICHI_ENABLE_ASSERTION) && OPENRIICHI_ENABLE_ASSERTION != 0
 		ASSERT_THROW(limitedVector.at(10), OpenRiichiAssertion);
-#endif // OPENRIICHI_ENABLE_ASSERTION == 1
+#endif // defined(OPENRIICHI_ENABLE_ASSERTION) && OPENRIICHI_ENABLE_ASSERTION != 0
 	}
 
 	/// front 関数をテストする。
@@ -85,9 +85,9 @@ namespace openriichi
 		ASSERT_EQ(0, limitedVector1.front());
 		ASSERT_EQ(0, limitedVector2.front());
 
-#if OPENRIICHI_ENABLE_ASSERTION == 1
+#if defined(OPENRIICHI_ENABLE_ASSERTION) && OPENRIICHI_ENABLE_ASSERTION != 0
 		ASSERT_THROW((LimitedVector<int, 10>().front()), OpenRiichiAssertion);
-#endif // OPENRIICHI_ENABLE_ASSERTION == 1
+#endif // defined(OPENRIICHI_ENABLE_ASSERTION) && OPENRIICHI_ENABLE_ASSERTION != 0
 	}
 
 	/// back 関数をテストする。
@@ -99,9 +99,9 @@ namespace openriichi
 		ASSERT_EQ(0, limitedVector1.back());
 		ASSERT_EQ(9, limitedVector2.back());
 
-#if OPENRIICHI_ENABLE_ASSERTION == 1
+#if defined(OPENRIICHI_ENABLE_ASSERTION) && OPENRIICHI_ENABLE_ASSERTION != 0
 		ASSERT_THROW((LimitedVector<int, 10>().back()), OpenRiichiAssertion);
-#endif // OPENRIICHI_ENABLE_ASSERTION == 1
+#endif // defined(OPENRIICHI_ENABLE_ASSERTION) && OPENRIICHI_ENABLE_ASSERTION != 0
 	}
 
 	/// push_back 関数をテストする。
@@ -121,9 +121,9 @@ namespace openriichi
 		limitedVector.push_back(9);
 		ASSERT_EQ((LimitedVector<int, 10>{ 0, 1, 2, 3, 4, 5, 6, 7, 8, 9 }), limitedVector);
 
-#if OPENRIICHI_ENABLE_ASSERTION == 1
+#if defined(OPENRIICHI_ENABLE_ASSERTION) && OPENRIICHI_ENABLE_ASSERTION != 0
 		ASSERT_THROW(limitedVector.push_back(10), OpenRiichiAssertion);
-#endif // OPENRIICHI_ENABLE_ASSERTION == 1
+#endif // defined(OPENRIICHI_ENABLE_ASSERTION) && OPENRIICHI_ENABLE_ASSERTION != 0
 	}
 
 	/// begin 関数 (iterator 返却版) をテストする。
@@ -274,12 +274,12 @@ namespace openriichi
 		iterator = limitedVector.insert(iterator + 1, 10);
 		ASSERT_EQ((LimitedVector<int, 10>{ 2, 4, 5, 6, 7, 8, 9, 10, 1, 3 }), limitedVector);
 
-#if OPENRIICHI_ENABLE_ASSERTION == 1
+#if defined(OPENRIICHI_ENABLE_ASSERTION) && OPENRIICHI_ENABLE_ASSERTION != 0
 		LimitedVector<int, 10> limitedVector1;
 		LimitedVector<int, 10> limitedVector2{ 0, 1, 2, 3, 4, 5, 6, 7, 8, 9 };
 		ASSERT_THROW(limitedVector1.insert(limitedVector1.begin() + 1, 10), OpenRiichiAssertion);
 		ASSERT_THROW(limitedVector2.insert(limitedVector2.begin(), 10), OpenRiichiAssertion);
-#endif // OPENRIICHI_ENABLE_ASSERTION == 1
+#endif // defined(OPENRIICHI_ENABLE_ASSERTION) && OPENRIICHI_ENABLE_ASSERTION != 0
 	}
 
 	/// erase 関数をテストする。
@@ -331,12 +331,12 @@ namespace openriichi
 		limitedVector.erase(limitedVector.end() - 1);
 		ASSERT_EQ((LimitedVector<int, 10>{ 17, 6, 7, 9, 10, 12, 13, 14, 15 }), limitedVector);
 
-#if OPENRIICHI_ENABLE_ASSERTION == 1
+#if defined(OPENRIICHI_ENABLE_ASSERTION) && OPENRIICHI_ENABLE_ASSERTION != 0
 		LimitedVector<int, 10> limitedVector1;
 		LimitedVector<int, 10> limitedVector2{ 0, 1, 2, 3, 4, 5, 6, 7, 8, 9 };
 		ASSERT_THROW(limitedVector1.erase(limitedVector1.begin()), OpenRiichiAssertion);
 		ASSERT_THROW(limitedVector2.erase(limitedVector2.end()), OpenRiichiAssertion);
-#endif // OPENRIICHI_ENABLE_ASSERTION == 1
+#endif // defined(OPENRIICHI_ENABLE_ASSERTION) && OPENRIICHI_ENABLE_ASSERTION != 0
 	}
 
 	/// clear 関数をテストする。
@@ -419,10 +419,10 @@ namespace openriichi
 	/// = 演算子をテストする。
 	TEST_F(LimitedVectorTest, testSubstitute)
 	{
-#if OPENRIICHI_ENABLE_ASSERTION == 1
+#if defined(OPENRIICHI_ENABLE_ASSERTION) && OPENRIICHI_ENABLE_ASSERTION != 0
 		LimitedVector<int, 10> limitedVector;
 		ASSERT_THROW((limitedVector = { 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10 }), OpenRiichiAssertion);
-#endif // OPENRIICHI_ENABLE_ASSERTION == 1
+#endif // defined(OPENRIICHI_ENABLE_ASSERTION) && OPENRIICHI_ENABLE_ASSERTION != 0
 	}
 
 	/// [] 演算子 (非 const 版) をテストする。
@@ -435,10 +435,10 @@ namespace openriichi
 		limitedVector[9] = 12;
 		ASSERT_EQ((LimitedVector<int, 10>{ 10, 1, 2, 3, 4, 11, 6, 7, 8, 12 }), limitedVector);
 
-#if OPENRIICHI_ENABLE_ASSERTION == 1
+#if defined(OPENRIICHI_ENABLE_ASSERTION) && OPENRIICHI_ENABLE_ASSERTION != 0
 		ASSERT_THROW(limitedVector[10] = 13, OpenRiichiAssertion);
 		ASSERT_THROW((LimitedVector<int, 10>()[0] = 14), OpenRiichiAssertion);
-#endif // OPENRIICHI_ENABLE_ASSERTION == 1
+#endif // defined(OPENRIICHI_ENABLE_ASSERTION) && OPENRIICHI_ENABLE_ASSERTION != 0
 	}
 
 	/// at 関数 (const 版) をテストする。
@@ -450,8 +450,8 @@ namespace openriichi
 		ASSERT_EQ(5, limitedVector[5]);
 		ASSERT_EQ(9, limitedVector[9]);
 
-#if OPENRIICHI_ENABLE_ASSERTION == 1
+#if defined(OPENRIICHI_ENABLE_ASSERTION) && OPENRIICHI_ENABLE_ASSERTION != 0
 		ASSERT_THROW(limitedVector[10], OpenRiichiAssertion);
-#endif // OPENRIICHI_ENABLE_ASSERTION == 1
+#endif // defined(OPENRIICHI_ENABLE_ASSERTION) && OPENRIICHI_ENABLE_ASSERTION != 0
 	}
 }
