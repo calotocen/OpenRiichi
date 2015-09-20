@@ -305,13 +305,13 @@ namespace openriichi
 		 *
 		 * @return 前位牌。
 		 */
-		MemorySavedTile getPrecedingTile() const;
+		MemorySavedTile getPreviousTile() const;
 
 		/**
 		 * 次位牌を取得する。
 		 * 
 		 * @return 次位牌。
 		 */
-		MemorySavedTile getSucceedingTile() const;
+		MemorySavedTile getNextTile() const;
 	};
 }

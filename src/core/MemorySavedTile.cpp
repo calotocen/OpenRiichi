@@ -377,7 +377,7 @@ bool MemorySavedTile::isTerminalsOrHonours() const
 }
 
 
-MemorySavedTile MemorySavedTile::getPrecedingTile() const
+MemorySavedTile MemorySavedTile::getPreviousTile() const
 {
 	MemorySavedTile tile;
 	const TileDesign &design = getDesign();
@@ -428,7 +428,7 @@ MemorySavedTile MemorySavedTile::getPrecedingTile() const
 }
 
 
-MemorySavedTile MemorySavedTile::getSucceedingTile() const
+MemorySavedTile MemorySavedTile::getNextTile() const
 {
 	MemorySavedTile tile;
 	const TileDesign &design = getDesign();

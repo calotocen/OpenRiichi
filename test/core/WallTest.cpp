@@ -329,12 +329,12 @@ namespace openriichi
 
 		ASSERT_EQ(doras, wall.getDoras());
 
-		doras.push_back(TILES1[130].getSucceedingTile());
+		doras.push_back(TILES1[130].getNextTile());
 		wall.revealNewDora();
 		ASSERT_EQ(doras, wall.getDoras());
 
 		for (auto i = 0; i < 65; ++i) {
-			doras.push_back(TILES1[130 - (1 + i) * 2].getSucceedingTile());
+			doras.push_back(TILES1[130 - (1 + i) * 2].getNextTile());
 			wall.drawReplacementTile();
 			wall.revealNewDora();
 			ASSERT_EQ(doras, wall.getDoras());
@@ -349,12 +349,12 @@ namespace openriichi
 
 		ASSERT_EQ(uraDoras, wall.getDoras());
 
-		uraDoras.push_back(TILES1[131].getSucceedingTile());
+		uraDoras.push_back(TILES1[131].getNextTile());
 		wall.revealNewDora();
 		ASSERT_EQ(uraDoras, wall.getDoras());
 
 		for (auto i = 0; i < 65; ++i) {
-			uraDoras.push_back(TILES1[131 - (1 + i) * 2].getSucceedingTile());
+			uraDoras.push_back(TILES1[131 - (1 + i) * 2].getNextTile());
 			wall.drawReplacementTile();
 			wall.revealNewDora();
 			ASSERT_EQ(uraDoras, wall.getDoras());

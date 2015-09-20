@@ -342,46 +342,46 @@ namespace openriichi
 		ASSERT_TRUE(HT.isTerminalsOrHonours());
 	}
 
-	/// getPrecedingTile 関数をテストする。
-	TEST_F(TileTest, testGetPrecedingTile)
+	/// getPreviousTile 関数をテストする。
+	TEST_F(TileTest, testGetPreviousTile)
 	{
-		ASSERT_EQ(Tile(TileDesigns::CIRCLES, 9), P1R.getPrecedingTile());
-		ASSERT_EQ(Tile(TileDesigns::CIRCLES, 2), P3.getPrecedingTile());
-		ASSERT_EQ(Tile(TileDesigns::CIRCLES, 8), P9.getPrecedingTile());
-		ASSERT_EQ(Tile(TileDesigns::BAMBOO, 9), S1.getPrecedingTile());
-		ASSERT_EQ(Tile(TileDesigns::BAMBOO, 4), S5R.getPrecedingTile());
-		ASSERT_EQ(Tile(TileDesigns::BAMBOO, 8), S9.getPrecedingTile());
-		ASSERT_EQ(Tile(TileDesigns::CHARACTERS, 9), M1.getPrecedingTile());
-		ASSERT_EQ(Tile(TileDesigns::CHARACTERS, 6), M7.getPrecedingTile());
-		ASSERT_EQ(Tile(TileDesigns::CHARACTERS, 8), M9.getPrecedingTile());
-		ASSERT_EQ(Tile(TileDesigns::NORTH), TNR.getPrecedingTile());
-		ASSERT_EQ(Tile(TileDesigns::EAST), NN.getPrecedingTile());
-		ASSERT_EQ(Tile(TileDesigns::SOUTH), SH.getPrecedingTile());
-		ASSERT_EQ(Tile(TileDesigns::WEST), PE.getPrecedingTile());
-		ASSERT_EQ(Tile(TileDesigns::GREEN), CHR.getPrecedingTile());
-		ASSERT_EQ(Tile(TileDesigns::RED), HK.getPrecedingTile());
-		ASSERT_EQ(Tile(TileDesigns::WHITE), HT.getPrecedingTile());
+		ASSERT_EQ(Tile(TileDesigns::CIRCLES, 9), P1R.getPreviousTile());
+		ASSERT_EQ(Tile(TileDesigns::CIRCLES, 2), P3.getPreviousTile());
+		ASSERT_EQ(Tile(TileDesigns::CIRCLES, 8), P9.getPreviousTile());
+		ASSERT_EQ(Tile(TileDesigns::BAMBOO, 9), S1.getPreviousTile());
+		ASSERT_EQ(Tile(TileDesigns::BAMBOO, 4), S5R.getPreviousTile());
+		ASSERT_EQ(Tile(TileDesigns::BAMBOO, 8), S9.getPreviousTile());
+		ASSERT_EQ(Tile(TileDesigns::CHARACTERS, 9), M1.getPreviousTile());
+		ASSERT_EQ(Tile(TileDesigns::CHARACTERS, 6), M7.getPreviousTile());
+		ASSERT_EQ(Tile(TileDesigns::CHARACTERS, 8), M9.getPreviousTile());
+		ASSERT_EQ(Tile(TileDesigns::NORTH), TNR.getPreviousTile());
+		ASSERT_EQ(Tile(TileDesigns::EAST), NN.getPreviousTile());
+		ASSERT_EQ(Tile(TileDesigns::SOUTH), SH.getPreviousTile());
+		ASSERT_EQ(Tile(TileDesigns::WEST), PE.getPreviousTile());
+		ASSERT_EQ(Tile(TileDesigns::GREEN), CHR.getPreviousTile());
+		ASSERT_EQ(Tile(TileDesigns::RED), HK.getPreviousTile());
+		ASSERT_EQ(Tile(TileDesigns::WHITE), HT.getPreviousTile());
 	}
 
-	/// getSucceedingTile 関数をテストする。
-	TEST_F(TileTest, testGetSucceedingTile)
+	/// getNextTile 関数をテストする。
+	TEST_F(TileTest, testGetNextTile)
 	{
-		ASSERT_EQ(Tile(TileDesigns::CIRCLES, 2), P1R.getSucceedingTile());
-		ASSERT_EQ(Tile(TileDesigns::CIRCLES, 4), P3.getSucceedingTile());
-		ASSERT_EQ(Tile(TileDesigns::CIRCLES, 1), P9.getSucceedingTile());
-		ASSERT_EQ(Tile(TileDesigns::BAMBOO, 2), S1.getSucceedingTile());
-		ASSERT_EQ(Tile(TileDesigns::BAMBOO, 6), S5R.getSucceedingTile());
-		ASSERT_EQ(Tile(TileDesigns::BAMBOO, 1), S9.getSucceedingTile());
-		ASSERT_EQ(Tile(TileDesigns::CHARACTERS, 2), M1.getSucceedingTile());
-		ASSERT_EQ(Tile(TileDesigns::CHARACTERS, 8), M7.getSucceedingTile());
-		ASSERT_EQ(Tile(TileDesigns::CHARACTERS, 1), M9.getSucceedingTile());
-		ASSERT_EQ(Tile(TileDesigns::SOUTH), TNR.getSucceedingTile());
-		ASSERT_EQ(Tile(TileDesigns::WEST), NN.getSucceedingTile());
-		ASSERT_EQ(Tile(TileDesigns::NORTH), SH.getSucceedingTile());
-		ASSERT_EQ(Tile(TileDesigns::EAST), PE.getSucceedingTile());
-		ASSERT_EQ(Tile(TileDesigns::WHITE), CHR.getSucceedingTile());
-		ASSERT_EQ(Tile(TileDesigns::GREEN), HK.getSucceedingTile());
-		ASSERT_EQ(Tile(TileDesigns::RED), HT.getSucceedingTile());
+		ASSERT_EQ(Tile(TileDesigns::CIRCLES, 2), P1R.getNextTile());
+		ASSERT_EQ(Tile(TileDesigns::CIRCLES, 4), P3.getNextTile());
+		ASSERT_EQ(Tile(TileDesigns::CIRCLES, 1), P9.getNextTile());
+		ASSERT_EQ(Tile(TileDesigns::BAMBOO, 2), S1.getNextTile());
+		ASSERT_EQ(Tile(TileDesigns::BAMBOO, 6), S5R.getNextTile());
+		ASSERT_EQ(Tile(TileDesigns::BAMBOO, 1), S9.getNextTile());
+		ASSERT_EQ(Tile(TileDesigns::CHARACTERS, 2), M1.getNextTile());
+		ASSERT_EQ(Tile(TileDesigns::CHARACTERS, 8), M7.getNextTile());
+		ASSERT_EQ(Tile(TileDesigns::CHARACTERS, 1), M9.getNextTile());
+		ASSERT_EQ(Tile(TileDesigns::SOUTH), TNR.getNextTile());
+		ASSERT_EQ(Tile(TileDesigns::WEST), NN.getNextTile());
+		ASSERT_EQ(Tile(TileDesigns::NORTH), SH.getNextTile());
+		ASSERT_EQ(Tile(TileDesigns::EAST), PE.getNextTile());
+		ASSERT_EQ(Tile(TileDesigns::WHITE), CHR.getNextTile());
+		ASSERT_EQ(Tile(TileDesigns::GREEN), HK.getNextTile());
+		ASSERT_EQ(Tile(TileDesigns::RED), HT.getNextTile());
 	}
 
 	/// == 演算子をテストする。

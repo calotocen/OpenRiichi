@@ -161,8 +161,8 @@ void SimpleWall::revealNewDora()
 #endif // defined(OPENRIICHI_ENABLE_ASSERTION) && OPENRIICHI_ENABLE_ASSERTION != 0
 
 	// ドラをめくる。
-	m_doras.push_back(m_tiles[currentDoraIndicatorIndex].getSucceedingTile());
-	m_uraDoras.push_back(m_tiles[currentDoraIndicatorIndex + 1].getSucceedingTile());
+	m_doras.push_back(m_tiles[currentDoraIndicatorIndex].getNextTile());
+	m_uraDoras.push_back(m_tiles[currentDoraIndicatorIndex + 1].getNextTile());
 }
 
 
