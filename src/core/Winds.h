@@ -47,14 +47,14 @@ namespace openriichi
 
 	public:
 		/**
-		 * 前位風を取得する。
+		 * 前位風を返す。
 		 *
 		 * @return 前位風。
 		 */
 		Wind getPreviousWind() const;
 
 		/**
-		 * 次位風を取得する。
+		 * 次位風を返す。
 		 *
 		 * @return 次位風。
 		 */

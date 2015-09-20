@@ -301,14 +301,14 @@ namespace openriichi
 		bool isTerminalsOrHonours() const;
 
 		/**
-		 * 前位牌を取得する。
+		 * 前位牌を返す。
 		 *
 		 * @return 前位牌。
 		 */
 		MemorySavedTile getPreviousTile() const;
 
 		/**
-		 * 次位牌を取得する。
+		 * 次位牌を返す。
 		 * 
 		 * @return 次位牌。
 		 */
