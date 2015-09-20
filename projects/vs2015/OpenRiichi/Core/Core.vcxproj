@@ -39,10 +39,12 @@
     <ClInclude Include="..\..\..\..\src\core\SetArrangements.h" />
     <ClInclude Include="..\..\..\..\src\core\SimpleHand.h" />
     <ClInclude Include="..\..\..\..\src\core\SimplePlayerInfo.h" />
+    <ClInclude Include="..\..\..\..\src\core\SimpleWall.h" />
     <ClInclude Include="..\..\..\..\src\core\Tile.h" />
     <ClInclude Include="..\..\..\..\src\core\TileAttributes.h" />
     <ClInclude Include="..\..\..\..\src\core\TileDesigns.h" />
     <ClInclude Include="..\..\..\..\src\core\Tiles.h" />
+    <ClInclude Include="..\..\..\..\src\core\Wall.h" />
     <ClInclude Include="..\..\..\..\src\core\Winds.h" />
     <ClInclude Include="..\..\..\..\src\OpenRiichiConfiguration.h" />
   </ItemGroup>
@@ -60,6 +62,7 @@
     <ClCompile Include="..\..\..\..\src\core\SetArrangements.cpp" />
     <ClCompile Include="..\..\..\..\src\core\SimpleHand.cpp" />
     <ClCompile Include="..\..\..\..\src\core\SimplePlayerInfo.cpp" />
+    <ClCompile Include="..\..\..\..\src\core\SimpleWall.cpp" />
     <ClCompile Include="..\..\..\..\src\core\TileAttributes.cpp" />
     <ClCompile Include="..\..\..\..\src\core\TileDesigns.cpp" />
     <ClCompile Include="..\..\..\..\src\core\Winds.cpp" />
