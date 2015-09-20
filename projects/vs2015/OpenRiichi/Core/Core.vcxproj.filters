@@ -97,6 +97,9 @@
     <ClInclude Include="..\..\..\..\src\core\Wall.h">
       <Filter>OpenRiichi\Core</Filter>
     </ClInclude>
+    <ClInclude Include="..\..\..\..\src\core\HandCounter.h">
+      <Filter>OpenRiichi\Core</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\..\..\..\src\core\DiscardSources.cpp">
@@ -148,6 +151,9 @@
       <Filter>OpenRiichi\Core</Filter>
     </ClCompile>
     <ClCompile Include="..\..\..\..\src\core\SimpleWall.cpp">
+      <Filter>OpenRiichi\Core</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\src\core\HandCounter.cpp">
       <Filter>OpenRiichi\Core</Filter>
     </ClCompile>
   </ItemGroup>

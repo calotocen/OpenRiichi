@@ -24,6 +24,7 @@
     <ClInclude Include="..\..\..\..\src\core\DiscardSources.h" />
     <ClInclude Include="..\..\..\..\src\core\Enumeration.h" />
     <ClInclude Include="..\..\..\..\src\core\Hand.h" />
+    <ClInclude Include="..\..\..\..\src\core\HandCounter.h" />
     <ClInclude Include="..\..\..\..\src\core\LimitedVector.h" />
     <ClInclude Include="..\..\..\..\src\core\MeldedKongTypes.h" />
     <ClInclude Include="..\..\..\..\src\core\MeldTypes.h" />
@@ -51,6 +52,7 @@
   <ItemGroup>
     <ClCompile Include="..\..\..\..\src\core\Dice.cpp" />
     <ClCompile Include="..\..\..\..\src\core\DiscardSources.cpp" />
+    <ClCompile Include="..\..\..\..\src\core\HandCounter.cpp" />
     <ClCompile Include="..\..\..\..\src\core\MeldedKongTypes.cpp" />
     <ClCompile Include="..\..\..\..\src\core\MeldTypes.cpp" />
     <ClCompile Include="..\..\..\..\src\core\MemorySavedDiscard.cpp" />

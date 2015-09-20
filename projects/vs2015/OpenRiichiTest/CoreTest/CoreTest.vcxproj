@@ -23,6 +23,7 @@
     <ClCompile Include="..\..\..\..\test\core\DiscardSourcesTest.cpp" />
     <ClCompile Include="..\..\..\..\test\core\DiscardTest.cpp" />
     <ClCompile Include="..\..\..\..\test\core\EnumerationTest.cpp" />
+    <ClCompile Include="..\..\..\..\test\core\HandCounterTest.cpp" />
     <ClCompile Include="..\..\..\..\test\core\HandTest.cpp" />
     <ClCompile Include="..\..\..\..\test\core\LimitedVectorTest.cpp" />
     <ClCompile Include="..\..\..\..\test\core\Main.cpp" />
