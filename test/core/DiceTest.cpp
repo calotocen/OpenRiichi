@@ -32,8 +32,8 @@ namespace openriichi
 
 		for (auto i = 0; i < 100; ++i) {
 			dice.roll();
-			ASSERT_LE(1, dice.getNumber());
-			ASSERT_GE(6, dice.getNumber());
+			ASSERT_LE(1U, dice.getNumber());
+			ASSERT_GE(6U, dice.getNumber());
 		}
 	}
 
