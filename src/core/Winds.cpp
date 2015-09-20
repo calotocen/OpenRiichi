@@ -31,3 +31,55 @@ Wind::Wind(int id)
 {
 	// 何もしない。
 }
+
+
+Wind Wind::getPreviousWind() const
+{
+	const Wind *returnValue = nullptr;		// 戻り値。
+
+	switch (getId()) {
+	case Winds::EAST_ID:
+		returnValue = &Winds::NORTH;
+		break;
+
+	case Winds::SOUTH_ID:
+		returnValue = &Winds::EAST;
+		break;
+
+	case Winds::WEST_ID:
+		returnValue = &Winds::SOUTH;
+		break;
+
+	case Winds::NORTH_ID:
+		returnValue = &Winds::WEST;
+		break;
+	}
+
+	return *returnValue;
+}
+
+
+Wind Wind::getNextWind() const
+{
+	const Wind *returnValue = nullptr;		// 戻り値。
+
+	switch (getId()) {
+	case Winds::EAST_ID:
+		returnValue = &Winds::SOUTH;
+		break;
+
+	case Winds::SOUTH_ID:
+		returnValue = &Winds::WEST;
+		break;
+
+	case Winds::WEST_ID:
+		returnValue = &Winds::NORTH;
+		break;
+
+	case Winds::NORTH_ID:
+		returnValue = &Winds::EAST;
+		break;
+	}
+
+	return *returnValue;
+}

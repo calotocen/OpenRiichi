@@ -39,6 +39,24 @@ namespace openriichi
 		ASSERT_EQ(4, Winds::NORTH.getId());
 	}
 
+	/// getPreviousTile 関数をテストする。
+	TEST_F(WindsTest, testGetPreviousTile)
+	{
+		ASSERT_EQ(Winds::NORTH, Winds::EAST.getPreviousWind());
+		ASSERT_EQ(Winds::EAST, Winds::SOUTH.getPreviousWind());
+		ASSERT_EQ(Winds::SOUTH, Winds::WEST.getPreviousWind());
+		ASSERT_EQ(Winds::WEST, Winds::NORTH.getPreviousWind());
+	}
+
+	/// getNextTile 関数をテストする。
+	TEST_F(WindsTest, testGetNextTile)
+	{
+		ASSERT_EQ(Winds::SOUTH, Winds::EAST.getNextWind());
+		ASSERT_EQ(Winds::WEST, Winds::SOUTH.getNextWind());
+		ASSERT_EQ(Winds::NORTH, Winds::WEST.getNextWind());
+		ASSERT_EQ(Winds::EAST, Winds::NORTH.getNextWind());
+	}
+
 	/// 同一種類の列挙型を比較可能であるかテストする。
 	TEST_F(WindsTest, testComparable)
 	{

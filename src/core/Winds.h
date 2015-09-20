@@ -47,6 +47,22 @@ namespace openriichi
 		 * 風を破棄する。
 		 */
 		virtual ~Wind() = default;
+
+
+	public:
+		/**
+		 * 前位風を取得する。
+		 *
+		 * @return 前位風。
+		 */
+		Wind getPreviousWind() const;
+
+		/**
+		 * 次位風を取得する。
+		 *
+		 * @return 次位風。
+		 */
+		Wind getNextWind() const;
 	};
 
 
