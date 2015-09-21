@@ -18,12 +18,45 @@
 #include <OpenRiichiAssertion.h>
 
 
-using namespace std;
-
-
 namespace openriichi
 {
 	class DiceTest : public ::testing::Test {};
+
+	/// == 演算子をテストする。
+	TEST_F(DiceTest, testEquals)
+	{
+		Dice dice1;
+		Dice dice2(6);
+
+		// 自身と比較する。
+		ASSERT_TRUE(dice1 == dice1);
+		ASSERT_TRUE(dice2 == dice2);
+
+		// 同じさいころと比較する。
+		ASSERT_TRUE(dice1 == Dice());
+		ASSERT_TRUE(dice2 == Dice(6));
+
+		// 異なるさいころと比較する。
+		ASSERT_FALSE(dice1 == dice2);
+	}
+
+	/// != 演算子をテストする。
+	TEST_F(DiceTest, testNotEquals)
+	{
+		Dice dice1;
+		Dice dice2(6);
+
+		// 自身と比較する。
+		ASSERT_FALSE(dice1 != dice1);
+		ASSERT_FALSE(dice2 != dice2);
+
+		// 同じさいころと比較する。
+		ASSERT_FALSE(dice1 != Dice());
+		ASSERT_FALSE(dice2 != Dice(6));
+
+		// 異なるさいころと比較する。
+		ASSERT_TRUE(dice1 != dice2);
+	}
 
 	/// roll 関数をテストする。
 	TEST_F(DiceTest, testRoll)
@@ -41,6 +74,7 @@ namespace openriichi
 	TEST_F(DiceTest, testGetNumber)
 	{
 		ASSERT_EQ(1, Dice().getNumber());
+		ASSERT_EQ(6, Dice(6).getNumber());
 	}
 
 	/// setNumber 関数をテストする。

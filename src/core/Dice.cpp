@@ -30,6 +30,26 @@ Dice::Dice()
 }
 
 
+Dice::Dice(size_t number)
+	: m_number(static_cast<uint8_t>(number))
+{
+	// アサーションが有効である場合のみ，引数をチェックする。
+	openriichi_assert(1 <= number && number <= 6);
+}
+
+
+bool Dice::operator==(const Dice &other) const
+{
+	return m_number == other.m_number;
+}
+
+
+bool Dice::operator!=(const Dice &other) const
+{
+	return !(*this == other);
+}
+
+
 void Dice::roll()
 {
 	random_device randomDevice;

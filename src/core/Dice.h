@@ -36,6 +36,29 @@ namespace openriichi
 		 */
 		Dice();
 
+		/**
+		 * サイコロを生成する。
+		 *
+		 * @param[in] number 出目。
+		 */
+		Dice(size_t number);
+
+
+	public:
+		/**
+		 * 他のさいころと等しいか調べる。
+		 *
+		 * @param[in] other 他のさいころ。
+		 */
+		bool operator==(const Dice &other) const;
+
+		/**
+		 * 他のさいころと等しくないか調べる。
+		 *
+		 * @param[in] other 他のさいころ。
+		 */
+		bool operator!=(const Dice &other) const;
+
 
 	public:
 		/**
