@@ -47,6 +47,22 @@ namespace openriichi
 
 	public:
 		/**
+		 * 他の局カウンタと等しいか調べる。
+		 *
+		 * @param[in] other 他の局カウンタ。
+		 */
+		bool operator==(const HandCounter &other) const;
+
+		/**
+		 * 他の局カウンタと等しくないか調べる。
+		 *
+		 * @param[in] other 他の局カウンタ。
+		 */
+		bool operator!=(const HandCounter &other) const;
+
+
+	public:
+		/**
 		 * 場を返す。
 		 *
 		 * @return 場。

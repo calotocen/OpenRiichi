@@ -29,6 +29,22 @@ HandCounter::HandCounter()
 }
 
 
+bool HandCounter::operator==(const HandCounter &other) const
+{
+	if (this == &other) {
+		return true;
+	}
+
+	return m_round == other.m_round && m_majorCount == other.m_majorCount && m_minorCount == other.m_minorCount;
+}
+
+
+bool HandCounter::operator!=(const HandCounter &other) const
+{
+	return !(*this == other);
+}
+
+
 const Wind &HandCounter::getRound() const
 {
 	return m_round;
