@@ -23,7 +23,7 @@ namespace openriichi
 	class DiceTest : public ::testing::Test {};
 
 	/// == 演算子をテストする。
-	TEST_F(DiceTest, testEquals)
+	TEST_F(DiceTest, testOperatorEqualTo)
 	{
 		Dice dice1;
 		Dice dice2(6);
@@ -41,7 +41,7 @@ namespace openriichi
 	}
 
 	/// != 演算子をテストする。
-	TEST_F(DiceTest, testNotEquals)
+	TEST_F(DiceTest, testOperatorNotEqualTo)
 	{
 		Dice dice1;
 		Dice dice2(6);
@@ -59,7 +59,7 @@ namespace openriichi
 	}
 
 	/// roll 関数をテストする。
-	TEST_F(DiceTest, testRoll)
+	TEST_F(DiceTest, testToRoll)
 	{
 		Dice dice;
 
@@ -71,14 +71,14 @@ namespace openriichi
 	}
 
 	/// getNumber 関数をテストする。
-	TEST_F(DiceTest, testGetNumber)
+	TEST_F(DiceTest, testToGetNumber)
 	{
 		ASSERT_EQ(1, Dice().getNumber());
 		ASSERT_EQ(6, Dice(6).getNumber());
 	}
 
 	/// setNumber 関数をテストする。
-	TEST_F(DiceTest, testSetNumber)
+	TEST_F(DiceTest, testToSetNumber)
 	{
 		Dice dice;
 
