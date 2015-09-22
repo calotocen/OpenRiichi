@@ -5,8 +5,6 @@
 #define IDD_ABOUTBOX                    100
 #define IDP_OLE_INIT_FAILED             100
 #define IDR_POPUP_EDIT                  119
-#define ID_STATUSBAR_PANE1              120
-#define ID_STATUSBAR_PANE2              121
 #define IDS_STATUS_PANE1                122
 #define IDS_STATUS_PANE2                123
 #define ID_VIEW_CUSTOMIZE               126

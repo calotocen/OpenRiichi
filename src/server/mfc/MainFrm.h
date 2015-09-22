@@ -45,7 +45,6 @@ public:
 
 protected:  // コントロール バー用メンバー
 	CMFCMenuBar       m_wndMenuBar;
-	CMFCStatusBar     m_wndStatusBar;
 
 // 生成された、メッセージ割り当て関数
 protected:

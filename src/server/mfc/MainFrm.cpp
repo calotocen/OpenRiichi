@@ -72,13 +72,6 @@ int CMainFrame::OnCreate(LPCREATESTRUCT lpCreateStruct)
 	// アクティブになったときメニュー バーにフォーカスを移動しない
 	CMFCPopupMenu::SetForceMenuFocus(FALSE);
 
-	if (!m_wndStatusBar.Create(this))
-	{
-		TRACE0("ステータス バーの作成に失敗しました。\n");
-		return -1;      // 作成できない場合
-	}
-	m_wndStatusBar.SetIndicators(indicators, sizeof(indicators)/sizeof(UINT));
-
 	// TODO: ツール バーおよびメニュー バーをドッキング可能にしない場合は、この 5 つの行を削除します
 	m_wndMenuBar.EnableDocking(CBRS_ALIGN_ANY);
 	EnableDocking(CBRS_ALIGN_ANY);

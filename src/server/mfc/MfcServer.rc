@@ -103,7 +103,6 @@ BEGIN
     END
     POPUP "表示(&V)"
     BEGIN
-        MENUITEM "ステータス バー(&S)",                ID_VIEW_STATUS_BAR
         POPUP "アプリケーションの外観(&A)"
         BEGIN
             MENUITEM "Windows 2000(&2)",            ID_VIEW_APPLOOK_WIN_2000
@@ -340,11 +339,6 @@ BEGIN
     ID_EDIT_SELECT_ALL      "ファイル内のすべてを選択\nすべて選択"
     ID_EDIT_UNDO            "直前に行った動作を元に戻す\n元に戻す"
     ID_EDIT_REDO            "取り消した操作をやり直す\nやり直す"
-END
-
-STRINGTABLE
-BEGIN
-    ID_VIEW_STATUS_BAR      "ステータス バーの表示/非表示\nステータス バーの表示切り替え"
 END
 
 STRINGTABLE
