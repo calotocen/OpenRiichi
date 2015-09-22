@@ -4,6 +4,7 @@
 //
 #define IDD_ABOUTBOX                    100
 #define IDP_OLE_INIT_FAILED             100
+#define IDS_WINDOW_TEXT                 101
 #define IDR_MAINFRAME                   128
 
 // Next default values for new objects

@@ -155,6 +155,7 @@ END
 STRINGTABLE
 BEGIN
     IDP_OLE_INIT_FAILED     "OLE の初期化に失敗しました。OLE ライブラリのバージョンが正しいことを確認してください。"
+    IDS_WINDOW_TEXT         "OpenRiichi"
 END
 
 STRINGTABLE

@@ -25,6 +25,8 @@
 #include "MfcServerDoc.h"
 #include "MfcServerView.h"
 
+#include "resource.h"
+
 #ifdef _DEBUG
 #define new DEBUG_NEW
 #endif
@@ -128,6 +130,13 @@ BOOL CMfcServerApp::InitInstance()
 	// /RegServer、/Register、/Unregserver または /Unregister で起動された場合、False を返します。
 	if (!ProcessShellCommand(cmdInfo))
 		return FALSE;
+
+	// メイン ウィンドウのタイトルを設定する。
+	CString windowText;
+	if (!windowText.LoadString(IDS_WINDOW_TEXT)) {
+		return FALSE;
+	}
+	m_pMainWnd->SetWindowText(windowText);
 
 	// メイン ウィンドウが初期化されたので、表示と更新を行います。
 	m_pMainWnd->ShowWindow(SW_SHOW);
