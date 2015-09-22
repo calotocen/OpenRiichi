@@ -32,7 +32,6 @@ IMPLEMENT_DYNCREATE(CMainFrame, CFrameWndEx)
 BEGIN_MESSAGE_MAP(CMainFrame, CFrameWndEx)
 	ON_WM_CREATE()
 	ON_COMMAND(ID_VIEW_CUSTOMIZE, &CMainFrame::OnViewCustomize)
-	ON_REGISTERED_MESSAGE(AFX_WM_CREATETOOLBAR, &CMainFrame::OnToolbarCreateNew)
 	ON_COMMAND_RANGE(ID_VIEW_APPLOOK_WIN_2000, ID_VIEW_APPLOOK_WINDOWS_7, &CMainFrame::OnApplicationLook)
 	ON_UPDATE_COMMAND_UI_RANGE(ID_VIEW_APPLOOK_WIN_2000, ID_VIEW_APPLOOK_WINDOWS_7, &CMainFrame::OnUpdateApplicationLook)
 END_MESSAGE_MAP()
@@ -62,35 +61,16 @@ int CMainFrame::OnCreate(LPCREATESTRUCT lpCreateStruct)
 	if (CFrameWndEx::OnCreate(lpCreateStruct) == -1)
 		return -1;
 
-	BOOL bNameValid;
-
 	if (!m_wndMenuBar.Create(this))
 	{
 		TRACE0("メニュー バーを作成できませんでした\n");
 		return -1;      // 作成できない場合
 	}
 
-	m_wndMenuBar.SetPaneStyle(m_wndMenuBar.GetPaneStyle() | CBRS_SIZE_DYNAMIC | CBRS_TOOLTIPS | CBRS_FLYBY);
+	m_wndMenuBar.SetPaneStyle(m_wndMenuBar.GetPaneStyle() | CBRS_SIZE_DYNAMIC | CBRS_FLYBY);
 
 	// アクティブになったときメニュー バーにフォーカスを移動しない
 	CMFCPopupMenu::SetForceMenuFocus(FALSE);
-
-	if (!m_wndToolBar.CreateEx(this, TBSTYLE_FLAT, WS_CHILD | WS_VISIBLE | CBRS_TOP | CBRS_GRIPPER | CBRS_TOOLTIPS | CBRS_FLYBY | CBRS_SIZE_DYNAMIC) ||
-		!m_wndToolBar.LoadToolBar(theApp.m_bHiColorIcons ? IDR_MAINFRAME_256 : IDR_MAINFRAME))
-	{
-		TRACE0("ツール バーの作成に失敗しました。\n");
-		return -1;      // 作成できない場合
-	}
-
-	CString strToolBarName;
-	bNameValid = strToolBarName.LoadString(IDS_TOOLBAR_STANDARD);
-	ASSERT(bNameValid);
-	m_wndToolBar.SetWindowText(strToolBarName);
-
-	CString strCustomize;
-	bNameValid = strCustomize.LoadString(IDS_TOOLBAR_CUSTOMIZE);
-	ASSERT(bNameValid);
-	m_wndToolBar.EnableCustomizeButton(TRUE, ID_VIEW_CUSTOMIZE, strCustomize);
 
 	if (!m_wndStatusBar.Create(this))
 	{
@@ -101,10 +81,8 @@ int CMainFrame::OnCreate(LPCREATESTRUCT lpCreateStruct)
 
 	// TODO: ツール バーおよびメニュー バーをドッキング可能にしない場合は、この 5 つの行を削除します
 	m_wndMenuBar.EnableDocking(CBRS_ALIGN_ANY);
-	m_wndToolBar.EnableDocking(CBRS_ALIGN_ANY);
 	EnableDocking(CBRS_ALIGN_ANY);
 	DockPane(&m_wndMenuBar);
-	DockPane(&m_wndToolBar);
 
 
 	// Visual Studio 2005 スタイルのドッキング ウィンドウ動作を有効にします
@@ -113,12 +91,6 @@ int CMainFrame::OnCreate(LPCREATESTRUCT lpCreateStruct)
 	EnableAutoHidePanes(CBRS_ALIGN_ANY);
 	// 固定値に基づいてビジュアル マネージャーと visual スタイルを設定します
 	OnApplicationLook(theApp.m_nAppLook);
-
-	// ツール バーとドッキング ウィンドウ メニューの配置変更を有効にします
-	EnablePaneMenu(TRUE, ID_VIEW_CUSTOMIZE, strCustomize, ID_VIEW_TOOLBAR);
-
-	// ツール バーのクイック (Alt キーを押しながらドラッグ) カスタマイズを有効にします
-	CMFCToolBar::EnableQuickCustomization();
 
 	return 0;
 }
@@ -152,28 +124,6 @@ void CMainFrame::Dump(CDumpContext& dc) const
 
 void CMainFrame::OnViewCustomize()
 {
-	CMFCToolBarsCustomizeDialog* pDlgCust = new CMFCToolBarsCustomizeDialog(this, TRUE /* メニューをスキャンします*/);
-	pDlgCust->Create();
-}
-
-LRESULT CMainFrame::OnToolbarCreateNew(WPARAM wp,LPARAM lp)
-{
-	LRESULT lres = CFrameWndEx::OnToolbarCreateNew(wp,lp);
-	if (lres == 0)
-	{
-		return 0;
-	}
-
-	CMFCToolBar* pUserToolbar = (CMFCToolBar*)lres;
-	ASSERT_VALID(pUserToolbar);
-
-	BOOL bNameValid;
-	CString strCustomize;
-	bNameValid = strCustomize.LoadString(IDS_TOOLBAR_CUSTOMIZE);
-	ASSERT(bNameValid);
-
-	pUserToolbar->EnableCustomizeButton(TRUE, ID_VIEW_CUSTOMIZE, strCustomize);
-	return lres;
 }
 
 void CMainFrame::OnApplicationLook(UINT id)

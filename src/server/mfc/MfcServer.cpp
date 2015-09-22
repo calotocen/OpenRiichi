@@ -105,12 +105,6 @@ BOOL CMfcServerApp::InitInstance()
 
 	InitKeyboardManager();
 
-	InitTooltipManager();
-	CMFCToolTipInfo ttParams;
-	ttParams.m_bVislManagerTheme = TRUE;
-	theApp.GetTooltipManager()->SetTooltipParams(AFX_TOOLTIP_TYPE_ALL,
-		RUNTIME_CLASS(CMFCToolTipCtrl), &ttParams);
-
 	// アプリケーション用のドキュメント テンプレートを登録します。ドキュメント テンプレート
 	//  はドキュメント、フレーム ウィンドウとビューを結合するために機能します。
 	CSingleDocTemplate* pDocTemplate;

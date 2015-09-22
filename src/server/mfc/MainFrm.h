@@ -45,14 +45,12 @@ public:
 
 protected:  // コントロール バー用メンバー
 	CMFCMenuBar       m_wndMenuBar;
-	CMFCToolBar       m_wndToolBar;
 	CMFCStatusBar     m_wndStatusBar;
 
 // 生成された、メッセージ割り当て関数
 protected:
 	afx_msg int OnCreate(LPCREATESTRUCT lpCreateStruct);
 	afx_msg void OnViewCustomize();
-	afx_msg LRESULT OnToolbarCreateNew(WPARAM wp, LPARAM lp);
 	afx_msg void OnApplicationLook(UINT id);
 	afx_msg void OnUpdateApplicationLook(CCmdUI* pCmdUI);
 	DECLARE_MESSAGE_MAP()
