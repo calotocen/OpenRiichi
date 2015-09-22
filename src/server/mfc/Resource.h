@@ -4,12 +4,7 @@
 //
 #define IDD_ABOUTBOX                    100
 #define IDP_OLE_INIT_FAILED             100
-#define IDS_STATUS_PANE1                122
-#define IDS_STATUS_PANE2                123
 #define IDR_MAINFRAME                   128
-#define IDR_MfcServerTYPE               130
-#define ID_SET_STYLE                    201
-#define IDS_EDIT_MENU                   306
 
 // Next default values for new objects
 // 

@@ -73,7 +73,6 @@ END
 // Icon with lowest ID value placed first to ensure application icon
 // remains consistent on all systems.
 IDR_MAINFRAME           ICON                    "res\\MfcServer.ico"
-IDR_MfcServerTYPE       ICON                    "res\\MfcServerDoc.ico"
 
 /////////////////////////////////////////////////////////////////////////////
 //
@@ -96,11 +95,6 @@ BEGIN
     BEGIN
         MENUITEM "バージョン情報 MfcServer(&A)...",    ID_APP_ABOUT
     END
-END
-
-IDR_HELP_MENU MENU
-BEGIN
-    MENUITEM "バージョン情報 MfcServer(&A)...",    ID_APP_ABOUT
 END
 
 
@@ -299,12 +293,6 @@ STRINGTABLE
 BEGIN
     AFX_IDS_SCRESTORE       "ウィンドウを通常のサイズに戻す"
     AFX_IDS_SCTASKLIST      "タスク一覧をアクティブにする"
-END
-
-STRINGTABLE
-BEGIN
-    IDS_STATUS_PANE1        "ペイン 1"
-    IDS_STATUS_PANE2        "ペイン 2"
 END
 
 #endif    // 日本語 (日本) resources

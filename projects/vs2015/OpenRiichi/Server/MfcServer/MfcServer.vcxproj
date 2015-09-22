@@ -44,10 +44,6 @@
   </ItemGroup>
   <ItemGroup>
     <Image Include="..\..\..\..\..\src\server\mfc\res\MfcServer.ico" />
-    <Image Include="..\..\..\..\..\src\server\mfc\res\MfcServerDoc.ico" />
-    <Image Include="..\..\..\..\..\src\server\mfc\res\Toolbar.bmp" />
-    <Image Include="..\..\..\..\..\src\server\mfc\res\Toolbar256.bmp" />
-    <Image Include="..\..\..\..\..\src\server\mfc\UserImages.bmp" />
   </ItemGroup>
   <ItemGroup>
     <None Include="..\..\..\..\..\src\server\mfc\res\MfcServer.rc2" />

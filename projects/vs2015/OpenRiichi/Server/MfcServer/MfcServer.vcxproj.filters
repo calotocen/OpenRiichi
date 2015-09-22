@@ -63,18 +63,6 @@
     <Image Include="..\..\..\..\..\src\server\mfc\res\MfcServer.ico">
       <Filter>リソース ファイル</Filter>
     </Image>
-    <Image Include="..\..\..\..\..\src\server\mfc\res\MfcServerDoc.ico">
-      <Filter>リソース ファイル</Filter>
-    </Image>
-    <Image Include="..\..\..\..\..\src\server\mfc\res\Toolbar.bmp">
-      <Filter>リソース ファイル</Filter>
-    </Image>
-    <Image Include="..\..\..\..\..\src\server\mfc\res\Toolbar256.bmp">
-      <Filter>リソース ファイル</Filter>
-    </Image>
-    <Image Include="..\..\..\..\..\src\server\mfc\UserImages.bmp">
-      <Filter>リソース ファイル</Filter>
-    </Image>
   </ItemGroup>
   <ItemGroup>
     <None Include="..\..\..\..\..\src\server\mfc\res\MfcServer.rc2">
