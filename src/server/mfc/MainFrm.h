@@ -49,7 +49,6 @@ protected:  // コントロール バー用メンバー
 // 生成された、メッセージ割り当て関数
 protected:
 	afx_msg int OnCreate(LPCREATESTRUCT lpCreateStruct);
-	afx_msg void OnViewCustomize();
 	afx_msg void OnApplicationLook(UINT id);
 	afx_msg void OnUpdateApplicationLook(CCmdUI* pCmdUI);
 	DECLARE_MESSAGE_MAP()

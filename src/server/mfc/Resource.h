@@ -7,7 +7,6 @@
 #define IDR_POPUP_EDIT                  119
 #define IDS_STATUS_PANE1                122
 #define IDS_STATUS_PANE2                123
-#define ID_VIEW_CUSTOMIZE               126
 #define IDR_MAINFRAME                   128
 #define IDR_MfcServerTYPE               130
 #define IDR_THEME_MENU                  200
