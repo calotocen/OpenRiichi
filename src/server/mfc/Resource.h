@@ -9,19 +9,7 @@
 #define IDS_STATUS_PANE2                123
 #define IDR_MAINFRAME                   128
 #define IDR_MfcServerTYPE               130
-#define IDR_THEME_MENU                  200
 #define ID_SET_STYLE                    201
-#define ID_VIEW_APPLOOK_WIN_2000        205
-#define ID_VIEW_APPLOOK_OFF_XP          206
-#define ID_VIEW_APPLOOK_WIN_XP          207
-#define ID_VIEW_APPLOOK_OFF_2003        208
-#define ID_VIEW_APPLOOK_VS_2005         209
-#define ID_VIEW_APPLOOK_VS_2008         210
-#define ID_VIEW_APPLOOK_OFF_2007_BLUE   215
-#define ID_VIEW_APPLOOK_OFF_2007_BLACK  216
-#define ID_VIEW_APPLOOK_OFF_2007_SILVER 217
-#define ID_VIEW_APPLOOK_OFF_2007_AQUA   218
-#define ID_VIEW_APPLOOK_WINDOWS_7       219
 #define IDS_EDIT_MENU                   306
 
 // Next default values for new objects

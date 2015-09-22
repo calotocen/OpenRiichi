@@ -101,25 +101,6 @@ BEGIN
         MENUITEM "コピー(&C)\tCtrl+C",             ID_EDIT_COPY
         MENUITEM "貼り付け(&P)\tCtrl+V",            ID_EDIT_PASTE
     END
-    POPUP "表示(&V)"
-    BEGIN
-        POPUP "アプリケーションの外観(&A)"
-        BEGIN
-            MENUITEM "Windows 2000(&2)",            ID_VIEW_APPLOOK_WIN_2000
-            MENUITEM "Office XP(&X)",               ID_VIEW_APPLOOK_OFF_XP
-            MENUITEM "Windows XP(&W)",              ID_VIEW_APPLOOK_WIN_XP
-            MENUITEM "Office 2003(&3)",             ID_VIEW_APPLOOK_OFF_2003
-            MENUITEM "Visual Studio 200&5",         ID_VIEW_APPLOOK_VS_2005
-            MENUITEM "Visual Studio 200&8",         ID_VIEW_APPLOOK_VS_2008
-            POPUP "Office 2007(&7)"
-            BEGIN
-                MENUITEM "ブルー スタイル(&B)",                ID_VIEW_APPLOOK_OFF_2007_BLUE
-                MENUITEM "ブラック スタイル(&L)",               ID_VIEW_APPLOOK_OFF_2007_BLACK
-                MENUITEM "シルバー スタイル(&S)",               ID_VIEW_APPLOOK_OFF_2007_SILVER
-                MENUITEM "アクア スタイル(&A)",                ID_VIEW_APPLOOK_OFF_2007_AQUA
-            END
-        END
-    END
     POPUP "ヘルプ(&H)"
     BEGIN
         MENUITEM "バージョン情報 MfcServer(&A)...",    ID_APP_ABOUT
@@ -139,15 +120,6 @@ END
 IDR_HELP_MENU MENU
 BEGIN
     MENUITEM "バージョン情報 MfcServer(&A)...",    ID_APP_ABOUT
-END
-
-IDR_THEME_MENU MENU
-BEGIN
-    MENUITEM "Office 2007 (ブルー スタイル)(&B)",  ID_VIEW_APPLOOK_OFF_2007_BLUE
-    MENUITEM "Office 2007 (ブラック スタイル)(&L)", ID_VIEW_APPLOOK_OFF_2007_BLACK
-    MENUITEM "Office 2007 (シルバー スタイル)(&S)", ID_VIEW_APPLOOK_OFF_2007_SILVER
-    MENUITEM "Office 2007 (アクア スタイル)(&A)",  ID_VIEW_APPLOOK_OFF_2007_AQUA
-    MENUITEM "Windows 7(&D)",               ID_VIEW_APPLOOK_WINDOWS_7
 END
 
 
