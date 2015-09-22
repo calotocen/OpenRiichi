@@ -81,8 +81,8 @@ namespace ClrServer {
 			// 
 			resources->ApplyResources(this, L"$this");
 			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
+			this->BackColor = System::Drawing::Color::MediumSeaGreen;
 			this->Controls->Add(this->MainMenuStrip);
-			this->MainMenuStrip = this->MainMenuStrip;
 			this->Name = L"ClrServerForm";
 			this->MainMenuStrip->ResumeLayout(false);
 			this->MainMenuStrip->PerformLayout();
