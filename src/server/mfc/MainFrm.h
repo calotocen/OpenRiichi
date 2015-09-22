@@ -44,7 +44,6 @@ public:
 #endif
 
 protected:  // コントロール バー用メンバー
-	CMFCMenuBar       m_wndMenuBar;
 
 // 生成された、メッセージ割り当て関数
 protected:

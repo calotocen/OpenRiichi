@@ -56,17 +56,6 @@ int CMainFrame::OnCreate(LPCREATESTRUCT lpCreateStruct)
 	if (CFrameWndEx::OnCreate(lpCreateStruct) == -1)
 		return -1;
 
-	if (!m_wndMenuBar.Create(this))
-	{
-		TRACE0("メニュー バーを作成できませんでした\n");
-		return -1;      // 作成できない場合
-	}
-
-	m_wndMenuBar.SetPaneStyle(m_wndMenuBar.GetPaneStyle() | CBRS_SIZE_DYNAMIC | CBRS_FLYBY);
-
-	// アクティブになったときメニュー バーにフォーカスを移動しない
-	CMFCPopupMenu::SetForceMenuFocus(FALSE);
-
 	return 0;
 }
 
