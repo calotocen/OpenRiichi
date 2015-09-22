@@ -16,15 +16,8 @@
 #pragma once
 
 
-#include <cstdint>
-#include "Tile.h"
-
-
 namespace openriichi
 {
-	class DiscardSource;
-
-
 	/**
 	 * 省メモリの捨て牌である。
 	 */

@@ -16,18 +16,8 @@
 #pragma once
 
 
-#include <cstdint>
-#include "LimitedVector.h"
-#include "MeldedKongTypes.h"
-#include "MeldTypes.h"
-#include "Tile.h"
-
-
 namespace openriichi
 {
-	class SetArrangement;
-
-
 	/**
 	 * 省メモリの面子である。
 	 */

@@ -16,17 +16,8 @@
 #pragma once
 
 
-#include <cstdint>
-#include <vector>
-#include "LimitedVector.h"
-#include "Tile.h"
-
-
 namespace openriichi
 {
-	class Dice;
-
-
 	/**
 	 * 山である。
 	 */

@@ -16,10 +16,6 @@
 #pragma once
 
 
-#include "OpenRiichiConfiguration.h"
-#include "OpenRiichiException.h"
-
-
 namespace openriichi
 {
 	/**

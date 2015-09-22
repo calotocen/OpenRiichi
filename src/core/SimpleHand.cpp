@@ -13,9 +13,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-#include <initializer_list>
-#include "OpenRiichiConfiguration.h"
-#include "SimpleHand.h"
+#include "OpenRiichi.h"
 
 
 using namespace std;

@@ -13,12 +13,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-#include <cstdint>
-#include "OpenRiichiConfiguration.h"
-#include "OpenRiichiAssertion.h"
-#include "TileAttributes.h"
-#include "TileDesigns.h"
-#include "MemorySavedTile.h"
+#include "OpenRiichi.h"
 
 
 using namespace openriichi;

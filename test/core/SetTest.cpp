@@ -15,9 +15,7 @@
  */
 #include <vector>
 #include <gtest/gtest.h>
-#include <OpenRiichiAssertion.h>
-#include <Set.h>
-#include <Tiles.h>
+#include <OpenRiichi.h>
 
 
 using namespace std;

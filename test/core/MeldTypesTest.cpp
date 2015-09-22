@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 #include <gtest/gtest.h>
-#include <MeldTypes.h>
+#include <OpenRiichi.h>
 
 
 namespace openriichi

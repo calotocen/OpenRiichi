@@ -16,15 +16,8 @@
 #pragma once
 
 
-#include <cstdint>
-#include "TileAttributes.h"
-
-
 namespace openriichi
 {
-	class TileDesign;
-
-
 	/**
 	 * 省メモリの牌である。
 	 *

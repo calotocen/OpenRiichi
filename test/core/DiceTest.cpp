@@ -14,8 +14,7 @@
  * limitations under the License.
  */
 #include <gtest/gtest.h>
-#include <Dice.h>
-#include <OpenRiichiAssertion.h>
+#include <OpenRiichi.h>
 
 
 namespace openriichi

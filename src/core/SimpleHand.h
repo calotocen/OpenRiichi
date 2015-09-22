@@ -16,13 +16,6 @@
 #pragma once
 
 
-#include <cstdint>
-#include <initializer_list>
-#include "LimitedVector.h"
-#include "Set.h"
-#include "Tile.h"
-
-
 namespace openriichi
 {
 	/**

@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 #include <gtest/gtest.h>
-#include <MeldedKongTypes.h>
+#include <OpenRiichi.h>
 
 
 namespace openriichi

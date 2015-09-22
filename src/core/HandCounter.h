@@ -16,10 +16,6 @@
 #pragma once
 
 
-#include <cstdint>
-#include "Winds.h"
-
-
 namespace openriichi
 {
 	/**

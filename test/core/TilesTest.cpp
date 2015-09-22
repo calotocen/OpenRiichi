@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 #include <gtest/gtest.h>
-#include <Tiles.h>
+#include <OpenRiichi.h>
 
 
 namespace openriichi

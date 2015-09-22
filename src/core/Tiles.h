@@ -16,10 +16,6 @@
 #pragma once
 
 
-#include <cstdint>
-#include "Tile.h"
-
-
 namespace openriichi
 {
 	/// 筒一牌。

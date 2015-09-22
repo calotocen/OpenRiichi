@@ -13,16 +13,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-#include <algorithm>
-#include <cstdint>
-#include "OpenRiichiConfiguration.h"
-#include "MeldedKongTypes.h"
-#include "MeldTypes.h"
-#include "OpenRiichiAssertion.h"
-#include "SetArrangements.h"
-#include "Tile.h"
-#include "Tiles.h"
-#include "MemorySavedSet.h"
+#include "OpenRiichi.h"
 
 
 using namespace std;

@@ -14,9 +14,7 @@
  * limitations under the License.
  */
 #include <random>
-#include "OpenRiichiConfiguration.h"
-#include "OpenRiichiAssertion.h"
-#include "Dice.h"
+#include "OpenRiichi.h"
 
 
 using namespace std;

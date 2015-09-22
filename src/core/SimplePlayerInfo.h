@@ -16,13 +16,6 @@
 #pragma once
 
 
-#include <cstdint>
-#include "Discard.h"
-#include "Hand.h"
-#include "LimitedVector.h"
-#include "RiichiStatus.h"
-
-
 namespace openriichi
 {
 	/**

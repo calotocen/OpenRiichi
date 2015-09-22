@@ -16,9 +16,6 @@
 #pragma once
 
 
-#include <cstdint>
-
-
 namespace openriichi
 {
 	/**

@@ -20,10 +20,8 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\..\..\..\src\core\Dice.h" />
-    <ClInclude Include="..\..\..\..\src\core\Discard.h" />
     <ClInclude Include="..\..\..\..\src\core\DiscardSources.h" />
     <ClInclude Include="..\..\..\..\src\core\Enumeration.h" />
-    <ClInclude Include="..\..\..\..\src\core\Hand.h" />
     <ClInclude Include="..\..\..\..\src\core\HandCounter.h" />
     <ClInclude Include="..\..\..\..\src\core\LimitedVector.h" />
     <ClInclude Include="..\..\..\..\src\core\MeldedKongTypes.h" />
@@ -34,20 +32,16 @@
     <ClInclude Include="..\..\..\..\src\core\MemorySavedTile.h" />
     <ClInclude Include="..\..\..\..\src\core\OpenRiichiAssertion.h" />
     <ClInclude Include="..\..\..\..\src\core\OpenRiichiException.h" />
-    <ClInclude Include="..\..\..\..\src\core\PlayerInfo.h" />
-    <ClInclude Include="..\..\..\..\src\core\RiichiStatus.h" />
-    <ClInclude Include="..\..\..\..\src\core\Set.h" />
     <ClInclude Include="..\..\..\..\src\core\SetArrangements.h" />
     <ClInclude Include="..\..\..\..\src\core\SimpleHand.h" />
     <ClInclude Include="..\..\..\..\src\core\SimplePlayerInfo.h" />
     <ClInclude Include="..\..\..\..\src\core\SimpleTable.h" />
     <ClInclude Include="..\..\..\..\src\core\SimpleWall.h" />
-    <ClInclude Include="..\..\..\..\src\core\Tile.h" />
     <ClInclude Include="..\..\..\..\src\core\TileAttributes.h" />
     <ClInclude Include="..\..\..\..\src\core\TileDesigns.h" />
     <ClInclude Include="..\..\..\..\src\core\Tiles.h" />
-    <ClInclude Include="..\..\..\..\src\core\Wall.h" />
     <ClInclude Include="..\..\..\..\src\core\Winds.h" />
+    <ClInclude Include="..\..\..\..\src\OpenRiichi.h" />
     <ClInclude Include="..\..\..\..\src\OpenRiichiConfiguration.h" />
   </ItemGroup>
   <ItemGroup>
@@ -136,10 +130,10 @@
       </PrecompiledHeader>
       <WarningLevel>Level3</WarningLevel>
       <Optimization>Disabled</Optimization>
-      <PreprocessorDefinitions>WIN32;_DEBUG;_LIB;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>WIN32;_DEBUG;_LIB;OPENRIICHI_SERVER=1;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <SDLCheck>true</SDLCheck>
       <DisableSpecificWarnings>4819</DisableSpecificWarnings>
-      <AdditionalIncludeDirectories>..\..\..\..\src;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>..\..\..\..\src;..\..\..\..\src\core;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Windows</SubSystem>
@@ -152,10 +146,10 @@
       </PrecompiledHeader>
       <WarningLevel>Level3</WarningLevel>
       <Optimization>Disabled</Optimization>
-      <PreprocessorDefinitions>_DEBUG;_LIB;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>_DEBUG;_LIB;OPENRIICHI_SERVER=1;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <SDLCheck>true</SDLCheck>
       <DisableSpecificWarnings>4819</DisableSpecificWarnings>
-      <AdditionalIncludeDirectories>..\..\..\..\src;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>..\..\..\..\src;..\..\..\..\src\core;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Windows</SubSystem>
@@ -170,10 +164,10 @@
       <Optimization>MaxSpeed</Optimization>
       <FunctionLevelLinking>true</FunctionLevelLinking>
       <IntrinsicFunctions>true</IntrinsicFunctions>
-      <PreprocessorDefinitions>WIN32;NDEBUG;_LIB;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>WIN32;NDEBUG;_LIB;OPENRIICHI_SERVER=1;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <SDLCheck>true</SDLCheck>
       <DisableSpecificWarnings>4819</DisableSpecificWarnings>
-      <AdditionalIncludeDirectories>..\..\..\..\src;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>..\..\..\..\src;..\..\..\..\src\core;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Windows</SubSystem>
@@ -190,10 +184,10 @@
       <Optimization>MaxSpeed</Optimization>
       <FunctionLevelLinking>true</FunctionLevelLinking>
       <IntrinsicFunctions>true</IntrinsicFunctions>
-      <PreprocessorDefinitions>NDEBUG;_LIB;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>NDEBUG;_LIB;OPENRIICHI_SERVER=1;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <SDLCheck>true</SDLCheck>
       <DisableSpecificWarnings>4819</DisableSpecificWarnings>
-      <AdditionalIncludeDirectories>..\..\..\..\src;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>..\..\..\..\src;..\..\..\..\src\core;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Windows</SubSystem>

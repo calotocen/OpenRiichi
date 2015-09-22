@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 #include <gtest/gtest.h>
-#include <TileAttributes.h>
+#include <OpenRiichi.h>
 
 
 namespace openriichi

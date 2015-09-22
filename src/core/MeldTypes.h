@@ -16,9 +16,6 @@
 #pragma once
 
 
-#include "Enumeration.h"
-
-
 namespace openriichi
 {
 	/**

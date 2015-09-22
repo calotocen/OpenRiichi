@@ -16,13 +16,6 @@
 #pragma once
 
 
-#include <cstdint>
-#include "HandCounter.h"
-#include "PlayerInfo.h"
-#include "Wall.h"
-#include "Winds.h"
-
-
 namespace openriichi
 {
 	/**

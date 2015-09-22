@@ -13,16 +13,10 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="..\..\..\..\src\core\Discard.h">
-      <Filter>OpenRiichi\Core</Filter>
-    </ClInclude>
     <ClInclude Include="..\..\..\..\src\core\DiscardSources.h">
       <Filter>OpenRiichi\Core</Filter>
     </ClInclude>
     <ClInclude Include="..\..\..\..\src\core\Enumeration.h">
-      <Filter>OpenRiichi\Core</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\..\..\src\core\Hand.h">
       <Filter>OpenRiichi\Core</Filter>
     </ClInclude>
     <ClInclude Include="..\..\..\..\src\core\LimitedVector.h">
@@ -52,15 +46,6 @@
     <ClInclude Include="..\..\..\..\src\core\OpenRiichiException.h">
       <Filter>OpenRiichi\Core</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\..\..\src\core\PlayerInfo.h">
-      <Filter>OpenRiichi\Core</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\..\..\src\core\RiichiStatus.h">
-      <Filter>OpenRiichi\Core</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\..\..\src\core\Set.h">
-      <Filter>OpenRiichi\Core</Filter>
-    </ClInclude>
     <ClInclude Include="..\..\..\..\src\core\SetArrangements.h">
       <Filter>OpenRiichi\Core</Filter>
     </ClInclude>
@@ -68,9 +53,6 @@
       <Filter>OpenRiichi\Core</Filter>
     </ClInclude>
     <ClInclude Include="..\..\..\..\src\core\SimplePlayerInfo.h">
-      <Filter>OpenRiichi\Core</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\..\..\src\core\Tile.h">
       <Filter>OpenRiichi\Core</Filter>
     </ClInclude>
     <ClInclude Include="..\..\..\..\src\core\TileAttributes.h">
@@ -94,14 +76,14 @@
     <ClInclude Include="..\..\..\..\src\core\SimpleWall.h">
       <Filter>OpenRiichi\Core</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\..\..\src\core\Wall.h">
-      <Filter>OpenRiichi\Core</Filter>
-    </ClInclude>
     <ClInclude Include="..\..\..\..\src\core\HandCounter.h">
       <Filter>OpenRiichi\Core</Filter>
     </ClInclude>
     <ClInclude Include="..\..\..\..\src\core\SimpleTable.h">
       <Filter>OpenRiichi\Core</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\src\OpenRiichi.h">
+      <Filter>OpenRiichi</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

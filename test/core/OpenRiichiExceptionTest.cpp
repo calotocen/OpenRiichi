@@ -15,7 +15,7 @@
  */
 #include <algorithm>
 #include <gtest/gtest.h>
-#include <OpenRiichiException.h>
+#include <OpenRiichi.h>
 
 
 using namespace std;

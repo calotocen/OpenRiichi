@@ -14,9 +14,7 @@
  * limitations under the License.
  */
 #include <gtest/gtest.h>
-#include <OpenRiichiAssertion.h>
-#include <Tiles.h>
-#include <Wall.h>
+#include <OpenRiichi.h>
 
 
 using namespace std;

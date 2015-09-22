@@ -15,8 +15,7 @@
  */
 #include <vector>
 #include <gtest/gtest.h>
-#include <HandCounter.h>
-#include <Winds.h>
+#include <OpenRiichi.h>
 
 
 using namespace std;

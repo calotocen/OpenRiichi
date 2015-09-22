@@ -14,8 +14,7 @@
  * limitations under the License.
  */
 #include <cstdio>
-#include "OpenRiichiConfiguration.h"
-#include "OpenRiichiException.h"
+#include "OpenRiichi.h"
 
 
 using namespace openriichi;

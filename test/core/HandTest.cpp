@@ -15,8 +15,7 @@
  */
 #include <vector>
 #include <gtest/gtest.h>
-#include <Hand.h>
-#include <Tiles.h>
+#include <OpenRiichi.h>
 
 
 using namespace std;
