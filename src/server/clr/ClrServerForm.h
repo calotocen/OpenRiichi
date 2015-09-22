@@ -48,15 +48,14 @@ namespace ClrServer {
 		/// </summary>
 		void InitializeComponent(void)
 		{
+			System::ComponentModel::ComponentResourceManager^  resources = (gcnew System::ComponentModel::ComponentResourceManager(ClrServerForm::typeid));
 			this->SuspendLayout();
 			// 
 			// ClrServerForm
 			// 
-			this->AutoScaleDimensions = System::Drawing::SizeF(6, 12);
+			resources->ApplyResources(this, L"$this");
 			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
-			this->ClientSize = System::Drawing::Size(284, 261);
 			this->Name = L"ClrServerForm";
-			this->Text = L"OpenRiichi";
 			this->ResumeLayout(false);
 
 		}
