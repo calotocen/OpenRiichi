@@ -48,7 +48,7 @@ CMfcServerApp::CMfcServerApp()
 
 	// TODO: 下のアプリケーション ID 文字列を一意の ID 文字列で置換します。推奨される
 	// 文字列の形式は CompanyName.ProductName.SubProduct.VersionInformation です
-	SetAppID(_T("MfcServer.AppID.NoVersion"));
+	SetAppID(_T("calotocen.OpenRiichi.MfcServer.0100"));
 
 	// TODO: この位置に構築用コードを追加してください。
 	// ここに InitInstance 中の重要な初期化処理をすべて記述してください。
