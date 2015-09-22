@@ -72,12 +72,6 @@ int CMainFrame::OnCreate(LPCREATESTRUCT lpCreateStruct)
 	// アクティブになったときメニュー バーにフォーカスを移動しない
 	CMFCPopupMenu::SetForceMenuFocus(FALSE);
 
-	// TODO: ツール バーおよびメニュー バーをドッキング可能にしない場合は、この 5 つの行を削除します
-	m_wndMenuBar.EnableDocking(CBRS_ALIGN_ANY);
-	EnableDocking(CBRS_ALIGN_ANY);
-	DockPane(&m_wndMenuBar);
-
-
 	// Visual Studio 2005 スタイルのドッキング ウィンドウ動作を有効にします
 	CDockingManager::SetDockingMode(DT_SMART);
 	// Visual Studio 2005 スタイルのドッキング ウィンドウの自動非表示動作を有効にします
