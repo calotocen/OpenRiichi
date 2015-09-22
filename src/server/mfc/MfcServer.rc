@@ -86,20 +86,11 @@ BEGIN
     BEGIN
         MENUITEM "新規作成(&N)\tCtrl+N",            ID_FILE_NEW
         MENUITEM "開く(&O)...\tCtrl+O",           ID_FILE_OPEN
-        MENUITEM "上書き保存(&S)\tCtrl+S",           ID_FILE_SAVE
         MENUITEM "名前を付けて保存(&A)...",             ID_FILE_SAVE_AS
         MENUITEM SEPARATOR
         MENUITEM "最近使ったファイル",                   ID_FILE_MRU_FILE1, GRAYED
         MENUITEM SEPARATOR
         MENUITEM "アプリケーションの終了(&X)",             ID_APP_EXIT
-    END
-    POPUP "編集(&E)"
-    BEGIN
-        MENUITEM "元に戻す(&U)\tCtrl+Z",            ID_EDIT_UNDO
-        MENUITEM SEPARATOR
-        MENUITEM "切り取り(&T)\tCtrl+X",            ID_EDIT_CUT
-        MENUITEM "コピー(&C)\tCtrl+C",             ID_EDIT_COPY
-        MENUITEM "貼り付け(&P)\tCtrl+V",            ID_EDIT_PASTE
     END
     POPUP "ヘルプ(&H)"
     BEGIN
