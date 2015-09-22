@@ -6,6 +6,9 @@ MinimumVisualStudioVersion = 10.0.40219.1
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Core", "Core\Core.vcxproj", "{1B7CC367-FE4D-4C13-86C9-984D407DF120}"
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "MfcServer", "Server\MfcServer\MfcServer.vcxproj", "{EAF8EFCC-9CE6-45B6-B8E4-72EE34803F76}"
+	ProjectSection(ProjectDependencies) = postProject
+		{1B7CC367-FE4D-4C13-86C9-984D407DF120} = {1B7CC367-FE4D-4C13-86C9-984D407DF120}
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
