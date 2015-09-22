@@ -28,6 +28,7 @@
 *.app
 
 # Visual Studio files
+*.ipch
 *.sdf
 *.opensdf
 Win32/
