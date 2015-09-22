@@ -98,16 +98,6 @@ BEGIN
     END
 END
 
-IDR_POPUP_EDIT MENU
-BEGIN
-    POPUP "編集"
-    BEGIN
-        MENUITEM "切り取り(&T)\tCtrl+X",            ID_EDIT_CUT
-        MENUITEM "コピー(&C)\tCtrl+C",             ID_EDIT_COPY
-        MENUITEM "貼り付け(&P)\tCtrl+V",            ID_EDIT_PASTE
-    END
-END
-
 IDR_HELP_MENU MENU
 BEGIN
     MENUITEM "バージョン情報 MfcServer(&A)...",    ID_APP_ABOUT
@@ -315,11 +305,6 @@ STRINGTABLE
 BEGIN
     IDS_STATUS_PANE1        "ペイン 1"
     IDS_STATUS_PANE2        "ペイン 2"
-END
-
-STRINGTABLE
-BEGIN
-    IDS_EDIT_MENU           "編集"
 END
 
 #endif    // 日本語 (日本) resources
