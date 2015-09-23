@@ -20,6 +20,11 @@
 #include "MfcServer.h"
 #include "MfcServerDlg.h"
 #include "afxdialogex.h"
+#include "WrapperdPaintDC.h"
+
+
+using namespace openriichi;
+
 
 #ifdef _DEBUG
 #define new DEBUG_NEW
@@ -124,12 +129,51 @@ void CMfcServerDlg::OnPaint()
 	}
 	else
 	{
-		CPaintDC dc(this);
-		CRect rect;
+		WrappedPaintDC dc(this);
 
 		// 背景色を描画する。
-		GetClientRect(&rect);
-		dc.FillSolidRect(0, 0, rect.Width(), rect.Height(), RGB(0x3c, 0xb3, 0x71));
+		dc.fill(RGB(0x3c, 0xb3, 0x71));
+
+		// 試しに画像を表示する。
+		int weightX = WrappedPaintDC::TILE_IMAGE_WIDTH + 5;
+		int weightY = WrappedPaintDC::TILE_IMAGE_HEIGHT + 5;
+		dc.paintTile(P1, 10 + weightX * 0, 10 + weightY * 0);
+		dc.paintTile(P2, 10 + weightX * 1, 10 + weightY * 0);
+		dc.paintTile(P3, 10 + weightX * 2, 10 + weightY * 0);
+		dc.paintTile(P4, 10 + weightX * 3, 10 + weightY * 0);
+		dc.paintTile(P5, 10 + weightX * 4, 10 + weightY * 0);
+		dc.paintTile(P6, 10 + weightX * 5, 10 + weightY * 0);
+		dc.paintTile(P7, 10 + weightX * 6, 10 + weightY * 0);
+		dc.paintTile(P8, 10 + weightX * 7, 10 + weightY * 0);
+		dc.paintTile(P9, 10 + weightX * 8, 10 + weightY * 0);
+		dc.paintTile(P5R, 10 + weightX * 9, 10 + weightY * 0);
+		dc.paintTile(S1, 10 + weightX * 0, 10 + weightY * 1);
+		dc.paintTile(S2, 10 + weightX * 1, 10 + weightY * 1);
+		dc.paintTile(S3, 10 + weightX * 2, 10 + weightY * 1);
+		dc.paintTile(S4, 10 + weightX * 3, 10 + weightY * 1);
+		dc.paintTile(S5, 10 + weightX * 4, 10 + weightY * 1);
+		dc.paintTile(S6, 10 + weightX * 5, 10 + weightY * 1);
+		dc.paintTile(S7, 10 + weightX * 6, 10 + weightY * 1);
+		dc.paintTile(S8, 10 + weightX * 7, 10 + weightY * 1);
+		dc.paintTile(S9, 10 + weightX * 8, 10 + weightY * 1);
+		dc.paintTile(S5R, 10 + weightX * 9, 10 + weightY * 1);
+		dc.paintTile(M1, 10 + weightX * 0, 10 + weightY * 2);
+		dc.paintTile(M2, 10 + weightX * 1, 10 + weightY * 2);
+		dc.paintTile(M3, 10 + weightX * 2, 10 + weightY * 2);
+		dc.paintTile(M4, 10 + weightX * 3, 10 + weightY * 2);
+		dc.paintTile(M5, 10 + weightX * 4, 10 + weightY * 2);
+		dc.paintTile(M6, 10 + weightX * 5, 10 + weightY * 2);
+		dc.paintTile(M7, 10 + weightX * 6, 10 + weightY * 2);
+		dc.paintTile(M8, 10 + weightX * 7, 10 + weightY * 2);
+		dc.paintTile(M9, 10 + weightX * 8, 10 + weightY * 2);
+		dc.paintTile(M5R, 10 + weightX * 9, 10 + weightY * 2);
+		dc.paintTile(TN, 10 + weightX * 0, 10 + weightY * 3);
+		dc.paintTile(NN, 10 + weightX * 1, 10 + weightY * 3);
+		dc.paintTile(SH, 10 + weightX * 2, 10 + weightY * 3);
+		dc.paintTile(PE, 10 + weightX * 3, 10 + weightY * 3);
+		dc.paintTile(HK, 10 + weightX * 4, 10 + weightY * 3);
+		dc.paintTile(HT, 10 + weightX * 5, 10 + weightY * 3);
+		dc.paintTile(CH, 10 + weightX * 6, 10 + weightY * 3);
 
 		CDialogEx::OnPaint();
 	}
