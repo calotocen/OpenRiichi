@@ -85,6 +85,7 @@ BEGIN_MESSAGE_MAP(CMfcServerDlg, CDialogEx)
 	ON_WM_QUERYDRAGICON()
 	ON_COMMAND(ID_ABOUT_MENUITEM, &CMfcServerDlg::OnAboutMenuitem)
 	ON_COMMAND(ID_QUIT_MENUITEM, &CMfcServerDlg::OnQuitMenuitem)
+	ON_WM_MOUSEMOVE()
 END_MESSAGE_MAP()
 
 
@@ -198,4 +199,10 @@ void CMfcServerDlg::OnAboutMenuitem()
 void CMfcServerDlg::OnQuitMenuitem()
 {
 	OnCancel();
+}
+
+
+void CMfcServerDlg::OnMouseMove(UINT nFlags, CPoint point)
+{
+	CDialogEx::OnMouseMove(nFlags, point);
 }
