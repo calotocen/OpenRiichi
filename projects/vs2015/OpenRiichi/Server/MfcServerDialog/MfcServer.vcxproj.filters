@@ -22,6 +22,9 @@
     <ClCompile Include="..\..\..\..\..\src\server\mfcdialog\WrapperdPaintDC.cpp">
       <Filter>MfcServer</Filter>
     </ClCompile>
+    <ClCompile Include="..\..\..\..\..\src\server\mfcdialog\MouseEvent.cpp">
+      <Filter>MfcServer</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\..\..\..\..\src\server\mfcdialog\MfcServer.h">
@@ -41,6 +44,9 @@
     </ClInclude>
     <ClInclude Include="..\..\..\..\..\src\server\mfcdialog\Resource.h">
       <Filter>リソース ファイル</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\..\src\server\mfcdialog\MouseEvent.h">
+      <Filter>MfcServer</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
