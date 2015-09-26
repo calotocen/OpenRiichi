@@ -131,18 +131,58 @@ void MfcServerView::paintTile(CPaintDC &dc, const Tile &tile, int x, int y)
 }
 
 
-void MfcServerView::paint(CPaintDC &dc)
+void MfcServerView::paintInitial(CPaintDC &dc)
 {
 	// 背景色を描画する。
-	fill(dc, RGB(0x3c, 0xb3, 0x71));
+	fill(dc, MEDIUMSEAGREEN);
 
-	if (m_model.getGameStatus() == MfcServerModel::INITIAL) {
-		return;
-	}
+	// タイトルロゴを描画する。
+	CRect rect;
+	CFont font;
+	dc.GetWindow()->GetClientRect(rect);
+	font.CreateFont(
+		50,										// 縦幅。0 ならデフォルト。
+		0,										// 横幅。0 なら縦幅にあった値。
+		0,										// 回転角。0.1 度単位。
+		0,										// ベースラインと x 軸との角度。0.1 度単位。
+		FW_BOLD,								// 太さ。
+		TRUE,									// イタリック。
+		FALSE,									// 下線。
+		FALSE,									// 取り消し線。
+		DEFAULT_CHARSET,						// 文字セット。日本語の場合は SHIFTJIS_CHARSET を指定する。
+		OUT_DEFAULT_PRECIS,						// 出力精度。
+		CLIP_DEFAULT_PRECIS,					// クリッピング制度
+		PROOF_QUALITY,							// 出力品質。
+		FIXED_PITCH | FF_MODERN,				// ピッチとファミリー。
+		_T("Century"));							// タイプフェイス。
+	CFont *oldFont = dc.SelectObject(&font);
+	dc.TextOutW(-125 + rect.Width() / 2, -40 + rect.Height() / 2, CString("OpenRiichi"));
+	dc.SelectObject(oldFont);
+}
+
+
+void MfcServerView::paintPlaying(CPaintDC &dc)
+{
+	// 背景色を描画する。
+	fill(dc, MEDIUMSEAGREEN);
 
 	const Hand &hand = m_model.table().getPlayerInfo(Winds::EAST).getHand();
 	for (size_t i = 0; i < hand.getTiles().size(); ++i)
 	{
 		paintTile(dc, hand.getTiles()[i], 10 + TILE_IMAGE_WIDTH * static_cast<int>(i), 10);
+	}
+}
+
+
+void MfcServerView::paint(CPaintDC &dc)
+{
+	switch (m_model.getGameStatus()) {
+	case MfcServerModel::INITIAL:
+		paintInitial(dc);
+		break;
+
+	case MfcServerModel::PLAYING:
+		paintPlaying(dc);
+		break;
 	}
 }

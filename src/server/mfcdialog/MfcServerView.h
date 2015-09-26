@@ -34,6 +34,9 @@ private:
 	/// 牌画像の始点 (Y 座標)
 	static const size_t TILE_IMAGE_Y = 0;
 
+	/// 色 (mediumseagreen)
+	static const COLORREF MEDIUMSEAGREEN = RGB(0x3c, 0xb3, 0x71);
+
 
 public:
 	/// 牌画像の横幅。
@@ -66,6 +69,7 @@ private:
 	/**
 	 * 画面全体を指定された色で塗りつぶす。
 	 *
+	 * @param[in] dc デバイスコンテキスト。
 	 * @param[in] color 色。
 	 */
 	void fill(CPaintDC &dc, COLORREF color);
@@ -73,16 +77,33 @@ private:
 	/**
 	 * 牌を描画する。
 	 *
+	 * @param[in] dc デバイスコンテキスト。
 	 * @param[in] tile 牌。
 	 * @param[in] x 描画位置 (X 座標)。
 	 * @param[in] y 描画位置 (Y 座標)。
 	 */
 	void paintTile(CPaintDC &dc, const openriichi::Tile &tile, int x, int y);
 
+	/**
+	 * 初期状態を描画する。
+	 *
+	 * @param[in] dc デバイスコンテキスト。
+	 */
+	void paintInitial(CPaintDC &dc);
+
+	/**
+	 * 対局中状態を描画する。
+	 *
+	 * @param[in] dc デバイスコンテキスト。
+	 */
+	void paintPlaying(CPaintDC &dc);
+
 
 public:
 	/**
-	 * モデルを描画する。
+	 * 描画する。
+	 *
+	 * @param[in] dc デバイスコンテキスト。
 	 */
 	void paint(CPaintDC &dc);
 };

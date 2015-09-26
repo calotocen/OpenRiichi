@@ -33,7 +33,7 @@ public:
 		/// 初期状態。
 		INITIAL,
 
-		/// 対局中。
+		/// 対局中状態。
 		PLAYING,
 	};
 
