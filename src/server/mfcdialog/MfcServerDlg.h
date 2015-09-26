@@ -19,9 +19,17 @@
 #pragma once
 
 
+#include "MfcServerModel.h"
+
+
 // CMfcServerDlg ダイアログ
 class CMfcServerDlg : public CDialogEx
 {
+private:
+	/// モデル。
+	MfcServerModel m_model;
+
+
 // コンストラクション
 public:
 	CMfcServerDlg(CWnd* pParent = NULL);	// 標準コンストラクター

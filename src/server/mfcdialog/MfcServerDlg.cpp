@@ -70,6 +70,7 @@ END_MESSAGE_MAP()
 
 CMfcServerDlg::CMfcServerDlg(CWnd* pParent /*=NULL*/)
 	: CDialogEx(IDD_MFCSERVER_DIALOG, pParent)
+	, m_model()
 {
 	m_hIcon = AfxGetApp()->LoadIcon(IDR_MAINFRAME);
 }
@@ -204,5 +205,7 @@ void CMfcServerDlg::OnQuitMenuitem()
 
 void CMfcServerDlg::OnMouseMove(UINT nFlags, CPoint point)
 {
+	m_model.setMouseEvent(MouseEvent(MouseEvent::MOVED, point));
+
 	CDialogEx::OnMouseMove(nFlags, point);
 }

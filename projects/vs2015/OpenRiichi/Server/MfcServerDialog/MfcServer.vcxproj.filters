@@ -25,6 +25,9 @@
     <ClCompile Include="..\..\..\..\..\src\server\mfcdialog\MouseEvent.cpp">
       <Filter>MfcServer</Filter>
     </ClCompile>
+    <ClCompile Include="..\..\..\..\..\src\server\mfcdialog\MfcServerModel.cpp">
+      <Filter>MfcServer</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\..\..\..\..\src\server\mfcdialog\MfcServer.h">
@@ -46,6 +49,9 @@
       <Filter>リソース ファイル</Filter>
     </ClInclude>
     <ClInclude Include="..\..\..\..\..\src\server\mfcdialog\MouseEvent.h">
+      <Filter>MfcServer</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\..\src\server\mfcdialog\MfcServerModel.h">
       <Filter>MfcServer</Filter>
     </ClInclude>
   </ItemGroup>
