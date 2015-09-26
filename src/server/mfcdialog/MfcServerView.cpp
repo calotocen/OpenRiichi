@@ -14,17 +14,17 @@
  * limitations under the License.
  */
 #include "stdafx.h"
-#include "WrapperdPaintDC.h"
+#include "MfcServerView.h"
 
 
 using namespace openriichi;
 
 
-const TCHAR *WrappedPaintDC::IMAGE_PATH = _T("res/image/main.bmp");
-CBitmap *WrappedPaintDC::st_bitmap = nullptr;
+const TCHAR *MfcServerView::IMAGE_PATH = _T("res/image/main.bmp");
+CBitmap *MfcServerView::st_bitmap = nullptr;
 
 
-WrappedPaintDC::WrappedPaintDC(CWnd *wnd)
+MfcServerView::MfcServerView(CWnd *wnd)
 	: m_dc(wnd)
 {
 	if (st_bitmap == nullptr) {
@@ -39,7 +39,7 @@ WrappedPaintDC::WrappedPaintDC(CWnd *wnd)
 }
 
 
-void WrappedPaintDC::fill(COLORREF color)
+void MfcServerView::fill(COLORREF color)
 {
 	CRect rect;
 
@@ -48,7 +48,7 @@ void WrappedPaintDC::fill(COLORREF color)
 }
 
 
-void WrappedPaintDC::paintTile(const Tile &tile, int x, int y)
+void MfcServerView::paintTile(const Tile &tile, int x, int y)
 {
 	int column = 0;
 	int row = 0;

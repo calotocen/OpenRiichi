@@ -20,7 +20,7 @@
 #include "MfcServer.h"
 #include "MfcServerDlg.h"
 #include "afxdialogex.h"
-#include "WrapperdPaintDC.h"
+#include "MfcServerView.h"
 
 
 using namespace openriichi;
@@ -131,14 +131,14 @@ void CMfcServerDlg::OnPaint()
 	}
 	else
 	{
-		WrappedPaintDC dc(this);
+		MfcServerView dc(this);
 
 		// 背景色を描画する。
 		dc.fill(RGB(0x3c, 0xb3, 0x71));
 
 		// 試しに画像を表示する。
-		int weightX = WrappedPaintDC::TILE_IMAGE_WIDTH + 5;
-		int weightY = WrappedPaintDC::TILE_IMAGE_HEIGHT + 5;
+		int weightX = MfcServerView::TILE_IMAGE_WIDTH + 5;
+		int weightY = MfcServerView::TILE_IMAGE_HEIGHT + 5;
 		dc.paintTile(P1, 10 + weightX * 0, 10 + weightY * 0);
 		dc.paintTile(P2, 10 + weightX * 1, 10 + weightY * 0);
 		dc.paintTile(P3, 10 + weightX * 2, 10 + weightY * 0);

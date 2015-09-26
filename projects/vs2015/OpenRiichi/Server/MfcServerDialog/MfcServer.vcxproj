@@ -22,6 +22,7 @@
     <ClCompile Include="..\..\..\..\..\src\server\mfcdialog\MfcServer.cpp" />
     <ClCompile Include="..\..\..\..\..\src\server\mfcdialog\MfcServerDlg.cpp" />
     <ClCompile Include="..\..\..\..\..\src\server\mfcdialog\MfcServerModel.cpp" />
+    <ClCompile Include="..\..\..\..\..\src\server\mfcdialog\MfcServerView.cpp" />
     <ClCompile Include="..\..\..\..\..\src\server\mfcdialog\MouseEvent.cpp" />
     <ClCompile Include="..\..\..\..\..\src\server\mfcdialog\stdafx.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Create</PrecompiledHeader>
@@ -29,17 +30,16 @@
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Create</PrecompiledHeader>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Create</PrecompiledHeader>
     </ClCompile>
-    <ClCompile Include="..\..\..\..\..\src\server\mfcdialog\WrapperdPaintDC.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\..\..\..\..\src\server\mfcdialog\MfcServer.h" />
     <ClInclude Include="..\..\..\..\..\src\server\mfcdialog\MfcServerDlg.h" />
     <ClInclude Include="..\..\..\..\..\src\server\mfcdialog\MfcServerModel.h" />
+    <ClInclude Include="..\..\..\..\..\src\server\mfcdialog\MfcServerView.h" />
     <ClInclude Include="..\..\..\..\..\src\server\mfcdialog\MouseEvent.h" />
     <ClInclude Include="..\..\..\..\..\src\server\mfcdialog\Resource.h" />
     <ClInclude Include="..\..\..\..\..\src\server\mfcdialog\stdafx.h" />
     <ClInclude Include="..\..\..\..\..\src\server\mfcdialog\targetver.h" />
-    <ClInclude Include="..\..\..\..\..\src\server\mfcdialog\WrapperdPaintDC.h" />
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="..\..\..\..\..\src\server\mfcdialog\MfcServer.rc" />

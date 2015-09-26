@@ -19,13 +19,13 @@
     <ClCompile Include="..\..\..\..\..\src\server\mfcdialog\stdafx.cpp">
       <Filter>MfcServer</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\..\..\..\src\server\mfcdialog\WrapperdPaintDC.cpp">
-      <Filter>MfcServer</Filter>
-    </ClCompile>
     <ClCompile Include="..\..\..\..\..\src\server\mfcdialog\MouseEvent.cpp">
       <Filter>MfcServer</Filter>
     </ClCompile>
     <ClCompile Include="..\..\..\..\..\src\server\mfcdialog\MfcServerModel.cpp">
+      <Filter>MfcServer</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\..\src\server\mfcdialog\MfcServerView.cpp">
       <Filter>MfcServer</Filter>
     </ClCompile>
   </ItemGroup>
@@ -42,9 +42,6 @@
     <ClInclude Include="..\..\..\..\..\src\server\mfcdialog\targetver.h">
       <Filter>MfcServer</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\..\..\..\src\server\mfcdialog\WrapperdPaintDC.h">
-      <Filter>MfcServer</Filter>
-    </ClInclude>
     <ClInclude Include="..\..\..\..\..\src\server\mfcdialog\Resource.h">
       <Filter>リソース ファイル</Filter>
     </ClInclude>
@@ -52,6 +49,9 @@
       <Filter>MfcServer</Filter>
     </ClInclude>
     <ClInclude Include="..\..\..\..\..\src\server\mfcdialog\MfcServerModel.h">
+      <Filter>MfcServer</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\..\src\server\mfcdialog\MfcServerView.h">
       <Filter>MfcServer</Filter>
     </ClInclude>
   </ItemGroup>
