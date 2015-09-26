@@ -17,6 +17,13 @@
 #include "MouseEvent.h"
 
 
+MouseEvent::MouseEvent()
+	: MouseEvent(NO_TYPE, NO_BUTTON, CPoint())
+{
+	// 何もしない。
+}
+
+
 MouseEvent::MouseEvent(Type type, const CPoint &point)
 	: MouseEvent(type, NO_BUTTON, point)
 {
@@ -30,7 +37,7 @@ MouseEvent::MouseEvent(Type type, Button button, const CPoint &point)
 	, m_point(point)
 {
 	// アサーションが有効である場合のみ，引数をチェックする。
-	openriichi_assert(m_type == MOVED && m_button == NO_BUTTON);
+	openriichi_assert((m_type != NO_TYPE && m_type != MOVED) || m_button == NO_BUTTON);
 }
 
 

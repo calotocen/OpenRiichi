@@ -27,6 +27,9 @@ public:
 	 */
 	enum Type
 	{
+		/// なし。
+		NO_TYPE,
+
 		/// 移動。
 		MOVED,
 
@@ -62,6 +65,11 @@ private:
 
 
 public:
+	/**
+	 * マウスイベントを生成する。
+	 */
+	MouseEvent();
+
 	/**
 	 * マウスイベントを生成する。
 	 *
