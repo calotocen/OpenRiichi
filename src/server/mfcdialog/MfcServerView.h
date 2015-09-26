@@ -13,12 +13,16 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
+#pragma once
+
+
+#include "MfcServerModel.h"
 
 
 /**
  * ラップしたデバイスコンテキストである。
  */
-class WrappedPaintDC
+class MfcServerView
 {
 private:
 	/// 画像ファイルの格納場所
@@ -40,13 +44,11 @@ public:
 
 
 private:
+	/// モデル。
+	const MfcServerModel &m_model;
+
 	/// ビットマップ。
-	static CBitmap *st_bitmap;
-
-
-private:
-	/// デバイスコンテキスト。
-	CPaintDC m_dc;
+	CBitmap *m_bitmap;
 
 
 public:
@@ -57,16 +59,16 @@ public:
 	 * @note 本コンストラクタは，マルチスレッド非対応である。
 	 *       マルチスレッド環境下で，本コンストラクタを実行しないこと。
 	 */
-	explicit WrappedPaintDC(CWnd *wnd);
+	explicit MfcServerView(const MfcServerModel &model);
 
 
-public:
+private:
 	/**
 	 * 画面全体を指定された色で塗りつぶす。
 	 *
 	 * @param[in] color 色。
 	 */
-	void fill(COLORREF color);
+	void fill(CPaintDC &dc, COLORREF color);
 
 	/**
 	 * 牌を描画する。
@@ -75,5 +77,12 @@ public:
 	 * @param[in] x 描画位置 (X 座標)。
 	 * @param[in] y 描画位置 (Y 座標)。
 	 */
-	void paintTile(const openriichi::Tile &tile, int x, int y);
+	void paintTile(CPaintDC &dc, const openriichi::Tile &tile, int x, int y);
+
+
+public:
+	/**
+	 * モデルを描画する。
+	 */
+	void paint(CPaintDC &dc);
 };

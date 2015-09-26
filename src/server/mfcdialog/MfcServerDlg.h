@@ -20,6 +20,7 @@
 
 
 #include "MfcServerModel.h"
+#include "MfcServerView.h"
 
 
 // CMfcServerDlg ダイアログ
@@ -28,6 +29,9 @@ class CMfcServerDlg : public CDialogEx
 private:
 	/// モデル。
 	MfcServerModel m_model;
+
+	/// ビュー。
+	MfcServerView m_view;
 
 
 // コンストラクション
