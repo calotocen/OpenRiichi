@@ -140,44 +140,9 @@ void MfcServerView::paint(CPaintDC &dc)
 		return;
 	}
 
-	// 試しに画像を表示する。
-	int weightX = TILE_IMAGE_WIDTH + 5;
-	int weightY = TILE_IMAGE_HEIGHT + 5;
-	paintTile(dc, P1, 10 + weightX * 0, 10 + weightY * 0);
-	paintTile(dc, P2, 10 + weightX * 1, 10 + weightY * 0);
-	paintTile(dc, P3, 10 + weightX * 2, 10 + weightY * 0);
-	paintTile(dc, P4, 10 + weightX * 3, 10 + weightY * 0);
-	paintTile(dc, P5, 10 + weightX * 4, 10 + weightY * 0);
-	paintTile(dc, P6, 10 + weightX * 5, 10 + weightY * 0);
-	paintTile(dc, P7, 10 + weightX * 6, 10 + weightY * 0);
-	paintTile(dc, P8, 10 + weightX * 7, 10 + weightY * 0);
-	paintTile(dc, P9, 10 + weightX * 8, 10 + weightY * 0);
-	paintTile(dc, P5R, 10 + weightX * 9, 10 + weightY * 0);
-	paintTile(dc, S1, 10 + weightX * 0, 10 + weightY * 1);
-	paintTile(dc, S2, 10 + weightX * 1, 10 + weightY * 1);
-	paintTile(dc, S3, 10 + weightX * 2, 10 + weightY * 1);
-	paintTile(dc, S4, 10 + weightX * 3, 10 + weightY * 1);
-	paintTile(dc, S5, 10 + weightX * 4, 10 + weightY * 1);
-	paintTile(dc, S6, 10 + weightX * 5, 10 + weightY * 1);
-	paintTile(dc, S7, 10 + weightX * 6, 10 + weightY * 1);
-	paintTile(dc, S8, 10 + weightX * 7, 10 + weightY * 1);
-	paintTile(dc, S9, 10 + weightX * 8, 10 + weightY * 1);
-	paintTile(dc, S5R, 10 + weightX * 9, 10 + weightY * 1);
-	paintTile(dc, M1, 10 + weightX * 0, 10 + weightY * 2);
-	paintTile(dc, M2, 10 + weightX * 1, 10 + weightY * 2);
-	paintTile(dc, M3, 10 + weightX * 2, 10 + weightY * 2);
-	paintTile(dc, M4, 10 + weightX * 3, 10 + weightY * 2);
-	paintTile(dc, M5, 10 + weightX * 4, 10 + weightY * 2);
-	paintTile(dc, M6, 10 + weightX * 5, 10 + weightY * 2);
-	paintTile(dc, M7, 10 + weightX * 6, 10 + weightY * 2);
-	paintTile(dc, M8, 10 + weightX * 7, 10 + weightY * 2);
-	paintTile(dc, M9, 10 + weightX * 8, 10 + weightY * 2);
-	paintTile(dc, M5R, 10 + weightX * 9, 10 + weightY * 2);
-	paintTile(dc, TN, 10 + weightX * 0, 10 + weightY * 3);
-	paintTile(dc, NN, 10 + weightX * 1, 10 + weightY * 3);
-	paintTile(dc, SH, 10 + weightX * 2, 10 + weightY * 3);
-	paintTile(dc, PE, 10 + weightX * 3, 10 + weightY * 3);
-	paintTile(dc, HK, 10 + weightX * 4, 10 + weightY * 3);
-	paintTile(dc, HT, 10 + weightX * 5, 10 + weightY * 3);
-	paintTile(dc, CH, 10 + weightX * 6, 10 + weightY * 3);
+	const Hand &hand = m_model.table().getPlayerInfo(Winds::EAST).getHand();
+	for (size_t i = 0; i < hand.getTiles().size(); ++i)
+	{
+		paintTile(dc, hand.getTiles()[i], 10 + TILE_IMAGE_WIDTH * static_cast<int>(i), 10);
+	}
 }

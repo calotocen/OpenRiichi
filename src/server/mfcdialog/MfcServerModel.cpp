@@ -63,3 +63,26 @@ void MfcServerModel::setMouseEvent(const MouseEvent &mouseEvent)
 {
 	m_mouseEvent = mouseEvent;
 }
+
+
+void MfcServerModel::initialize()
+{
+	m_gameStatus = INITIAL;
+	m_table = Table();
+	m_mouseEvent = MouseEvent();
+}
+
+
+void MfcServerModel::play()
+{
+	m_gameStatus = PLAYING;
+
+	Wall &wall = m_table.wall();
+	Hand &hand = m_table.playerInfo(Winds::EAST).hand();
+
+	wall.shuffle(static_cast<unsigned int>(time(NULL)));
+
+	for (int i = 0; i < 14; ++i) {
+		hand.tiles().push_back(wall.draw());
+	}
+}

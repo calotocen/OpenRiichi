@@ -94,4 +94,14 @@ public:
 	 * @param[in] mouseEvent マウスイベント。
 	 */
 	void setMouseEvent(const MouseEvent &mouseEvent);
+
+	/**
+	 * 初期化する。
+	 */
+	void initialize();
+
+	/**
+	 * 対局を開始する。
+	 */
+	void play();
 };

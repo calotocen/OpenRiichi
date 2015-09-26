@@ -65,4 +65,5 @@
 #endif
 
 
+#include <ctime>
 #include <OpenRiichi.h>

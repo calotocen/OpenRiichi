@@ -153,7 +153,8 @@ void CMfcServerDlg::OnAboutMenuitem()
 
 void CMfcServerDlg::OnNewMenuitem()
 {
-	m_model.setGameStatus(MfcServerModel::PLAYING);
+	m_model.initialize();
+	m_model.play();
 
 	Invalidate(TRUE);
 }
