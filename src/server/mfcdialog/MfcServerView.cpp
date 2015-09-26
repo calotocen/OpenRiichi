@@ -136,6 +136,10 @@ void MfcServerView::paint(CPaintDC &dc)
 	// 背景色を描画する。
 	fill(dc, RGB(0x3c, 0xb3, 0x71));
 
+	if (m_model.getGameStatus() == MfcServerModel::INITIAL) {
+		return;
+	}
+
 	// 試しに画像を表示する。
 	int weightX = TILE_IMAGE_WIDTH + 5;
 	int weightY = TILE_IMAGE_HEIGHT + 5;

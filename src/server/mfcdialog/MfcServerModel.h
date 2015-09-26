@@ -24,7 +24,23 @@
  */
 class MfcServerModel
 {
+public:
+	/**
+	 * ゲーム状態である。
+	 */
+	enum GameStatus
+	{
+		/// 初期状態。
+		INITIAL,
+
+		/// 対局中。
+		PLAYING,
+	};
+
 private:
+	/// ゲーム状態。
+	GameStatus m_gameStatus;
+
 	/// 卓。
 	openriichi::Table m_table;
 
@@ -40,6 +56,16 @@ public:
 
 
 public:
+	/**
+	 * ゲーム状態を返す。
+	 */
+	GameStatus getGameStatus() const;
+
+	/**
+	 * ゲーム状態を設定する。
+	 */
+	void setGameStatus(GameStatus gameStatus);
+
 	/**
 	 * 卓を返す。
 	 *

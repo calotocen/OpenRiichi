@@ -21,10 +21,23 @@ using namespace openriichi;
 
 
 MfcServerModel::MfcServerModel()
-	: m_table()
+	: m_gameStatus(INITIAL)
+	, m_table()
 	, m_mouseEvent()
 {
 	// 何もしない。
+}
+
+
+MfcServerModel::GameStatus MfcServerModel::getGameStatus() const
+{
+	return m_gameStatus;
+}
+
+
+void MfcServerModel::setGameStatus(GameStatus gameStatus)
+{
+	m_gameStatus = gameStatus;
 }
 
 

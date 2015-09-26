@@ -58,6 +58,7 @@ protected:
 	DECLARE_MESSAGE_MAP()
 public:
 	afx_msg void OnAboutMenuitem();
+	afx_msg void OnNewMenuitem();
 	afx_msg void OnQuitMenuitem();
 	afx_msg void OnMouseMove(UINT nFlags, CPoint point);
 };
