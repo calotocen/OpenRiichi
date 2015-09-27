@@ -38,7 +38,8 @@ SimpleWall::SimpleWall(const Tiles & tiles)
 	: m_tiles(tiles)
 	, m_doras()
 	, m_uraDoras()
-	, m_index(0)
+	, m_breakingIndex(0)
+	, m_drawingIndex(0)
 	, m_deadWallIndex(INITIAL_DEAD_WALL_INDEX)
 #if defined(OPENRIICHI_ENABLE_ASSERTION) && OPENRIICHI_ENABLE_ASSERTION != 0
 	, m_lastRevealedDoraIndex(TILES_SIZE)
@@ -57,7 +58,8 @@ bool openriichi::SimpleWall::operator==(const SimpleWall & other) const
 	return m_tiles == other.m_tiles
 		&& m_doras == other.m_doras
 		&& m_uraDoras == other.m_uraDoras
-		&& m_index == other.m_index
+		&& m_breakingIndex == other.m_breakingIndex
+		&& m_drawingIndex == other.m_drawingIndex
 		&& m_deadWallIndex == other.m_deadWallIndex;
 }
 
@@ -84,26 +86,16 @@ void SimpleWall::shuffle(unsigned int seed)
 }
 
 
-void SimpleWall::breaks(int index)
+void SimpleWall::breaks(size_t index)
 {
 	// アサーションが有効である場合のみ，引数をチェックする。
 	openriichi_assert(0 <= index && index < TILES_SIZE);
 
-	Tiles tiles;		// 牌。
-
-	// 処理を簡易にするため，区切り位置が配列の先頭となるように牌を並び替える。
-	for (auto it = m_tiles.begin() + index; it != m_tiles.end(); ++it) {
-		tiles.push_back(*it);
-	}
-	for (auto it = m_tiles.begin(); it != m_tiles.begin() + index; ++it) {
-		tiles.push_back(*it);
-	}
-
 	// パラメータを初期化する。
-	m_tiles = tiles;
 	m_doras.clear();
 	m_uraDoras.clear();
-	m_index = 0;
+	m_breakingIndex = static_cast<uint8_t>(index);
+	m_drawingIndex = 0;
 	m_deadWallIndex = INITIAL_DEAD_WALL_INDEX;
 #if defined(OPENRIICHI_ENABLE_ASSERTION) && OPENRIICHI_ENABLE_ASSERTION != 0
 	m_lastRevealedDoraIndex = TILES_SIZE;
@@ -114,18 +106,18 @@ void SimpleWall::breaks(int index)
 const Tile &SimpleWall::draw()
 {
 	// アサーションが有効である場合のみ，状態をチェックする。
-	openriichi_assert(m_index < TILES_SIZE);
+	openriichi_assert(m_drawingIndex < TILES_SIZE);
 
-	return m_tiles[m_index++];
+	return m_tiles[(m_drawingIndex++ + m_breakingIndex) % TILES_SIZE];
 }
 
 
 const Tile &SimpleWall::drawReplacementTile()
 {
 	// アサーションが有効である場合のみ，状態をチェックする。
-	openriichi_assert(0 < m_deadWallIndex);
+	openriichi_assert(0 < m_deadWallIndex && m_deadWallIndex < TILES_SIZE);
 
-	int replacementTileIndex;		// 嶺上牌の位置。
+	size_t replacementTileIndex;		// 嶺上牌の位置。
 
 	// 嶺上牌の位置を計算する。
 	if (m_deadWallIndex % 2 == 0) {
@@ -138,7 +130,7 @@ const Tile &SimpleWall::drawReplacementTile()
 	--m_deadWallIndex;
 
 	// 嶺上牌を返す。
-	return m_tiles[replacementTileIndex];
+	return m_tiles[(replacementTileIndex + m_breakingIndex) % TILES_SIZE];
 }
 
 
@@ -157,14 +149,14 @@ void SimpleWall::revealNewDora()
 #endif // defined(OPENRIICHI_ENABLE_ASSERTION) && OPENRIICHI_ENABLE_ASSERTION != 0
 
 	// ドラをめくる。
-	m_doras.push_back(m_tiles[currentDoraIndicatorIndex].getNextTile());
-	m_uraDoras.push_back(m_tiles[currentDoraIndicatorIndex + 1].getNextTile());
+	m_doras.push_back(m_tiles[(currentDoraIndicatorIndex + m_breakingIndex) % TILES_SIZE].getNextTile());
+	m_uraDoras.push_back(m_tiles[(currentDoraIndicatorIndex + 1 + m_breakingIndex) % TILES_SIZE].getNextTile());
 }
 
 
 size_t SimpleWall::countRemainingTiles()
 {
-	return m_deadWallIndex - m_index;
+	return m_deadWallIndex - m_drawingIndex;
 }
 
 

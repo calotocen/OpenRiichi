@@ -167,19 +167,24 @@ namespace openriichi
 	/// breaks 関数をテストする。
 	TEST_F(WallTest, testBreaks)
 	{
-		Wall wall1;
+		Wall wall1a;
+		Wall wall1b;
 		Wall wall2;
 		Wall wall3;
 
-		wall1.breaks(0);
-		ASSERT_EQ(P1, wall1.draw());
-		ASSERT_EQ(P1, wall1.draw());
-		ASSERT_EQ(P1, wall1.draw());
-		ASSERT_EQ(P1, wall1.draw());
-		ASSERT_EQ(HT, wall1.drawReplacementTile());
-		ASSERT_EQ(HT, wall1.drawReplacementTile());
-		ASSERT_EQ(HT, wall1.drawReplacementTile());
-		ASSERT_EQ(HT, wall1.drawReplacementTile());
+		wall1a.breaks(0);
+		ASSERT_EQ(P1, wall1a.draw());
+		ASSERT_EQ(P1, wall1a.draw());
+		ASSERT_EQ(P1, wall1a.draw());
+		ASSERT_EQ(P1, wall1a.draw());
+		ASSERT_EQ(HT, wall1a.drawReplacementTile());
+		ASSERT_EQ(HT, wall1a.drawReplacementTile());
+		ASSERT_EQ(HT, wall1a.drawReplacementTile());
+		ASSERT_EQ(HT, wall1a.drawReplacementTile());
+
+		wall1a.breaks(37);
+		wall1b.breaks(37);
+		ASSERT_EQ(wall1a, wall1b);
 
 		wall2.breaks(68);
 		ASSERT_EQ(S9, wall2.draw());

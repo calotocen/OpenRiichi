@@ -49,8 +49,11 @@ namespace openriichi
 		/// 裏ドラ配列。
 		Doras m_uraDoras;
 
+		/// 開門位置。
+		uint8_t m_breakingIndex;
+
 		/// ツモ位置。
-		uint8_t m_index;
+		uint8_t m_drawingIndex;
 
 		/// 王牌位置。
 		uint8_t m_deadWallIndex;
@@ -99,22 +102,20 @@ namespace openriichi
 
 	public:
 		/**
-		 * 牌を混ぜる。
+		 * 洗牌する。
 		 *
 		 * @param[in] seed 乱数種。
 		 */
 		void shuffle(unsigned int seed);
 
 		/**
-		 * 山を区切る。
+		 * 開門する。
 		 *
 		 * @param[in] index 区切り位置。
-		 * @note 一度，区切った山を再度区切ることはできない。
-		 *       再度区切る場合は，その前に shuffle 関数を実行すること。
 		 * @note 本関数は，ドラをめくらない。
 		 *       ドラをめくる場合は，本関数実行後に revealNewDora 関数を実行すること。
 		 */
-		void breaks(int index);
+		void breaks(size_t index);
 
 		/**
 		 * 牌をツモる。
