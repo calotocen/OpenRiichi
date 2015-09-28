@@ -28,16 +28,16 @@ namespace openriichi
 		ASSERT_EQ(2, DiscardSources::HELD_ID);
 	}
 
+	/// == 演算子をテストする。
+	TEST_F(DiscardSourcesTest, testOperatorEqualTo)
+	{
+		ASSERT_FALSE(DiscardSources::DRAWED == DiscardSources::HELD);
+	}
+
 	/// getId 関数をテストする。
-	TEST_F(DiscardSourcesTest, testGetId)
+	TEST_F(DiscardSourcesTest, testToGetId)
 	{
 		ASSERT_EQ(1, DiscardSources::DRAWED.getId());
 		ASSERT_EQ(2, DiscardSources::HELD.getId());
-	}
-
-	/// 同一種類の列挙型を比較可能であるかテストする。
-	TEST_F(DiscardSourcesTest, testComparable)
-	{
-		ASSERT_FALSE(DiscardSources::DRAWED == DiscardSources::HELD);
 	}
 }
