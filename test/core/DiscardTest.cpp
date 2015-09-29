@@ -43,55 +43,15 @@ namespace openriichi
 	};
 
 	/// コンストラクタ (全指定) をテストする。
-	TEST_F(DiscardTest, testConstructWithAll)
+	TEST_F(DiscardTest, testConstructorWithAll)
 	{
 #if defined(OPENRIICHI_ENABLE_ASSERTION) && OPENRIICHI_ENABLE_ASSERTION != 0
 		ASSERT_THROW(Discard(P1, DiscardSource(3)), OpenRiichiAssertion);
 #endif // defined(OPENRIICHI_ENABLE_ASSERTION) && OPENRIICHI_ENABLE_ASSERTION != 0
 	}
 
-	/// getTile 関数をテストする。
-	TEST_F(DiscardTest, testGetTile)
-	{
-		ASSERT_EQ(P1, discard1.getTile());
-		ASSERT_EQ(S3, discard2.getTile());
-		ASSERT_EQ(M7, discard3.getTile());
-		ASSERT_EQ(TN, discard4.getTile());
-		ASSERT_EQ(CH, discard5.getTile());
-	}
-
-	/// getSource 関数をテストする。
-	TEST_F(DiscardTest, testGetSource)
-	{
-		ASSERT_EQ(DiscardSources::DRAWED, discard1.getSource());
-		ASSERT_EQ(DiscardSources::HELD, discard2.getSource());
-		ASSERT_EQ(DiscardSources::DRAWED, discard3.getSource());
-		ASSERT_EQ(DiscardSources::HELD, discard4.getSource());
-		ASSERT_EQ(DiscardSources::DRAWED, discard5.getSource());
-	}
-
-	/// isRiichiDeclared 関数をテストする。
-	TEST_F(DiscardTest, testIsRiichiDeclared)
-	{
-		ASSERT_EQ(false, discard1.isRiichiDeclared());
-		ASSERT_EQ(false, discard2.isRiichiDeclared());
-		ASSERT_EQ(false, discard3.isRiichiDeclared());
-		ASSERT_EQ(true, discard4.isRiichiDeclared());
-		ASSERT_EQ(true, discard5.isRiichiDeclared());
-	}
-
-	/// isTaken 関数をテストする。
-	TEST_F(DiscardTest, testIsTaken)
-	{
-		ASSERT_EQ(false, discard1.isTaken());
-		ASSERT_EQ(false, discard2.isTaken());
-		ASSERT_EQ(true, discard3.isTaken());
-		ASSERT_EQ(false, discard4.isTaken());
-		ASSERT_EQ(true, discard5.isTaken());
-	}
-
 	/// == 演算子をテストする。
-	TEST_F(DiscardTest, testEquals)
+	TEST_F(DiscardTest, testOperatorEqualTo)
 	{
 		// 自身と比較する。
 		ASSERT_TRUE(discard1 == discard1);
@@ -119,7 +79,7 @@ namespace openriichi
 	}
 
 	/// != 演算子をテストする。
-	TEST_F(DiscardTest, testNotEquals)
+	TEST_F(DiscardTest, testOperatorNotEqualTo)
 	{
 		// 自身と比較する。
 		ASSERT_FALSE(discard1 != discard1);
@@ -144,5 +104,45 @@ namespace openriichi
 				}
 			}
 		}
+	}
+
+	/// getTile 関数をテストする。
+	TEST_F(DiscardTest, testToGetTile)
+	{
+		ASSERT_EQ(P1, discard1.getTile());
+		ASSERT_EQ(S3, discard2.getTile());
+		ASSERT_EQ(M7, discard3.getTile());
+		ASSERT_EQ(TN, discard4.getTile());
+		ASSERT_EQ(CH, discard5.getTile());
+	}
+
+	/// getSource 関数をテストする。
+	TEST_F(DiscardTest, testToGetSource)
+	{
+		ASSERT_EQ(DiscardSources::DRAWED, discard1.getSource());
+		ASSERT_EQ(DiscardSources::HELD, discard2.getSource());
+		ASSERT_EQ(DiscardSources::DRAWED, discard3.getSource());
+		ASSERT_EQ(DiscardSources::HELD, discard4.getSource());
+		ASSERT_EQ(DiscardSources::DRAWED, discard5.getSource());
+	}
+
+	/// isRiichiDeclared 関数をテストする。
+	TEST_F(DiscardTest, testToIsRiichiDeclared)
+	{
+		ASSERT_EQ(false, discard1.isRiichiDeclared());
+		ASSERT_EQ(false, discard2.isRiichiDeclared());
+		ASSERT_EQ(false, discard3.isRiichiDeclared());
+		ASSERT_EQ(true, discard4.isRiichiDeclared());
+		ASSERT_EQ(true, discard5.isRiichiDeclared());
+	}
+
+	/// isTaken 関数をテストする。
+	TEST_F(DiscardTest, testToIsTaken)
+	{
+		ASSERT_EQ(false, discard1.isTaken());
+		ASSERT_EQ(false, discard2.isTaken());
+		ASSERT_EQ(true, discard3.isTaken());
+		ASSERT_EQ(false, discard4.isTaken());
+		ASSERT_EQ(true, discard5.isTaken());
 	}
 }
