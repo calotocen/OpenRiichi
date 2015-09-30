@@ -73,6 +73,8 @@ namespace openriichi
 		 *     - 萬子 (一萬× 4，二萬× 4，..., 九萬× 4)
 		 *     - 風牌 (東× 4, 南× 4, 西× 4, 北× 4)
 		 *     - 三元牌 (中× 4, 白× 4, 發× 4)
+		 *
+		 * 開門位置は，さいころの目の合計が 2 であった場合の位置である。
 		 */
 		SimpleWall();
 
@@ -111,11 +113,12 @@ namespace openriichi
 		/**
 		 * 開門する。
 		 *
-		 * @param[in] index 区切り位置。
+		 * @param[in] dice1 さいころ。
+		 * @param[in] dice2 さいころ。
 		 * @note 本関数は，ドラをめくらない。
 		 *       ドラをめくる場合は，本関数実行後に revealNewDora 関数を実行すること。
 		 */
-		void breaks(size_t index);
+		void breaks(const Dice &dice1, const Dice &dice2);
 
 		/**
 		 * 牌をツモる。

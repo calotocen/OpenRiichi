@@ -38,7 +38,7 @@ SimpleWall::SimpleWall(const Tiles & tiles)
 	: m_tiles(tiles)
 	, m_doras()
 	, m_uraDoras()
-	, m_breakingIndex(0)
+	, m_breakingIndex(3 * 34 + 2 * 2)
 	, m_drawingIndex(0)
 	, m_deadWallIndex(INITIAL_DEAD_WALL_INDEX)
 #if defined(OPENRIICHI_ENABLE_ASSERTION) && OPENRIICHI_ENABLE_ASSERTION != 0
@@ -86,10 +86,30 @@ void SimpleWall::shuffle(unsigned int seed)
 }
 
 
-void SimpleWall::breaks(size_t index)
+void SimpleWall::breaks(const Dice &dice1, const Dice &dice2)
 {
-	// アサーションが有効である場合のみ，引数をチェックする。
-	openriichi_assert(0 <= index && index < TILES_SIZE);
+	size_t sum;
+	size_t index;
+
+	// 開門位置を計算する。
+	sum = dice1.getNumber() + dice2.getNumber();
+	switch (sum % 4) {
+	case 1: // 東家の前の山が開門地点である。
+		index = 0 * 34 + sum * 2;
+		break;
+
+	case 2: // 南家の前の山が開門地点である。
+		index = 3 * 34 + sum * 2;
+		break;
+
+	case 3: // 西家の前の山が開門地点である。
+		index = 2 * 34 + sum * 2;
+		break;
+
+	case 0: // 北家の前の山が開門地点である。
+		index = 1 * 34 + sum * 2;
+		break;
+	}
 
 	// パラメータを初期化する。
 	m_doras.clear();

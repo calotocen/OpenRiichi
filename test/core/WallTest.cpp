@@ -167,48 +167,76 @@ namespace openriichi
 	/// breaks 関数をテストする。
 	TEST_F(WallTest, testBreaks)
 	{
+		Dice dice1;
+		Dice dice2;
 		Wall wall1a;
 		Wall wall1b;
 		Wall wall2;
 		Wall wall3;
 
-		wall1a.breaks(0);
-		ASSERT_EQ(P1, wall1a.draw());
-		ASSERT_EQ(P1, wall1a.draw());
-		ASSERT_EQ(P1, wall1a.draw());
-		ASSERT_EQ(P1, wall1a.draw());
-		ASSERT_EQ(HT, wall1a.drawReplacementTile());
-		ASSERT_EQ(HT, wall1a.drawReplacementTile());
-		ASSERT_EQ(HT, wall1a.drawReplacementTile());
-		ASSERT_EQ(HT, wall1a.drawReplacementTile());
+		dice1.setNumber(2);
+		dice2.setNumber(3);
+		wall1a.breaks(dice1, dice2);
+		ASSERT_EQ(P3, wall1a.draw());
+		ASSERT_EQ(P3, wall1a.draw());
+		ASSERT_EQ(P4, wall1a.draw());
+		ASSERT_EQ(P4, wall1a.draw());
+		ASSERT_EQ(P3, wall1a.drawReplacementTile());
+		ASSERT_EQ(P3, wall1a.drawReplacementTile());
+		ASSERT_EQ(P2, wall1a.drawReplacementTile());
+		ASSERT_EQ(P2, wall1a.drawReplacementTile());
 
-		wall1a.breaks(37);
-		wall1b.breaks(37);
+		wall1a.breaks(dice1, dice2);
+		wall1b.breaks(dice1, dice2);
 		ASSERT_EQ(wall1a, wall1b);
 
-		wall2.breaks(68);
-		ASSERT_EQ(S9, wall2.draw());
-		ASSERT_EQ(S9, wall2.draw());
-		ASSERT_EQ(S9, wall2.draw());
-		ASSERT_EQ(S9, wall2.draw());
-		ASSERT_EQ(S8, wall2.drawReplacementTile());
-		ASSERT_EQ(S8, wall2.drawReplacementTile());
-		ASSERT_EQ(S8, wall2.drawReplacementTile());
-		ASSERT_EQ(S8, wall2.drawReplacementTile());
+		dice1.setNumber(1);
+		dice2.setNumber(1);
+		wall2.breaks(dice1, dice2);
+		ASSERT_EQ(M9, wall2.draw());
+		ASSERT_EQ(M9, wall2.draw());
+		ASSERT_EQ(TN, wall2.draw());
+		ASSERT_EQ(TN, wall2.draw());
+		ASSERT_EQ(M9, wall2.drawReplacementTile());
+		ASSERT_EQ(M9, wall2.drawReplacementTile());
+		ASSERT_EQ(M8, wall2.drawReplacementTile());
+		ASSERT_EQ(M8, wall2.drawReplacementTile());
 
-		wall3.breaks(135);
-		ASSERT_EQ(HT, wall3.draw());
-		ASSERT_EQ(P1, wall3.draw());
-		ASSERT_EQ(P1, wall3.draw());
-		ASSERT_EQ(P1, wall3.draw());
-		ASSERT_EQ(HT, wall3.drawReplacementTile());
-		ASSERT_EQ(HT, wall3.drawReplacementTile());
-		ASSERT_EQ(HK, wall3.drawReplacementTile());
-		ASSERT_EQ(HT, wall3.drawReplacementTile());
+		dice1.setNumber(5);
+		dice2.setNumber(6);
+		wall3.breaks(dice1, dice2);
+		ASSERT_EQ(M5, wall3.draw());
+		ASSERT_EQ(M5, wall3.draw());
+		ASSERT_EQ(M6, wall3.draw());
+		ASSERT_EQ(M6, wall3.draw());
+		ASSERT_EQ(M5, wall3.drawReplacementTile());
+		ASSERT_EQ(M5, wall3.drawReplacementTile());
+		ASSERT_EQ(M4, wall3.drawReplacementTile());
+		ASSERT_EQ(M4, wall3.drawReplacementTile());
 
-#if defined(OPENRIICHI_ENABLE_ASSERTION) && OPENRIICHI_ENABLE_ASSERTION != 0
-		ASSERT_THROW(wall3.breaks(136), OpenRiichiAssertion);
-#endif // defined(OPENRIICHI_ENABLE_ASSERTION) && OPENRIICHI_ENABLE_ASSERTION != 0
+		dice1.setNumber(5);
+		dice2.setNumber(6);
+		wall3.breaks(dice1, dice2);
+		ASSERT_EQ(M5, wall3.draw());
+		ASSERT_EQ(M5, wall3.draw());
+		ASSERT_EQ(M6, wall3.draw());
+		ASSERT_EQ(M6, wall3.draw());
+		ASSERT_EQ(M5, wall3.drawReplacementTile());
+		ASSERT_EQ(M5, wall3.drawReplacementTile());
+		ASSERT_EQ(M4, wall3.drawReplacementTile());
+		ASSERT_EQ(M4, wall3.drawReplacementTile());
+
+		dice1.setNumber(6);
+		dice2.setNumber(6);
+		wall3.breaks(dice1, dice2);
+		ASSERT_EQ(S6, wall3.draw());
+		ASSERT_EQ(S6, wall3.draw());
+		ASSERT_EQ(S7, wall3.draw());
+		ASSERT_EQ(S7, wall3.draw());
+		ASSERT_EQ(S6, wall3.drawReplacementTile());
+		ASSERT_EQ(S6, wall3.drawReplacementTile());
+		ASSERT_EQ(S5, wall3.drawReplacementTile());
+		ASSERT_EQ(S5, wall3.drawReplacementTile());
 	}
 
 	/// draw 関数をテストする。
@@ -217,10 +245,17 @@ namespace openriichi
 		Wall wall1;
 		Wall wall2(TILES2);
 
-		for (auto it = TILES1.begin(); it != TILES1.end(); ++it) {
+		for (auto it = TILES1.begin() + (3 * 34 + 2 * 2); it != TILES1.end(); ++it) {
 			ASSERT_EQ(*it, wall1.draw());
 		}
-		for (auto it = TILES2.begin(); it != TILES2.end(); ++it) {
+		for (auto it = TILES1.begin(); it != TILES1.begin() + (3 * 34 + 2 * 2); ++it) {
+			ASSERT_EQ(*it, wall1.draw());
+		}
+
+		for (auto it = TILES2.begin() + (3 * 34 + 2 * 2); it != TILES2.end(); ++it) {
+			ASSERT_EQ(*it, wall2.draw());
+		}
+		for (auto it = TILES2.begin(); it != TILES2.begin() + (3 * 34 + 2 * 2); ++it) {
 			ASSERT_EQ(*it, wall2.draw());
 		}
 
@@ -237,10 +272,10 @@ namespace openriichi
 		Wall wall2(TILES2);
 
 		for (auto n = wall1.countRemainingTiles(); n > 0; --n) {
-			ASSERT_EQ(TILES1[n + (((n % 2) == 0) ? 12 : 14)], wall1.drawReplacementTile());
+			ASSERT_EQ(TILES1[((3 * 34 + 2 * 2) + (n + (((n % 2) == 0) ? 12 : 14))) % 136], wall1.drawReplacementTile());
 		}
 		for (auto n = wall2.countRemainingTiles(); n > 0; --n) {
-			ASSERT_EQ(TILES2[n + (((n % 2) == 0) ? 12 : 14)], wall2.drawReplacementTile());
+			ASSERT_EQ(TILES2[((3 * 34 + 2 * 2) + (n + (((n % 2) == 0) ? 12 : 14))) % 136], wall2.drawReplacementTile());
 		}
 
 #if defined(OPENRIICHI_ENABLE_ASSERTION) && OPENRIICHI_ENABLE_ASSERTION != 0
@@ -255,8 +290,8 @@ namespace openriichi
 		Wall wall;	
 
 		wall.revealNewDora();
-		ASSERT_EQ(Wall::Doras{ HT }, wall.getDoras());
-		ASSERT_EQ(Wall::Doras{ HT }, wall.getUraDoras());
+		ASSERT_EQ(Wall::Doras{ M9 }, wall.getDoras());
+		ASSERT_EQ(Wall::Doras{ M9 }, wall.getUraDoras());
 
 #if defined(OPENRIICHI_ENABLE_ASSERTION) && OPENRIICHI_ENABLE_ASSERTION != 0
 		ASSERT_THROW(wall.revealNewDora(), OpenRiichiAssertion);
@@ -264,8 +299,8 @@ namespace openriichi
 
 		wall.drawReplacementTile();
 		wall.revealNewDora();
-		ASSERT_EQ((Wall::Doras{ HT, HT }), wall.getDoras());
-		ASSERT_EQ((Wall::Doras{ HT, HT }), wall.getUraDoras());
+		ASSERT_EQ((Wall::Doras{ M9, M8 }), wall.getDoras());
+		ASSERT_EQ((Wall::Doras{ M9, M8 }), wall.getUraDoras());
 
 #if defined(OPENRIICHI_ENABLE_ASSERTION) && OPENRIICHI_ENABLE_ASSERTION != 0
 		ASSERT_THROW(wall.revealNewDora(), OpenRiichiAssertion);
@@ -273,8 +308,8 @@ namespace openriichi
 
 		wall.drawReplacementTile();
 		wall.revealNewDora();
-		ASSERT_EQ((Wall::Doras{ HT, HT, HK }), wall.getDoras());
-		ASSERT_EQ((Wall::Doras{ HT, HT, HK }), wall.getUraDoras());
+		ASSERT_EQ((Wall::Doras{ M9, M8, M8 }), wall.getDoras());
+		ASSERT_EQ((Wall::Doras{ M9, M8, M8 }), wall.getUraDoras());
 
 #if defined(OPENRIICHI_ENABLE_ASSERTION) && OPENRIICHI_ENABLE_ASSERTION != 0
 		ASSERT_THROW(wall.revealNewDora(), OpenRiichiAssertion);
@@ -282,8 +317,8 @@ namespace openriichi
 
 		wall.drawReplacementTile();
 		wall.revealNewDora();
-		ASSERT_EQ((Wall::Doras{ HT, HT, HK, HK }), wall.getDoras());
-		ASSERT_EQ((Wall::Doras{ HT, HT, HK, HK }), wall.getUraDoras());
+		ASSERT_EQ((Wall::Doras{ M9, M8, M8, M7 }), wall.getDoras());
+		ASSERT_EQ((Wall::Doras{ M9, M8, M8, M7 }), wall.getUraDoras());
 
 #if defined(OPENRIICHI_ENABLE_ASSERTION) && OPENRIICHI_ENABLE_ASSERTION != 0
 		ASSERT_THROW(wall.revealNewDora(), OpenRiichiAssertion);
@@ -332,12 +367,12 @@ namespace openriichi
 
 		ASSERT_EQ(doras, wall.getDoras());
 
-		doras.push_back(TILES1[130].getNextTile());
+		doras.push_back(TILES1[100].getNextTile());
 		wall.revealNewDora();
 		ASSERT_EQ(doras, wall.getDoras());
 
 		for (auto i = 0; i < 65; ++i) {
-			doras.push_back(TILES1[130 - (1 + i) * 2].getNextTile());
+			doras.push_back(TILES1[(100 - (1 + i) * 2 + 136) % 136].getNextTile());
 			wall.drawReplacementTile();
 			wall.revealNewDora();
 			ASSERT_EQ(doras, wall.getDoras());
@@ -352,12 +387,12 @@ namespace openriichi
 
 		ASSERT_EQ(uraDoras, wall.getDoras());
 
-		uraDoras.push_back(TILES1[131].getNextTile());
+		uraDoras.push_back(TILES1[101].getNextTile());
 		wall.revealNewDora();
 		ASSERT_EQ(uraDoras, wall.getDoras());
 
 		for (auto i = 0; i < 65; ++i) {
-			uraDoras.push_back(TILES1[131 - (1 + i) * 2].getNextTile());
+			uraDoras.push_back(TILES1[(101 - (1 + i) * 2 + 136) % 136].getNextTile());
 			wall.drawReplacementTile();
 			wall.revealNewDora();
 			ASSERT_EQ(uraDoras, wall.getDoras());
