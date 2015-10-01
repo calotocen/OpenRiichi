@@ -28,16 +28,8 @@ namespace openriichi
 		virtual ~DerivedEnumeration() {}
 	};
 
-	/// getId 関数をテストする。
-	TEST_F(EnumerationTest, testGetId)
-	{
-		ASSERT_EQ(0, DerivedEnumeration(0).getId());
-		ASSERT_EQ(1, DerivedEnumeration(1).getId());
-		ASSERT_EQ(2, DerivedEnumeration(2).getId());
-	}
-
 	/// == 演算子をテストする。
-	TEST_F(EnumerationTest, testEquals)
+	TEST_F(EnumerationTest, testOperatorEqualTo)
 	{
 		DerivedEnumeration enumeration(0);
 
@@ -47,12 +39,20 @@ namespace openriichi
 	}
 
 	/// != 演算子をテストする。
-	TEST_F(EnumerationTest, testNotEquals)
+	TEST_F(EnumerationTest, testOperatorNotEqualTo)
 	{
 		DerivedEnumeration enumeration(0);
 
 		ASSERT_FALSE(enumeration != enumeration);
 		ASSERT_FALSE(DerivedEnumeration(1) != DerivedEnumeration(1));
 		ASSERT_TRUE(DerivedEnumeration(1) != DerivedEnumeration(2));
+	}
+
+	/// getId 関数をテストする。
+	TEST_F(EnumerationTest, testToGetId)
+	{
+		ASSERT_EQ(0, DerivedEnumeration(0).getId());
+		ASSERT_EQ(1, DerivedEnumeration(1).getId());
+		ASSERT_EQ(2, DerivedEnumeration(2).getId());
 	}
 }
