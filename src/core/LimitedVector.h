@@ -91,7 +91,7 @@ namespace openriichi
 		 * @return 要素。
 		 * @note 配列の範囲外を位置に指定した場合の動作は，未定義である。
 		 */
-		T &operator[](size_type index);
+		const T &operator[](size_type index) const;
 
 		/**
 		 * 指定された位置にある要素を返す。
@@ -100,7 +100,7 @@ namespace openriichi
 		 * @return 要素。
 		 * @note 配列の範囲外を位置に指定した場合の動作は，未定義である。
 		 */
-		const T &operator[](size_type index) const;
+		T &operator[](size_type index);
 
 
 	public:
@@ -139,7 +139,7 @@ namespace openriichi
 		 * @return 要素。
 		 * @note 配列の範囲外を位置に指定した場合の動作は，未定義である。
 		 */
-		T &at(size_type index);
+		const T &at(size_type index) const;
 
 		/**
 		 * 指定された位置にある要素を返す。
@@ -148,7 +148,7 @@ namespace openriichi
 		 * @return 要素。
 		 * @note 配列の範囲外を位置に指定した場合の動作は，未定義である。
 		 */
-		const T &at(size_type index) const;
+		T &at(size_type index);
 
 		/**
 		 * 先頭にある要素を返す。
@@ -280,7 +280,7 @@ namespace openriichi
 
 
 	template<class T, size_t SIZE, typename SIZE_TYPE>
-	T &LimitedVector<T, SIZE, SIZE_TYPE>::operator[](size_type index)
+	const T &LimitedVector<T, SIZE, SIZE_TYPE>::operator[](size_type index) const
 	{
 		// アサーションが有効である場合のみ，引数をチェックする。
 		openriichi_assert(0 <= index && index < m_elementsSize);
@@ -291,7 +291,7 @@ namespace openriichi
 
 
 	template<class T, size_t SIZE, typename SIZE_TYPE>
-	const T &LimitedVector<T, SIZE, SIZE_TYPE>::operator[](size_type index) const
+	T &LimitedVector<T, SIZE, SIZE_TYPE>::operator[](size_type index)
 	{
 		// アサーションが有効である場合のみ，引数をチェックする。
 		openriichi_assert(0 <= index && index < m_elementsSize);
@@ -330,7 +330,7 @@ namespace openriichi
 
 
 	template<class T, size_t SIZE, typename SIZE_TYPE>
-	T &LimitedVector<T, SIZE, SIZE_TYPE>::at(size_type index)
+	const T &LimitedVector<T, SIZE, SIZE_TYPE>::at(size_type index) const
 	{
 		// アサーションが有効である場合のみ，引数をチェックする。
 		openriichi_assert(0 <= index && index < m_elementsSize);
@@ -341,7 +341,7 @@ namespace openriichi
 
 
 	template<class T, size_t SIZE, typename SIZE_TYPE>
-	const T &LimitedVector<T, SIZE, SIZE_TYPE>::at(size_type index) const
+	T &LimitedVector<T, SIZE, SIZE_TYPE>::at(size_type index)
 	{
 		// アサーションが有効である場合のみ，引数をチェックする。
 		openriichi_assert(0 <= index && index < m_elementsSize);
