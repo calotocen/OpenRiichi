@@ -124,6 +124,24 @@ namespace openriichi
 		 * 牌配列を返す。
 		 *
 		 * @return 牌配列。
+		 * @note 本関数の戻り値は，少なくとも本インスタンスが生存している間，有効である。
+		 */
+		const Tiles &tiles() const;
+
+		/**
+		 * 牌配列を返す。
+		 *
+		 * @return 牌配列。
+		 * @note 本関数の戻り値は，少なくとも本インスタンスが生存している間，有効である。
+		 * @note 本関数が返す参照の内容は，変更してもよい。
+		 *       その場合，変更内容は取得元のインスタンスに反映される。
+		 */
+		Tiles &tiles();
+
+		/**
+		 * 牌配列を返す。
+		 *
+		 * @return 牌配列。
 		 */
 		const Tiles &getTiles() const;
 
@@ -135,14 +153,22 @@ namespace openriichi
 		void setTiles(const Tiles &tiles);
 
 		/**
-		 * 牌配列を返す。
+		 * 面子配列を返す。
 		 *
-		 * @return 牌配列。
+		 * @return 面子配列。
+		 * @note 本関数の戻り値は，少なくとも本インスタンスが生存している間，有効である。
+		 */
+		const Sets &sets() const;
+
+		/**
+		 * 面子配列を返す。
+		 *
+		 * @return 面子配列。
 		 * @note 本関数の戻り値は，少なくとも本インスタンスが生存している間，有効である。
 		 * @note 本関数が返す参照の内容は，変更してもよい。
 		 *       その場合，変更内容は取得元のインスタンスに反映される。
 		 */
-		Tiles &tiles();
+		Sets &sets();
 
 		/**
 		 * 面子配列を返す。
@@ -157,15 +183,5 @@ namespace openriichi
 		 * @param[in] sets 面子配列。
 		 */
 		void setSets(const Sets &sets);
-
-		/**
-		 * 面子配列を返す。
-		 *
-		 * @return 面子配列。
-		 * @note 本関数の戻り値は，少なくとも本インスタンスが生存している間，有効である。
-		 * @note 本関数が返す参照の内容は，変更してもよい。
-		 *       その場合，変更内容は取得元のインスタンスに反映される。
-		 */
-		Sets &sets();
 	};
 }

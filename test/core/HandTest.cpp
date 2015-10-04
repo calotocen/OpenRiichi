@@ -66,18 +66,41 @@ namespace openriichi
 	/// tiles 関数をテストする。
 	TEST_F(HandTest, testTiles)
 	{
-		Hand hand;
+		Hand hand1;
+		const Hand hand2;
 
-		ASSERT_EQ(Hand::Tiles(), hand.tiles());
+		ASSERT_EQ(Hand::Tiles(), hand1.tiles());
 
-		hand.tiles() = { P1, P2, P3, S1, S2, S3, M1, M2, M3, TN, TN, TN, NN };
-		ASSERT_EQ((Hand::Tiles{ P1, P2, P3, S1, S2, S3, M1, M2, M3, TN, TN, TN, NN }), hand.tiles());
+		hand1.tiles() = { P1, P2, P3, S1, S2, S3, M1, M2, M3, TN, TN, TN, NN };
+		ASSERT_EQ((Hand::Tiles{ P1, P2, P3, S1, S2, S3, M1, M2, M3, TN, TN, TN, NN }), hand1.tiles());
 
-		hand.tiles().push_back(NN);
-		ASSERT_EQ((Hand::Tiles{ P1, P2, P3, S1, S2, S3, M1, M2, M3, TN, TN, TN, NN, NN }), hand.tiles());
+		hand1.tiles().push_back(NN);
+		ASSERT_EQ((Hand::Tiles{ P1, P2, P3, S1, S2, S3, M1, M2, M3, TN, TN, TN, NN, NN }), hand1.tiles());
 
-		hand.tiles().erase(hand.tiles().begin());
-		ASSERT_EQ((Hand::Tiles{ P2, P3, S1, S2, S3, M1, M2, M3, TN, TN, TN, NN, NN }), hand.tiles());
+		hand1.tiles().erase(hand1.tiles().begin());
+		ASSERT_EQ((Hand::Tiles{ P2, P3, S1, S2, S3, M1, M2, M3, TN, TN, TN, NN, NN }), hand1.tiles());
+
+		ASSERT_EQ(Hand::Tiles(), hand2.tiles());
+	}
+
+	/// sets 関数をテストする。
+	TEST_F(HandTest, testSets)
+	{
+		Hand hand1;
+		const Hand hand2;
+
+		ASSERT_EQ(Hand::Sets(), hand1.sets());
+
+		hand1.sets() = { Set(P1, P2, P3), Set(S1, S2, S3), Set(M1, M2, M3) };
+		ASSERT_EQ((Hand::Sets{ Set(P1, P2, P3), Set(S1, S2, S3), Set(M1, M2, M3) }), hand1.sets());
+
+		hand1.sets().push_back(Set(TN, TN, TN, TN));
+		ASSERT_EQ((Hand::Sets{ Set(P1, P2, P3), Set(S1, S2, S3), Set(M1, M2, M3), Set(TN, TN, TN, TN) }), hand1.sets());
+
+		hand1.sets().erase(hand1.sets().begin());
+		ASSERT_EQ((Hand::Sets{ Set(S1, S2, S3), Set(M1, M2, M3), Set(TN, TN, TN, TN) }), hand1.sets());
+
+		ASSERT_EQ(Hand::Sets(), hand2.sets());
 	}
 
 	/// getSets 関数をテストする。
@@ -107,23 +130,6 @@ namespace openriichi
 
 		hand.setSets(Hand::Sets());
 		ASSERT_EQ(Hand::Sets(), hand.getSets());
-	}
-
-	/// sets 関数をテストする。
-	TEST_F(HandTest, testSets)
-	{
-		Hand hand;
-
-		ASSERT_EQ(Hand::Sets(), hand.sets());
-
-		hand.sets() = { Set(P1, P2, P3), Set(S1, S2, S3), Set(M1, M2, M3) };
-		ASSERT_EQ((Hand::Sets{ Set(P1, P2, P3), Set(S1, S2, S3), Set(M1, M2, M3) }), hand.sets());
-
-		hand.sets().push_back(Set(TN, TN, TN, TN));
-		ASSERT_EQ((Hand::Sets{ Set(P1, P2, P3), Set(S1, S2, S3), Set(M1, M2, M3), Set(TN, TN, TN, TN) }), hand.sets());
-
-		hand.sets().erase(hand.sets().begin());
-		ASSERT_EQ((Hand::Sets{ Set(S1, S2, S3), Set(M1, M2, M3), Set(TN, TN, TN, TN) }), hand.sets());
 	}
 
 	/// == 演算子をテストする。

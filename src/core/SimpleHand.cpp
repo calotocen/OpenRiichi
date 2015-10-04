@@ -102,6 +102,18 @@ void SimpleHand::clear()
 }
 
 
+const SimpleHand::Tiles &SimpleHand::tiles() const
+{
+	return m_tiles;
+}
+
+
+SimpleHand::Tiles &SimpleHand::tiles()
+{
+	return m_tiles;
+}
+
+
 const SimpleHand::Tiles &SimpleHand::getTiles() const
 {
 	return m_tiles;
@@ -114,9 +126,15 @@ void SimpleHand::setTiles(const Tiles &tiles)
 }
 
 
-SimpleHand::Tiles &SimpleHand::tiles()
+const SimpleHand::Sets &SimpleHand::sets() const
 {
-	return m_tiles;
+	return m_sets;
+}
+
+
+SimpleHand::Sets &SimpleHand::sets()
+{
+	return m_sets;
 }
 
 
@@ -129,10 +147,4 @@ const SimpleHand::Sets &SimpleHand::getSets() const
 void SimpleHand::setSets(const Sets &sets)
 {
 	m_sets = sets;
-}
-
-
-SimpleHand::Sets &SimpleHand::sets()
-{
-	return m_sets;
 }
