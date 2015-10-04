@@ -78,6 +78,24 @@ namespace openriichi
 		 * 手牌を返す。
 		 *
 		 * @return 手牌。
+		 * @note 本関数の戻り値は，少なくとも本インスタンスが生存している間，有効である。
+		 */
+		const Hand &hand() const;
+
+		/**
+		 * 手牌を返す。
+		 *
+		 * @return 手牌。
+		 * @note 本関数の戻り値は，少なくとも本インスタンスが生存している間，有効である。
+		 * @note 本関数が返す参照の内容は，変更してもよい。
+		 *       その場合，変更内容は取得元のインスタンスに反映される。
+		 */
+		Hand &hand();
+
+		/**
+		 * 手牌を返す。
+		 *
+		 * @return 手牌。
 		 */
 		const Hand &getHand() const;
 
@@ -89,14 +107,22 @@ namespace openriichi
 		void setHand(const Hand &hand);
 
 		/**
-		 * 手牌を返す。
+		 * 捨て牌配列を返す。
 		 *
-		 * @return 手牌。
+		 * @return 捨て牌配列。
+		 * @note 本関数の戻り値は，少なくとも本インスタンスが生存している間，有効である。
+		 */
+		const Discards &discards() const;
+
+		/**
+		 * 捨て牌配列を返す。
+		 *
+		 * @return 捨て牌配列。
 		 * @note 本関数の戻り値は，少なくとも本インスタンスが生存している間，有効である。
 		 * @note 本関数が返す参照の内容は，変更してもよい。
 		 *       その場合，変更内容は取得元のインスタンスに反映される。
 		 */
-		Hand &hand();
+		Discards &discards();
 
 		/**
 		 * 捨て牌配列を返す。
@@ -111,16 +137,6 @@ namespace openriichi
 		 * @param[in] discards 捨て牌配列。
 		 */
 		void setDiscards(const Discards &discards);
-
-		/**
-		 * 捨て牌配列を返す。
-		 *
-		 * @return 捨て牌配列。
-		 * @note 本関数の戻り値は，少なくとも本インスタンスが生存している間，有効である。
-		 * @note 本関数が返す参照の内容は，変更してもよい。
-		 *       その場合，変更内容は取得元のインスタンスに反映される。
-		 */
-		Discards &discards();
 
 		/**
 		 * 点数を返す。
@@ -166,15 +182,9 @@ namespace openriichi
 		 * 立直状態を返す。
 		 *
 		 * @return 立直状態。
+		 * @note 本関数の戻り値は，少なくとも本インスタンスが生存している間，有効である。
 		 */
-		const RiichiStatus &getRiichiStatus() const;
-
-		/**
-		 * 立直状態を設定する。
-		 *
-		 * @param[in] riichiStatus 立直状態。
-		 */
-		void setRiichiStatus(const RiichiStatus &riichiStatus);
+		const RiichiStatus &riichiStatus() const;
 
 		/**
 		 * 立直状態を返す。
@@ -185,5 +195,19 @@ namespace openriichi
 		 *       その場合，変更内容は取得元のインスタンスに反映される。
 		 */
 		RiichiStatus &riichiStatus();
+
+		/**
+		 * 立直状態を返す。
+		 *
+		 * @return 立直状態。
+		 */
+		const RiichiStatus &getRiichiStatus() const;
+
+		/**
+		 * 立直状態を設定する。
+		 *
+		 * @param[in] riichiStatus 立直状態。
+		 */
+		void setRiichiStatus(const RiichiStatus &riichiStatus);
 	};
 }

@@ -50,6 +50,18 @@ bool SimplePlayerInfo::operator!=(const SimplePlayerInfo &other) const
 }
 
 
+const Hand &SimplePlayerInfo::hand() const
+{
+	return m_hand;
+}
+
+
+Hand &SimplePlayerInfo::hand()
+{
+	return m_hand;
+}
+
+
 const Hand &SimplePlayerInfo::getHand() const
 {
 	return m_hand;
@@ -62,9 +74,15 @@ void SimplePlayerInfo::setHand(const Hand &hand)
 }
 
 
-Hand &SimplePlayerInfo::hand()
+const SimplePlayerInfo::Discards &SimplePlayerInfo::discards() const
 {
-	return m_hand;
+	return m_discards;
+}
+
+
+SimplePlayerInfo::Discards &SimplePlayerInfo::discards()
+{
+	return m_discards;
 }
 
 
@@ -77,12 +95,6 @@ const SimplePlayerInfo::Discards &SimplePlayerInfo::getDiscards() const
 void SimplePlayerInfo::setDiscards(const Discards &discards)
 {
 	m_discards = discards;
-}
-
-
-SimplePlayerInfo::Discards &SimplePlayerInfo::discards()
-{
-	return m_discards;
 }
 
 
@@ -122,6 +134,18 @@ void SimplePlayerInfo::increaseDrawCount()
 }
 
 
+const RiichiStatus &SimplePlayerInfo::riichiStatus() const
+{
+	return m_riichiStatus;
+}
+
+
+RiichiStatus &SimplePlayerInfo::riichiStatus()
+{
+	return m_riichiStatus;
+}
+
+
 const RiichiStatus &SimplePlayerInfo::getRiichiStatus() const
 {
 	return m_riichiStatus;
@@ -131,10 +155,4 @@ const RiichiStatus &SimplePlayerInfo::getRiichiStatus() const
 void SimplePlayerInfo::setRiichiStatus(const RiichiStatus &riichiStatus)
 {
 	m_riichiStatus = riichiStatus;
-}
-
-
-RiichiStatus &SimplePlayerInfo::riichiStatus()
-{
-	return m_riichiStatus;
 }
