@@ -67,6 +67,27 @@ namespace openriichi
 		 *
 		 * @param[in] wind 風。
 		 * @return プレイヤー情報。
+		 * @note 本関数の戻り値は，少なくとも本インスタンスが生存している間，有効である。
+		 */
+		const PlayerInfo &playerInfo(const Wind &wind) const;
+
+		/**
+		 * プレイヤー情報を返す。
+		 *
+		 * @param[in] wind 風。
+		 * @return プレイヤー情報。
+		 * @note 本関数の戻り値は，少なくとも本インスタンスが生存している間，有効である。
+		 * @note 本関数が返す参照の内容は，変更してもよい。
+		 *       その場合，変更内容は取得元のインスタンスに反映される。
+		 */
+		PlayerInfo &playerInfo(const Wind &wind);
+
+		/**
+		 * プレイヤー情報を返す。
+		 *
+		 * @param[in] wind 風。
+		 * @return プレイヤー情報。
+		 * @note 本関数の戻り値は，少なくとも本インスタンスが生存している間，有効である。
 		 */
 		const PlayerInfo &getPlayerInfo(const Wind &wind) const;
 
@@ -79,17 +100,28 @@ namespace openriichi
 		void setPlayerInfo(const Wind &wind, const PlayerInfo &playerInfo);
 
 		/**
-		 * プレイヤー情報を返す。
+		 * 山を返す。
 		 *
-		 * @param[in] wind 風。
-		 * @return プレイヤー情報。
+		 * @return 山。
+		 * @note 本関数の戻り値は，少なくとも本インスタンスが生存している間，有効である。
 		 */
-		PlayerInfo &playerInfo(const Wind &wind);
+		const Wall &wall() const;
 
 		/**
 		 * 山を返す。
 		 *
 		 * @return 山。
+		 * @note 本関数の戻り値は，少なくとも本インスタンスが生存している間，有効である。
+		 * @note 本関数が返す参照の内容は，変更してもよい。
+		 *       その場合，変更内容は取得元のインスタンスに反映される。
+		 */
+		Wall &wall();
+
+		/**
+		 * 山を返す。
+		 *
+		 * @return 山。
+		 * @note 本関数の戻り値は，少なくとも本インスタンスが生存している間，有効である。
 		 */
 		const Wall &getWall() const;
 
@@ -101,16 +133,28 @@ namespace openriichi
 		void setWall(const Wall &wall);
 
 		/**
-		 * 山を返す。
+		 * 局カウンタを返す。
 		 *
-		 * @return 山。
+		 * @return 局カウンタ。
+		 * @note 本関数の戻り値は，少なくとも本インスタンスが生存している間，有効である。
 		 */
-		Wall &wall();
+		const HandCounter &handCounter() const;
 
 		/**
 		 * 局カウンタを返す。
 		 *
 		 * @return 局カウンタ。
+		 * @note 本関数の戻り値は，少なくとも本インスタンスが生存している間，有効である。
+		 * @note 本関数が返す参照の内容は，変更してもよい。
+		 *       その場合，変更内容は取得元のインスタンスに反映される。
+		 */
+		HandCounter &handCounter();
+
+		/**
+		 * 局カウンタを返す。
+		 *
+		 * @return 局カウンタ。
+		 * @note 本関数の戻り値は，少なくとも本インスタンスが生存している間，有効である。
 		 */
 		const HandCounter &getHandCounter() const;
 
@@ -120,12 +164,5 @@ namespace openriichi
 		 * @param[in] handCounter 局カウンタ。
 		 */
 		void setHandCounter(const HandCounter &handCounter);
-
-		/**
-		 * 局カウンタを返す。
-		 *
-		 * @return 局カウンタ。
-		 */
-		HandCounter &handCounter();
 	};
 }

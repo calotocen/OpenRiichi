@@ -19,89 +19,110 @@
 using namespace openriichi;
 
 
- SimpleTable::SimpleTable()
-	 : m_playerInfos{}
-	 , m_wall()
-	 , m_handCounter()
- {
-	 // 何もしない。
- }
+SimpleTable::SimpleTable()
+	: m_playerInfos{}
+	, m_wall()
+	, m_handCounter()
+{
+	// 何もしない。
+}
 
 
- bool SimpleTable::operator==(const SimpleTable &other) const
- {
-	 if (this == &other) {
-		 return true;
-	 }
+bool SimpleTable::operator==(const SimpleTable &other) const
+{
+	if (this == &other) {
+		return true;
+	}
 
-	 return m_playerInfos == other.m_playerInfos && m_wall == other.m_wall && m_handCounter == other.m_handCounter;
- }
-
-
- bool SimpleTable::operator!=(const SimpleTable &other) const
- {
-	 return !(*this == other);
- }
+	return m_playerInfos == other.m_playerInfos && m_wall == other.m_wall && m_handCounter == other.m_handCounter;
+}
 
 
- const PlayerInfo &SimpleTable::getPlayerInfo(const Wind &wind) const
- {
-	 // アサーションが有効である場合のみ，引数をチェックする。
-	 openriichi_assert(1 <= wind.getId() && wind.getId() <= 4);
-
-	 return m_playerInfos[wind.getId() - 1];
- }
+bool SimpleTable::operator!=(const SimpleTable &other) const
+{
+	return !(*this == other);
+}
 
 
- void SimpleTable::setPlayerInfo(const Wind &wind, const PlayerInfo &playerInfo)
- {
-	 // アサーションが有効である場合のみ，引数をチェックする。
-	 openriichi_assert(1 <= wind.getId() && wind.getId() <= 4);
+const PlayerInfo &SimpleTable::playerInfo(const Wind &wind) const
+{
+	// アサーションが有効である場合のみ，引数をチェックする。
+	openriichi_assert(1 <= wind.getId() && wind.getId() <= 4);
 
-	 m_playerInfos[wind.getId() - 1] = playerInfo;
- }
-
-
- PlayerInfo &SimpleTable::playerInfo(const Wind &wind)
- {
-	 // アサーションが有効である場合のみ，引数をチェックする。
-	 openriichi_assert(1 <= wind.getId() && wind.getId() <= 4);
-
-	 return m_playerInfos[wind.getId() - 1];
- }
+	return m_playerInfos[wind.getId() - 1];
+}
 
 
- const Wall &SimpleTable::getWall() const
- {
-	 return m_wall;
- }
+PlayerInfo &SimpleTable::playerInfo(const Wind &wind)
+{
+	// アサーションが有効である場合のみ，引数をチェックする。
+	openriichi_assert(1 <= wind.getId() && wind.getId() <= 4);
 
- 
- void SimpleTable::setWall(const Wall &wall)
- {
-	 m_wall = wall;
- }
-
- 
- Wall &SimpleTable::wall()
- {
-	 return m_wall;
- }
-
- 
- const HandCounter &SimpleTable::getHandCounter() const
- {
-	 return m_handCounter;
- }
-
- 
- void SimpleTable::setHandCounter(const HandCounter &handCounter)
- {
-	 m_handCounter = handCounter;
- }
+	return m_playerInfos[wind.getId() - 1];
+}
 
 
- HandCounter &SimpleTable::handCounter()
- {
-	 return m_handCounter;
- }
+const PlayerInfo &SimpleTable::getPlayerInfo(const Wind &wind) const
+{
+	// アサーションが有効である場合のみ，引数をチェックする。
+	openriichi_assert(1 <= wind.getId() && wind.getId() <= 4);
+
+	return m_playerInfos[wind.getId() - 1];
+}
+
+
+void SimpleTable::setPlayerInfo(const Wind &wind, const PlayerInfo &playerInfo)
+{
+	// アサーションが有効である場合のみ，引数をチェックする。
+	openriichi_assert(1 <= wind.getId() && wind.getId() <= 4);
+
+	m_playerInfos[wind.getId() - 1] = playerInfo;
+}
+
+
+const Wall &SimpleTable::wall() const
+{
+	return m_wall;
+}
+
+
+Wall &SimpleTable::wall()
+{
+	return m_wall;
+}
+
+
+const Wall &SimpleTable::getWall() const
+{
+	return m_wall;
+}
+
+
+void SimpleTable::setWall(const Wall &wall)
+{
+	m_wall = wall;
+}
+
+
+const HandCounter &SimpleTable::handCounter() const
+{
+	return m_handCounter;
+}
+
+
+HandCounter &SimpleTable::handCounter()
+{
+	return m_handCounter;
+}
+
+
+const HandCounter &SimpleTable::getHandCounter() const
+{
+	return m_handCounter;
+}
+
+
+void SimpleTable::setHandCounter(const HandCounter &handCounter)
+{
+	m_handCounter = handCounter;
+}
