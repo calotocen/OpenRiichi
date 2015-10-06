@@ -96,6 +96,7 @@ namespace openriichi
 		 * 手牌を返す。
 		 *
 		 * @return 手牌。
+		 * @note 本関数の戻り値は，少なくとも本インスタンスが生存している間，有効である。
 		 */
 		const Hand &getHand() const;
 
@@ -128,6 +129,7 @@ namespace openriichi
 		 * 捨て牌配列を返す。
 		 *
 		 * @return 捨て牌配列。
+		 * @note 本関数の戻り値は，少なくとも本インスタンスが生存している間，有効である。
 		 */
 		const Discards &getDiscards() const;
 
@@ -200,6 +202,7 @@ namespace openriichi
 		 * 立直状態を返す。
 		 *
 		 * @return 立直状態。
+		 * @note 本関数の戻り値は，少なくとも本インスタンスが生存している間，有効である。
 		 */
 		const RiichiStatus &getRiichiStatus() const;
 

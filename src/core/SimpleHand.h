@@ -142,6 +142,7 @@ namespace openriichi
 		 * 牌配列を返す。
 		 *
 		 * @return 牌配列。
+		 * @note 本関数の戻り値は，少なくとも本インスタンスが生存している間，有効である。
 		 */
 		const Tiles &getTiles() const;
 
@@ -174,6 +175,7 @@ namespace openriichi
 		 * 面子配列を返す。
 		 *
 		 * @return 面子配列。
+		 * @note 本関数の戻り値は，少なくとも本インスタンスが生存している間，有効である。
 		 */
 		const Sets &getSets() const;
 
