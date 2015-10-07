@@ -25,11 +25,20 @@ namespace openriichi
 	{
 	private:
 		static const size_t PLAYER_INFOS_SIZE = 4;
+		static const size_t DICES_SIZE = 2;
+
+
+	public:
+		/// さいころ配列型。
+		using Dices = LimitedVector<Dice, DICES_SIZE>;
 
 
 	private:
 		/// プレイヤー情報。
 		PlayerInfo m_playerInfos[PLAYER_INFOS_SIZE];
+
+		/// さいころ配列。
+		Dices m_dices;
 
 		/// 山。
 		Wall m_wall;
@@ -98,6 +107,39 @@ namespace openriichi
 		 * @param[in] playerInfo プレイヤー情報。
 		 */
 		void setPlayerInfo(const Wind &wind, const PlayerInfo &playerInfo);
+
+		/**
+		 * さいころ配列を返す。
+		 *
+		 * @return さいころ配列。
+		 * @note 本関数の戻り値は，少なくとも本インスタンスが生存している間，有効である。
+		 */
+		const Dices &dices() const;
+
+		/**
+		 * さいころ配列を返す。
+		 *
+		 * @return さいころ配列。
+		 * @note 本関数の戻り値は，少なくとも本インスタンスが生存している間，有効である。
+		 * @note 本関数が返す参照の内容は，変更してもよい。
+		 *       その場合，変更内容は取得元のインスタンスに反映される。
+		 */
+		Dices &dices();
+
+		/**
+		 * さいころ配列を返す。
+		 *
+		 * @return さいころ配列。
+		 * @note 本関数の戻り値は，少なくとも本インスタンスが生存している間，有効である。
+		 */
+		const Dices &getDices() const;
+
+		/**
+		 * さいころ配列を設定する。
+		 *
+		 * @param[in] dices さいころ配列。
+		 */
+		void setDices(const Dices &dices);
 
 		/**
 		 * 山を返す。

@@ -80,6 +80,30 @@ void SimpleTable::setPlayerInfo(const Wind &wind, const PlayerInfo &playerInfo)
 }
 
 
+const SimpleTable::Dices &SimpleTable::dices() const
+{
+	return m_dices;
+}
+
+
+SimpleTable::Dices &SimpleTable::dices()
+{
+	return m_dices;
+}
+
+
+const SimpleTable::Dices &SimpleTable::getDices() const
+{
+	return m_dices;
+}
+
+
+void SimpleTable::setDices(const Dices &dices)
+{
+	m_dices = dices;
+}
+
+
 const Wall &SimpleTable::wall() const
 {
 	return m_wall;
