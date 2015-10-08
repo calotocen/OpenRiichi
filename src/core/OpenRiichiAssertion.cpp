@@ -17,6 +17,7 @@
 #include "OpenRiichi.h"
 
 
+using namespace std;
 using namespace openriichi;
 
 
