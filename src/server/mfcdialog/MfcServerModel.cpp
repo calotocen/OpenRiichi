@@ -73,16 +73,41 @@ void MfcServerModel::initialize()
 }
 
 
+void MfcServerModel::startHand()
+{
+	Wall &wall = m_table.wall();
+
+	// 山を積む。
+	wall = Wall();
+	wall.shuffle(static_cast<unsigned int>(time(NULL)));
+
+	// さいころを振る。
+	Table::Dices &dices = m_table.dices();
+	dices[0].roll();
+	dices[1].roll();
+
+	// 開門する。
+	wall.breaks(dices[0], dices[1]);
+
+	// 配牌する。
+	Wind winds[] = { Winds::EAST, Winds::SOUTH, Winds::WEST, Winds::NORTH };
+	for (int i = 0; i < 3; ++i) {
+		for (Wind wind : winds) {
+			for (int j = 0; j < 4; ++j) {
+				m_table.playerInfo(wind).hand().tiles().push_back(wall.draw());
+			}
+		}
+	}
+	for (Wind wind : winds) {
+		m_table.playerInfo(wind).hand().tiles().push_back(wall.draw());
+	}
+	m_table.playerInfo(Winds::EAST).hand().tiles().push_back(wall.draw());
+}
+
+
 void MfcServerModel::play()
 {
 	m_gameStatus = PLAYING;
 
-	Wall &wall = m_table.wall();
-	Hand &hand = m_table.playerInfo(Winds::EAST).hand();
-
-	wall.shuffle(static_cast<unsigned int>(time(NULL)));
-
-	for (int i = 0; i < 14; ++i) {
-		hand.tiles().push_back(wall.draw());
-	}
+	startHand();
 }

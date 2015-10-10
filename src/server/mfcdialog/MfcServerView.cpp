@@ -166,10 +166,13 @@ void MfcServerView::paintPlaying(CPaintDC &dc)
 	// 背景色を描画する。
 	fill(dc, MEDIUMSEAGREEN);
 
-	const Hand &hand = m_model.table().getPlayerInfo(Winds::EAST).getHand();
-	for (size_t i = 0; i < hand.getTiles().size(); ++i)
-	{
-		paintTile(dc, hand.getTiles()[i], 10 + TILE_IMAGE_WIDTH * static_cast<int>(i), 10);
+	Wind winds[] = { Winds::EAST, Winds::SOUTH, Winds::WEST, Winds::NORTH };
+	for (size_t y = 0; y < sizeof(winds) / sizeof(*winds); ++y) {
+		const Hand &hand = m_model.table().getPlayerInfo(winds[y]).getHand();
+		for (size_t x = 0; x < hand.getTiles().size(); ++x)
+		{
+			paintTile(dc, hand.getTiles()[x], 10 + TILE_IMAGE_WIDTH * static_cast<int>(x), 10 + TILE_IMAGE_HEIGHT * static_cast<int>(y));
+		}
 	}
 }
 

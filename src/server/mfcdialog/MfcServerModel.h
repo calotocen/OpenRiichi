@@ -101,6 +101,11 @@ public:
 	void initialize();
 
 	/**
+	 * 局を開始する。
+	 */
+	void startHand();
+
+	/**
 	 * 対局を開始する。
 	 */
 	void play();
