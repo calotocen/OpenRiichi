@@ -21,6 +21,7 @@ using namespace openriichi;
 
 SimpleTable::SimpleTable()
 	: m_playerInfos{}
+	, m_dices{Dice(), Dice()}
 	, m_wall()
 	, m_handCounter()
 {
