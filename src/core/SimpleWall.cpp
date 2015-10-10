@@ -190,3 +190,28 @@ const SimpleWall::Doras &SimpleWall::getUraDoras()
 {
 	return m_uraDoras;
 }
+
+
+const Tile &SimpleWall::getTile(size_t index) const
+{
+	// アサーションが有効である場合のみ，引数をチェックする。
+	openriichi_assert(index < TILES_SIZE);
+
+	return m_tiles[index];
+}
+
+
+bool SimpleWall::isDrawed(size_t index) const
+{
+	// アサーションが有効である場合のみ，引数をチェックする。
+	openriichi_assert(index < TILES_SIZE);
+
+	uint8_t head = m_breakingIndex;
+	uint8_t tail = (m_drawingIndex + m_breakingIndex) % TILES_SIZE;
+
+	if (head < tail) {
+		return (head <= index && index < tail);
+	} else {
+		return (head <= index && index < TILES_SIZE) || (0 <= index && index < tail);
+	}
+}

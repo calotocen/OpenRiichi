@@ -23,10 +23,12 @@ namespace openriichi
 	 */
 	class SimpleWall
 	{
-	private:
+	public:
 		/// 牌の個数。
 		static const size_t TILES_SIZE = (3 * 9 + 4 + 3) * 4;
 
+
+	private:
 		/// 王牌の初期位置。
 		static const size_t INITIAL_DEAD_WALL_INDEX = TILES_SIZE - 14;
 
@@ -170,5 +172,30 @@ namespace openriichi
 		 * @return 裏ドラ。
 		 */
 		const Doras &getUraDoras();
+
+		/**
+		 * 牌を返す。
+		 *
+		 * @param[in] index 添え字。
+		 *                  0 以上，TILES_SIZE 未満の値を指定する。
+		 *                  東家の前にある山の最右上段にある牌の添え字を 0 とする。
+		 *                  n を偶数とした場合，添え字 (n + 1) の牌は，添え字 n の牌の下段にある牌である。
+		 *                  また，添え字 (n + 2) の牌は，添え字 n の牌の一つ左にある牌である。
+		 * @return 牌。
+		 * @note 指定された添え字の牌がツモられている場合，ツモられる前，そこにあった牌を返す。
+		 * @note 範囲外の添え字を指定した場合の動作は，未定義である。
+		 */
+		const Tile &getTile(size_t index) const;
+
+		/**
+		 * 牌がツモられたかを返す。
+		 *
+		 * @param[in] index 添え字。
+		 *                  0 以上，TILES_SIZE 未満の値を指定する。
+		 * @retval false 牌はツモられていない。
+		 * @retval true 牌はツモられた。
+		 * @note 範囲外の添え字を指定した場合の動作は，未定義である。
+		 */
+		bool isDrawed(size_t index) const;
 	};
 }

@@ -17,6 +17,7 @@
 #include "MfcServerView.h"
 
 
+using namespace std;
 using namespace openriichi;
 
 
@@ -46,7 +47,74 @@ void MfcServerView::fill(CPaintDC &dc, COLORREF color)
 }
 
 
-void MfcServerView::paintTile(CPaintDC &dc, const Tile &tile, int x, int y)
+void MfcServerView::paintImage(CPaintDC &dc, int srcX, int srcY, int srcWidth, int srcHeight, int x, int y, ImageRotationalAngle rotationalAngle, ImageEffect effect)
+{
+	CDC dcImage;
+	if (!dcImage.CreateCompatibleDC(&dc)) {
+		return;
+	}
+
+	CBitmap *oldBitmap = dcImage.SelectObject(m_bitmap);
+	if (rotationalAngle == IRA_NONE) {
+		dc.BitBlt(
+			x,
+			y,
+			srcWidth,
+			srcHeight,
+			&dcImage,
+			srcX,
+			srcY,
+			SRCCOPY);
+	} else {
+		POINT points[3] = { 0 };
+
+		switch (rotationalAngle) {
+		case IRA_90:
+			points[0].x = x + srcHeight;
+			points[0].y = y;
+			points[1].x = x + srcHeight;
+			points[1].y = y + srcWidth;
+			points[2].x = x;
+			points[2].y = y;
+			break;
+
+		case IRA_180:
+			// 描画位置を (x, y) に合わせるためには，なぜか -1 しないといけない。
+			// (0, 0) に描画する場合，PlgBlt には (-1, -1) に描画するよう指定することになるが，
+			// エラーになることなく (0, 0) の位置に描画される。
+			points[0].x = x + srcWidth - 1;
+			points[0].y = y + srcHeight - 1;
+			points[1].x = x - 1;
+			points[1].y = y + srcHeight - 1;
+			points[2].x = x + srcWidth - 1;
+			points[2].y = y - 1;
+#if 0
+			points[0].x = x + srcWidth;
+			points[0].y = y + srcHeight;
+			points[1].x = x;
+			points[1].y = y + srcHeight;
+			points[2].x = x + srcWidth;
+			points[2].y = y;
+#endif
+			break;
+
+		case IRA_270:
+			points[0].x = x;
+			points[0].y = y + srcWidth;
+			points[1].x = x;
+			points[1].y = y;
+			points[2].x = x + srcHeight;
+			points[2].y = y + srcWidth;
+			break;
+		}
+
+		dc.PlgBlt(points, &dcImage, srcX, srcY, srcWidth, srcHeight, CBitmap(), 0, 0);
+	}
+	dcImage.SelectObject(oldBitmap);
+}
+
+
+void MfcServerView::paintImage(CPaintDC &dc, const Tile &tile, int x, int y, ImageRotationalAngle rotationalAngle, ImageEffect effect)
 {
 	int column = 0;
 	int row = 0;
@@ -117,17 +185,53 @@ void MfcServerView::paintTile(CPaintDC &dc, const Tile &tile, int x, int y)
 		row = 9;
 	}
 
-	CBitmap *oldBitmap = dcImage.SelectObject(m_bitmap);
-	dc.BitBlt(
-		x,
-		y,
-		TILE_IMAGE_WIDTH,
-		TILE_IMAGE_HEIGHT,
-		&dcImage,
+	paintImage(
+		dc,
 		TILE_IMAGE_X + TILE_IMAGE_WIDTH * row,
 		TILE_IMAGE_Y + TILE_IMAGE_HEIGHT * column,
-		SRCCOPY);
-	dcImage.SelectObject(oldBitmap);
+		TILE_IMAGE_WIDTH,
+		TILE_IMAGE_HEIGHT,
+		x,
+		y,
+		rotationalAngle,
+		effect);
+}
+
+
+void MfcServerView::paintImage(CPaintDC &dc, const string &name, int x, int y, ImageRotationalAngle rotationalAngle, ImageEffect effect)
+{
+	int srcX = 0;
+	int srcY = 0;
+	int srcWidth = 0;
+	int srcHeight = 0;
+
+	if (name == "Rear") {
+		srcX = 203;
+		srcY = 111;
+		srcWidth = TILE_IMAGE_WIDTH;
+		srcHeight = TILE_IMAGE_HEIGHT;
+	} else if (name == "Stack") {
+		srcX = 232;
+		srcY = 111;
+		srcWidth = TILE_IMAGE_WIDTH;
+		srcHeight = TILE_IMAGE_HEIGHT;
+	} else if (name == "Side") {
+		srcX = 261;
+		srcY = 111;
+		srcWidth = TILE_IMAGE_WIDTH;
+		srcHeight = TILE_IMAGE_DEPTH;
+	}
+
+	paintImage(
+		dc,
+		srcX,
+		srcY,
+		srcWidth,
+		srcHeight,
+		x,
+		y,
+		rotationalAngle,
+		effect);
 }
 
 
@@ -161,19 +265,143 @@ void MfcServerView::paintInitial(CPaintDC &dc)
 }
 
 
+void MfcServerView::paintWall(CPaintDC &dc, int x, int y)
+{
+	// TODO: 東家の位置に応じて山の描画を変更するようにする。
+	// TODO: ドラ表示牌を表示する。
+	// TODO: 王牌の切れ目を表示する。
+	const Wall &wall = m_model.table().wall();
+	auto paint = [&](CPaintDC &dc, bool upper, bool lower, int x, int y, ImageRotationalAngle rotationalAngle) {
+		const char *name = nullptr;
+
+		if (!lower) {
+			name = "Stack";
+		} else if (!upper) {
+			name = "Rear";
+		} else {
+			name = "Rear";
+		}
+
+		if (name != nullptr) {
+			paintImage(dc, name, x, y, rotationalAngle, IE_NONE);
+		}
+	};
+
+	for (auto i = 0; i < 4; ++i) {
+		for (auto j = 0, k = static_cast<int>(wall.TILES_SIZE) / 4 * i; j < wall.TILES_SIZE / 8; ++j, k += 2) {
+			switch (i) {
+			case 0:
+				paint(
+					dc,
+					wall.isDrawed(k),
+					wall.isDrawed(k + 1),
+					TILE_IMAGE_WIDTH * (wall.TILES_SIZE / 8 - j - 1) + (TILE_IMAGE_HEIGHT + x),
+					TILE_IMAGE_WIDTH * (wall.TILES_SIZE / 8) + y,
+					IRA_NONE);
+				break;
+
+			case 1:
+				paint(
+					dc,
+					wall.isDrawed(k),
+					wall.isDrawed(k + 1),
+					x,
+					TILE_IMAGE_WIDTH * (wall.TILES_SIZE / 8 - j - 1) + (TILE_IMAGE_HEIGHT + y),
+					IRA_90);
+				break;
+
+			case 2:
+				paint(
+					dc,
+					wall.isDrawed(k),
+					wall.isDrawed(k + 1),
+					TILE_IMAGE_WIDTH * j + x,
+					y,
+					IRA_180);
+				break;
+
+			case 3:
+				paint(
+					dc,
+					wall.isDrawed(k),
+					wall.isDrawed(k + 1),
+					(TILE_IMAGE_WIDTH * (wall.TILES_SIZE / 8)) + x,
+					TILE_IMAGE_WIDTH * j + y,
+					IRA_270);
+				break;
+			}
+		}
+	}
+}
+
+
+void MfcServerView::paintLeftHand(CPaintDC & dc, int x, int y, bool opened)
+{
+	// TODO: 自家に応じた手牌を取得するよう変更する。
+	const Hand &hand = m_model.table().getPlayerInfo(Winds::NORTH).hand();
+	const Hand::Tiles tiles = hand.tiles();
+
+	for (size_t i = 0; i < tiles.size(); ++i) {
+		int dstX = x;
+		int dstY = y + TILE_IMAGE_WIDTH * static_cast<int>(i);
+		if (opened) {
+			paintImage(dc, tiles[i], dstX, dstY, IRA_90, IE_NONE);
+		} else {
+			paintImage(dc, "Side", dstX, dstY, IRA_90, IE_NONE);
+		}
+	}
+
+	// TODO: 鳴き面子を表示する。
+}
+
+
+void MfcServerView::paintAcrossHand(CPaintDC &dc, int x, int y, bool opened)
+{
+	// TODO: 自家に応じた手牌を取得するよう変更する。
+	const Hand &hand = m_model.table().getPlayerInfo(Winds::WEST).hand();
+	const Hand::Tiles tiles = hand.tiles();
+
+	int marginX = TILE_IMAGE_WIDTH * 4 + TILE_IMAGE_HEIGHT + WALL_MARGIN;
+	for (size_t i = 0; i < tiles.size(); ++i) {
+		int dstX = x + TILE_IMAGE_WIDTH * static_cast<int>(i) + marginX;
+		int dstY = y;
+		if (opened) {
+			paintImage(dc, tiles[i], dstX, dstY, IRA_180, IE_NONE);
+		} else {
+			paintImage(dc, "Side", dstX, dstY, IRA_180, IE_NONE);
+		}
+	}
+
+	// TODO: 鳴き面子を表示する。
+}
+
+
 void MfcServerView::paintPlaying(CPaintDC &dc)
 {
 	// 背景色を描画する。
 	fill(dc, MEDIUMSEAGREEN);
 
+	// 山を描画する。
+	paintWall(dc, WALL_MARGIN, WALL_MARGIN);
+
+	// 上家の手牌を描画する。
+	paintLeftHand(dc, 0, WALL_MARGIN, true);
+
+
+	// 対面の手牌を描画する。
+	paintAcrossHand(dc, 0, 0, true);
+#if 0
 	Wind winds[] = { Winds::EAST, Winds::SOUTH, Winds::WEST, Winds::NORTH };
 	for (size_t y = 0; y < sizeof(winds) / sizeof(*winds); ++y) {
 		const Hand &hand = m_model.table().getPlayerInfo(winds[y]).getHand();
 		for (size_t x = 0; x < hand.getTiles().size(); ++x)
 		{
-			paintTile(dc, hand.getTiles()[x], 10 + TILE_IMAGE_WIDTH * static_cast<int>(x), 10 + TILE_IMAGE_HEIGHT * static_cast<int>(y));
+			paintImage(dc, hand.getTiles()[x], 10 + TILE_IMAGE_WIDTH * static_cast<int>(x), 10 + TILE_IMAGE_HEIGHT * static_cast<int>(y));
 		}
 	}
+	paintImage(dc, "Stack", 10 + TILE_IMAGE_WIDTH * 1, 10 + TILE_IMAGE_HEIGHT * 4);
+	paintImage(dc, "Side", 10 + TILE_IMAGE_WIDTH * 2, 10 + TILE_IMAGE_HEIGHT * 4);
+#endif
 }
 
 

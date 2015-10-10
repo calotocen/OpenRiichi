@@ -25,6 +25,38 @@
 class MfcServerView
 {
 private:
+	/**
+	 * 画像回転角である。
+	 * 上方向を基点，回転方向は右回りとする。
+	 */
+	enum ImageRotationalAngle
+	{
+		/// なし。
+		IRA_NONE,
+
+		/// 0 度。
+		IRA_0 = IRA_NONE,
+
+		/// 90 度。
+		IRA_90,
+
+		/// 180 度。
+		IRA_180,
+
+		/// 270 度。
+		IRA_270
+	};
+
+	/**
+	 * 画像エフェクトである。
+	 */
+	enum ImageEffect
+	{
+		/// なし。
+		IE_NONE,
+	};
+
+private:
 	/// 画像ファイルの格納場所
 	static const TCHAR *IMAGE_PATH;
 
@@ -44,6 +76,14 @@ public:
 
 	/// 牌画像の縦幅。
 	static const size_t TILE_IMAGE_HEIGHT = 37;
+
+	/// 牌画像の奥行。
+	static const size_t TILE_IMAGE_DEPTH = 20;
+
+
+private:
+	/// 画面端から山までのマージン。
+	static const size_t WALL_MARGIN = TILE_IMAGE_HEIGHT + 20;
 
 
 private:
@@ -75,14 +115,39 @@ private:
 	void fill(CPaintDC &dc, COLORREF color);
 
 	/**
-	 * 牌を描画する。
+	 * 画像を描画する。
+	 *
+	 * @param[in] dc デバイスコンテキスト。
+	 * @param[in] x 描画位置 (X 座標)。
+	 * @param[in] y 描画位置 (Y 座標)。
+	 * @param[in] srcX 切り抜き画像始点 (X 座標)。
+	 * @param[in] srcY 切り抜き画像始点 (Y 座標)。
+	 * @param[in] srcWidth 切り抜き画像の横幅。
+	 * @param[in] srcHeight 切り抜き画像の縦幅。
+	 * @param[in] rotationalAngle 回転角 (上始点の右回り)。
+	 * @param[in] effect エフェクト。
+	 */
+	void paintImage(CPaintDC &dc, int srcX, int srcY, int srcWidth, int srcHeight, int x, int y, ImageRotationalAngle rotationalAngle, ImageEffect effect);
+
+	/**
+	 * 画像を描画する。
 	 *
 	 * @param[in] dc デバイスコンテキスト。
 	 * @param[in] tile 牌。
 	 * @param[in] x 描画位置 (X 座標)。
 	 * @param[in] y 描画位置 (Y 座標)。
 	 */
-	void paintTile(CPaintDC &dc, const openriichi::Tile &tile, int x, int y);
+	void paintImage(CPaintDC &dc, const openriichi::Tile &tile, int x, int y, ImageRotationalAngle rotationalAngle, ImageEffect effect);
+
+	/**
+	 * 画像を描画する。
+	 *
+	 * @param[in] dc デバイスコンテキスト。
+	 * @param[in] name 画像名。
+	 * @param[in] x 描画位置 (X 座標)。
+	 * @param[in] y 描画位置 (Y 座標)。
+	 */
+	void paintImage(CPaintDC &dc, const std::string &name, int x, int y, ImageRotationalAngle rotationalAngle, ImageEffect effect);
 
 	/**
 	 * 初期状態を描画する。
@@ -90,6 +155,33 @@ private:
 	 * @param[in] dc デバイスコンテキスト。
 	 */
 	void paintInitial(CPaintDC &dc);
+						
+	/**
+	 * 山を描画する。
+	 *
+	 * @param[in] dc デバイスコンテキスト。
+	 * @param[in] x 描画位置 (X 座標)。
+	 * @param[in] y 描画位置 (Y 座標)。
+	 */
+	void paintWall(CPaintDC &dc, int x, int y);
+
+	/**
+	 * 上家の手牌を描画する。
+	 *
+	 * @param[in] dc デバイスコンテキスト。
+	 * @param[in] x 描画位置 (X 座標)。
+	 * @param[in] y 描画位置 (Y 座標)。
+	 */
+	void paintLeftHand(CPaintDC &dc, int x, int y, bool opened);
+
+	/**
+	 * 対面の手牌を描画する。
+	 *
+	 * @param[in] dc デバイスコンテキスト。
+	 * @param[in] x 描画位置 (X 座標)。
+	 * @param[in] y 描画位置 (Y 座標)。
+	 */
+	void paintAcrossHand(CPaintDC &dc, int x, int y, bool opened);
 
 	/**
 	 * 対局中状態を描画する。
