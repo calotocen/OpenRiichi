@@ -30,7 +30,7 @@ namespace openriichi
 
 	public:
 		/// 捨て牌配列型。
-		using Discards = LimitedVector<MemorySavedDiscard, MAX_DISCARDS_SIZE>;
+		using Discards = LimitedVector<Discard, MAX_DISCARDS_SIZE>;
 
 
 	private:
@@ -38,7 +38,7 @@ namespace openriichi
 		Hand m_hand;
 
 		/// 捨て牌。
-		LimitedVector<MemorySavedDiscard, MAX_DISCARDS_SIZE> m_discards;
+		LimitedVector<Discard, MAX_DISCARDS_SIZE> m_discards;
 
 		/// 点数。
 		uint32_t m_points;
