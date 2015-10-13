@@ -126,6 +126,7 @@ namespace openriichi
 		 * 牌をツモる。
 		 *
 		 * @return ツモった牌。
+		 * @note 残りツモ回数が 0 回の状態で牌をツモった場合の動作は，未定義である。
 		 */
 		const Tile &draw();
 
