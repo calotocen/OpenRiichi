@@ -265,6 +265,30 @@ void MfcServerView::paintInitial(CPaintDC &dc)
 }
 
 
+void MfcServerView::paintAcrossDiscards(CPaintDC &dc, int x, int y)
+{
+	// TODO: 捨て元がツモ牌か手牌か分かるようにする。
+	// TODO: 立直宣言牌が分かるようにする。
+	// TODO: 鳴き牌が分かるようにする。
+	const PlayerInfo::Discards &discards = m_model.table().playerInfo(Winds::WEST).discards();
+
+	for (size_t i = 0; i < discards.size(); ++i) {
+		int dstX;
+		int dstY;
+
+		if (i < 18) {
+			dstX = x + TILE_IMAGE_WIDTH * (static_cast<int>(i) % 6);
+			dstY = y + TILE_IMAGE_HEIGHT * (2 - static_cast<int>(i) / 6);
+		} else {
+			dstX = x + TILE_IMAGE_WIDTH * (17 - static_cast<int>(i));
+			dstY = y;
+		}
+
+		paintImage(dc, discards[i].getTile(), dstX, dstY, IRA_180, IE_NONE);
+	}
+}
+
+
 void MfcServerView::paintWall(CPaintDC &dc, int x, int y)
 {
 	// TODO: 東家の位置に応じて山の描画を変更するようにする。
@@ -384,9 +408,16 @@ void MfcServerView::paintPlaying(CPaintDC &dc)
 	// 山を描画する。
 	paintWall(dc, WALL_MARGIN, WALL_MARGIN);
 
+	// 捨て牌を描画する。
+	const size_t WALL_WIDTH = TILE_IMAGE_WIDTH * 17 + TILE_IMAGE_HEIGHT;
+	const size_t DISCARDS_MARGIN = TILE_IMAGE_HEIGHT + 10;
+	paintAcrossDiscards(
+		dc, 
+		((WALL_WIDTH - DISCARDS_MARGIN * 2) / 2 - TILE_IMAGE_WIDTH * 3) + WALL_MARGIN + DISCARDS_MARGIN,
+		WALL_MARGIN + TILE_IMAGE_HEIGHT + 10);
+
 	// 上家の手牌を描画する。
 	paintLeftHand(dc, 0, WALL_MARGIN, true);
-
 
 	// 対面の手牌を描画する。
 	paintAcrossHand(dc, 0, 0, true);

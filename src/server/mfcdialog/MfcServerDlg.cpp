@@ -156,6 +156,34 @@ void CMfcServerDlg::OnNewMenuitem()
 	m_model.initialize();
 	m_model.play();
 
+	// TODO: 一時的に捨て牌を埋める。
+	// 後で削除すること。
+	openriichi::PlayerInfo::Discards &discards = m_model.table().playerInfo(openriichi::Winds::WEST).discards();
+	discards.push_back(openriichi::Discard(openriichi::P1, openriichi::DiscardSources::DRAWED));
+	discards.push_back(openriichi::Discard(openriichi::P2, openriichi::DiscardSources::DRAWED));
+	discards.push_back(openriichi::Discard(openriichi::P3, openriichi::DiscardSources::DRAWED));
+	discards.push_back(openriichi::Discard(openriichi::P4, openriichi::DiscardSources::DRAWED));
+	discards.push_back(openriichi::Discard(openriichi::P5, openriichi::DiscardSources::DRAWED));
+	discards.push_back(openriichi::Discard(openriichi::P6, openriichi::DiscardSources::DRAWED));
+	discards.push_back(openriichi::Discard(openriichi::S1, openriichi::DiscardSources::DRAWED));
+	discards.push_back(openriichi::Discard(openriichi::S2, openriichi::DiscardSources::DRAWED));
+	discards.push_back(openriichi::Discard(openriichi::S3, openriichi::DiscardSources::DRAWED));
+	discards.push_back(openriichi::Discard(openriichi::S4, openriichi::DiscardSources::DRAWED));
+	discards.push_back(openriichi::Discard(openriichi::S5, openriichi::DiscardSources::DRAWED));
+	discards.push_back(openriichi::Discard(openriichi::S6, openriichi::DiscardSources::DRAWED));
+	discards.push_back(openriichi::Discard(openriichi::TN, openriichi::DiscardSources::DRAWED));
+	discards.push_back(openriichi::Discard(openriichi::NN, openriichi::DiscardSources::DRAWED));
+	discards.push_back(openriichi::Discard(openriichi::SH, openriichi::DiscardSources::DRAWED));
+	discards.push_back(openriichi::Discard(openriichi::PE, openriichi::DiscardSources::DRAWED));
+	discards.push_back(openriichi::Discard(openriichi::CH, openriichi::DiscardSources::DRAWED));
+	discards.push_back(openriichi::Discard(openriichi::HK, openriichi::DiscardSources::DRAWED));
+	discards.push_back(openriichi::Discard(openriichi::M1, openriichi::DiscardSources::DRAWED));
+	discards.push_back(openriichi::Discard(openriichi::M2, openriichi::DiscardSources::DRAWED));
+	discards.push_back(openriichi::Discard(openriichi::M3, openriichi::DiscardSources::DRAWED));
+	discards.push_back(openriichi::Discard(openriichi::M4, openriichi::DiscardSources::DRAWED));
+	discards.push_back(openriichi::Discard(openriichi::M5, openriichi::DiscardSources::DRAWED));
+	discards.push_back(openriichi::Discard(openriichi::M6, openriichi::DiscardSources::DRAWED));
+
 	Invalidate(TRUE);
 }
 

@@ -157,6 +157,15 @@ private:
 	void paintInitial(CPaintDC &dc);
 						
 	/**
+	 * 対面の捨て牌を描画する。
+	 *
+	 * @param[in] dc デバイスコンテキスト。
+	 * @param[in] x 描画位置 (X 座標)。
+	 * @param[in] y 描画位置 (Y 座標)。
+	 */
+	void paintAcrossDiscards(CPaintDC &dc, int x, int y);
+						
+	/**
 	 * 山を描画する。
 	 *
 	 * @param[in] dc デバイスコンテキスト。
