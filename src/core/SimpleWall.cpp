@@ -45,7 +45,8 @@ SimpleWall::SimpleWall(const Tiles & tiles)
 	, m_lastRevealedDoraIndex(TILES_SIZE)
 #endif // defined(OPENRIICHI_ENABLE_ASSERTION) && OPENRIICHI_ENABLE_ASSERTION != 0
 {
-	// 何もしない。
+	// アサーションが有効である場合のみ，引数をチェックする。
+	openriichi_assert(tiles.size() == TILES_SIZE);
 }
 
 

@@ -84,6 +84,8 @@ namespace openriichi
 		 * 山を生成する。
 		 *
 		 * @param[in] tiles 牌配列。
+		 *                  牌配列のサイズは，TILES_SIZE でなければならない。
+		 * @note 牌配列のサイズが TILES_SIZE 以外であった場合の動作は未定義である。
 		 */
 		explicit SimpleWall(const Tiles &tiles);
 
