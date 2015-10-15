@@ -175,19 +175,19 @@ void SimpleWall::revealNewDora()
 }
 
 
-size_t SimpleWall::countRemainingTiles()
+size_t SimpleWall::countRemainingTiles() const
 {
 	return m_deadWallIndex - m_drawingIndex;
 }
 
 
-const SimpleWall::Doras &SimpleWall::getDoras()
+const SimpleWall::Doras &SimpleWall::getDoras() const
 {
 	return m_doras;
 }
 
 
-const SimpleWall::Doras &SimpleWall::getUraDoras()
+const SimpleWall::Doras &SimpleWall::getUraDoras() const
 {
 	return m_uraDoras;
 }

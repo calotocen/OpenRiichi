@@ -160,21 +160,21 @@ namespace openriichi
 		 *
 		 * @return 残りツモ回数。
 		 */
-		size_t countRemainingTiles();
+		size_t countRemainingTiles() const;
 
 		/**
 		 * 表ドラを返す。
 		 *
 		 * @return 表ドラ。
 		 */
-		const Doras &getDoras();
+		const Doras &getDoras() const;
 
 		/**
 		 * 裏ドラを返す。
 		 *
 		 * @return 裏ドラ。
 		 */
-		const Doras &getUraDoras();
+		const Doras &getUraDoras() const;
 
 		/**
 		 * 牌を返す。
