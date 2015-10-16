@@ -49,7 +49,7 @@ namespace openriichi
 	class DiscardSources
 	{
 	public:
-		enum ID : int
+		enum ID
 		{
 			/// ツモ牌が捨て元の ID。
 			DRAWED_ID = 1,

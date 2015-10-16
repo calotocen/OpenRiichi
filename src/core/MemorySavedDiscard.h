@@ -27,7 +27,7 @@ namespace openriichi
 		/**
 		 * 鳴かれたか牌であるかを表す値である。
 		 */
-		enum TakenValue
+		enum TakenValue : uint8_t
 		{
 			/// 鳴かれた牌ではない。
 			TV_FALSE = 0x00,
@@ -39,7 +39,7 @@ namespace openriichi
 		/**
 		 * 立直宣言牌であるかを表す値である。
 		 */
-		enum RiichiDeclaredValue
+		enum RiichiDeclaredValue : uint8_t
 		{
 			/// 立直宣言牌ではない。
 			RDV_FALSE = 0x00,

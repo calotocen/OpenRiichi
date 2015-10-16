@@ -49,7 +49,7 @@ namespace openriichi
 	class TileAttributes
 	{
 	public:
-		enum ID : int
+		enum ID
 		{
 			/// 属性なしの牌属性の ID
 			NONE_ID = 0,

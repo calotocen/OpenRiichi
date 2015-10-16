@@ -49,7 +49,7 @@ namespace openriichi
 	class MeldedKongTypes
 	{
 	public:
-		enum ID : int
+		enum ID
 		{
 			/// 鳴き槓子でないことを表す鳴き槓子種別の ID。
 			NO_ID = 0,

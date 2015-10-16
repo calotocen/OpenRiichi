@@ -27,7 +27,7 @@ namespace openriichi
 		/**
 		 * フラグである。
 		 */
-		enum Flag
+		enum Flag : uint8_t
 		{
 			/// 立直宣言あり。
 			DECLARED = 0x01,

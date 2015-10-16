@@ -65,7 +65,7 @@ namespace openriichi
 	class Winds
 	{
 	public:
-		enum ID : int
+		enum ID
 		{
 			/// 東の風の ID。
 			EAST_ID = 1,

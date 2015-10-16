@@ -49,7 +49,7 @@ namespace openriichi
 	class SetArrangements
 	{
 	public:
-		enum ID : int
+		enum ID
 		{
 			/// 順子の面子種別の ID。
 			CHOW_ID = 1,

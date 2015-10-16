@@ -100,7 +100,7 @@ namespace openriichi
 	class TileDesigns
 	{
 	public:
-		enum ID : int
+		enum ID
 		{
 			/// 筒子の牌図柄の ID。
 			CIRCLES_ID = 1,
