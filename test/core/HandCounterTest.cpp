@@ -26,7 +26,7 @@ namespace openriichi
 	class HandCounterTest : public ::testing::Test {};
 
 	/// == 演算子をテストする。
-	TEST_F(HandCounterTest, testEquals)
+	TEST_F(HandCounterTest, testOperatorEqualTo)
 	{
 		HandCounter handCounter1a;
 		HandCounter handCounter1b;
@@ -76,7 +76,7 @@ namespace openriichi
 	}
 
 	/// != 演算子をテストする。
-	TEST_F(HandCounterTest, testNotEquals)
+	TEST_F(HandCounterTest, testOperatorNotEqualTo)
 	{
 		HandCounter handCounter1a;
 		HandCounter handCounter1b;
@@ -126,7 +126,7 @@ namespace openriichi
 	}
 
 	/// getRound 関数をテストする。
-	TEST_F(HandCounterTest, testGetRound)
+	TEST_F(HandCounterTest, testToGetRound)
 	{
 		HandCounter handCounter;
 
@@ -134,7 +134,7 @@ namespace openriichi
 	}
 
 	/// setRound 関数をテストする。
-	TEST_F(HandCounterTest, testSetRound)
+	TEST_F(HandCounterTest, testToSetRound)
 	{
 		HandCounter handCounter;
 
@@ -143,7 +143,7 @@ namespace openriichi
 	}
 
 	/// nextRound 関数をテストする。
-	TEST_F(HandCounterTest, testNextRound)
+	TEST_F(HandCounterTest, testToNextRound)
 	{
 		HandCounter handCounter;
 
@@ -158,7 +158,7 @@ namespace openriichi
 	}
 
 	/// getMajorCount 関数をテストする。
-	TEST_F(HandCounterTest, testGetMajorCount)
+	TEST_F(HandCounterTest, testToGetMajorCount)
 	{
 		HandCounter handCounter;
 
@@ -166,7 +166,7 @@ namespace openriichi
 	}
 
 	/// setMajorCount 関数をテストする。
-	TEST_F(HandCounterTest, testSetMajorCount)
+	TEST_F(HandCounterTest, testToSetMajorCount)
 	{
 		HandCounter handCounter;
 
@@ -175,7 +175,7 @@ namespace openriichi
 	}
 
 	/// resetMajorCount 関数をテストする。
-	TEST_F(HandCounterTest, testResetMajorCount)
+	TEST_F(HandCounterTest, testToResetMajorCount)
 	{
 		HandCounter handCounter;
 
@@ -187,7 +187,7 @@ namespace openriichi
 	}
 
 	/// increaseMajorCount 関数をテストする。
-	TEST_F(HandCounterTest, testIncreaseMajorCount)
+	TEST_F(HandCounterTest, testToIncreaseMajorCount)
 	{
 		HandCounter handCounter;
 
@@ -196,7 +196,7 @@ namespace openriichi
 	}
 
 	/// getMinorCount 関数をテストする。
-	TEST_F(HandCounterTest, testGetMinorCount)
+	TEST_F(HandCounterTest, testToGetMinorCount)
 	{
 		HandCounter handCounter;
 
@@ -204,7 +204,7 @@ namespace openriichi
 	}
 
 	/// setMinorCount 関数をテストする。
-	TEST_F(HandCounterTest, testSetMinorCount)
+	TEST_F(HandCounterTest, testToSetMinorCount)
 	{
 		HandCounter handCounter;
 
@@ -213,7 +213,7 @@ namespace openriichi
 	}
 
 	/// resetMinorCount 関数をテストする。
-	TEST_F(HandCounterTest, testResetMinorCount)
+	TEST_F(HandCounterTest, testToResetMinorCount)
 	{
 		HandCounter handCounter;
 
@@ -225,7 +225,7 @@ namespace openriichi
 	}
 
 	/// increaseMinorCount 関数をテストする。
-	TEST_F(HandCounterTest, testIncreaseMinorCount)
+	TEST_F(HandCounterTest, testToIncreaseMinorCount)
 	{
 		HandCounter handCounter;
 
