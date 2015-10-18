@@ -51,6 +51,20 @@ namespace openriichi
 		}
 	};
 
+	/// コンストラクタ (牌指定) をテストする。
+	TEST_F(WallTest, testConstructorWithTiles)
+	{
+#if defined(OPENRIICHI_ENABLE_ASSERTION) && OPENRIICHI_ENABLE_ASSERTION != 0
+		ASSERT_THROW(SimpleWall(SimpleWall::Tiles{
+			P1, P1, P1, P1, P2, P2, P2, P2, P3, P3, P3, P3, P4, P4, P4, P4, P5, P5, P5, P5, P6, P6, P6, P6, P7, P7, P7, P7, P8, P8, P8, P8, P9, P9, P9, P9,
+			S1, S1, S1, S1, S2, S2, S2, S2, S3, S3, S3, S3, S4, S4, S4, S4, S5, S5, S5, S5, S6, S6, S6, S6, S7, S7, S7, S7, S8, S8, S8, S8, S9, S9, S9, S9,
+			M1, M1, M1, M1, M2, M2, M2, M2, M3, M3, M3, M3, M4, M4, M4, M4, M5, M5, M5, M5, M6, M6, M6, M6, M7, M7, M7, M7, M8, M8, M8, M8, M9, M9, M9, M9,
+			TN, TN, TN, TN, NN, NN, NN, NN, SH, SH, SH, SH, PE, PE, PE, PE,
+			CH, CH, CH, CH, HK, HK, HK, HK, HT, HT, HT
+		}), OpenRiichiAssertion);
+#endif // defined(OPENRIICHI_ENABLE_ASSERTION) && OPENRIICHI_ENABLE_ASSERTION != 0
+	}
+
 	/// == 演算子をテストする。
 	TEST_F(WallTest, testEquals)
 	{
