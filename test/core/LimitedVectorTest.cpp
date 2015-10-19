@@ -26,15 +26,122 @@ namespace openriichi
 	class LimitedVectorTest : public ::testing::Test {};
 
 	/// コンストラクタ (初期化子リスト指定) をテストする。
-	TEST_F(LimitedVectorTest, testConstructWithInitializerList)
+	TEST_F(LimitedVectorTest, testConstructerWithInitializerList)
 	{
 #if defined(OPENRIICHI_ENABLE_ASSERTION) && OPENRIICHI_ENABLE_ASSERTION != 0
 		ASSERT_THROW((LimitedVector<int, 10>{ 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10 }), OpenRiichiAssertion);
 #endif // defined(OPENRIICHI_ENABLE_ASSERTION) && OPENRIICHI_ENABLE_ASSERTION != 0
 	}
 
+	/// == 演算子をテストする。
+	TEST_F(LimitedVectorTest, testOperatorEqualTo)
+	{
+		LimitedVector<int, 10> limitedVector1;
+		LimitedVector<int, 10> limitedVector2{ 0 };
+		LimitedVector<int, 10> limitedVector3{ 1 };
+		LimitedVector<int, 10> limitedVector4{ 0, 1, 2, 3, 4, 5, 6, 7, 8, 9 };
+		LimitedVector<int, 10> limitedVector5{ 0, 1, 2, 3, 4, 5, 6, 7, 8, 10 };
+
+		// 自身と比較する。
+		ASSERT_TRUE(limitedVector1 == limitedVector1);
+		ASSERT_TRUE(limitedVector2 == limitedVector2);
+		ASSERT_TRUE(limitedVector3 == limitedVector3);
+		ASSERT_TRUE(limitedVector4 == limitedVector4);
+		ASSERT_TRUE(limitedVector5 == limitedVector5);
+
+		// 同じ有限可変長配列と比較する。
+		ASSERT_TRUE(limitedVector1 == (LimitedVector<int, 10>()));
+		ASSERT_TRUE(limitedVector2 == (LimitedVector<int, 10>{ 0 }));
+		ASSERT_TRUE(limitedVector3 == (LimitedVector<int, 10>{ 1 }));
+		ASSERT_TRUE(limitedVector4 == (LimitedVector<int, 10>{ 0, 1, 2, 3, 4, 5, 6, 7, 8, 9 }));
+		ASSERT_TRUE(limitedVector5 == (LimitedVector<int, 10>{ 0, 1, 2, 3, 4, 5, 6, 7, 8, 10 }));
+
+		// 異なる有限可変長配列と比較する。
+		vector<LimitedVector<int, 10>> limitedVectors{ limitedVector1, limitedVector2, limitedVector3, limitedVector4, limitedVector5 };
+		for (size_t i = 0; i < limitedVectors.size(); ++i) {
+			for (size_t j = 0; j < limitedVectors.size(); ++j) {
+				if (i != j) {
+					ASSERT_FALSE(limitedVectors[i] == limitedVectors[j]);
+				}
+			}
+		}
+	}
+
+	/// != 演算子をテストする。
+	TEST_F(LimitedVectorTest, testOperatorNotEqualTo)
+	{
+		LimitedVector<int, 10> limitedVector1;
+		LimitedVector<int, 10> limitedVector2{ 0 };
+		LimitedVector<int, 10> limitedVector3{ 1 };
+		LimitedVector<int, 10> limitedVector4{ 0, 1, 2, 3, 4, 5, 6, 7, 8, 9 };
+		LimitedVector<int, 10> limitedVector5{ 0, 1, 2, 3, 4, 5, 6, 7, 8, 10 };
+
+		// 自身と比較する。
+		ASSERT_FALSE(limitedVector1 != limitedVector1);
+		ASSERT_FALSE(limitedVector2 != limitedVector2);
+		ASSERT_FALSE(limitedVector3 != limitedVector3);
+		ASSERT_FALSE(limitedVector4 != limitedVector4);
+		ASSERT_FALSE(limitedVector5 != limitedVector5);
+
+		// 同じ有限可変長配列と比較する。
+		ASSERT_FALSE(limitedVector1 != (LimitedVector<int, 10>()));
+		ASSERT_FALSE(limitedVector2 != (LimitedVector<int, 10>{ 0 }));
+		ASSERT_FALSE(limitedVector3 != (LimitedVector<int, 10>{ 1 }));
+		ASSERT_FALSE(limitedVector4 != (LimitedVector<int, 10>{ 0, 1, 2, 3, 4, 5, 6, 7, 8, 9 }));
+		ASSERT_FALSE(limitedVector5 != (LimitedVector<int, 10>{ 0, 1, 2, 3, 4, 5, 6, 7, 8, 10 }));
+
+		// 異なる有限可変長配列と比較する。
+		vector<LimitedVector<int, 10>> limitedVectors{ limitedVector1, limitedVector2, limitedVector3, limitedVector4, limitedVector5 };
+		for (size_t i = 0; i < limitedVectors.size(); ++i) {
+			for (size_t j = 0; j < limitedVectors.size(); ++j) {
+				if (i != j) {
+					ASSERT_TRUE(limitedVectors[i] != limitedVectors[j]);
+				}
+			}
+		}
+	}
+
+	/// = 演算子をテストする。
+	TEST_F(LimitedVectorTest, testOperatorAssignment)
+	{
+#if defined(OPENRIICHI_ENABLE_ASSERTION) && OPENRIICHI_ENABLE_ASSERTION != 0
+		LimitedVector<int, 10> limitedVector;
+		ASSERT_THROW((limitedVector = { 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10 }), OpenRiichiAssertion);
+#endif // defined(OPENRIICHI_ENABLE_ASSERTION) && OPENRIICHI_ENABLE_ASSERTION != 0
+	}
+
+	/// [] 演算子 (非 const 版) をテストする。
+	TEST_F(LimitedVectorTest, testOperatorSubscript)
+	{
+		LimitedVector<int, 10> limitedVector{ 0, 1, 2, 3, 4, 5, 6, 7, 8, 9 };
+
+		limitedVector[0] = 10;
+		limitedVector[5] = 11;
+		limitedVector[9] = 12;
+		ASSERT_EQ((LimitedVector<int, 10>{ 10, 1, 2, 3, 4, 11, 6, 7, 8, 12 }), limitedVector);
+
+#if defined(OPENRIICHI_ENABLE_ASSERTION) && OPENRIICHI_ENABLE_ASSERTION != 0
+		ASSERT_THROW(limitedVector[10] = 13, OpenRiichiAssertion);
+		ASSERT_THROW((LimitedVector<int, 10>()[0] = 14), OpenRiichiAssertion);
+#endif // defined(OPENRIICHI_ENABLE_ASSERTION) && OPENRIICHI_ENABLE_ASSERTION != 0
+	}
+
+	/// [] 演算子 (const 版) をテストする。
+	TEST_F(LimitedVectorTest, testOperatorSubscriptAsConst)
+	{
+		const LimitedVector<int, 10> limitedVector{ 0, 1, 2, 3, 4, 5, 6, 7, 8, 9 };
+
+		ASSERT_EQ(0, limitedVector[0]);
+		ASSERT_EQ(5, limitedVector[5]);
+		ASSERT_EQ(9, limitedVector[9]);
+
+#if defined(OPENRIICHI_ENABLE_ASSERTION) && OPENRIICHI_ENABLE_ASSERTION != 0
+		ASSERT_THROW(limitedVector[10], OpenRiichiAssertion);
+#endif // defined(OPENRIICHI_ENABLE_ASSERTION) && OPENRIICHI_ENABLE_ASSERTION != 0
+	}
+
 	/// size 関数をテストする。
-	TEST_F(LimitedVectorTest, testCount)
+	TEST_F(LimitedVectorTest, testToCount)
 	{
 		LimitedVector<int, 10> limitedVector1;
 		LimitedVector<int, 10> limitedVector2{ 0, 1, 2, 3, 4 };
@@ -104,7 +211,7 @@ namespace openriichi
 	}
 
 	/// push_back 関数をテストする。
-	TEST_F(LimitedVectorTest, testPushBack)
+	TEST_F(LimitedVectorTest, testToPushBack)
 	{
 		LimitedVector<int, 10> limitedVector;
 
@@ -126,7 +233,7 @@ namespace openriichi
 	}
 
 	/// begin 関数 (iterator 返却版) をテストする。
-	TEST_F(LimitedVectorTest, testBegin)
+	TEST_F(LimitedVectorTest, testToBegin)
 	{
 		LimitedVector<int, 10> limitedVector1{ 0 };
 		LimitedVector<int, 10> limitedVector2{ 0, 1, 2, 3, 4, 5, 6, 7, 8, 9 };
@@ -156,7 +263,7 @@ namespace openriichi
 	}
 
 	/// begin 関数 (const_iterator 返却版) をテストする。
-	TEST_F(LimitedVectorTest, testBeginAsConst)
+	TEST_F(LimitedVectorTest, testToBeginAsConst)
 	{
 		LimitedVector<int, 10> limitedVector1{ 0 };
 		LimitedVector<int, 10> limitedVector2{ 0, 1, 2, 3, 4, 5, 6, 7, 8, 9 };
@@ -186,7 +293,7 @@ namespace openriichi
 	}
 
 	/// end 関数 (iterator 返却版) をテストする。
-	TEST_F(LimitedVectorTest, testEnd)
+	TEST_F(LimitedVectorTest, testToEnd)
 	{
 		LimitedVector<int, 10> limitedVector1{ 0 };
 		LimitedVector<int, 10> limitedVector2{ 0, 1, 2, 3, 4, 5, 6, 7, 8, 9 };
@@ -216,7 +323,7 @@ namespace openriichi
 	}
 
 	/// end 関数 (const_iterator 返却版) をテストする。
-	TEST_F(LimitedVectorTest, testEndAsConst)
+	TEST_F(LimitedVectorTest, testToEndAsConst)
 	{
 		LimitedVector<int, 10> limitedVector1{ 0 };
 		LimitedVector<int, 10> limitedVector2{ 0, 1, 2, 3, 4, 5, 6, 7, 8, 9 };
@@ -246,7 +353,7 @@ namespace openriichi
 	}
 
 	/// insert 関数をテストする。
-	TEST_F(LimitedVectorTest, testInsert)
+	TEST_F(LimitedVectorTest, testToInsert)
 	{
 		LimitedVector<int, 10> limitedVector;
 		LimitedVector<int, 10>::iterator iterator;
@@ -282,7 +389,7 @@ namespace openriichi
 	}
 
 	/// erase 関数をテストする。
-	TEST_F(LimitedVectorTest, testErase)
+	TEST_F(LimitedVectorTest, testToErase)
 	{
 		LimitedVector<int, 10> limitedVector;
 		LimitedVector<int, 10>::iterator iterator;
@@ -339,118 +446,11 @@ namespace openriichi
 	}
 
 	/// clear 関数をテストする。
-	TEST_F(LimitedVectorTest, testClear)
+	TEST_F(LimitedVectorTest, testToClear)
 	{
 		LimitedVector<int, 10> limitedVector{ 0, 1, 2, 3, 4, 5, 6, 7, 8, 9 };
 
 		limitedVector.clear();
 		ASSERT_EQ((LimitedVector<int, 10>()), limitedVector);
-	}
-
-	/// == 演算子をテストする。
-	TEST_F(LimitedVectorTest, testEquals)
-	{
-		LimitedVector<int, 10> limitedVector1;
-		LimitedVector<int, 10> limitedVector2{ 0 };
-		LimitedVector<int, 10> limitedVector3{ 1 };
-		LimitedVector<int, 10> limitedVector4{ 0, 1, 2, 3, 4, 5, 6, 7, 8, 9 };
-		LimitedVector<int, 10> limitedVector5{ 0, 1, 2, 3, 4, 5, 6, 7, 8, 10 };
-
-		// 自身と比較する。
-		ASSERT_TRUE(limitedVector1 == limitedVector1);
-		ASSERT_TRUE(limitedVector2 == limitedVector2);
-		ASSERT_TRUE(limitedVector3 == limitedVector3);
-		ASSERT_TRUE(limitedVector4 == limitedVector4);
-		ASSERT_TRUE(limitedVector5 == limitedVector5);
-
-		// 同じ有限可変長配列と比較する。
-		ASSERT_TRUE(limitedVector1 == (LimitedVector<int, 10>()));
-		ASSERT_TRUE(limitedVector2 == (LimitedVector<int, 10>{ 0 }));
-		ASSERT_TRUE(limitedVector3 == (LimitedVector<int, 10>{ 1 }));
-		ASSERT_TRUE(limitedVector4 == (LimitedVector<int, 10>{ 0, 1, 2, 3, 4, 5, 6, 7, 8, 9 }));
-		ASSERT_TRUE(limitedVector5 == (LimitedVector<int, 10>{ 0, 1, 2, 3, 4, 5, 6, 7, 8, 10 }));
-
-		// 異なる有限可変長配列と比較する。
-		vector<LimitedVector<int, 10>> limitedVectors{ limitedVector1, limitedVector2, limitedVector3, limitedVector4, limitedVector5 };
-		for (size_t i = 0; i < limitedVectors.size(); ++i) {
-			for (size_t j = 0; j < limitedVectors.size(); ++j) {
-				if (i != j) {
-					ASSERT_FALSE(limitedVectors[i] == limitedVectors[j]);
-				}
-			}
-		}
-	}
-
-	/// != 演算子をテストする。
-	TEST_F(LimitedVectorTest, testNotEquals)
-	{
-		LimitedVector<int, 10> limitedVector1;
-		LimitedVector<int, 10> limitedVector2{ 0 };
-		LimitedVector<int, 10> limitedVector3{ 1 };
-		LimitedVector<int, 10> limitedVector4{ 0, 1, 2, 3, 4, 5, 6, 7, 8, 9 };
-		LimitedVector<int, 10> limitedVector5{ 0, 1, 2, 3, 4, 5, 6, 7, 8, 10 };
-
-		// 自身と比較する。
-		ASSERT_FALSE(limitedVector1 != limitedVector1);
-		ASSERT_FALSE(limitedVector2 != limitedVector2);
-		ASSERT_FALSE(limitedVector3 != limitedVector3);
-		ASSERT_FALSE(limitedVector4 != limitedVector4);
-		ASSERT_FALSE(limitedVector5 != limitedVector5);
-
-		// 同じ有限可変長配列と比較する。
-		ASSERT_FALSE(limitedVector1 != (LimitedVector<int, 10>()));
-		ASSERT_FALSE(limitedVector2 != (LimitedVector<int, 10>{ 0 }));
-		ASSERT_FALSE(limitedVector3 != (LimitedVector<int, 10>{ 1 }));
-		ASSERT_FALSE(limitedVector4 != (LimitedVector<int, 10>{ 0, 1, 2, 3, 4, 5, 6, 7, 8, 9 }));
-		ASSERT_FALSE(limitedVector5 != (LimitedVector<int, 10>{ 0, 1, 2, 3, 4, 5, 6, 7, 8, 10 }));
-
-		// 異なる有限可変長配列と比較する。
-		vector<LimitedVector<int, 10>> limitedVectors{ limitedVector1, limitedVector2, limitedVector3, limitedVector4, limitedVector5 };
-		for (size_t i = 0; i < limitedVectors.size(); ++i) {
-			for (size_t j = 0; j < limitedVectors.size(); ++j) {
-				if (i != j) {
-					ASSERT_TRUE(limitedVectors[i] != limitedVectors[j]);
-				}
-			}
-		}
-	}
-
-	/// = 演算子をテストする。
-	TEST_F(LimitedVectorTest, testSubstitute)
-	{
-#if defined(OPENRIICHI_ENABLE_ASSERTION) && OPENRIICHI_ENABLE_ASSERTION != 0
-		LimitedVector<int, 10> limitedVector;
-		ASSERT_THROW((limitedVector = { 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10 }), OpenRiichiAssertion);
-#endif // defined(OPENRIICHI_ENABLE_ASSERTION) && OPENRIICHI_ENABLE_ASSERTION != 0
-	}
-
-	/// [] 演算子 (非 const 版) をテストする。
-	TEST_F(LimitedVectorTest, testIndex)
-	{
-		LimitedVector<int, 10> limitedVector{ 0, 1, 2, 3, 4, 5, 6, 7, 8, 9 };
-
-		limitedVector[0] = 10;
-		limitedVector[5] = 11;
-		limitedVector[9] = 12;
-		ASSERT_EQ((LimitedVector<int, 10>{ 10, 1, 2, 3, 4, 11, 6, 7, 8, 12 }), limitedVector);
-
-#if defined(OPENRIICHI_ENABLE_ASSERTION) && OPENRIICHI_ENABLE_ASSERTION != 0
-		ASSERT_THROW(limitedVector[10] = 13, OpenRiichiAssertion);
-		ASSERT_THROW((LimitedVector<int, 10>()[0] = 14), OpenRiichiAssertion);
-#endif // defined(OPENRIICHI_ENABLE_ASSERTION) && OPENRIICHI_ENABLE_ASSERTION != 0
-	}
-
-	/// at 関数 (const 版) をテストする。
-	TEST_F(LimitedVectorTest, testIndexAsConst)
-	{
-		const LimitedVector<int, 10> limitedVector{ 0, 1, 2, 3, 4, 5, 6, 7, 8, 9 };
-
-		ASSERT_EQ(0, limitedVector[0]);
-		ASSERT_EQ(5, limitedVector[5]);
-		ASSERT_EQ(9, limitedVector[9]);
-
-#if defined(OPENRIICHI_ENABLE_ASSERTION) && OPENRIICHI_ENABLE_ASSERTION != 0
-		ASSERT_THROW(limitedVector[10], OpenRiichiAssertion);
-#endif // defined(OPENRIICHI_ENABLE_ASSERTION) && OPENRIICHI_ENABLE_ASSERTION != 0
 	}
 }
