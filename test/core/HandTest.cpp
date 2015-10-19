@@ -26,7 +26,7 @@ namespace openriichi
 	class HandTest : public ::testing::Test {};
 
 	/// コンストラクタ (牌配列，面子配列指定) をテストする。
-	TEST_F(HandTest, testConstructWithTilesAndSets)
+	TEST_F(HandTest, testConstructorWithTilesAndSets)
 	{
 		Hand hand(Hand::Tiles{ HK, HK, HK }, Hand::Sets{ Set(HT, HT, HT) });
 
@@ -34,8 +34,88 @@ namespace openriichi
 		ASSERT_EQ((Hand::Sets{ Set(HT, HT, HT) }), hand.sets());
 	}
 
+	/// == 演算子をテストする。
+	TEST_F(HandTest, testOperatorEqualTo)
+	{
+		Hand hand1;
+		Hand hand2{ CH, CH, CH };
+		Hand hand3{ Set(CH, CH, CH) };
+		Hand hand4(Hand::Tiles{ CH, CH, CH }, Hand::Sets{ Set(CH, CH, CH) });
+
+		// 自身と比較する。
+		ASSERT_TRUE(hand1 == hand1);
+		ASSERT_TRUE(hand2 == hand2);
+		ASSERT_TRUE(hand3 == hand3);
+		ASSERT_TRUE(hand4 == hand4);
+
+		// 同じ手牌と比較する。
+		ASSERT_TRUE(Hand() == hand1);
+		ASSERT_TRUE((Hand{ CH, CH, CH }) == hand2);
+		ASSERT_TRUE((Hand{ Set(CH, CH, CH) }) == hand3);
+		ASSERT_TRUE(Hand(Hand::Tiles{ CH, CH, CH }, Hand::Sets{ Set(CH, CH, CH) }) == hand4);
+
+		// 異なる手牌と比較する。
+		vector<Hand> hands{ hand1, hand2, hand3, hand4 };
+		for (size_t i = 0; i < hands.size(); ++i) {
+			for (size_t j = 0; j < hands.size(); ++j) {
+				if (i != j) {
+					ASSERT_FALSE(hands[i] == hands[j]);
+				}
+			}
+		}
+	}
+
+	/// != 演算子をテストする。
+	TEST_F(HandTest, testOperatorNotEqualTo)
+	{
+		Hand hand1;
+		Hand hand2{ CH, CH, CH };
+		Hand hand3{ Set(CH, CH, CH) };
+		Hand hand4(Hand::Tiles{ CH, CH, CH }, Hand::Sets{ Set(CH, CH, CH) });
+
+		// 自身と比較する。
+		ASSERT_FALSE(hand1 != hand1);
+		ASSERT_FALSE(hand2 != hand2);
+		ASSERT_FALSE(hand3 != hand3);
+		ASSERT_FALSE(hand4 != hand4);
+
+		// 同じ手牌と比較する。
+		ASSERT_FALSE(Hand() != hand1);
+		ASSERT_FALSE((Hand{ CH, CH, CH }) != hand2);
+		ASSERT_FALSE((Hand{ Set(CH, CH, CH) }) != hand3);
+		ASSERT_FALSE(Hand(Hand::Tiles{ CH, CH, CH }, Hand::Sets{ Set(CH, CH, CH) }) != hand4);
+
+		// 異なる手牌と比較する。
+		vector<Hand> hands{ hand1, hand2, hand3, hand4 };
+		for (size_t i = 0; i < hands.size(); ++i) {
+			for (size_t j = 0; j < hands.size(); ++j) {
+				if (i != j) {
+					ASSERT_TRUE(hands[i] != hands[j]);
+				}
+			}
+		}
+	}
+
+	/// = 演算子 (牌初期化子リスト用) をテストする。
+	TEST_F(HandTest, testOperatorAssignmentWithTiles)
+	{
+		Hand hand(Hand::Tiles(), Hand::Sets{ Set(P1, P2, P3) });
+
+		hand = { P1, P2, P3 };
+		ASSERT_EQ((Hand{ P1, P2, P3 }), hand);
+	}
+
+	/// = 演算子 (面子初期化子リスト用) をテストする。
+	TEST_F(HandTest, testOperatorAssignmentWithSets)
+	{
+		Hand hand(Hand::Tiles{ P1 }, Hand::Sets());
+
+		hand = { Set(P1, P2, P3) };
+		ASSERT_EQ((Hand{ Set(P1, P2, P3) }), hand);
+	}
+
 	/// getTiles 関数をテストする。
-	TEST_F(HandTest, testGetTiles)
+	TEST_F(HandTest, testToGetTiles)
 	{
 		Hand hand;
 
@@ -52,7 +132,7 @@ namespace openriichi
 	}
 
 	/// setTiles 関数をテストする。
-	TEST_F(HandTest, testSetTiles)
+	TEST_F(HandTest, testToSetTiles)
 	{
 		Hand hand;
 
@@ -104,7 +184,7 @@ namespace openriichi
 	}
 
 	/// getSets 関数をテストする。
-	TEST_F(HandTest, testGetSets)
+	TEST_F(HandTest, testToGetSets)
 	{
 		Hand hand;
 
@@ -121,7 +201,7 @@ namespace openriichi
 	}
 
 	/// setSets 関数をテストする。
-	TEST_F(HandTest, testSetSets)
+	TEST_F(HandTest, testToSetSets)
 	{
 		Hand hand;
 
@@ -130,85 +210,5 @@ namespace openriichi
 
 		hand.setSets(Hand::Sets());
 		ASSERT_EQ(Hand::Sets(), hand.getSets());
-	}
-
-	/// == 演算子をテストする。
-	TEST_F(HandTest, testEquals)
-	{
-		Hand hand1;
-		Hand hand2{ CH, CH, CH };
-		Hand hand3{ Set(CH, CH, CH) };
-		Hand hand4(Hand::Tiles{ CH, CH, CH }, Hand::Sets{ Set(CH, CH, CH) });
-
-		// 自身と比較する。
-		ASSERT_TRUE(hand1 == hand1);
-		ASSERT_TRUE(hand2 == hand2);
-		ASSERT_TRUE(hand3 == hand3);
-		ASSERT_TRUE(hand4 == hand4);
-
-		// 同じ手牌と比較する。
-		ASSERT_TRUE(Hand() == hand1);
-		ASSERT_TRUE((Hand{ CH, CH, CH }) == hand2);
-		ASSERT_TRUE((Hand{ Set(CH, CH, CH) }) == hand3);
-		ASSERT_TRUE(Hand(Hand::Tiles{ CH, CH, CH }, Hand::Sets{ Set(CH, CH, CH) }) == hand4);
-
-		// 異なる手牌と比較する。
-		vector<Hand> hands{ hand1, hand2, hand3, hand4 };
-		for (size_t i = 0; i < hands.size(); ++i) {
-			for (size_t j = 0; j < hands.size(); ++j) {
-				if (i != j) {
-					ASSERT_FALSE(hands[i] == hands[j]);
-				}
-			}
-		}
-	}
-
-	/// != 演算子をテストする。
-	TEST_F(HandTest, testNotEquals)
-	{
-		Hand hand1;
-		Hand hand2{ CH, CH, CH };
-		Hand hand3{ Set(CH, CH, CH) };
-		Hand hand4(Hand::Tiles{ CH, CH, CH }, Hand::Sets{ Set(CH, CH, CH) });
-
-		// 自身と比較する。
-		ASSERT_FALSE(hand1 != hand1);
-		ASSERT_FALSE(hand2 != hand2);
-		ASSERT_FALSE(hand3 != hand3);
-		ASSERT_FALSE(hand4 != hand4);
-
-		// 同じ手牌と比較する。
-		ASSERT_FALSE(Hand() != hand1);
-		ASSERT_FALSE((Hand{ CH, CH, CH }) != hand2);
-		ASSERT_FALSE((Hand{ Set(CH, CH, CH) }) != hand3);
-		ASSERT_FALSE(Hand(Hand::Tiles{ CH, CH, CH }, Hand::Sets{ Set(CH, CH, CH) }) != hand4);
-
-		// 異なる手牌と比較する。
-		vector<Hand> hands{ hand1, hand2, hand3, hand4 };
-		for (size_t i = 0; i < hands.size(); ++i) {
-			for (size_t j = 0; j < hands.size(); ++j) {
-				if (i != j) {
-					ASSERT_TRUE(hands[i] != hands[j]);
-				}
-			}
-		}
-	}
-
-	/// = 演算子 (牌初期化子リスト用) をテストする。
-	TEST_F(HandTest, testSubstituteTiles)
-	{
-		Hand hand(Hand::Tiles(), Hand::Sets{ Set(P1, P2, P3) });
-
-		hand = { P1, P2, P3 };
-		ASSERT_EQ((Hand{ P1, P2, P3 }), hand);
-	}
-
-	/// = 演算子 (面子初期化子リスト用) をテストする。
-	TEST_F(HandTest, testSubstituteSets)
-	{
-		Hand hand(Hand::Tiles{ P1 }, Hand::Sets());
-
-		hand = { Set(P1, P2, P3) };
-		ASSERT_EQ((Hand{ Set(P1, P2, P3) }), hand);
 	}
 }
