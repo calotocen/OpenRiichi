@@ -29,18 +29,18 @@ namespace openriichi
 		ASSERT_EQ(2, MeldedKongTypes::BIG_ID);
 	}
 
+	/// 同一種類の列挙型を比較可能であるかテストする。
+	TEST_F(MeldedKongTypesTest, testOperatorEqualTo)
+	{
+		ASSERT_FALSE(MeldedKongTypes::NO == MeldedKongTypes::LITTLE);
+		ASSERT_FALSE(MeldedKongTypes::NO == MeldedKongTypes::BIG);
+	}
+
 	/// getId 関数をテストする。
-	TEST_F(MeldedKongTypesTest, testGetId)
+	TEST_F(MeldedKongTypesTest, testToGetId)
 	{
 		ASSERT_EQ(0, MeldedKongTypes::NO.getId());
 		ASSERT_EQ(1, MeldedKongTypes::LITTLE.getId());
 		ASSERT_EQ(2, MeldedKongTypes::BIG.getId());
-	}
-
-	/// 同一種類の列挙型を比較可能であるかテストする。
-	TEST_F(MeldedKongTypesTest, testComparable)
-	{
-		ASSERT_FALSE(MeldedKongTypes::NO == MeldedKongTypes::LITTLE);
-		ASSERT_FALSE(MeldedKongTypes::NO == MeldedKongTypes::BIG);
 	}
 }
