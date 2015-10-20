@@ -30,20 +30,20 @@ namespace openriichi
 		ASSERT_EQ(3, MeldTypes::RIGHT_ID);
 	}
 
+	/// 同一種類の列挙型を比較可能であるかテストする。
+	TEST_F(MeldTypesTest, testOperatorEqualTo)
+	{
+		ASSERT_FALSE(MeldTypes::NONE == MeldTypes::LEFT);
+		ASSERT_FALSE(MeldTypes::NONE == MeldTypes::ACROSS);
+		ASSERT_FALSE(MeldTypes::NONE == MeldTypes::RIGHT);
+	}
+
 	/// getId 関数をテストする。
-	TEST_F(MeldTypesTest, testGetId)
+	TEST_F(MeldTypesTest, testToGetId)
 	{
 		ASSERT_EQ(0, MeldTypes::NONE.getId());
 		ASSERT_EQ(1, MeldTypes::LEFT.getId());
 		ASSERT_EQ(2, MeldTypes::ACROSS.getId());
 		ASSERT_EQ(3, MeldTypes::RIGHT.getId());
-	}
-
-	/// 同一種類の列挙型を比較可能であるかテストする。
-	TEST_F(MeldTypesTest, testComparable)
-	{
-		ASSERT_FALSE(MeldTypes::NONE == MeldTypes::LEFT);
-		ASSERT_FALSE(MeldTypes::NONE == MeldTypes::ACROSS);
-		ASSERT_FALSE(MeldTypes::NONE == MeldTypes::RIGHT);
 	}
 }
