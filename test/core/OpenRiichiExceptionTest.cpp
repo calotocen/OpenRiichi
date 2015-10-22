@@ -26,7 +26,7 @@ namespace openriichi
 	class OpenRiichiExceptionTest : public ::testing::Test {};
 
 	/// getMessage 関数をテストする。
-	TEST_F(OpenRiichiExceptionTest, testGetMessage)
+	TEST_F(OpenRiichiExceptionTest, testToGetMessage)
 	{
 		char message3[1024] = { 0 };
 		char message4[1025] = { 0 };
