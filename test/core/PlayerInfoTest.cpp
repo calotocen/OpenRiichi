@@ -25,164 +25,8 @@ namespace openriichi
 {
 	class PlayerInfoTest : public ::testing::Test {};
 
-	/// hand 関数をテストする。
-	TEST_F(PlayerInfoTest, testHand)
-	{
-		PlayerInfo playerInfo1;
-		const PlayerInfo playerInfo2;
-
-		ASSERT_EQ(Hand(), playerInfo1.hand());
-
-		playerInfo1.hand() = { P1, P2, P3, P4, P5, P6, P7, P8, P9, TN, TN, TN, NN, NN };
-		ASSERT_EQ((Hand{ P1, P2, P3, P4, P5, P6, P7, P8, P9, TN, TN, TN, NN, NN }), playerInfo1.hand());
-
-		ASSERT_EQ(Hand(), playerInfo2.hand());
-	}
-
-	/// getHand 関数をテストする。
-	TEST_F(PlayerInfoTest, testGetHand)
-	{
-		PlayerInfo playerInfo;
-
-		ASSERT_EQ(Hand(), playerInfo.getHand());
-
-		playerInfo.hand() = { P1, P2, P3, P4, P5, P6, P7, P8, P9, TN, TN, TN, NN, NN };
-		ASSERT_EQ((Hand{ P1, P2, P3, P4, P5, P6, P7, P8, P9, TN, TN, TN, NN, NN }), playerInfo.getHand());
-	}
-
-	/// setHand 関数をテストする。
-	TEST_F(PlayerInfoTest, testSetHand)
-	{
-		PlayerInfo playerInfo;
-
-		playerInfo.setHand(Hand{ P1, P2, P3, P4, P5, P6, P7, P8, P9, TN, TN, TN, NN, NN });
-		ASSERT_EQ((Hand{ P1, P2, P3, P4, P5, P6, P7, P8, P9, TN, TN, TN, NN, NN }), playerInfo.getHand());
-	}
-
-	/// discards 関数をテストする。
-	TEST_F(PlayerInfoTest, testDiscards)
-	{
-		PlayerInfo playerInfo1;
-		const PlayerInfo playerInfo2;
-
-		ASSERT_EQ(PlayerInfo::Discards(), playerInfo1.discards());
-
-		playerInfo1.discards() = { Discard(P1, DiscardSources::DRAWED) };
-		ASSERT_EQ((PlayerInfo::Discards{ Discard(P1, DiscardSources::DRAWED) }), playerInfo1.discards());
-
-		ASSERT_EQ(PlayerInfo::Discards(), playerInfo2.discards());
-	}
-
-	/// getDiscards 関数をテストする。
-	TEST_F(PlayerInfoTest, testGetDiscards)
-	{
-		PlayerInfo playerInfo;
-
-		ASSERT_EQ(PlayerInfo::Discards(), playerInfo.getDiscards());
-
-		playerInfo.discards() = { Discard(P1, DiscardSources::DRAWED) };
-		ASSERT_EQ((PlayerInfo::Discards{ Discard(P1, DiscardSources::DRAWED) }), playerInfo.getDiscards());
-	}
-
-	/// setDiscards 関数をテストする。
-	TEST_F(PlayerInfoTest, testSetDiscards)
-	{
-		PlayerInfo playerInfo;
-
-		playerInfo.setDiscards(PlayerInfo::Discards{ Discard(P1, DiscardSources::DRAWED) });
-		ASSERT_EQ((PlayerInfo::Discards{ Discard(P1, DiscardSources::DRAWED) }), playerInfo.getDiscards());
-	}
-
-	/// getPoints 関数をテストする。
-	TEST_F(PlayerInfoTest, testGetPoints)
-	{
-		PlayerInfo playerInfo;
-
-		ASSERT_EQ(0, playerInfo.getPoints());
-	}
-
-	/// setPoints 関数をテストする。
-	TEST_F(PlayerInfoTest, testSetPoints)
-	{
-		PlayerInfo playerInfo;
-
-		playerInfo.setPoints(1000);
-		ASSERT_EQ(1000, playerInfo.getPoints());
-	}
-
-	/// addPoints 関数をテストする。
-	TEST_F(PlayerInfoTest, testAddPoints)
-	{
-		PlayerInfo playerInfo;
-
-		playerInfo.setPoints(1000);
-		playerInfo.addPoints(2000);
-		ASSERT_EQ(3000, playerInfo.getPoints());
-	}
-
-	/// getDrawCount 関数をテストする。
-	TEST_F(PlayerInfoTest, testGetDrawCount)
-	{
-		PlayerInfo playerInfo;
-
-		ASSERT_EQ(0, playerInfo.getDrawCount());
-	}
-
-	/// setDrawCount 関数をテストする。
-	TEST_F(PlayerInfoTest, testSetDrawCount)
-	{
-		PlayerInfo playerInfo;
-
-		playerInfo.setDrawCount(3);
-		ASSERT_EQ(3, playerInfo.getDrawCount());
-	}
-
-	/// increaseDrawCount 関数をテストする。
-	TEST_F(PlayerInfoTest, testIncreaseDrawCount)
-	{
-		PlayerInfo playerInfo;
-
-		playerInfo.setDrawCount(3);
-		playerInfo.increaseDrawCount();
-		ASSERT_EQ(4, playerInfo.getDrawCount());
-	}
-
-	/// riichiStatus 関数をテストする。
-	TEST_F(PlayerInfoTest, testRiichiStatus)
-	{
-		PlayerInfo playerInfo1;
-		const PlayerInfo playerInfo2;
-
-		ASSERT_EQ(RiichiStatus(), playerInfo1.riichiStatus());
-
-		playerInfo1.riichiStatus().setDeclared(true);
-		ASSERT_EQ(RiichiStatus(true), playerInfo1.riichiStatus());
-
-		ASSERT_EQ(RiichiStatus(), playerInfo2.riichiStatus());
-	}
-
-	/// getRiichiStatus 関数をテストする。
-	TEST_F(PlayerInfoTest, testGetRiichiStatus)
-	{
-		PlayerInfo playerInfo;
-
-		ASSERT_EQ(RiichiStatus(), playerInfo.getRiichiStatus());
-
-		playerInfo.riichiStatus().setDeclared(true);
-		ASSERT_EQ(RiichiStatus(true), playerInfo.getRiichiStatus());
-	}
-
-	/// setRiichiStatus 関数をテストする。
-	TEST_F(PlayerInfoTest, testSetRiichiStatus)
-	{
-		PlayerInfo playerInfo;
-
-		playerInfo.setRiichiStatus(RiichiStatus(true));
-		ASSERT_EQ(RiichiStatus(true), playerInfo.getRiichiStatus());
-	}
-
 	/// == 演算子をテストする。
-	TEST_F(PlayerInfoTest, testEquals)
+	TEST_F(PlayerInfoTest, testOperatorEqualTo)
 	{
 		PlayerInfo playerInfo1A;
 		PlayerInfo playerInfo1B;
@@ -232,7 +76,7 @@ namespace openriichi
 	}
 
 	/// != 演算子をテストする。
-	TEST_F(PlayerInfoTest, testNotEquals)
+	TEST_F(PlayerInfoTest, testOperatorNotEqualTo)
 	{
 		PlayerInfo playerInfo1A;
 		PlayerInfo playerInfo1B;
@@ -279,5 +123,161 @@ namespace openriichi
 				}
 			}
 		}
+	}
+
+	/// hand 関数をテストする。
+	TEST_F(PlayerInfoTest, testHand)
+	{
+		PlayerInfo playerInfo1;
+		const PlayerInfo playerInfo2;
+
+		ASSERT_EQ(Hand(), playerInfo1.hand());
+
+		playerInfo1.hand() = { P1, P2, P3, P4, P5, P6, P7, P8, P9, TN, TN, TN, NN, NN };
+		ASSERT_EQ((Hand{ P1, P2, P3, P4, P5, P6, P7, P8, P9, TN, TN, TN, NN, NN }), playerInfo1.hand());
+
+		ASSERT_EQ(Hand(), playerInfo2.hand());
+	}
+
+	/// getHand 関数をテストする。
+	TEST_F(PlayerInfoTest, testToGetHand)
+	{
+		PlayerInfo playerInfo;
+
+		ASSERT_EQ(Hand(), playerInfo.getHand());
+
+		playerInfo.hand() = { P1, P2, P3, P4, P5, P6, P7, P8, P9, TN, TN, TN, NN, NN };
+		ASSERT_EQ((Hand{ P1, P2, P3, P4, P5, P6, P7, P8, P9, TN, TN, TN, NN, NN }), playerInfo.getHand());
+	}
+
+	/// setHand 関数をテストする。
+	TEST_F(PlayerInfoTest, testToSetHand)
+	{
+		PlayerInfo playerInfo;
+
+		playerInfo.setHand(Hand{ P1, P2, P3, P4, P5, P6, P7, P8, P9, TN, TN, TN, NN, NN });
+		ASSERT_EQ((Hand{ P1, P2, P3, P4, P5, P6, P7, P8, P9, TN, TN, TN, NN, NN }), playerInfo.getHand());
+	}
+
+	/// discards 関数をテストする。
+	TEST_F(PlayerInfoTest, testDiscards)
+	{
+		PlayerInfo playerInfo1;
+		const PlayerInfo playerInfo2;
+
+		ASSERT_EQ(PlayerInfo::Discards(), playerInfo1.discards());
+
+		playerInfo1.discards() = { Discard(P1, DiscardSources::DRAWED) };
+		ASSERT_EQ((PlayerInfo::Discards{ Discard(P1, DiscardSources::DRAWED) }), playerInfo1.discards());
+
+		ASSERT_EQ(PlayerInfo::Discards(), playerInfo2.discards());
+	}
+
+	/// getDiscards 関数をテストする。
+	TEST_F(PlayerInfoTest, testToGetDiscards)
+	{
+		PlayerInfo playerInfo;
+
+		ASSERT_EQ(PlayerInfo::Discards(), playerInfo.getDiscards());
+
+		playerInfo.discards() = { Discard(P1, DiscardSources::DRAWED) };
+		ASSERT_EQ((PlayerInfo::Discards{ Discard(P1, DiscardSources::DRAWED) }), playerInfo.getDiscards());
+	}
+
+	/// setDiscards 関数をテストする。
+	TEST_F(PlayerInfoTest, testToSetDiscards)
+	{
+		PlayerInfo playerInfo;
+
+		playerInfo.setDiscards(PlayerInfo::Discards{ Discard(P1, DiscardSources::DRAWED) });
+		ASSERT_EQ((PlayerInfo::Discards{ Discard(P1, DiscardSources::DRAWED) }), playerInfo.getDiscards());
+	}
+
+	/// getPoints 関数をテストする。
+	TEST_F(PlayerInfoTest, testToGetPoints)
+	{
+		PlayerInfo playerInfo;
+
+		ASSERT_EQ(0, playerInfo.getPoints());
+	}
+
+	/// setPoints 関数をテストする。
+	TEST_F(PlayerInfoTest, testToSetPoints)
+	{
+		PlayerInfo playerInfo;
+
+		playerInfo.setPoints(1000);
+		ASSERT_EQ(1000, playerInfo.getPoints());
+	}
+
+	/// addPoints 関数をテストする。
+	TEST_F(PlayerInfoTest, testToAddPoints)
+	{
+		PlayerInfo playerInfo;
+
+		playerInfo.setPoints(1000);
+		playerInfo.addPoints(2000);
+		ASSERT_EQ(3000, playerInfo.getPoints());
+	}
+
+	/// getDrawCount 関数をテストする。
+	TEST_F(PlayerInfoTest, testToGetDrawCount)
+	{
+		PlayerInfo playerInfo;
+
+		ASSERT_EQ(0, playerInfo.getDrawCount());
+	}
+
+	/// setDrawCount 関数をテストする。
+	TEST_F(PlayerInfoTest, testToSetDrawCount)
+	{
+		PlayerInfo playerInfo;
+
+		playerInfo.setDrawCount(3);
+		ASSERT_EQ(3, playerInfo.getDrawCount());
+	}
+
+	/// increaseDrawCount 関数をテストする。
+	TEST_F(PlayerInfoTest, testToIncreaseDrawCount)
+	{
+		PlayerInfo playerInfo;
+
+		playerInfo.setDrawCount(3);
+		playerInfo.increaseDrawCount();
+		ASSERT_EQ(4, playerInfo.getDrawCount());
+	}
+
+	/// riichiStatus 関数をテストする。
+	TEST_F(PlayerInfoTest, testRiichiStatus)
+	{
+		PlayerInfo playerInfo1;
+		const PlayerInfo playerInfo2;
+
+		ASSERT_EQ(RiichiStatus(), playerInfo1.riichiStatus());
+
+		playerInfo1.riichiStatus().setDeclared(true);
+		ASSERT_EQ(RiichiStatus(true), playerInfo1.riichiStatus());
+
+		ASSERT_EQ(RiichiStatus(), playerInfo2.riichiStatus());
+	}
+
+	/// getRiichiStatus 関数をテストする。
+	TEST_F(PlayerInfoTest, testToGetRiichiStatus)
+	{
+		PlayerInfo playerInfo;
+
+		ASSERT_EQ(RiichiStatus(), playerInfo.getRiichiStatus());
+
+		playerInfo.riichiStatus().setDeclared(true);
+		ASSERT_EQ(RiichiStatus(true), playerInfo.getRiichiStatus());
+	}
+
+	/// setRiichiStatus 関数をテストする。
+	TEST_F(PlayerInfoTest, testToSetRiichiStatus)
+	{
+		PlayerInfo playerInfo;
+
+		playerInfo.setRiichiStatus(RiichiStatus(true));
+		ASSERT_EQ(RiichiStatus(true), playerInfo.getRiichiStatus());
 	}
 }
