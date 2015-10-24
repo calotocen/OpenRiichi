@@ -32,76 +32,8 @@ namespace openriichi
 		{}
 	};
 
-	/// isDeclared 関数をテストする。
-	TEST_F(RiichiStatusTest, testIsDeclared)
-	{
-		ASSERT_EQ(false, riichiStatus1.isDeclared());
-		ASSERT_EQ(true, riichiStatus2.isDeclared());
-	}
-
-	/// isOpen 関数をテストする。
-	TEST_F(RiichiStatusTest, testIsOpen)
-	{
-		ASSERT_EQ(false, riichiStatus1.isOpen());
-		ASSERT_EQ(true, riichiStatus2.isOpen());
-	}
-
-	/// isDouble 関数をテストする。
-	TEST_F(RiichiStatusTest, testIsDouble)
-	{
-		ASSERT_EQ(false, riichiStatus1.isDouble());
-		ASSERT_EQ(true, riichiStatus2.isDouble());
-	}
-
-	/// isOneShot 関数をテストする。
-	TEST_F(RiichiStatusTest, testIsOneShot)
-	{
-		ASSERT_EQ(false, riichiStatus1.isOneShot());
-		ASSERT_EQ(true, riichiStatus2.isOneShot());
-	}
-
-	/// setDeclared 関数をテストする。
-	TEST_F(RiichiStatusTest, testSetDeclared)
-	{
-		riichiStatus1.setDeclared(true);
-		ASSERT_EQ(RiichiStatus(true, false, false, false), riichiStatus1);
-
-		riichiStatus2.setDeclared(false);
-		ASSERT_EQ(RiichiStatus(false, true, true, true), riichiStatus2);
-	}
-
-	/// setOpen 関数をテストする。
-	TEST_F(RiichiStatusTest, testSetOpen)
-	{
-		riichiStatus1.setOpen(true);
-		ASSERT_EQ(RiichiStatus(false, true, false, false), riichiStatus1);
-
-		riichiStatus2.setOpen(false);
-		ASSERT_EQ(RiichiStatus(true, false, true, true), riichiStatus2);
-	}
-
-	/// setDouble 関数をテストする。
-	TEST_F(RiichiStatusTest, testSetDouble)
-	{
-		riichiStatus1.setDouble(true);
-		ASSERT_EQ(RiichiStatus(false, false, true, false), riichiStatus1);
-
-		riichiStatus2.setDouble(false);
-		ASSERT_EQ(RiichiStatus(true, true, false, true), riichiStatus2);
-	}
-
-	/// setOneShot 関数をテストする。
-	TEST_F(RiichiStatusTest, testSetOneShot)
-	{
-		riichiStatus1.setOneShot(true);
-		ASSERT_EQ(RiichiStatus(false, false, false, true), riichiStatus1);
-
-		riichiStatus2.setOneShot(false);
-		ASSERT_EQ(RiichiStatus(true, true, true, false), riichiStatus2);
-	}
-
 	/// == 演算子をテストする。
-	TEST_F(RiichiStatusTest, testEquals)
+	TEST_F(RiichiStatusTest, testOperatorEqualTo)
 	{
 		// 自身と比較する。
 		ASSERT_TRUE(riichiStatus1 == riichiStatus1);
@@ -116,7 +48,7 @@ namespace openriichi
 	}
 
 	/// != 演算子をテストする。
-	TEST_F(RiichiStatusTest, testNotEquals)
+	TEST_F(RiichiStatusTest, testOperatorNotEqualTo)
 	{
 		// 自身と比較する。
 		ASSERT_FALSE(riichiStatus1 != riichiStatus1);
@@ -128,5 +60,73 @@ namespace openriichi
 
 		// 異なる立直状態と比較する。
 		ASSERT_TRUE(riichiStatus1 != riichiStatus2);
+	}
+
+	/// isDeclared 関数をテストする。
+	TEST_F(RiichiStatusTest, testToIsDeclared)
+	{
+		ASSERT_EQ(false, riichiStatus1.isDeclared());
+		ASSERT_EQ(true, riichiStatus2.isDeclared());
+	}
+
+	/// isOpen 関数をテストする。
+	TEST_F(RiichiStatusTest, testToIsOpen)
+	{
+		ASSERT_EQ(false, riichiStatus1.isOpen());
+		ASSERT_EQ(true, riichiStatus2.isOpen());
+	}
+
+	/// isDouble 関数をテストする。
+	TEST_F(RiichiStatusTest, testToIsDouble)
+	{
+		ASSERT_EQ(false, riichiStatus1.isDouble());
+		ASSERT_EQ(true, riichiStatus2.isDouble());
+	}
+
+	/// isOneShot 関数をテストする。
+	TEST_F(RiichiStatusTest, testToIsOneShot)
+	{
+		ASSERT_EQ(false, riichiStatus1.isOneShot());
+		ASSERT_EQ(true, riichiStatus2.isOneShot());
+	}
+
+	/// setDeclared 関数をテストする。
+	TEST_F(RiichiStatusTest, testToSetDeclared)
+	{
+		riichiStatus1.setDeclared(true);
+		ASSERT_EQ(RiichiStatus(true, false, false, false), riichiStatus1);
+
+		riichiStatus2.setDeclared(false);
+		ASSERT_EQ(RiichiStatus(false, true, true, true), riichiStatus2);
+	}
+
+	/// setOpen 関数をテストする。
+	TEST_F(RiichiStatusTest, testToSetOpen)
+	{
+		riichiStatus1.setOpen(true);
+		ASSERT_EQ(RiichiStatus(false, true, false, false), riichiStatus1);
+
+		riichiStatus2.setOpen(false);
+		ASSERT_EQ(RiichiStatus(true, false, true, true), riichiStatus2);
+	}
+
+	/// setDouble 関数をテストする。
+	TEST_F(RiichiStatusTest, testToSetDouble)
+	{
+		riichiStatus1.setDouble(true);
+		ASSERT_EQ(RiichiStatus(false, false, true, false), riichiStatus1);
+
+		riichiStatus2.setDouble(false);
+		ASSERT_EQ(RiichiStatus(true, true, false, true), riichiStatus2);
+	}
+
+	/// setOneShot 関数をテストする。
+	TEST_F(RiichiStatusTest, testToSetOneShot)
+	{
+		riichiStatus1.setOneShot(true);
+		ASSERT_EQ(RiichiStatus(false, false, false, true), riichiStatus1);
+
+		riichiStatus2.setOneShot(false);
+		ASSERT_EQ(RiichiStatus(true, true, true, false), riichiStatus2);
 	}
 }
