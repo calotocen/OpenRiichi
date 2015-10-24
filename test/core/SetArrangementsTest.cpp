@@ -21,6 +21,14 @@ namespace openriichi
 {
 	class SetArrangementsTest : public ::testing::Test {};
 
+	/// 同一種類の列挙型を比較可能であるかテストする。
+	TEST_F(SetArrangementsTest, testOperatorEqualTo)
+	{
+		ASSERT_FALSE(SetArrangements::CHOW == SetArrangements::PAIR);
+		ASSERT_FALSE(SetArrangements::CHOW == SetArrangements::PUNG);
+		ASSERT_FALSE(SetArrangements::CHOW == SetArrangements::KONG);
+	}
+
 	/// ID 変数をテストする。
 	TEST_F(SetArrangementsTest, testId)
 	{
@@ -37,13 +45,5 @@ namespace openriichi
 		ASSERT_EQ(2, SetArrangements::PAIR.getId());
 		ASSERT_EQ(3, SetArrangements::PUNG.getId());
 		ASSERT_EQ(4, SetArrangements::KONG.getId());
-	}
-
-	/// 同一種類の列挙型を比較可能であるかテストする。
-	TEST_F(SetArrangementsTest, testComparable)
-	{
-		ASSERT_FALSE(SetArrangements::CHOW == SetArrangements::PAIR);
-		ASSERT_FALSE(SetArrangements::CHOW == SetArrangements::PUNG);
-		ASSERT_FALSE(SetArrangements::CHOW == SetArrangements::KONG);
 	}
 }
