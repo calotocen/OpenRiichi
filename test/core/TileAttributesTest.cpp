@@ -21,6 +21,12 @@ namespace openriichi
 {
 	class TileAttributesTest : public ::testing::Test {};
 
+	/// 同一種類の列挙型を比較可能であるかテストする。
+	TEST_F(TileAttributesTest, testOperatorEqualTo)
+	{
+		ASSERT_FALSE(TileAttributes::NONE == TileAttributes::RED);
+	}
+
 	/// ID 変数をテストする。
 	TEST_F(TileAttributesTest, testId)
 	{
@@ -29,15 +35,9 @@ namespace openriichi
 	}
 
 	/// getId 関数をテストする。
-	TEST_F(TileAttributesTest, testGetId)
+	TEST_F(TileAttributesTest, testToGetId)
 	{
 		ASSERT_EQ(0, TileAttributes::NONE.getId());
 		ASSERT_EQ(1, TileAttributes::RED.getId());
-	}
-
-	/// 同一種類の列挙型を比較可能であるかテストする。
-	TEST_F(TileAttributesTest, testComparable)
-	{
-		ASSERT_FALSE(TileAttributes::NONE == TileAttributes::RED);
 	}
 }
