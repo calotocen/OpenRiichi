@@ -39,7 +39,7 @@ namespace openriichi
 	}
 
 	/// getId 関数をテストする。
-	TEST_F(SetArrangementsTest, testGetId)
+	TEST_F(SetArrangementsTest, testToGetId)
 	{
 		ASSERT_EQ(1, SetArrangements::CHOW.getId());
 		ASSERT_EQ(2, SetArrangements::PAIR.getId());
