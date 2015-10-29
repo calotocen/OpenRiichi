@@ -26,7 +26,7 @@ namespace openriichi
 	class LimitedVectorTest : public ::testing::Test {};
 
 	/// コンストラクタ (初期化子リスト指定) をテストする。
-	TEST_F(LimitedVectorTest, testConstructerWithInitializerList)
+	TEST_F(LimitedVectorTest, testConstructorWithInitializerList)
 	{
 #if defined(OPENRIICHI_ENABLE_ASSERTION) && OPENRIICHI_ENABLE_ASSERTION != 0
 		ASSERT_THROW((LimitedVector<int, 10>{ 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10 }), OpenRiichiAssertion);
