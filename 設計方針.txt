@@ -1,0 +1,10 @@
+・ノーガード。引数チェックや状態チェックは行わない。ただし，assertは付ける。高速化のためだよ。
+・例外はthrowしない。ただし，stdがthrowするのは許す。
+
+
+
+TODO:
+・LimitedVector のテストを書く。
+・SimpleHand を LimitedVector を使ったコードにする。
+・各種関数の戻り値をポインタからリファレンスにする。
+  → LimitedVector のイテレータがリファレンスだから。

@@ -1,0 +1,10 @@
+・コードフォーマッターにかける
+・doxygen にかける。
+・カバレッジツールにかける。
+・SimpleTable のテストの実装。
+・テスト名を変更する。
+     - testToGet...
+     - testTiles
+     - testOperatorEqual
+・エンターキー，またはキャンセルを押下するとプログラムが終了する。
+・SimpleWall のテストを追加する。getTile と isDrawedね。

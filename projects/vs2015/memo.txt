@@ -1,0 +1,56 @@
+・OpenRiichi
+    - プロジェクトの依存関係を作成した。
+    
+    ・Core
+        - 文字コードをマルチバイトに変更した
+        - includeパスを変更した。
+        - 警告無視を変更した。
+        - Win32の出力ディレクトリを変更した。$(SolutionDir)$(Platform)\$(Configuration)\
+        - Win32の中間ディレクトリを変更した。$(Platform)\$(Configuration)\
+    
+    ・ClrServer
+        - 空の CLR プロジェクトで作成した。
+        - リンカー＞システム＞サブシステムを Windows (/SUBSYSTEM:WINDOWS) に変更した。
+        - エントリポイントを main に変更した。
+          → 一考の余地あり。WinMain から呼べるエントリポイントを定義すべきではないか。
+        - includeパスを変更した。
+        - Win32の出力ディレクトリを変更した。
+        - Win32の中間ディレクトリを変更した。
+    
+    ・MfcServer
+        - ウィザードを次のように設定した。
+            - シングルドキュメントを選択。
+            - スタティックライブラリで MFC を利用するにチェック。
+            他色々。
+        - stdafx.cpp のプリコンパイル済みヘッダーを「作成(/Yc)」に変更。
+        - Win32の出力ディレクトリを変更した。$(SolutionDir)$(Platform)\$(Configuration)\
+        - Win32の中間ディレクトリを変更した。$(Platform)\$(Configuration)\
+        - Core.lib をリンクした。あと，インクルードもした。
+    
+    ・MfcServerDialog
+        - ウィザードを次のように設定した。
+            - ダイアログベースを選択。
+            - スタティックライブラリで MFC を利用するにチェック。
+            - サイズ変更を非チェック。
+            - 最小化ボタンをチェック。
+            - 最大化ボタンをチェック。
+            - ActiveX コントロールを非チェック。
+            - 再起動マネージャーのサポートを非チェック。
+        - stdafx.cpp のプリコンパイル済みヘッダーを「作成(/Yc)」に変更。
+        - Win32の出力ディレクトリを変更した。$(SolutionDir)$(Platform)\$(Configuration)\
+        - Win32の中間ディレクトリを変更した。$(Platform)\$(Configuration)\
+        ×Core.lib をリンクした。あと，インクルードもした。
+
+・OpenRiichiTest
+文字コードをマルチバイトに変更した
+includeパスを変更した。
+→$(GTEST_HOME)\include;..\..\..\..\src\core
+リンカパスを変更した。
+→Win32：$(GTEST_HOME)\lib\$(Platform)\$(Configuration);..\..\OpenRiichi\$(Configuration)
+→x64：$(GTEST_HOME)\lib\$(Platform)\$(Configuration);..\..\OpenRiichi\$(Platform)\$(Configuration)
+ライブラリ名を変更した。
+→デバッグ版：gtest_maind.lib;gtestd.lib;Core.lib;
+→リリース版：gtest_main.lib;gtest.lib;Core.lib;
+警告無視を変更した。
+Win32の出力ディレクトリを変更した。
+Win32の中間ディレクトリを変更した。
